@@ -1,0 +1,1502 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>0. Recap From Last Class &#8212; Causal Inference for Data Science</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '10_Instruments';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="0. Recap From Last Class" href="11_Instruments_RDD.html" />
+    <link rel="prev" title="Control Variables" href="9_matching.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Causal Inference for Data Science - Home"/>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="Causal Inference for Data Science - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="1_Introduction.html">1. Goals For Today</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="2_Probability_1-2.html">Probability Mass and Density Function</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="3_Probability_Statistics.html">Overview For Today</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="4_Statistics_and_Experiments.html">0. Recap from last class</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="5_Experiments.html">0. Recap From Last Class</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="6_Regression_1-2.html"><a id="toc1_"></a><span class="xref myst">Descriptive Regression</span></a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="7_Natural_Experiments.html">Causality from Observational Data</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="8_ML_and_Causality.html">The Interplay between Machine Learning and Causal Inference</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="9_matching.html">Control Variables</a></li>
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">0. Recap From Last Class</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="11_Instruments_RDD.html">0. Recap From Last Class</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="12_RDD.html">Recap: Local Linear Regression for RDD</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="13_Difference_in_Differences.html">0. Recap From Last Class</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="14_Review.html">1. Goals For Today</a></li>
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2F10_Instruments.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/10_Instruments.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>0. Recap From Last Class</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">0. Recap From Last Class</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-for-today">1. Goals For Today</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#instrumental-variables">2. Instrumental Variables</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-an-instrumental-variable">What is an Instrumental Variable?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#when-should-we-use-ivs">When Should We Use IVs?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-assumptions-for-a-valid-instrument">Key Assumptions for a Valid Instrument</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#local-average-treatment-effect-late">Local Average Treatment Effect (LATE)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-individuals-in-iv-analysis">Types of Individuals in IV Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#identifying-the-local-average-treatment-effect-late">Identifying the Local Average Treatment Effect (LATE)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#motivating-case-the-effect-of-watching-sesame-street-on-later-academic-achievement">3. Motivating Case: The effect of watching sesame street on later academic achievement.</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#research-question">Research Question</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-setup">Model Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-challenge">The challenge</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-plausible-is-tt-encouragement-as-an-instrument">How plausible is <span class="math notranslate nohighlight">\({\tt encouragement}\)</span> as an instrument?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compliance-types">Compliance Types</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-the-late">Estimating the LATE</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#via-the-wald-estimator">Via the Wald Estimator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#via-the-two-stage-least-squares-2sls-estimation">Via the Two-Stage Least Squares (2SLS) Estimation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#path-forward">3. Path Forward</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div align="center">
+<p><a class="reference external" href="https://colab.research.google.com/github/dapivei/causal-infere/blob/main/sections/10_Instruments.ipynb"><img alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+</div><div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{c}
+\textbf{INSTRUMENTAL VARIABLES}\\\\
+\text(PART \, I)\\\\
+\textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \\
+\textit{Center for Data Science, New York University} \\\\\\
+\textit{November 8, 2024}
+\end{array}
+\end{split}\]</div>
+<hr class="docutils" />
+<section id="recap-from-last-class">
+<h1>0. Recap From Last Class<a class="headerlink" href="#recap-from-last-class" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>Control variables, matching.</p></li>
+</ul>
+</section>
+<section id="goals-for-today">
+<h1>1. Goals For Today<a class="headerlink" href="#goals-for-today" title="Link to this heading">#</a></h1>
+<ol class="arabic simple">
+<li><p>Understand what instrumental variables (IVs) are and when they are used.</p></li>
+<li><p>Explore the assumptions needed for an IV to yield valid causal estimates.</p></li>
+<li><p>Implement IV estimation with Python using Wald Estimator, Ordinary Least Squares (OLS) and Two-Stage Least Squares (2SLS</p></li>
+</ol>
+</section>
+<section id="instrumental-variables">
+<h1>2. Instrumental Variables<a class="headerlink" href="#instrumental-variables" title="Link to this heading">#</a></h1>
+<p>Imagine we want to estimate the <strong>causal effect</strong> of a treatment variable, <span class="math notranslate nohighlight">\(S\)</span>, on some outcome, <span class="math notranslate nohighlight">\(Y\)</span>. But there’s a problem: we suspect that <span class="math notranslate nohighlight">\(S\)</span> is <strong>correlated with unobserved factors</strong> that also affect <span class="math notranslate nohighlight">\(Y\)</span>. These unobserved factors are captured by the variable <span class="math notranslate nohighlight">\(U\)</span>. This means:</p>
+<div class="math notranslate nohighlight">
+\[S \not\!\perp\!\!\!\perp U,\]</div>
+<p>In other words, <span class="math notranslate nohighlight">\(S\)</span> and <span class="math notranslate nohighlight">\(U\)</span> are related, which can lead to <strong>biased and inconsistent estimates</strong> when we try to estimate the causal effect of <span class="math notranslate nohighlight">\(S\)</span> on <span class="math notranslate nohighlight">\(Y\)</span>.</p>
+<blockquote>
+<div><p><strong>But is there a way to estimate the causal effect despite this problem?</strong><br />
+<strong>Yes!</strong> We can use an <strong>instrumental variable (IV)</strong> to help us out.</p>
+</div></blockquote>
+<section id="what-is-an-instrumental-variable">
+<h2>What is an Instrumental Variable?<a class="headerlink" href="#what-is-an-instrumental-variable" title="Link to this heading">#</a></h2>
+<p>An <strong>instrumental variable (IV)</strong>, denoted by <span class="math notranslate nohighlight">\(Z\)</span>, is a variable that:</p>
+<ul class="simple">
+<li><p><strong>Affects</strong> the treatment variable <span class="math notranslate nohighlight">\(S\)</span>.</p></li>
+<li><p>Has <strong>no direct effect</strong> on the outcome variable <span class="math notranslate nohighlight">\(Y\)</span>.</p></li>
+<li><p>Is <strong>independent</strong> of the unobserved confounders <span class="math notranslate nohighlight">\(U\)</span> that are correlated with both <span class="math notranslate nohighlight">\(S\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>.</p></li>
+</ul>
+<p>The goal is that the instrument <span class="math notranslate nohighlight">\(Z\)</span> can help us isolate the variation in <span class="math notranslate nohighlight">\(S\)</span> that is <strong>uncorrelated</strong> with the unobserved confounders <span class="math notranslate nohighlight">\(U\)</span>, allowing us to estimate a more accurate causal effect.</p>
+<img src="https://raw.githubusercontent.com/dapivei/causal-infere/main/images/instrument.png" width="500"/>
+</section>
+<section id="when-should-we-use-ivs">
+<h2>When Should We Use IVs?<a class="headerlink" href="#when-should-we-use-ivs" title="Link to this heading">#</a></h2>
+<p>Instrumental Variables are especially useful when:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>The treatment variable <span class="math notranslate nohighlight">\(S\)</span> suffers from <strong>measurement error</strong>, <strong>omitted variable bias</strong>, or <strong>reverse causality</strong> (where <span class="math notranslate nohighlight">\(Y\)</span> affects <span class="math notranslate nohighlight">\(S\)</span> instead of the other way around).</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="key-assumptions-for-a-valid-instrument">
+<h2>Key Assumptions for a Valid Instrument<a class="headerlink" href="#key-assumptions-for-a-valid-instrument" title="Link to this heading">#</a></h2>
+<p>For <span class="math notranslate nohighlight">\(Z\)</span> to be a valid instrument, it must satisfy three important assumptions:</p>
+<ol class="arabic simple">
+<li><p><strong>Exogeneity</strong>:<br />
+The instrument <span class="math notranslate nohighlight">\(Z\)</span> must be <strong>uncorrelated</strong> with the error term <span class="math notranslate nohighlight">\(U\)</span> (or other unobserved factors that affect <span class="math notranslate nohighlight">\(S\)</span>), i.e., <span class="math notranslate nohighlight">\(Z\)</span> must not be influenced by any variables that also affect <span class="math notranslate nohighlight">\(Y\)</span>. This assumption ensures that <span class="math notranslate nohighlight">\(Z\)</span> affects <span class="math notranslate nohighlight">\(S\)</span> but not <span class="math notranslate nohighlight">\(Y\)</span> directly.<br />
+$<span class="math notranslate nohighlight">\( U \perp Z \quad \text{and} \quad V \perp Z \)</span>$</p></li>
+<li><p><strong>Relevance</strong>:<br />
+The instrument <span class="math notranslate nohighlight">\(Z\)</span> must have a <strong>significant</strong> effect on the treatment <span class="math notranslate nohighlight">\(S\)</span>. In other words, <span class="math notranslate nohighlight">\(Z\)</span> should change the likelihood that someone receives the treatment <span class="math notranslate nohighlight">\(S\)</span>, at least for some sub-group of the population.<br />
+$<span class="math notranslate nohighlight">\( S(Z=1, V) \neq S(Z=0, V) \)</span>$</p></li>
+<li><p><strong>Monotonicity</strong>:<br />
+The instrument <span class="math notranslate nohighlight">\(Z\)</span> must affect <span class="math notranslate nohighlight">\(S\)</span> in the <strong>same direction</strong> for all individuals. That is, <span class="math notranslate nohighlight">\(Z\)</span> should only either <strong>increase</strong> or <strong>decrease</strong> the likelihood of receiving treatment, but not both.<br />
+$<span class="math notranslate nohighlight">\( S(Z=1, V) &gt; S(Z=0, V) \)</span>$</p></li>
+</ol>
+</section>
+<section id="local-average-treatment-effect-late">
+<h2>Local Average Treatment Effect (LATE)<a class="headerlink" href="#local-average-treatment-effect-late" title="Link to this heading">#</a></h2>
+<p>If these assumptions hold, we can estimate the <strong>Local Average Treatment Effect (LATE)</strong>. This is the causal effect of <span class="math notranslate nohighlight">\(S\)</span> on <span class="math notranslate nohighlight">\(Y\)</span> for a specific group of people called the <strong>compliers</strong>—those whose treatment status is affected by the instrument <span class="math notranslate nohighlight">\(Z\)</span>.</p>
+<blockquote>
+<div><p><strong>Compliers</strong> are individuals whose treatment <span class="math notranslate nohighlight">\(S\)</span> is influenced by the instrument <span class="math notranslate nohighlight">\(Z\)</span>. They are the population we can estimate the causal effect for using IVs.</p>
+</div></blockquote>
+</section>
+<section id="types-of-individuals-in-iv-analysis">
+<h2>Types of Individuals in IV Analysis<a class="headerlink" href="#types-of-individuals-in-iv-analysis" title="Link to this heading">#</a></h2>
+<p>The population can be divided into four groups based on how they respond to the instrument <span class="math notranslate nohighlight">\(Z\)</span>:</p>
+<ol class="arabic simple">
+<li><p><strong>Always-takers</strong>: These individuals always take the treatment, regardless of the instrument <span class="math notranslate nohighlight">\(Z\)</span>.<br />
+$<span class="math notranslate nohighlight">\( S(Z=1, V) = S(Z=0, V) = 1 \)</span>$</p></li>
+<li><p><strong>Never-takers</strong>: These individuals never take the treatment, regardless of the instrument <span class="math notranslate nohighlight">\(Z\)</span>.<br />
+$<span class="math notranslate nohighlight">\( S(Z=1, V) = S(Z=0, V) = 0 \)</span>$</p></li>
+<li><p><strong>Compliers</strong>: These individuals comply with the instrument. They take the treatment when <span class="math notranslate nohighlight">\(Z = 1\)</span>, but not when <span class="math notranslate nohighlight">\(Z = 0\)</span>.<br />
+$<span class="math notranslate nohighlight">\( S(Z=1, V) = 1 \quad \text{and} \quad S(Z=0, V) = 0 \)</span>$</p></li>
+<li><p><strong>Defiers</strong>: These individuals do the opposite of what the instrument suggests. They take the treatment when <span class="math notranslate nohighlight">\(Z = 0\)</span>, but not when <span class="math notranslate nohighlight">\(Z = 1\)</span>.<br />
+$<span class="math notranslate nohighlight">\( S(Z=1, V) = 0 \quad \text{and} \quad S(Z=0, V) = 1 \)</span>$</p></li>
+</ol>
+</section>
+<section id="identifying-the-local-average-treatment-effect-late">
+<h2>Identifying the Local Average Treatment Effect (LATE)<a class="headerlink" href="#identifying-the-local-average-treatment-effect-late" title="Link to this heading">#</a></h2>
+<p>Now, let’s define the causal model for <span class="math notranslate nohighlight">\(Y\)</span> in terms of <span class="math notranslate nohighlight">\(S\)</span> and <span class="math notranslate nohighlight">\(U\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[ Y = \alpha_0 + \alpha_1 S + U, \]</div>
+<p>where <span class="math notranslate nohighlight">\(\alpha_1\)</span> represents the <strong>causal effect</strong> of <span class="math notranslate nohighlight">\(S\)</span> on <span class="math notranslate nohighlight">\(Y\)</span>, and <span class="math notranslate nohighlight">\(U\)</span> is the error term (which captures unobserved factors that affect <span class="math notranslate nohighlight">\(Y\)</span>).</p>
+<p>Assuming:</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\mathbb{E}[U]=0\quad and  \quad \mathbb{E}[ZU]=0$$ and given instrument relevance $Cov(Z,S)\neq 0$, we obtain:\\$$ \alpha_1^{IV} = \frac{\text{Cov}(Z,Y)}{\text{Cov}(Z,S)} \end{aligned}\end{align} \]</div>
+<p>This is the <strong>Wald estimator</strong>. We can rewrite it in terms of expectations for a binary instrument:</p>
+<div class="math notranslate nohighlight">
+\[ \alpha_1^{IV} = \frac{\mathbb{E}[Y | Z=1] - \mathbb{E}[Y | Z=0]}{\mathbb{E}[S | Z=1] - \mathbb{E}[S | Z=0]} \]</div>
+<p>Under our LATE assumptions, the Wald estimator identifies the LATE:</p>
+<div class="math notranslate nohighlight">
+\[\alpha_{IV} = \frac{\mathbb{E}[Y|Z =1]-\mathbb{E}[Y|Z =0]}{\mathbb{E}[S|Z =1]-\mathbb{E}[S|Z =0]}
+=\mathbb{E}[Y(S =1,U)−Y(S =0,U)|Complier]= LATE\]</div>
+<blockquote>
+<div><p>Thus, <strong>LATE</strong> is the <strong>difference in outcomes</strong> between those who received the treatment and those who did not, <strong>for the compliers</strong>.</p>
+</div></blockquote>
+</section>
+</section>
+<section id="motivating-case-the-effect-of-watching-sesame-street-on-later-academic-achievement">
+<h1>3. Motivating Case: The effect of watching sesame street on later academic achievement.<a class="headerlink" href="#motivating-case-the-effect-of-watching-sesame-street-on-later-academic-achievement" title="Link to this heading">#</a></h1>
+<img src="https://www.aeaweb.org/content/file?id=8888.png?raw=true" width="500" height="auto" />
+<section id="research-question">
+<h2>Research Question<a class="headerlink" href="#research-question" title="Link to this heading">#</a></h2>
+<blockquote>
+<div><p>Does watching Sesame Street (<span class="math notranslate nohighlight">\(S\)</span>) have a positive impact on later academic achievement (<span class="math notranslate nohighlight">\(Y\)</span>)?</p>
+</div></blockquote>
+</section>
+<section id="model-setup">
+<h2>Model Setup<a class="headerlink" href="#model-setup" title="Link to this heading">#</a></h2>
+<p>\begin{aligned}
+S &amp; =\left{\begin{array}{l}
+1 \text { if watched Sesame }  \
+0 \text { did not watched Sesame}
+\end{array}\right. \
+Y(S, U) &amp; =\text {Score on a literacy test} \
+U &amp; =\text { other determinants of } Y,
+\end{aligned}</p>
+<p>where <span class="math notranslate nohighlight">\(U\)</span> represents other determinants of <span class="math notranslate nohighlight">\(Y\)</span> (e.g., socio-economic status).</p>
+</section>
+<section id="the-challenge">
+<h2>The challenge<a class="headerlink" href="#the-challenge" title="Link to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[S \not\!\perp\!\!\!\perp U,\]</div>
+<p>as various family and individual factors likely influence whether a child watches the program <span class="math notranslate nohighlight">\(S\)</span> and the child’s later academic outcomes (<span class="math notranslate nohighlight">\(Y\)</span>).</p>
+<blockquote>
+<div><p>It’s difficult to isolate the effect of watching Sesame Street on academic achievement from unobserved confounders, such as socio-economic status. These unobserved factors may influence both:</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>a child’s likelihood of watching the program and</p></li>
+<li><p>their academic outcomes,</p></li>
+</ul>
+<p>leading to biased estimates.</p>
+</section>
+<section id="solution">
+<h2>Solution?<a class="headerlink" href="#solution" title="Link to this heading">#</a></h2>
+<p>Introduce an instrumental variable —<strong>encouragement</strong> <span class="math notranslate nohighlight">\(Z\)</span> —which we can control and randomize. In this context, encouragement refers to providing children with additional information or motivational support to watch Sesame Street. This approach aligns with the original proposal by <a class="reference external" href="https://files.eric.ed.gov/fulltext/ED068155.pdf">Ball &amp; Bogatz (1970)</a>, who explored the impact of such encouragement on children’s engagement with educational media.</p>
+<p>\begin{aligned}
+Z &amp; =\left{\begin{array}{l}
+1 \text { if encouraged  }  \
+0 \text { not encouraged}
+\end{array}\right. \
+\end{aligned}</p>
+<p>Our IV allows us to estimate the causal effect of watching Sesame Street on academic achievement for a specific subgroup: the <strong>compliers</strong>, or those whose likelihood of watching the program is influenced by the encouragement <span class="math notranslate nohighlight">\(Z\)</span>.</p>
+<blockquote>
+<div><p>How does watching Sesame Street <span class="math notranslate nohighlight">\(S\)</span> impact academic achievement <span class="math notranslate nohighlight">\(Y\)</span> for children whose likelihood of watching the program is influenced by the encouragement <span class="math notranslate nohighlight">\(Z\)</span>?</p>
+</div></blockquote>
+</section>
+<section id="data">
+<h2>Data<a class="headerlink" href="#data" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">encour</span></code></strong>: Indicator variable for whether the child was encouraged to watch Sesame Stree. Instrument <span class="math notranslate nohighlight">\(Z\)</span>.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">watched</span></code></strong>: Indicator variable for whether the child actually watched Sesame Street. Treatment <span class="math notranslate nohighlight">\(S\)</span>.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">letters</span></code></strong>: Score on a literacy test. Outcome <span class="math notranslate nohighlight">\(Y\)</span>.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">age</span></code></strong>: Age of the child (in months), included as a control variable.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">female</span></code></strong>: Indicator variable for gender (female), included as a control variable.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Other</span> <span class="pre">variables</span></code></strong>: Various additional factors.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">statsmodels.formula.api</span> <span class="k">as</span> <span class="nn">smf</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">LinearSegmentedColormap</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+
+
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/avehtari/ROS-Examples/master/Sesame/data/sesame.csv&quot;</span>
+<span class="n">sesame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">sesame</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">File</span> <span class="o">~/.</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.12</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">pandas</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">19</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span>         <span class="n">_missing_dependencies</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">_dependency</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">_e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="k">if</span> <span class="n">_missing_dependencies</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+<span class="ne">---&gt; </span><span class="mi">19</span>     <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">20</span>         <span class="s2">&quot;Unable to import required dependencies:</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">_missing_dependencies</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">21</span>     <span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">22</span> <span class="k">del</span> <span class="n">_hard_dependencies</span><span class="p">,</span> <span class="n">_dependency</span><span class="p">,</span> <span class="n">_missing_dependencies</span>
+<span class="g g-Whitespace">     </span><span class="mi">24</span> <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">25</span>     <span class="c1"># numpy compat</span>
+
+<span class="ne">ImportError</span>: Unable to import required dependencies:
+<span class="ne">numpy</span>: No module named &#39;numpy&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sesame</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;rownames&#39;, &#39;id&#39;, &#39;site&#39;, &#39;sex&#39;, &#39;age&#39;, &#39;viewcat&#39;, &#39;setting&#39;, &#39;viewenc&#39;,
+       &#39;prebody&#39;, &#39;prelet&#39;, &#39;preform&#39;, &#39;prenumb&#39;, &#39;prerelat&#39;, &#39;preclasf&#39;,
+       &#39;postbody&#39;, &#39;postlet&#39;, &#39;postform&#39;, &#39;postnumb&#39;, &#39;postrelat&#39;, &#39;postclasf&#39;,
+       &#39;peabody&#39;, &#39;agecat&#39;, &#39;encour&#39;, &#39;_Isite_2&#39;, &#39;_Isite_3&#39;, &#39;_Isite_4&#39;,
+       &#39;_Isite_5&#39;, &#39;regular&#39;, &#39;watched&#39;, &#39;encouraged&#39;, &#39;y&#39;, &#39;pretest&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sesame</span><span class="o">.</span><span class="n">describe</span><span class="p">()[[</span><span class="s1">&#39;watched&#39;</span><span class="p">,</span> <span class="s1">&#39;encouraged&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-721850bd-dbcf-489a-8492-2a2da3d2e63f" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>watched</th>
+      <th>encouraged</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>240.000000</td>
+      <td>240.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>0.775000</td>
+      <td>0.633333</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>0.418455</td>
+      <td>0.482902</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>1.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>1.000000</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>1.000000</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>1.000000</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-721850bd-dbcf-489a-8492-2a2da3d2e63f')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-721850bd-dbcf-489a-8492-2a2da3d2e63f button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-721850bd-dbcf-489a-8492-2a2da3d2e63f');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-5ef70a87-6fe4-4040-bf42-b467d30d02f1">
+  <button class="colab-df-quickchart" onclick="quickchart('df-5ef70a87-6fe4-4040-bf42-b467d30d02f1')"
+            title="Suggest charts"
+            style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-5ef70a87-6fe4-4040-bf42-b467d30d02f1 button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+
+    </div>
+  </div>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">sesame</span><span class="p">[</span><span class="s1">&#39;encour&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">sesame</span><span class="p">[</span><span class="s1">&#39;watched&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Proportion of Children Watching Sesame Street by Encouragement&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Encouraged&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Proportion Watched&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/859b5fcbb5694e473024b40247026197bc14a00ab44fdca382de6878af372aff.png" src="_images/859b5fcbb5694e473024b40247026197bc14a00ab44fdca382de6878af372aff.png" />
+</div>
+</div>
+<p>Observe that children who were encouraged to watch the show had a notably higher proportion of viewers compared to those who were not encouraged. This difference suggests that <span class="math notranslate nohighlight">\({\tt encouragement}\)</span> effectively increases the likelihood of viewing Sesame Street.</p>
+</section>
+<section id="how-plausible-is-tt-encouragement-as-an-instrument">
+<h2>How plausible is <span class="math notranslate nohighlight">\({\tt encouragement}\)</span> as an instrument?<a class="headerlink" href="#how-plausible-is-tt-encouragement-as-an-instrument" title="Link to this heading">#</a></h2>
+<p><strong>Exogeneity</strong></p>
+<p>We test whether encouragement is randomly assigned across relevant variables, ensuring balance between the encouraged and non-encouraged groups.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># List of variables to test for balance</span>
+<span class="n">variables_to_test</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;sex&#39;</span><span class="p">,</span> <span class="s1">&#39;pretest&#39;</span><span class="p">]</span>
+
+<span class="c1"># Perform t-tests for each variable</span>
+<span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">variables_to_test</span><span class="p">:</span>
+
+    <span class="c1"># Split the data by encouragement status</span>
+    <span class="n">group_1</span> <span class="o">=</span> <span class="n">sesame</span><span class="p">[</span><span class="n">sesame</span><span class="p">[</span><span class="s1">&#39;encouraged&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">][</span><span class="n">var</span><span class="p">]</span>
+    <span class="n">group_0</span> <span class="o">=</span> <span class="n">sesame</span><span class="p">[</span><span class="n">sesame</span><span class="p">[</span><span class="s1">&#39;encouraged&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">][</span><span class="n">var</span><span class="p">]</span>
+
+    <span class="c1"># Perform the t-test to compare means</span>
+    <span class="n">t_stat</span><span class="p">,</span> <span class="n">p_value</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">ttest_ind</span><span class="p">(</span><span class="n">group_1</span><span class="p">,</span> <span class="n">group_0</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="c1"># Print results</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Test for </span><span class="si">{</span><span class="n">var</span><span class="si">}</span><span class="s1">:&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;T-statistic: </span><span class="si">{</span><span class="n">t_stat</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">, p-value: </span><span class="si">{</span><span class="n">p_value</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;---&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Interpretation</span>
+    <span class="k">if</span> <span class="n">p_value</span> <span class="o">&lt;</span> <span class="mf">0.05</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Significant difference in </span><span class="si">{</span><span class="n">var</span><span class="si">}</span><span class="s2">, suggests imbalance.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  No significant difference in </span><span class="si">{</span><span class="n">var</span><span class="si">}</span><span class="s2">, supports balance.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Test for age:
+T-statistic: -0.3590, p-value: 0.7200
+---
+  No significant difference in age, supports balance.
+
+Test for sex:
+T-statistic: -0.3115, p-value: 0.7557
+---
+  No significant difference in sex, supports balance.
+
+Test for pretest:
+T-statistic: -1.4258, p-value: 0.1561
+---
+  No significant difference in pretest, supports balance.
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Relevance</strong></p>
+<p>For the instrument to be relevant, it must be correlated with <span class="math notranslate nohighlight">\(S\)</span> – watching Sesame Street. Meaning that encouragement to watch Sesame Street has to actually make some kids more likely to watch it.</p>
+<div class="math notranslate nohighlight">
+\[P(\text{Complier})&gt;0 \]</div>
+<p>If the encouragement has no effect—meaning kids are just as likely (or unlikely) to watch Sesame Street whether they’re encouraged or not—then encouragement isn’t a relevant instrument.</p>
+<ul class="simple">
+<li><p>We test this using a linear regression model.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add a constant to the model</span>
+<span class="n">sesame</span><span class="p">[</span><span class="s1">&#39;const&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c1"># Fit a linear regression model (OLS) for relevance</span>
+<span class="n">relevance_model</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">sesame</span><span class="p">[</span><span class="s1">&#39;watched&#39;</span><span class="p">],</span> <span class="n">sesame</span><span class="p">[[</span><span class="s1">&#39;const&#39;</span><span class="p">,</span> <span class="s1">&#39;encouraged&#39;</span><span class="p">]])</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">relevance_model</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                watched   R-squared:                       0.175
+Model:                            OLS   Adj. R-squared:                  0.171
+Method:                 Least Squares   F-statistic:                     50.46
+Date:                Fri, 08 Nov 2024   Prob (F-statistic):           1.40e-11
+Time:                        06:13:51   Log-Likelihood:                -107.88
+No. Observations:                 240   AIC:                             219.8
+Df Residuals:                     238   BIC:                             226.7
+Df Model:                           1                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P&gt;|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+const          0.5455      0.041     13.434      0.000       0.465       0.625
+encouraged     0.3624      0.051      7.104      0.000       0.262       0.463
+==============================================================================
+Omnibus:                       28.214   Durbin-Watson:                   1.734
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               35.601
+Skew:                          -0.943   Prob(JB):                     1.86e-08
+Kurtosis:                       3.042   Cond. No.                         3.06
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>The coefficient is 0.3624, meaning that being encouraged to watch Sesame Street increases the likelihood of watching the program by approximately 36.24% compared to those who were not encouraged.</p></li>
+<li><p>Statistical Significance: The p-value for encouraged is 0.000, which is highly significant. This suggests that the encouragement to watch Sesame Street has a statistically significant effect on the outcome.</p></li>
+</ul>
+<p><strong>Monotonicity</strong></p>
+<p>Monotonicity means that encouragement to watch Sesame Street should only make kids more likely to watch it—never less likely. So, kids encouraged to watch Sesame Street are either more likely to watch or at least equally likely, but encouragement never makes them watch less.</p>
+<ul class="simple">
+<li><p>Perform logistic regression to check for monotonicity, which ensures that the instrument  does not induce defiers (children who behave contrary to encouragement):</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[P(\text{Defier})=0 \]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">monotonicity_model</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">Logit</span><span class="p">(</span><span class="n">sesame</span><span class="p">[</span><span class="s1">&#39;watched&#39;</span><span class="p">],</span> <span class="n">sesame</span><span class="p">[[</span><span class="s1">&#39;const&#39;</span><span class="p">,</span> <span class="s1">&#39;encouraged&#39;</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;sex&#39;</span><span class="p">,</span> <span class="s1">&#39;site&#39;</span><span class="p">]])</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">monotonicity_model</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization terminated successfully.
+         Current function value: 0.389264
+         Iterations 7
+                           Logit Regression Results                           
+==============================================================================
+Dep. Variable:                watched   No. Observations:                  240
+Model:                          Logit   Df Residuals:                      235
+Method:                           MLE   Df Model:                            4
+Date:                Fri, 08 Nov 2024   Pseudo R-squ.:                  0.2699
+Time:                        06:13:51   Log-Likelihood:                -93.423
+converged:                       True   LL-Null:                       -127.96
+Covariance Type:            nonrobust   LLR p-value:                 3.564e-14
+==============================================================================
+                 coef    std err          z      P&gt;|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+const          1.9288      1.841      1.048      0.295      -1.679       5.537
+encouraged     2.5268      0.404      6.260      0.000       1.736       3.318
+age            0.0138      0.032      0.433      0.665      -0.049       0.076
+sex           -0.3578      0.376     -0.952      0.341      -1.095       0.379
+site          -0.7509      0.155     -4.833      0.000      -1.056      -0.446
+==============================================================================
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Encouragement has a significant positive effect on the likelihood of watching Sesame Street (<span class="math notranslate nohighlight">\(p &lt; 0.05\)</span>).</p></li>
+<li><p>Age, sex, and site have less impact, which supports monotonicity.</p></li>
+</ul>
+<p>Overall, our instrument seems pretty plausible!</p>
+<section id="compliance-types">
+<h3>Compliance Types<a class="headerlink" href="#compliance-types" title="Link to this heading">#</a></h3>
+<p>Let’s further categorized our population of interest!</p>
+<ul class="simple">
+<li><p><strong>Compliers</strong>: Watch Sesame Street only if encouraged.</p></li>
+<li><p><strong>Always-takers</strong>: Watch Sesame Street regardless of encouragement.</p></li>
+<li><p><strong>Never-takers</strong>: Do not watch Sesame Street regardless of encouragement.</p></li>
+<li><p><strong>Defiers</strong>: Behave contrary to the encouragement (assumed to not exist due to monotonicity).</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate proportions for each group</span>
+<span class="n">d_z_1</span> <span class="o">=</span> <span class="n">sesame</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sesame</span><span class="p">[</span><span class="s1">&#39;encour&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;watched&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">d_z_0</span> <span class="o">=</span> <span class="n">sesame</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sesame</span><span class="p">[</span><span class="s1">&#39;encour&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;watched&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="n">proportion_compliers</span> <span class="o">=</span> <span class="n">d_z_1</span> <span class="o">-</span> <span class="n">d_z_0</span>
+<span class="n">proportion_always_takers</span> <span class="o">=</span> <span class="n">d_z_0</span>
+<span class="n">proportion_never_takers</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">d_z_1</span>
+
+<span class="c1"># Assuming no Defiers</span>
+<span class="n">proportion_defiers</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">proportion_compliers</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.3624401913875599
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create the crosstab data directly</span>
+<span class="n">crosstab_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Encouraged&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Not Encouraged&#39;</span><span class="p">,</span> <span class="s1">&#39;Not Encouraged&#39;</span><span class="p">,</span> <span class="s1">&#39;Encouraged&#39;</span><span class="p">,</span> <span class="s1">&#39;Encouraged&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Watched&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Did Not Watch&#39;</span><span class="p">,</span> <span class="s1">&#39;Watched&#39;</span><span class="p">,</span> <span class="s1">&#39;Did Not Watch&#39;</span><span class="p">,</span> <span class="s1">&#39;Watched&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Proportion&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">proportion_never_takers</span><span class="p">,</span> <span class="n">proportion_always_takers</span><span class="p">,</span> <span class="n">proportion_defiers</span><span class="p">,</span> <span class="n">proportion_compliers</span><span class="p">]</span>
+<span class="p">})</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;Encouraged&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Watched&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;Proportion&#39;</span><span class="p">)</span>
+
+<span class="c1"># Reorder columns and index explicitly</span>
+<span class="n">crosstab_data</span> <span class="o">=</span> <span class="n">crosstab_data</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Not Encouraged&#39;</span><span class="p">,</span> <span class="s1">&#39;Encouraged&#39;</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Did Not Watch&#39;</span><span class="p">,</span> <span class="s1">&#39;Watched&#39;</span><span class="p">])</span>
+
+<span class="c1"># Define labels for each box</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span> <span class="s1">&#39;Never Takers&#39;</span><span class="p">,</span>   <span class="c1"># Not Encouraged, Did Not Watch</span>
+    <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span> <span class="s1">&#39;Always Takers&#39;</span><span class="p">,</span>        <span class="c1"># Not Encouraged, Watched</span>
+    <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span> <span class="s1">&#39;Defiers&#39;</span><span class="p">,</span>  <span class="c1"># Encouraged, Did Not Watch</span>
+    <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span> <span class="s1">&#39;Compliers&#39;</span>       <span class="c1"># Encouraged, Watched</span>
+<span class="p">}</span>
+
+<span class="c1"># Plotting</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">heatmap</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span>
+    <span class="n">crosstab_data</span><span class="p">,</span>
+    <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;.2f&#39;</span><span class="p">,</span>
+    <span class="n">linewidths</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">linecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span>
+    <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="n">LinearSegmentedColormap</span><span class="o">.</span><span class="n">from_list</span><span class="p">(</span><span class="s1">&#39;all_white&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="s1">&#39;white&#39;</span><span class="p">]),</span>
+    <span class="n">annot_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;size&quot;</span><span class="p">:</span> <span class="mi">14</span><span class="p">,</span> <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s1">&#39;black&#39;</span><span class="p">}</span>
+<span class="p">)</span>
+
+<span class="c1"># Customizing the plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Watched ($S$)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Encouragement $Z$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+<span class="n">heatmap</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">heatmap</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">(),</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">heatmap</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">heatmap</span><span class="o">.</span><span class="n">get_yticklabels</span><span class="p">(),</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="c1"># Add custom labels</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">),</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">labels</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">j</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">-</span> <span class="mf">0.15</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/bca7053deb7df43e3c4d252b74e4dba280d62ce067b090552a706be394b470be.png" src="_images/bca7053deb7df43e3c4d252b74e4dba280d62ce067b090552a706be394b470be.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="estimating-the-late">
+<h2>Estimating the LATE<a class="headerlink" href="#estimating-the-late" title="Link to this heading">#</a></h2>
+<section id="via-the-wald-estimator">
+<h3>Via the Wald Estimator<a class="headerlink" href="#via-the-wald-estimator" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate covariance between Z (encouragement) and Y (outcome)</span>
+<span class="n">cov_zy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">sesame</span><span class="p">[</span><span class="s1">&#39;encour&#39;</span><span class="p">],</span> <span class="n">sesame</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">])[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Calculate covariance between Z (encouragement) and S (watched Sesame Street)</span>
+<span class="n">cov_zs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">sesame</span><span class="p">[</span><span class="s1">&#39;encour&#39;</span><span class="p">],</span> <span class="n">sesame</span><span class="p">[</span><span class="s1">&#39;watched&#39;</span><span class="p">])[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Calculate the Wald estimator (IV estimate)</span>
+<span class="n">alpha_1_IV</span> <span class="o">=</span> <span class="n">cov_zy</span> <span class="o">/</span> <span class="n">cov_zs</span>
+<span class="n">alpha_1_IV</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7.93399339933995
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the means based on the value of the instrument Z (encouragement)</span>
+<span class="n">mean_y_z1</span> <span class="o">=</span> <span class="n">sesame</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sesame</span><span class="p">[</span><span class="s1">&#39;encour&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">mean_y_z0</span> <span class="o">=</span> <span class="n">sesame</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sesame</span><span class="p">[</span><span class="s1">&#39;encour&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">mean_s_z1</span> <span class="o">=</span> <span class="n">sesame</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sesame</span><span class="p">[</span><span class="s1">&#39;encour&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;watched&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">mean_s_z0</span> <span class="o">=</span> <span class="n">sesame</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sesame</span><span class="p">[</span><span class="s1">&#39;encour&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;watched&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="c1"># Calculate the Wald estimator (IV estimate)</span>
+<span class="n">alpha_1_IV</span> <span class="o">=</span> <span class="p">(</span><span class="n">mean_y_z1</span> <span class="o">-</span> <span class="n">mean_y_z0</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">mean_s_z1</span> <span class="o">-</span> <span class="n">mean_s_z0</span><span class="p">)</span>
+<span class="n">alpha_1_IV</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7.933993399339932
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Effect of encouragement on the outcome, regardless of whether children actually watched Sesame Street</span>
+<span class="n">itt</span> <span class="o">=</span> <span class="n">sesame</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sesame</span><span class="p">[</span><span class="s1">&#39;encour&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">-</span> <span class="n">sesame</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sesame</span><span class="p">[</span><span class="s1">&#39;encour&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">late_wald</span> <span class="o">=</span> <span class="n">itt</span> <span class="o">/</span> <span class="n">proportion_compliers</span>
+<span class="n">late_wald</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7.933993399339932
+</pre></div>
+</div>
+</div>
+</div>
+<p>For those children who are encouraged to watch Sesame Street and actually end up watching it, their academic achievement (e.g., literacy scores) increases by 7.94 units on average.</p>
+</section>
+<section id="via-the-two-stage-least-squares-2sls-estimation">
+<h3>Via the Two-Stage Least Squares (2SLS) Estimation<a class="headerlink" href="#via-the-two-stage-least-squares-2sls-estimation" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>First stage</strong>: Regress whether children watched Sesame Street <span class="math notranslate nohighlight">\(S\)</span> on the instrument <span class="math notranslate nohighlight">\(Z\)</span> (whether they were encouraged to watch).</p></li>
+<li><p><strong>Second stage</strong>: Regress the outcome (e.g., academic performance <span class="math notranslate nohighlight">\(Y\)</span>) on the predicted values of <span class="math notranslate nohighlight">\(S\)</span> from the first stage.</p></li>
+</ol>
+<p>This method isolates the causal effect of watching Sesame Street on the outcome for <strong>compliers</strong> (those who watched due to encouragement).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first_stage</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="s1">&#39;watched ~ encour&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">sesame</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">sesame</span><span class="p">[</span><span class="s1">&#39;predicted_watched&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">first_stage</span><span class="o">.</span><span class="n">fittedvalues</span>
+<span class="n">second_stage</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="s1">&#39;y ~ predicted_watched&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">sesame</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">late_2sls_manual</span> <span class="o">=</span> <span class="n">second_stage</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;predicted_watched&#39;</span><span class="p">]</span>
+<span class="n">late_2sls_manual</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7.933993399339921
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="path-forward">
+<h1>3. Path Forward<a class="headerlink" href="#path-forward" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>More on Instrumental Variables</p></li>
+<li><p>Introduction to Regression Discontinuity</p></li>
+</ul>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="9_matching.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Control Variables</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="11_Instruments_RDD.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">0. Recap From Last Class</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">0. Recap From Last Class</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-for-today">1. Goals For Today</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#instrumental-variables">2. Instrumental Variables</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-an-instrumental-variable">What is an Instrumental Variable?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#when-should-we-use-ivs">When Should We Use IVs?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-assumptions-for-a-valid-instrument">Key Assumptions for a Valid Instrument</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#local-average-treatment-effect-late">Local Average Treatment Effect (LATE)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-individuals-in-iv-analysis">Types of Individuals in IV Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#identifying-the-local-average-treatment-effect-late">Identifying the Local Average Treatment Effect (LATE)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#motivating-case-the-effect-of-watching-sesame-street-on-later-academic-achievement">3. Motivating Case: The effect of watching sesame street on later academic achievement.</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#research-question">Research Question</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-setup">Model Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-challenge">The challenge</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-plausible-is-tt-encouragement-as-an-instrument">How plausible is <span class="math notranslate nohighlight">\({\tt encouragement}\)</span> as an instrument?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compliance-types">Compliance Types</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-the-late">Estimating the LATE</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#via-the-wald-estimator">Via the Wald Estimator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#via-the-two-stage-least-squares-2sls-estimation">Via the Two-Stage Least Squares (2SLS) Estimation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#path-forward">3. Path Forward</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

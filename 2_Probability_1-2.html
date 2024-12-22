@@ -1,0 +1,1541 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Probability Mass and Density Function &#8212; Causal Inference for Data Science</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '2_Probability_1-2';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Overview For Today" href="3_Probability_Statistics.html" />
+    <link rel="prev" title="1. Goals For Today" href="1_Introduction.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Causal Inference for Data Science - Home"/>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="Causal Inference for Data Science - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="1_Introduction.html">1. Goals For Today</a></li>
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Probability Mass and Density Function</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="3_Probability_Statistics.html">Overview For Today</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="4_Statistics_and_Experiments.html">0. Recap from last class</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="5_Experiments.html">0. Recap From Last Class</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="6_Regression_1-2.html"><a id="toc1_"></a><span class="xref myst">Descriptive Regression</span></a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="7_Natural_Experiments.html">Causality from Observational Data</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="8_ML_and_Causality.html">The Interplay between Machine Learning and Causal Inference</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="9_matching.html">Control Variables</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="10_Instruments.html">0. Recap From Last Class</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="11_Instruments_RDD.html">0. Recap From Last Class</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="12_RDD.html">Recap: Local Linear Regression for RDD</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="13_Difference_in_Differences.html">0. Recap From Last Class</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="14_Review.html">1. Goals For Today</a></li>
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2F2_Probability_1-2.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/2_Probability_1-2.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Probability Mass and Density Function</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Probability Mass and Density Function</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#function-of-rvs">Function of rvs</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#variance">Variance</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#joint-probability"><a id="toc3_"></a><span class="xref myst">Joint Probability</span></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#joint-distribution"><a id="toc4_"></a><span class="xref myst">Joint Distribution</span></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-the-joint-distribution-to-marginal-distribution"><a id="toc5_"></a><span class="xref myst">Convert the Joint Distribution to Marginal Distribution</span></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#covariance"><a id="toc6_"></a><span class="xref myst">Covariance</span></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#covariance-is-a-measure-of-the-linear-relationship-between-two-variables"><a id="toc6_1_"></a><span class="xref myst">Covariance is a measure of the linear relationship between two variables.</span></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-of-x">variance of x</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#properties"><a id="toc6_2_"></a><span class="xref myst">Properties</span></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation"><a id="toc7_"></a><span class="xref myst">Correlation</span></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation"><a id="toc7_1_"></a><span class="xref myst">Interpretation:</span></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation-not-implies-causation"><a id="toc8_"></a><span class="xref myst">Correlation <span class="math notranslate nohighlight">\(\not\implies\)</span> Causation</span></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#causation-not-implies-correlation"><a id="toc9_"></a><span class="xref myst">Causation <span class="math notranslate nohighlight">\(\not\implies\)</span> Correlation</span></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-distribution"><a id="toc10_"></a><span class="xref myst">Conditional Distribution</span></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#law-of-iterated-expectations"><a id="toc11_"></a><span class="xref myst">Law of Iterated Expectations</span></a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div align="center">
+<p><a class="reference external" href="https://colab.research.google.com/github/dapivei/causal-infere/blob/main/sections/2_Probability_1-2.ipynb"><img alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{c}
+\textbf{INTRODUCTION TO CAUSAL INFERENCE}\\\\\\\\
+\textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \\
+\textit{Center for Data Science, New York University} \\\\\\
+\end{array}
+\end{split}\]</div>
+<hr class="docutils" />
+<div class="math notranslate nohighlight">
+\[
+\textit{Week 2 Probability 1}
+\]</div>
+<section class="tex2jax_ignore mathjax_ignore" id="probability-mass-and-density-function">
+<h1>Probability Mass and Density Function<a class="headerlink" href="#probability-mass-and-density-function" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Define the probability mass function for a fair six-sided die</span>
+<span class="k">def</span> <span class="nf">pmf_die</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="mi">1</span><span class="o">/</span><span class="mi">6</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># Define the probability mass function for a fair six-sided die</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;numpy&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># gaussian distribution</span>
+<span class="k">def</span> <span class="nf">pdf_gaussian</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">mu</span><span class="p">)</span> <span class="o">/</span> <span class="n">sigma</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">sigma</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span>
+
+<span class="c1"># plot the pdf</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">pdf_gaussian</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Gaussian Probability Density Function&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Value&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Probability Density&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/01806222040db0758c6219ecdaeb43e9271fc9f469c46d9dc5e2340e070d97c4.png" src="_images/01806222040db0758c6219ecdaeb43e9271fc9f469c46d9dc5e2340e070d97c4.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">pdf_gaussian</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Final cumulative value: </span><span class="si">{</span><span class="n">y</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Final cumulative value: 99.89994420133425
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate PDF</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">pdf_gaussian</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Calculate CDF by cumulative sum and normalize</span>
+<span class="n">y_cdf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Final cumulative value: </span><span class="si">{</span><span class="n">y_cdf</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Plot CDF</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y_cdf</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Gaussian Cumulative Distribution Function&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Value&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Cumulative Probability&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Final cumulative value: 1.0000000000000007
+</pre></div>
+</div>
+<img alt="_images/8ff03126b9312d9361f9a0032b7762842379ec5835b0ad2359f0456d12890c93.png" src="_images/8ff03126b9312d9361f9a0032b7762842379ec5835b0ad2359f0456d12890c93.png" />
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="function-of-rvs">
+<h1>Function of rvs<a class="headerlink" href="#function-of-rvs" title="Link to this heading">#</a></h1>
+<div class="math notranslate nohighlight">
+\[
+E[g(X)]=\int_{-\infty}^{\infty} g(x) f(x) d x
+\]</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="variance">
+<h1>Variance<a class="headerlink" href="#variance" title="Link to this heading">#</a></h1>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+E\left[(X-E[X])^2\right] &amp; =E\left[X^2-2 X E[X]+E[X]^2\right] \\
+&amp; =E\left[X^2\right]-E[2 X E[X]]+E[X]^2 \\
+&amp; =E\left[X^2\right]-2 E[X] E[X]+E[X]^2 \\
+&amp; =E\left[X^2\right]-E[X]^2
+\end{aligned}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[
+\textit{Week 2 Probability 2}
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># kaggle datasets download -d saranpannasuriyaporn/male-female-height-and-weight</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="joint-probability">
+<h1><a id='toc3_'></a><a class="reference internal" href="#toc0_"><span class="xref myst">Joint Probability</span></a><a class="headerlink" href="#joint-probability" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;data/male-female-height-and-weight/Training set.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Height</th>
+      <th>Weight</th>
+      <th>Sex</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>165.65</td>
+      <td>35.41</td>
+      <td>Female</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>148.53</td>
+      <td>74.45</td>
+      <td>Female</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>167.04</td>
+      <td>81.22</td>
+      <td>Male</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>161.54</td>
+      <td>71.47</td>
+      <td>Male</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>174.31</td>
+      <td>78.18</td>
+      <td>Male</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2995</th>
+      <td>150.83</td>
+      <td>49.66</td>
+      <td>Female</td>
+    </tr>
+    <tr>
+      <th>2996</th>
+      <td>157.09</td>
+      <td>64.34</td>
+      <td>Female</td>
+    </tr>
+    <tr>
+      <th>2997</th>
+      <td>162.99</td>
+      <td>45.58</td>
+      <td>Female</td>
+    </tr>
+    <tr>
+      <th>2998</th>
+      <td>154.76</td>
+      <td>48.92</td>
+      <td>Female</td>
+    </tr>
+    <tr>
+      <th>2999</th>
+      <td>185.08</td>
+      <td>82.74</td>
+      <td>Male</td>
+    </tr>
+  </tbody>
+</table>
+<p>3000 rows × 3 columns</p>
+</div></div></div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="joint-distribution">
+<h1><a id='toc4_'></a><a class="reference internal" href="#toc0_"><span class="xref myst">Joint Distribution</span></a><a class="headerlink" href="#joint-distribution" title="Link to this heading">#</a></h1>
+<p>The data is continuous, but we can bin it to make it discrete.</p>
+<div class="math notranslate nohighlight">
+\[
+P(X = x, Y = y) = \frac{N_{x,y}}{N}
+\]</div>
+<p>We want to know what’s the probability of height larger than <span class="math notranslate nohighlight">\(h\)</span> and gender is male.</p>
+<div class="math notranslate nohighlight">
+\[
+P(H &gt; h, G = M) = \frac{N_{h, M}}{N}
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">h</span> <span class="o">=</span> <span class="mi">180</span>
+<span class="n">g</span> <span class="o">=</span> <span class="s2">&quot;Male&quot;</span>
+
+<span class="n">group</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Height&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">h</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Sex&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">g</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The probability of a person being </span><span class="si">{</span><span class="n">g</span><span class="si">}</span><span class="s2"> and taller than </span><span class="si">{</span><span class="n">h</span><span class="si">}</span><span class="s2"> cm is </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">group</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The probability of a person being Male and taller than 180 cm is 0.08466666666666667
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="convert-the-joint-distribution-to-marginal-distribution">
+<h1><a id='toc5_'></a><a class="reference internal" href="#toc0_"><span class="xref myst">Convert the Joint Distribution to Marginal Distribution</span></a><a class="headerlink" href="#convert-the-joint-distribution-to-marginal-distribution" title="Link to this heading">#</a></h1>
+<p>What is the probability of height larger than <span class="math notranslate nohighlight">\(h\)</span>?</p>
+<p>We can sum over all the weights.</p>
+<div class="math notranslate nohighlight">
+\[
+P(H &gt; h) = \sum_{g} P(H &gt; h, G = g) = \sum_{g} \frac{N_{h, g}}{N}
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">group_male_height</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Height&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">h</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Sex&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Male&quot;</span><span class="p">)]</span>
+<span class="n">group_female_height</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Height&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">h</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Sex&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Female&quot;</span><span class="p">)]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The probability of a person being male and taller than </span><span class="si">{</span><span class="n">h</span><span class="si">}</span><span class="s2"> cm is </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">group_male_height</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The probability of a person being female and taller than </span><span class="si">{</span><span class="n">h</span><span class="si">}</span><span class="s2"> cm is </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">group_female_height</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The probability of a person being male and taller than 180 cm is 0.08466666666666667
+The probability of a person being female and taller than 180 cm is 0.0016666666666666668
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">group_height</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Height&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">h</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The probability of a person being taller than </span><span class="si">{</span><span class="n">h</span><span class="si">}</span><span class="s2"> cm is </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">group_height</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># we can verify </span>
+<span class="n">p</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">group_male_height</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">group_female_height</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The probability of a person being taller than </span><span class="si">{</span><span class="n">h</span><span class="si">}</span><span class="s2"> cm is </span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The probability of a person being taller than 180 cm is 0.08633333333333333
+The probability of a person being taller than 180 cm is 0.08633333333333333
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="covariance">
+<h1><a id='toc6_'></a><a class="reference internal" href="#toc0_"><span class="xref myst">Covariance</span></a><a class="headerlink" href="#covariance" title="Link to this heading">#</a></h1>
+<div class="math notranslate nohighlight">
+\[
+Cov(X, Y) 
+= E[(X - E[X])(Y - E[Y])]
+= E[XY] - E[X]E[Y]
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+Cov(X, Y) = \frac{1}{N} \sum_{i=1}^{N} (x_i - \mu_x)(y_i - \mu_y)
+\]</div>
+<p>$$</p>
+<section id="covariance-is-a-measure-of-the-linear-relationship-between-two-variables">
+<h2><a id='toc6_1_'></a><a class="reference internal" href="#toc0_"><span class="xref myst">Covariance is a measure of the linear relationship between two variables.</span></a><a class="headerlink" href="#covariance-is-a-measure-of-the-linear-relationship-between-two-variables" title="Link to this heading">#</a></h2>
+<!-- - Let \(X, Y\), and \(Z\) be rv's and \(a\) and \(b\) scalars. Then
+(i) \(\operatorname{Cov}(X, Y)=\operatorname{Cov}(Y, X)\)
+(ii) \(\operatorname{Cov}(X, a)=0\)
+(iii) \(\operatorname{Cov}(X+Y, Z)=\operatorname{Cov}(X, Z)+\operatorname{Cov}(Y, Z)\)
+(iv) \(\operatorname{Cov}(a+b X, Y)=b \operatorname{Cov}(X, Y)\)
+(iv) \(\operatorname{Cov}(X, X)=\operatorname{Var}(X)\) -->
+<div class="math notranslate nohighlight">
+\[
+Cov(X, Y) = Cov(Y, X)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+Cov(X, a) = 0
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+Cov(X+Y, Z) = Cov(X, Z) + Cov(Y, Z)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+Cov(a+bX, Y) = bCov(X, Y)
+\]</div>
+<p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.cov.html">https://numpy.org/doc/stable/reference/generated/numpy.cov.html</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">X</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1.01032206 2.02064411]
+ [2.02064411 4.04128822]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.98949109 0.        ]
+ [0.         0.        ]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="math notranslate nohighlight">
+\[
+\widehat{Cov}(X, Y) = \frac{1}{N-1} \sum_{i=1}^{N} (x_i - \bar{x})(y_i - \bar{y})
+\]</div>
+<p>What if the X is more than one dimension?</p>
+<div class="math notranslate nohighlight">
+\[
+X \sim N(\mu_X, \Sigma_X)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+Y = aX + b
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+Y \sim N(a\mu_X + b, a^2\Sigma_X)
+\]</div>
+<p>$$</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mu_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">sigma_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+<span class="c1"># sample 1000 points</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">mu_x</span><span class="p">,</span> <span class="n">sigma_x</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">b</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1000, 2)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1000, 2)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#* flat version</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">mu_x</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9754120199549299
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.783057405202717
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.99180504 0.95726104]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[3.96722014 3.82904414]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="variance-of-x">
+<h1>variance of x<a class="headerlink" href="#variance-of-x" title="Link to this heading">#</a></h1>
+<div class="math notranslate nohighlight">
+\[
+\operatorname{Var}(X) = \frac{1}{N} \sum_{i=1}^{N} (x_i - \mu_x)^2
+\]</div>
+<section id="properties">
+<h2><a id='toc6_2_'></a><a class="reference internal" href="#toc0_"><span class="xref myst">Properties</span></a><a class="headerlink" href="#properties" title="Link to this heading">#</a></h2>
+<!-- \operatorname{Var}(X+Y)=\operatorname{Var}(X)+\operatorname{Var}(Y)+2 \operatorname{Cov}(X, Y) -->
+<div class="math notranslate nohighlight">
+\[
+\operatorname{Var}(X+Y) = \operatorname{Var}(X) + \operatorname{Var}(Y) + 2 \operatorname{Cov}(X, Y)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\operatorname{Var}(X-Y) = \operatorname{Var}(X) + \operatorname{Var}(Y) - 2 \operatorname{Cov}(X, Y)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\operatorname{Var}(aX + bY) = a^2 \operatorname{Var}(X) + b^2 \operatorname{Var}(Y) + 2ab \operatorname{Cov}(X, Y)
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">X</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.97048497 1.94096994]
+ [1.94096994 3.88193988]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">X</span> <span class="o">+</span> <span class="n">Y</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">Y</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9695144846627951 3.8780579386511804 8.725630361965155
+1.9409699392648554
+8.729512301843686
+</pre></div>
+</div>
+</div>
+</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\operatorname{Var}(X + Y) &amp;= E[(X + Y - E[X + Y])^2] &amp;&amp; \text{(Definition of variance)} \\
+&amp;= E[(X + Y - (E[X] + E[Y]))^2] &amp;&amp; \text{(Substitute } E[X + Y] = E[X] + E[Y]) \\
+&amp;= E[(X - E[X] + Y - E[Y])^2] &amp;&amp; \text{(Rearrange terms)} \\
+&amp;= E[(X - E[X])^2] + E[(Y - E[Y])^2] + 2E[(X - E[X])(Y - E[Y])] &amp;&amp; \text{(Expand the square)} \\
+&amp;= \operatorname{Var}(X) + \operatorname{Var}(Y) + 2 \operatorname{Cov}(X, Y)
+\end{aligned}
+\end{split}\]</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="correlation">
+<h1><a id='toc7_'></a><a class="reference internal" href="#toc0_"><span class="xref myst">Correlation</span></a><a class="headerlink" href="#correlation" title="Link to this heading">#</a></h1>
+<p>Covariance has the unit of the product of the units of the two variables.</p>
+<p>X: cm, Y: kg
+$<span class="math notranslate nohighlight">\(
+Cov(X, Y) = 10 (\text{cm} \cdot \text{kg})
+\)</span>$</p>
+<p>Normalization by the standard deviation will give us a unitless quantity.</p>
+<div class="math notranslate nohighlight">
+\[
+\rho_{X, Y} = \frac{Cov(X, Y)}{\sqrt{Var(X)Var(Y)}}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\rho_{X, Y} \in [-1, 1]
+\]</div>
+<p>Cauchy-Schwarz Inequality:
+$<span class="math notranslate nohighlight">\(
+|\mathbb{E}[X Y]| \leq \sqrt{\mathbb{E}\left[X^2\right] \cdot \mathbb{E}\left[Y^2\right]}
+\)</span>$</p>
+<div class="math notranslate nohighlight">
+\[
+|\operatorname{Cov}(X, Y)|=|\mathbb{E}[(X-\mathbb{E}[X])(Y-\mathbb{E}[Y])]| \leq \sqrt{\mathbb{E}\left[(X-\mathbb{E}[X])^2\right] \cdot \mathbb{E}\left[(Y-\mathbb{E}[Y])^2\right]}
+\]</div>
+<section id="interpretation">
+<h2><a id='toc7_1_'></a><a class="reference internal" href="#toc0_"><span class="xref myst">Interpretation:</span></a><a class="headerlink" href="#interpretation" title="Link to this heading">#</a></h2>
+<p>If <span class="math notranslate nohighlight">\(\rho_{X, Y} = 1\)</span>, then <span class="math notranslate nohighlight">\(Y = aX + b\)</span> with <span class="math notranslate nohighlight">\(a &gt; 0\)</span>.</p>
+<p>If <span class="math notranslate nohighlight">\(\rho_{X, Y} = -1\)</span>, then <span class="math notranslate nohighlight">\(Y = aX + b\)</span> with <span class="math notranslate nohighlight">\(a &lt; 0\)</span>.</p>
+<p>If <span class="math notranslate nohighlight">\(\rho_{X, Y} = 0\)</span>, then <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> are independent, <span class="math notranslate nohighlight">\(Y\)</span> is constant to <span class="math notranslate nohighlight">\(X\)</span>.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="correlation-not-implies-causation">
+<h1><a id='toc8_'></a><a class="reference internal" href="#toc0_"><span class="xref myst">Correlation <span class="math notranslate nohighlight">\(\not\implies\)</span> Causation</span></a><a class="headerlink" href="#correlation-not-implies-causation" title="Link to this heading">#</a></h1>
+<p>Causal Graph (DAG)
+We can represent this situation with a directed acyclic graph (DAG), where:</p>
+<ul class="simple">
+<li><p>(W=) Hot Weather</p></li>
+<li><p>(I=) Ice Cream Sales</p></li>
+<li><p>(D=) Drowning Incidents</p></li>
+</ul>
+<p>The causal relationships are:</p>
+<ul class="simple">
+<li><p>(W <span class="math notranslate nohighlight">\(\rightarrow\)</span> I) (Hot weather increases ice cream sales)</p></li>
+<li><p>(W <span class="math notranslate nohighlight">\(\rightarrow\)</span> D) (Hot weather increases the likelihood of drowning incidents)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+
+<span class="c1"># Create a directed graph</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
+
+<span class="c1"># Add nodes</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;Hot Weather (W)&quot;</span><span class="p">)</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;Ice Cream Sales (I)&quot;</span><span class="p">)</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;Drowning Incidents (D)&quot;</span><span class="p">)</span>
+
+<span class="c1"># Add directed edges representing causal relationships</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s2">&quot;Hot Weather (W)&quot;</span><span class="p">,</span> <span class="s2">&quot;Ice Cream Sales (I)&quot;</span><span class="p">)</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s2">&quot;Hot Weather (W)&quot;</span><span class="p">,</span> <span class="s2">&quot;Drowning Incidents (D)&quot;</span><span class="p">)</span>
+
+<span class="c1"># Draw the graph</span>
+<span class="n">pos</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Hot Weather (W)&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+    <span class="s2">&quot;Ice Cream Sales (I)&quot;</span><span class="p">:</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+    <span class="s2">&quot;Drowning Incidents (D)&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+<span class="p">}</span>
+
+<span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">3000</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="s2">&quot;lightgreen&quot;</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">font_weight</span><span class="o">=</span><span class="s2">&quot;bold&quot;</span><span class="p">,</span> <span class="n">arrows</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Causal Graph (DAG) - Correlation Does Not Imply Causation&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/tx/6x0x284d1mqbxg7ldmcxb0g00000gn/T/ipykernel_28449/2404936834.py:24: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
+  plt.tight_layout()
+</pre></div>
+</div>
+<img alt="_images/971e1b284096ee0f8d536b49d8a636aca18ae429bbe33feaee8a1dfbbbb60a5c.png" src="_images/971e1b284096ee0f8d536b49d8a636aca18ae429bbe33feaee8a1dfbbbb60a5c.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Number of individuals (or time periods)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="c1"># Probability of hot weather</span>
+<span class="n">p_hot_weather</span> <span class="o">=</span> <span class="mf">0.3</span>
+
+<span class="c1"># Ice cream sales probabilities</span>
+<span class="n">p_ice_cream_if_hot</span> <span class="o">=</span> <span class="mf">0.8</span>
+<span class="n">p_ice_cream_if_not_hot</span> <span class="o">=</span> <span class="mf">0.1</span>
+
+<span class="c1"># Drowning incidents probabilities</span>
+<span class="n">p_drowning_if_hot</span> <span class="o">=</span> <span class="mf">0.2</span>
+<span class="n">p_drowning_if_not_hot</span> <span class="o">=</span> <span class="mf">0.05</span>
+
+<span class="c1"># Simulate Hot Weather</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">hot_weather</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">p_hot_weather</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+
+<span class="c1"># Simulate Ice Cream Sales based on weather</span>
+<span class="n">ice_cream_sales</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">hot_weather</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span>
+                           <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">p_ice_cream_if_hot</span><span class="p">,</span> <span class="n">n</span><span class="p">),</span>
+                           <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">p_ice_cream_if_not_hot</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+
+<span class="c1"># Simulate Drowning Incidents based on weather</span>
+<span class="n">drowning_incidents</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">hot_weather</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span>
+                              <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">p_drowning_if_hot</span><span class="p">,</span> <span class="n">n</span><span class="p">),</span>
+                              <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">p_drowning_if_not_hot</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+
+<span class="c1"># Create a DataFrame for analysis</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Hot Weather&#39;</span><span class="p">:</span> <span class="n">hot_weather</span><span class="p">,</span>
+    <span class="s1">&#39;Ice Cream Sales&#39;</span><span class="p">:</span> <span class="n">ice_cream_sales</span><span class="p">,</span>
+    <span class="s1">&#39;Drowning Incidents&#39;</span><span class="p">:</span> <span class="n">drowning_incidents</span>
+<span class="p">})</span>
+
+<span class="c1"># Calculate correlations</span>
+<span class="n">correlation_ice_drowning</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;Ice Cream Sales&#39;</span><span class="p">,</span> <span class="s1">&#39;Drowning Incidents&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">correlation_ice_weather</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;Ice Cream Sales&#39;</span><span class="p">,</span> <span class="s1">&#39;Hot Weather&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">correlation_drowning_weather</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;Drowning Incidents&#39;</span><span class="p">,</span> <span class="s1">&#39;Hot Weather&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Print correlation results</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Correlation between Ice Cream Sales and Drowning Incidents: </span><span class="si">{</span><span class="n">correlation_ice_drowning</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Correlation between Ice Cream Sales and Hot Weather: </span><span class="si">{</span><span class="n">correlation_ice_weather</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Correlation between Drowning Incidents and Hot Weather: </span><span class="si">{</span><span class="n">correlation_drowning_weather</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Grouped statistics to check rates</span>
+<span class="n">ice_cream_drowning_rate</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Ice Cream Sales&#39;</span><span class="p">)[</span><span class="s1">&#39;Drowning Incidents&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Drowning rates by Ice Cream Sales:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ice_cream_drowning_rate</span><span class="p">)</span>
+
+<span class="c1"># Plot the results</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">([</span><span class="s1">&#39;No Ice Cream Sales&#39;</span><span class="p">,</span> <span class="s1">&#39;Ice Cream Sales&#39;</span><span class="p">],</span> <span class="n">ice_cream_drowning_rate</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Drowning Rate by Ice Cream Sales&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Drowning Rate&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Correlation between Ice Cream Sales and Drowning Incidents: 0.1812
+Correlation between Ice Cream Sales and Hot Weather: 0.7026
+Correlation between Drowning Incidents and Hot Weather: 0.2395
+
+Drowning rates by Ice Cream Sales:
+Ice Cream Sales
+0    0.046310
+1    0.152104
+Name: Drowning Incidents, dtype: float64
+</pre></div>
+</div>
+<img alt="_images/5cce9f9d41388cd211ad78a6477d2c19a0e6bbf5b0eaabb530bda6234c40e7db.png" src="_images/5cce9f9d41388cd211ad78a6477d2c19a0e6bbf5b0eaabb530bda6234c40e7db.png" />
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="causation-not-implies-correlation">
+<h1><a id='toc9_'></a><a class="reference internal" href="#toc0_"><span class="xref myst">Causation <span class="math notranslate nohighlight">\(\not\implies\)</span> Correlation</span></a><a class="headerlink" href="#causation-not-implies-correlation" title="Link to this heading">#</a></h1>
+<p>Antihistamines causally reduce sneezing</p>
+<p>People taking antihistamines sneeze more than average</p>
+<p>Negative causal effect of antihistamines on sneezing but</p>
+<p>positive correlation b/w antihistamine use and sneezing</p>
+<ul class="simple">
+<li><p>(A=1) if a person takes antihistamines, 0 otherwise.</p></li>
+<li><p>(S=1) if a person sneezes, 0 otherwise.</p></li>
+<li><p>(C=1) if a person has the underlying condition (e.g., allergies), 0 otherwise.</p></li>
+</ul>
+<p>Assumptions:</p>
+<ol class="arabic simple">
+<li><p>(A) and (S) are dependent on (C), meaning:</p></li>
+</ol>
+<ul class="simple">
+<li><p>People with allergies ((C=1)) are more likely to take antihistamines.</p></li>
+<li><p>People with allergies ((C=1)) sneeze more frequently.</p></li>
+</ul>
+<ol class="arabic simple">
+<li><p>Negative causal effect of antihistamines: Antihistamines reduce sneezing, i.e., (P(S=) (1 \mid A=1, C=1)&lt;P(S=1 \mid A=0, C=1)).</p></li>
+</ol>
+<p>Model:
+We can model the probability of sneezing (S) as a function of antihistamine use (A), the underlying condition (C), and their relationships:</p>
+<div class="math notranslate nohighlight">
+\[
+P(S=1 \mid A=a, C=c)=\alpha_c-\beta \cdot a
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p>(\alpha_c) captures the baseline sneezing rate based on the condition (C).</p></li>
+<li><p>(\beta) captures the reduction in sneezing due to antihistamines.</p></li>
+</ul>
+<p>Similarly, we can model the probability of taking antihistamines as a function of the underlying condition:</p>
+<div class="math notranslate nohighlight">
+\[
+P(A=1 \mid C=c)=\gamma \cdot c
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+
+<span class="c1"># Create a directed graph</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
+
+<span class="c1"># Add nodes</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;Condition (C)&quot;</span><span class="p">)</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;Antihistamines (A)&quot;</span><span class="p">)</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;Sneezing (S)&quot;</span><span class="p">)</span>
+
+<span class="c1"># Add directed edges representing causal relationships</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s2">&quot;Condition (C)&quot;</span><span class="p">,</span> <span class="s2">&quot;Antihistamines (A)&quot;</span><span class="p">)</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s2">&quot;Condition (C)&quot;</span><span class="p">,</span> <span class="s2">&quot;Sneezing (S)&quot;</span><span class="p">)</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s2">&quot;Antihistamines (A)&quot;</span><span class="p">,</span> <span class="s2">&quot;Sneezing (S)&quot;</span><span class="p">)</span>
+
+<span class="c1"># Draw the graph</span>
+<span class="n">pos</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Condition (C)&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+    <span class="s2">&quot;Antihistamines (A)&quot;</span><span class="p">:</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+    <span class="s2">&quot;Sneezing (S)&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+<span class="p">}</span>
+
+<span class="n">labels</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="p">(</span><span class="s2">&quot;Condition (C)&quot;</span><span class="p">,</span> <span class="s2">&quot;Antihistamines (A)&quot;</span><span class="p">):</span> <span class="s2">&quot;Positive&quot;</span><span class="p">,</span>
+    <span class="p">(</span><span class="s2">&quot;Condition (C)&quot;</span><span class="p">,</span> <span class="s2">&quot;Sneezing (S)&quot;</span><span class="p">):</span> <span class="s2">&quot;Positive&quot;</span><span class="p">,</span>
+    <span class="p">(</span><span class="s2">&quot;Antihistamines (A)&quot;</span><span class="p">,</span> <span class="s2">&quot;Sneezing (S)&quot;</span><span class="p">):</span> <span class="s2">&quot;Negative&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">3000</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="s2">&quot;lightblue&quot;</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">font_weight</span><span class="o">=</span><span class="s2">&quot;bold&quot;</span><span class="p">,</span> <span class="n">arrows</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_edge_labels</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">edge_labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">font_color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Causal Graph (DAG)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/5dd6a76b4820e323756352e61c10de3bf49750376ed6e722c594acbdf6a5cc52.png" src="_images/5dd6a76b4820e323756352e61c10de3bf49750376ed6e722c594acbdf6a5cc52.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Number of individuals</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="c1"># Parameters</span>
+<span class="n">p_condition</span> <span class="o">=</span> <span class="mf">0.2</span>  <span class="c1"># Probability of having the underlying condition (allergies)</span>
+<span class="n">alpha_c1</span> <span class="o">=</span> <span class="mf">0.8</span>     <span class="c1"># Sneezing rate with condition and without antihistamines</span>
+<span class="n">alpha_c0</span> <span class="o">=</span> <span class="mf">0.1</span>     <span class="c1"># Sneezing rate without condition</span>
+<span class="n">beta</span> <span class="o">=</span> <span class="mf">0.5</span>         <span class="c1"># Effect of antihistamines on sneezing</span>
+<span class="n">gamma</span> <span class="o">=</span> <span class="mf">0.9</span>        <span class="c1"># Probability of taking antihistamines with the condition</span>
+
+<span class="c1"># Simulate data</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">p_condition</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>  <span class="c1"># Condition presence</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">gamma</span> <span class="o">*</span> <span class="n">C</span><span class="p">)</span>       <span class="c1"># Antihistamine use based on condition</span>
+
+<span class="c1"># Sneezing probability based on condition and antihistamine use</span>
+<span class="n">sneezing_prob</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">C</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="n">alpha_c1</span> <span class="o">-</span> <span class="n">beta</span> <span class="o">*</span> <span class="n">A</span><span class="p">,</span> <span class="n">alpha_c0</span><span class="p">)</span>
+<span class="n">S</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">sneezing_prob</span><span class="p">)</span>  <span class="c1"># Sneezing occurrences</span>
+
+<span class="c1"># Create a DataFrame for analysis</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Condition&#39;</span><span class="p">:</span> <span class="n">C</span><span class="p">,</span> <span class="s1">&#39;Antihistamines&#39;</span><span class="p">:</span> <span class="n">A</span><span class="p">,</span> <span class="s1">&#39;Sneezing&#39;</span><span class="p">:</span> <span class="n">S</span><span class="p">})</span>
+
+<span class="c1"># Calculate correlations</span>
+<span class="n">correlation</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;Antihistamines&#39;</span><span class="p">,</span> <span class="s1">&#39;Sneezing&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Print results</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Correlation between antihistamine use and sneezing: </span><span class="si">{</span><span class="n">correlation</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Grouped statistics to check average sneezing rates</span>
+<span class="n">sneezing_rates</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Antihistamines&#39;</span><span class="p">)[</span><span class="s1">&#39;Sneezing&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Average sneezing rates:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sneezing_rates</span><span class="p">)</span>
+
+<span class="c1"># Plot the results</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">([</span><span class="s1">&#39;No Antihistamines&#39;</span><span class="p">,</span> <span class="s1">&#39;Antihistamines&#39;</span><span class="p">],</span> <span class="n">sneezing_rates</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Average Sneezing Rates by Antihistamine Use&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Average Sneezing Rate&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matplotlib is building the font cache; this may take a moment.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Correlation between antihistamine use and sneezing: 0.2137
+
+Average sneezing rates:
+Antihistamines
+0    0.112332
+1    0.309392
+Name: Sneezing, dtype: float64
+</pre></div>
+</div>
+<img alt="_images/1668f564ad8e5127837d40ce8de086ad736e68f8de91f0982e110ebd4fbfa0a5.png" src="_images/1668f564ad8e5127837d40ce8de086ad736e68f8de91f0982e110ebd4fbfa0a5.png" />
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="conditional-distribution">
+<h1><a id='toc10_'></a><a class="reference internal" href="#toc0_"><span class="xref myst">Conditional Distribution</span></a><a class="headerlink" href="#conditional-distribution" title="Link to this heading">#</a></h1>
+<div class="math notranslate nohighlight">
+\[
+E\left[Y \mid X=x_i\right]=\sum_{j=1}^k y_j P\left(Y=y_j \mid X=x_i\right)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+E[Y \mid X=x]=\int_{-\infty}^{\infty} y f(y \mid x) d y
+\]</div>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(E[g(X) + h(X)Y \mid X] = g(X) + h(X)E[Y \mid X]\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(E[Y + Z \mid X] = E[Y \mid X] + E[Z \mid X]\)</span></p></li>
+<li><p>If <span class="math notranslate nohighlight">\(Y \leq Z\)</span> (always), then <span class="math notranslate nohighlight">\(E[Y \mid X] \leq E[Z \mid X]\)</span></p></li>
+</ol>
+<p>Recall: <span class="math notranslate nohighlight">\(E\)</span> is a linear operator</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="law-of-iterated-expectations">
+<h1><a id='toc11_'></a><a class="reference internal" href="#toc0_"><span class="xref myst">Law of Iterated Expectations</span></a><a class="headerlink" href="#law-of-iterated-expectations" title="Link to this heading">#</a></h1>
+<div class="math notranslate nohighlight">
+\[
+E[X]=E[E[X \mid Y]]
+\]</div>
+<p>Trivial Proof:
+$<span class="math notranslate nohighlight">\(
+\begin{aligned}
+\mathrm{E}[\mathrm{E}(X \mid Y)] &amp; =\mathrm{E}\left[\sum_{x \in \mathcal{X}} x \cdot \operatorname{Pr}(X=x \mid Y)\right] \\
+&amp; =\sum_{y \in \mathcal{Y}}\left[\sum_{x \in \mathcal{X}} x \cdot \operatorname{Pr}(X=x \mid Y=y)\right] \cdot \operatorname{Pr}(Y=y) \\
+&amp; =\sum_{x \in \mathcal{X}} \sum_{y \in \mathcal{Y}} x \cdot \operatorname{Pr}(X=x \mid Y=y) \cdot \operatorname{Pr}(Y=y) \\
+&amp; =\sum_{x \in \mathcal{X}} \sum_{y \in \mathcal{Y}} x \cdot \operatorname{Pr}(X=x, Y=y) \\
+&amp; =\sum_{x \in \mathcal{X}} x \sum_{y \in \mathcal{Y}} \operatorname{Pr}(X=x, Y=y) \\
+&amp; =\sum_{x \in \mathcal{X}} x \cdot \operatorname{Pr}(X=x) \\
+&amp; =\mathrm{E}(X)
+\end{aligned}
+\)</span>$</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="1_Introduction.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">1. Goals For Today</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="3_Probability_Statistics.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Overview For Today</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Probability Mass and Density Function</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#function-of-rvs">Function of rvs</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#variance">Variance</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#joint-probability"><a id="toc3_"></a><span class="xref myst">Joint Probability</span></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#joint-distribution"><a id="toc4_"></a><span class="xref myst">Joint Distribution</span></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-the-joint-distribution-to-marginal-distribution"><a id="toc5_"></a><span class="xref myst">Convert the Joint Distribution to Marginal Distribution</span></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#covariance"><a id="toc6_"></a><span class="xref myst">Covariance</span></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#covariance-is-a-measure-of-the-linear-relationship-between-two-variables"><a id="toc6_1_"></a><span class="xref myst">Covariance is a measure of the linear relationship between two variables.</span></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-of-x">variance of x</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#properties"><a id="toc6_2_"></a><span class="xref myst">Properties</span></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation"><a id="toc7_"></a><span class="xref myst">Correlation</span></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation"><a id="toc7_1_"></a><span class="xref myst">Interpretation:</span></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation-not-implies-causation"><a id="toc8_"></a><span class="xref myst">Correlation <span class="math notranslate nohighlight">\(\not\implies\)</span> Causation</span></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#causation-not-implies-correlation"><a id="toc9_"></a><span class="xref myst">Causation <span class="math notranslate nohighlight">\(\not\implies\)</span> Correlation</span></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-distribution"><a id="toc10_"></a><span class="xref myst">Conditional Distribution</span></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#law-of-iterated-expectations"><a id="toc11_"></a><span class="xref myst">Law of Iterated Expectations</span></a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

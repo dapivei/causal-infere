@@ -1,0 +1,82 @@
+Traceback (most recent call last):
+  File "/ext3/miniforge3/lib/python3.12/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/ext3/miniforge3/lib/python3.12/site-packages/nbclient/client.py", line 1319, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/ext3/miniforge3/lib/python3.12/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/ext3/miniforge3/lib/python3.12/asyncio/base_events.py", line 686, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/ext3/miniforge3/lib/python3.12/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "/ext3/miniforge3/lib/python3.12/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/ext3/miniforge3/lib/python3.12/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# @title
+import matplotlib.pyplot as plt
+
+
+# Define the data points
+years = ['1991', '1992', '1993']
+pa_values = [40, 50, 60]
+nj_actual = [30, 40, 45]
+nj_assumed = [30, 40, 50]
+
+plt.plot(years, pa_values, label='PA (Control Group)', marker='o', color='blue', linewidth=2)
+
+plt.plot(years, nj_actual, label='NJ, real (Treatment Group)', marker='o', color='red', linewidth=2)
+
+plt.plot(years[1:], nj_assumed[1:], label='NJ, assumed (Counterfactual)', linestyle='--', color='red', linewidth=2)
+
+plt.axvline(x=1, linestyle='--', color='black', alpha=0.7)  # Vertical dashed line at intervention
+plt.text(1.02, 35, 'Intervention', color='black', fontsize=10, rotation=90, ha='left', va='center')
+
+
+plt.text('1991', pa_values[0] + 1.5, str(pa_values[0]), color='blue', fontsize=10, ha='center')
+plt.text('1993', pa_values[2] + 1.5, str(pa_values[2]), color='blue', fontsize=10, ha='center')
+
+plt.text('1991', nj_actual[0] - 3, str(nj_actual[0]), color='red', fontsize=10, ha='center')
+plt.text('1993', nj_actual[2] - 3, str(nj_actual[2]), color='red', fontsize=10, ha='center')
+
+plt.text('1993', nj_assumed[2] + 1.5, str(nj_assumed[2]), color='red', fontsize=10, ha='center')
+
+plt.annotate('', xy=('1993', nj_actual[2]), xytext=('1993', nj_assumed[2]),
+             arrowprops=dict(arrowstyle='<->', color='black', lw=1.5))
+plt.text('1993', (nj_actual[2] + nj_assumed[2]) / 2 + 2.2, 'ATT', color='black', ha='left', fontsize=12)
+
+plt.ylabel('Employment', fontsize=12)
+plt.xticks(range(len(years)), years, fontsize=10)
+plt.yticks([30, 60], labels=['30', '60'], fontsize=10)
+plt.ylim(25, 65)
+
+plt.grid(axis='y', linestyle='--', alpha=0.5)
+plt.gca().spines['top'].set_visible(False)
+plt.gca().spines['right'].set_visible(False)
+
+plt.gca().spines['left'].set_visible(False)
+plt.gca().spines['bottom'].set_visible(False)
+
+plt.legend(loc='upper left', fontsize=10)
+
+plt.tight_layout()
+
+plt.show()
+------------------
+
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
+Cell [0;32mIn[1], line 2[0m
+[1;32m      1[0m [38;5;66;03m# @title[39;00m
+[0;32m----> 2[0m [38;5;28;01mimport[39;00m [38;5;21;01mmatplotlib[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpyplot[39;00m [38;5;28;01mas[39;00m [38;5;21;01mplt[39;00m
+[1;32m      5[0m [38;5;66;03m# Define the data points[39;00m
+[1;32m      6[0m years [38;5;241m=[39m [[38;5;124m'[39m[38;5;124m1991[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124m1992[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124m1993[39m[38;5;124m'[39m]
+
+[0;31mModuleNotFoundError[0m: No module named 'matplotlib'
+

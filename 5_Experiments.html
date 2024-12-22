@@ -1,0 +1,2542 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>0. Recap From Last Class &#8212; Causal Inference for Data Science</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '5_Experiments';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Descriptive Regression" href="6_Regression_1-2.html" />
+    <link rel="prev" title="0. Recap from last class" href="4_Statistics_and_Experiments.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Causal Inference for Data Science - Home"/>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="Causal Inference for Data Science - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="1_Introduction.html">1. Goals For Today</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="2_Probability_1-2.html">Probability Mass and Density Function</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="3_Probability_Statistics.html">Overview For Today</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="4_Statistics_and_Experiments.html">0. Recap from last class</a></li>
+
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">0. Recap From Last Class</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="6_Regression_1-2.html"><a id="toc1_"></a><span class="xref myst">Descriptive Regression</span></a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="7_Natural_Experiments.html">Causality from Observational Data</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="8_ML_and_Causality.html">The Interplay between Machine Learning and Causal Inference</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="9_matching.html">Control Variables</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="10_Instruments.html">0. Recap From Last Class</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="11_Instruments_RDD.html">0. Recap From Last Class</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="12_RDD.html">Recap: Local Linear Regression for RDD</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="13_Difference_in_Differences.html">0. Recap From Last Class</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="14_Review.html">1. Goals For Today</a></li>
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2F5_Experiments.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/5_Experiments.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>0. Recap From Last Class</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">0. Recap From Last Class</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-for-today">1. Goals For Today</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-causal-effects-from-sample-data">2. Estimating Causal Effects from Sample Data</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#causal-model-for-the-impact-of-the-job-training-program-on-wages">2.1) Causal Model for the Impact of the Job Training Program on Wages</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hypothesis-testing-for-the-ate">Hypothesis Testing for the ATE</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-our-assumptions">2.4) Testing our Assumptions</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#s-perp-perp-u"><span class="math notranslate nohighlight">\(S \perp\!\!\!\perp U\)</span></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#relaxing-assumptions-imperfect-compliance-and-sutva-violations">3. Relaxing Assumptions: Imperfect Compliance and SUTVA Violations</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imperfect-compliance">3.1. Imperfect Compliance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sutva-violation">3.2. SUTVA violation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcts-the-gold-standard-a-side-note-on-their-limitations">4. RCTs: The Gold Standard? A Side Note on Their Limitations</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#recap-on-sampling-distributions-and-the-central-limit-theorem-clt-on-python-help-for-homework">5. Recap on sampling distributions and the Central Limit Theorem (CLT) on Python – HELP FOR HOMEWORK!</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#path-forward">5. Path Forward</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <p><a class="reference external" href="https://colab.research.google.com/github/dapivei/causal-infere/blob/main/sections/5_Experiments.ipynb"><img alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{c}
+\textbf{EXPERIMENTS}\\
+\textbf{(CONT.)}\\\\\\\\
+\textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \\
+\textit{Center for Data Science, New York University} \\\\\\
+\textit{October 4, 2024}
+\end{array}
+\end{split}\]</div>
+<section id="recap-from-last-class">
+<h1>0. Recap From Last Class<a class="headerlink" href="#recap-from-last-class" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>A final review of Statistics</p></li>
+<li><p>An introduction to Randomized Controlled Trials (RCTs): <strong>identifying our ATE</strong>.</p></li>
+</ul>
+</section>
+<section id="goals-for-today">
+<h1>1. Goals For Today<a class="headerlink" href="#goals-for-today" title="Link to this heading">#</a></h1>
+<p>Continuing with RCTs:</p>
+<ul class="simple">
+<li><p><strong>The measurement of our ATE</strong>: estimating causal quantities from sample data.</p></li>
+<li><p><strong>Interpreting our ATE</strong>: How do we map from the quantities that we estimate to the quantities we care about? How do we assess confidence in the estimated causal quantities.</p></li>
+<li><p>Implications of relaxing the SUTVA and perfect compliance assumptions.</p></li>
+<li><p>Potential pitfalls of RCTs.</p></li>
+</ul>
+<p>Support for Homework 2:</p>
+<ul class="simple">
+<li><p>Review sampling distributions and the Central Limit Theorem (CLT) using Python.</p></li>
+</ul>
+</section>
+<section id="estimating-causal-effects-from-sample-data">
+<h1>2. Estimating Causal Effects from Sample Data<a class="headerlink" href="#estimating-causal-effects-from-sample-data" title="Link to this heading">#</a></h1>
+<p>The fundamental principle of randomization is straightforward:</p>
+<blockquote>
+<div><p>When units are randomly assigned to a treatment, the only distinction between those receiving the treatment and those who do not is the treatment itself. Consequently, any observed differences between the two groups can be attributed solely to the treatment.</p>
+</div></blockquote>
+<p>Our objective is to estimate the <strong>Average Treatment Effect (ATE)</strong>, which measures the difference in outcomes between individuals who received a treatment and those who did not.</p>
+<p>To do this, we rely on two key assumptions: <strong>perfect compliance</strong> and <strong>SUTVA</strong>, which allows us to assert that the treatment, <span class="math notranslate nohighlight">\(S\)</span>, is <strong>independent</strong> of other factors, <span class="math notranslate nohighlight">\(U\)</span>, that could influence the outcome <span class="math notranslate nohighlight">\(Y\)</span>, leading to:</p>
+<div class="math notranslate nohighlight">
+\[
+ATE = \mathbb{E}[Y(S=1, U) \mid S=1] - \mathbb{E}[Y(S=0, U) \mid S=0].
+\]</div>
+<p>Let’s apply these concepts to estimate the ATE from the case study we introduced last section:</p>
+<blockquote>
+<div><p>the impact of a job training program (<span class="math notranslate nohighlight">\(S\)</span>), National Supported Work (NSW) Demonstration, on wages (<span class="math notranslate nohighlight">\(Y\)</span>).</p>
+</div></blockquote>
+<p>Participants were <em>randomly assigned</em> to receive job training or not, which helped ensured independence from confounding factors.</p>
+<p>Our goal is to replicate the estimation conducted by LaLonde, who utilized data from the randomized evaluation to assess the program’s effectiveness. For more detailed information about the study anda data, refer to the following resource: <a class="reference external" href="https://search.r-project.org/CRAN/refmans/designmatch/html/lalonde.html">LaLonde’s Study</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="kn">from</span> <span class="nn">graphviz</span> <span class="kn">import</span> <span class="n">Digraph</span>
+<span class="kn">from</span> <span class="nn">tabulate</span> <span class="kn">import</span> <span class="n">tabulate</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+<span class="kn">from</span> <span class="nn">statsmodels.formula.api</span> <span class="kn">import</span> <span class="n">ols</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">File</span> <span class="o">~/.</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.12</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">pandas</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">19</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span>         <span class="n">_missing_dependencies</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">_dependency</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">_e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="k">if</span> <span class="n">_missing_dependencies</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+<span class="ne">---&gt; </span><span class="mi">19</span>     <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">20</span>         <span class="s2">&quot;Unable to import required dependencies:</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">_missing_dependencies</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">21</span>     <span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">22</span> <span class="k">del</span> <span class="n">_hard_dependencies</span><span class="p">,</span> <span class="n">_dependency</span><span class="p">,</span> <span class="n">_missing_dependencies</span>
+<span class="g g-Whitespace">     </span><span class="mi">24</span> <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">25</span>     <span class="c1"># numpy compat</span>
+
+<span class="ne">ImportError</span>: Unable to import required dependencies:
+<span class="ne">numpy</span>: No module named &#39;numpy&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url_base</span> <span class="o">=</span> <span class="s1">&#39;http://www.nber.org/~rdehejia/data/nsw.dta&#39;</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_stata</span><span class="p">(</span><span class="n">url_base</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="causal-model-for-the-impact-of-the-job-training-program-on-wages">
+<h2>2.1) Causal Model for the Impact of the Job Training Program on Wages<a class="headerlink" href="#causal-model-for-the-impact-of-the-job-training-program-on-wages" title="Link to this heading">#</a></h2>
+<p>Some key components of this causal model are:</p>
+<ul class="simple">
+<li><p><strong>Treatment Indicator (<span class="math notranslate nohighlight">\(S\)</span>)</strong>: A binary variable, denoted as <span class="math notranslate nohighlight">\(\text{treat}\)</span>, which indicates whether an individual received job training (1) or not (0).</p></li>
+<li><p><strong>Outcome (<span class="math notranslate nohighlight">\(Y\)</span>)</strong>: The primary outcome of interest, represented as <span class="math notranslate nohighlight">\(\text{re78}\)</span>, to indicate the annual wages of participants measured in the year 1978.</p></li>
+<li><p><strong>Confounding Variables (<span class="math notranslate nohighlight">\(U\)</span>)</strong>: Other factors that may affect wages include age, education, race, marital status, and degree.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-f945698e-ae5e-4ad6-90d2-d329a00b20c6" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>treat</th>
+      <th>age</th>
+      <th>education</th>
+      <th>black</th>
+      <th>hispanic</th>
+      <th>married</th>
+      <th>nodegree</th>
+      <th>re75</th>
+      <th>re78</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>722.000000</td>
+      <td>722.000000</td>
+      <td>722.000000</td>
+      <td>722.000000</td>
+      <td>722.000000</td>
+      <td>722.000000</td>
+      <td>722.000000</td>
+      <td>722.000000</td>
+      <td>722.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>0.411357</td>
+      <td>24.520776</td>
+      <td>10.267313</td>
+      <td>0.800554</td>
+      <td>0.105263</td>
+      <td>0.162050</td>
+      <td>0.779778</td>
+      <td>3042.896484</td>
+      <td>5454.635742</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>0.492421</td>
+      <td>6.625947</td>
+      <td>1.704774</td>
+      <td>0.399861</td>
+      <td>0.307105</td>
+      <td>0.368752</td>
+      <td>0.414683</td>
+      <td>5066.138672</td>
+      <td>6252.948242</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>0.000000</td>
+      <td>17.000000</td>
+      <td>3.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>0.000000</td>
+      <td>19.000000</td>
+      <td>9.000000</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>0.000000</td>
+      <td>23.000000</td>
+      <td>10.000000</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1.000000</td>
+      <td>936.307953</td>
+      <td>3951.889038</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>1.000000</td>
+      <td>27.000000</td>
+      <td>11.000000</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1.000000</td>
+      <td>3993.206970</td>
+      <td>8772.004395</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>1.000000</td>
+      <td>55.000000</td>
+      <td>16.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>37431.660156</td>
+      <td>60307.929688</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-f945698e-ae5e-4ad6-90d2-d329a00b20c6')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-f945698e-ae5e-4ad6-90d2-d329a00b20c6 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-f945698e-ae5e-4ad6-90d2-d329a00b20c6');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-25d042fd-51a7-4763-aed8-e4719eaba2c8">
+  <button class="colab-df-quickchart" onclick="quickchart('df-25d042fd-51a7-4763-aed8-e4719eaba2c8')"
+            title="Suggest charts"
+            style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-25d042fd-51a7-4763-aed8-e4719eaba2c8 button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+
+    </div>
+  </div>
+</div></div>
+</div>
+<p>According to our data, the study included 722 participants, with 425 receiving the job training program.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;treat&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>count</th>
+    </tr>
+    <tr>
+      <th>treat</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>425</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>297</td>
+    </tr>
+  </tbody>
+</table>
+</div><br><label><b>dtype:</b> int64</label></div></div>
+</div>
+<p>### 2.2) <span class="math notranslate nohighlight">\(\hat{ATE}\)</span>?</p>
+<p>To estimate the ATE from data, we calculate the <strong>conditional sample means</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{ATE} = \mathbb{\hat{E}}[Y(1, \hat{U}) \mid S = 1] - \mathbb{\hat{E}}[Y(0, \hat{U}) \mid S = 0].
+\]</div>
+<p>Since these sample means are <strong>consistent</strong> and <strong>unbiased</strong>, our estimate of the ATE is robust and reliable.</p>
+<p>Therefore, to estimate the ATE of the job training program (<span class="math notranslate nohighlight">\(S\)</span>) on wages (<span class="math notranslate nohighlight">\(Y\)</span>), we would simply:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Conditional samples means for treated and control groups</span>
+<span class="n">mean_treated</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;treat&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;re78&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">mean_control</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;treat&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;re78&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="c1"># ATE as the difference in conditional means</span>
+<span class="n">ate</span> <span class="o">=</span> <span class="n">mean_treated</span> <span class="o">-</span> <span class="n">mean_control</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Estimated ATE (Difference in Means): </span><span class="si">{</span><span class="n">ate</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Estimated ATE (Difference in Means): 886.30
+</pre></div>
+</div>
+</div>
+</div>
+<p>This implies, that, on average, individuals who received the job training program earned <span class="math notranslate nohighlight">\(886.30\)</span> than those who did not receive the training. <strong>How confident are we on these results?</strong></p>
+<p>### 2.3) How confidente are we on our <span class="math notranslate nohighlight">\(\hat{ATE}\)</span>?</p>
+<p>This is only an estimate of the ATE, and we cannot be certain it reflects the true value. Fortunately, the Central Limit Theorem (CLT) allows us to approximate the distribution of errors in the estimated conditional sample means.</p>
+<section id="hypothesis-testing-for-the-ate">
+<h3>Hypothesis Testing for the ATE<a class="headerlink" href="#hypothesis-testing-for-the-ate" title="Link to this heading">#</a></h3>
+<p>To determine whether the work program has a positive impact on wages, our hypothesis is as follows:</p>
+<ul class="simple">
+<li><p><strong>Null Hypothesis (<span class="math notranslate nohighlight">\(H_0\)</span>)</strong>:
+$<span class="math notranslate nohighlight">\(\mathbb{E}[Y(S = 1, U)] = \mathbb{E}[Y(S = 0, U)] \implies \text{ATE}=0.\)</span>$</p></li>
+<li><p><strong>Alternative Hypothesis (<span class="math notranslate nohighlight">\(H_1\)</span>)</strong>: $<span class="math notranslate nohighlight">\(  \mathbb{E}[Y(S = 1, U)] &gt;  \mathbb{E}[Y(S = 0, U)] \implies \text{ATE}&gt;0.\)</span>$</p></li>
+</ul>
+<p>Notice that we’re doing a one-sided test!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">income_treate</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;treat&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">re78</span>
+<span class="n">income_contro</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;treat&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">re78</span>
+
+<span class="n">stats</span><span class="o">.</span><span class="n">ttest_ind</span><span class="p">(</span>
+    <span class="n">income_treate</span><span class="p">,</span>
+    <span class="n">income_contro</span><span class="p">,</span>
+    <span class="n">alternative</span><span class="o">=</span><span class="s1">&#39;greater&#39;</span><span class="p">,</span>
+    <span class="n">equal_var</span><span class="o">=</span><span class="kc">False</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TtestResult(statistic=1.8154352445974968, pvalue=0.034997297522789676, df=557.0617000675076)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Since the p-value is approximately 0.035, which is less than the common significance level of 0.05, we reject the null hypothesis. This implies that there is statistically significant evidence to support the claim that the mean income of the treated group is greater than that of the control group.</p>
+</section>
+</section>
+<section id="testing-our-assumptions">
+<h2>2.4) Testing our Assumptions<a class="headerlink" href="#testing-our-assumptions" title="Link to this heading">#</a></h2>
+<p>So far we have relied on a crucial assumption: $<span class="math notranslate nohighlight">\(S \perp\!\!\!\perp U.\)</span>$</p>
+<p>This assumption is supported by:</p>
+<p><strong>a) perfect compliance</strong>, our assumption that all participants adhere to their assigned treatments, and</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gr_per</span> <span class="o">=</span> <span class="n">Digraph</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s2">&quot;png&quot;</span><span class="p">,</span> <span class="n">graph_attr</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;rankdir&quot;</span><span class="p">:</span> <span class="s2">&quot;LR&quot;</span><span class="p">,</span> <span class="s2">&quot;size&quot;</span><span class="p">:</span> <span class="s2">&quot;8&quot;</span><span class="p">})</span>
+<span class="n">gr_per</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="s2">&quot;Z&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Z: Assignment&quot;</span><span class="p">)</span>
+<span class="n">gr_per</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;S: Treatment Received&quot;</span><span class="p">)</span>
+<span class="n">gr_per</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="s2">&quot;Y&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Y: Outcome&quot;</span><span class="p">)</span>
+<span class="n">gr_per</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="s2">&quot;Z&quot;</span><span class="p">,</span> <span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Compliance&quot;</span><span class="p">)</span>
+<span class="n">gr_per</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="s2">&quot;Y&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Treatment Effect&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>b) stable unit treatment value assumption (SUTVA)</strong>, which ensures that potential outcomes for each participant are unaffected by the treatment assignments of others.</p>
+<p>Together, these principles are essential for obtaining valid and unbiased estimates of the ATE. <strong>Can we test these assumptions?</strong></p>
+<p><strong>Testing for these assumptions in a RCT is hard!</strong> Some effective methods researchers use to assess these assumptions are:</p>
+<ul class="simple">
+<li><p>direct monitoring: self-reports or observation.</p></li>
+<li><p>biomarkers or biological test</p></li>
+</ul>
+</section>
+</section>
+<section id="s-perp-perp-u">
+<h1><span class="math notranslate nohighlight">\(S \perp\!\!\!\perp U\)</span><a class="headerlink" href="#s-perp-perp-u" title="Link to this heading">#</a></h1>
+<p>Independence between <span class="math notranslate nohighlight">\(S\)</span> and <span class="math notranslate nohighlight">\(U\)</span> implies that the distribution of potential outcomes <span class="math notranslate nohighlight">\(Y\)</span> given treatment status is the same across groups:</p>
+<div class="math notranslate nohighlight">
+\[
+P(Y \mid S=1, U) = P(Y \mid S=0, U).
+\]</div>
+<p>A crucial implication of this independence is that the treatment and control groups should exhibit similarity in their characteristics:</p>
+<div class="math notranslate nohighlight">
+\[
+P(U \mid S=1) = P(U \mid S=0).
+\]</div>
+<p>Thus, any observed differences in outcomes can be attributed to the treatment <span class="math notranslate nohighlight">\(S\)</span>, rather than confounding factors <span class="math notranslate nohighlight">\(U \)</span>.</p>
+<p>To assess this, we can compare the observable characteristics of the treatment and control groups. A first step is to visually examine the observable characteristics of both groups in the experiment.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">continuous_covariates</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;education&#39;</span><span class="p">]</span>
+<span class="n">dummy_covariates</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="s1">&#39;hispanic&#39;</span><span class="p">,</span> <span class="s1">&#39;married&#39;</span><span class="p">,</span> <span class="s1">&#39;nodegree&#39;</span><span class="p">]</span>
+<span class="n">covariates</span> <span class="o">=</span> <span class="n">continuous_covariates</span> <span class="o">+</span> <span class="n">dummy_covariates</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;whitegrid&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;deep&#39;</span><span class="p">)</span>
+<span class="n">total_covariates</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">continuous_covariates</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">dummy_covariates</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="n">total_covariates</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="n">total_covariates</span> <span class="o">*</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">var</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">continuous_covariates</span><span class="p">):</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;treat&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">][</span><span class="n">var</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Control&quot;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;treat&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">][</span><span class="n">var</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Treatment&quot;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Distribution of </span><span class="si">{</span><span class="n">var</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span><span class="si">}</span><span class="s1"> by Treatment Group&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="n">var</span><span class="o">.</span><span class="n">capitalize</span><span class="p">(),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Density&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">var</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">dummy_covariates</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">continuous_covariates</span><span class="p">)):</span>
+    <span class="n">proportions</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;treat&#39;</span><span class="p">)[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="s1">&#39;treat&#39;</span><span class="p">,</span>
+        <span class="n">y</span><span class="o">=</span><span class="n">var</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">proportions</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="n">j</span><span class="p">],</span>
+        <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;treat&#39;</span><span class="p">,</span> <span class="n">dodge</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">palette</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">],</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span>
+        <span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Proportion of </span><span class="si">{</span><span class="n">var</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span><span class="si">}</span><span class="s1"> by Treatment Group&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Treatment Group&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Proportion&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.10/dist-packages/seaborn/_base.py:949: FutureWarning: When grouping with a length-1 list-like, you will need to pass a length-1 tuple to get_group in a future version of pandas. Pass `(name,)` instead of `name` to silence this warning.
+  data_subset = grouped_data.get_group(pd_key)
+/usr/local/lib/python3.10/dist-packages/seaborn/_base.py:949: FutureWarning: When grouping with a length-1 list-like, you will need to pass a length-1 tuple to get_group in a future version of pandas. Pass `(name,)` instead of `name` to silence this warning.
+  data_subset = grouped_data.get_group(pd_key)
+/usr/local/lib/python3.10/dist-packages/seaborn/_base.py:949: FutureWarning: When grouping with a length-1 list-like, you will need to pass a length-1 tuple to get_group in a future version of pandas. Pass `(name,)` instead of `name` to silence this warning.
+  data_subset = grouped_data.get_group(pd_key)
+/usr/local/lib/python3.10/dist-packages/seaborn/_base.py:949: FutureWarning: When grouping with a length-1 list-like, you will need to pass a length-1 tuple to get_group in a future version of pandas. Pass `(name,)` instead of `name` to silence this warning.
+  data_subset = grouped_data.get_group(pd_key)
+/usr/local/lib/python3.10/dist-packages/seaborn/_base.py:949: FutureWarning: When grouping with a length-1 list-like, you will need to pass a length-1 tuple to get_group in a future version of pandas. Pass `(name,)` instead of `name` to silence this warning.
+  data_subset = grouped_data.get_group(pd_key)
+/usr/local/lib/python3.10/dist-packages/seaborn/_base.py:949: FutureWarning: When grouping with a length-1 list-like, you will need to pass a length-1 tuple to get_group in a future version of pandas. Pass `(name,)` instead of `name` to silence this warning.
+  data_subset = grouped_data.get_group(pd_key)
+/usr/local/lib/python3.10/dist-packages/seaborn/_base.py:949: FutureWarning: When grouping with a length-1 list-like, you will need to pass a length-1 tuple to get_group in a future version of pandas. Pass `(name,)` instead of `name` to silence this warning.
+  data_subset = grouped_data.get_group(pd_key)
+/usr/local/lib/python3.10/dist-packages/seaborn/_base.py:949: FutureWarning: When grouping with a length-1 list-like, you will need to pass a length-1 tuple to get_group in a future version of pandas. Pass `(name,)` instead of `name` to silence this warning.
+  data_subset = grouped_data.get_group(pd_key)
+</pre></div>
+</div>
+<img alt="_images/a379ad3c090029b25b0952f96d43cb99fd17f2939d9abce01c83502cfb0e471a.png" src="_images/a379ad3c090029b25b0952f96d43cb99fd17f2939d9abce01c83502cfb0e471a.png" />
+</div>
+</div>
+<p>Inspecting the distributions of key variables (e.g., age, marital status, education level, etc.) reveals that the distributions for both the treatment and control groups have similar shapes, signaling that the groups are well-balanced in terms of observable characteristics.</p>
+<p>Next, we can formally test that our groups are indeed “well balanced” by conducting a <strong>balance test</strong>! This test compares the distributions of an observable covariate <span class="math notranslate nohighlight">\(X\)</span> between the treatment group <span class="math notranslate nohighlight">\(S = 1\)</span> and the control group <span class="math notranslate nohighlight">\(S = 0\)</span>.</p>
+<p>Our balance test is a two-sample t-test to determine whether the difference in means is statistically significant:
+$<span class="math notranslate nohighlight">\( H_0: \mathbb{E}(X | S = 1) = \mathbb{E}(X | S = 0), \quad H_a: \mathbb{E}(X | S = 1) \neq \mathbb{E}(X | S = 0)
+\)</span>$</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(H_0\)</span> states that there is no difference in the means of the observable covariate between the treatment and control groups.</p></li>
+<li><p><span class="math notranslate nohighlight">\(H_a\)</span> states that there is a difference in means.</p></li>
+</ul>
+<p>We conclude that <span class="math notranslate nohighlight">\(S \perp U\)</span> if the means of the observables are not statistically significantly different.</p>
+<p>Let’s see how this test can be conducted using the Lalonde experiment:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">balance_results</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">covariates</span><span class="p">:</span>
+    <span class="n">control_group</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;treat&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">][</span><span class="n">var</span><span class="p">]</span>
+    <span class="n">treatment_group</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;treat&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">][</span><span class="n">var</span><span class="p">]</span>
+    <span class="n">control_mean</span><span class="p">,</span> <span class="n">control_std</span> <span class="o">=</span> <span class="n">control_group</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">control_group</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+    <span class="n">treatment_mean</span><span class="p">,</span> <span class="n">treatment_std</span> <span class="o">=</span> <span class="n">treatment_group</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">treatment_group</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+    <span class="n">t_stat</span><span class="p">,</span> <span class="n">p_value</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">ttest_ind</span><span class="p">(</span><span class="n">control_group</span><span class="p">,</span> <span class="n">treatment_group</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">pooled_std</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">control_std</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">treatment_std</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">smd</span> <span class="o">=</span> <span class="p">(</span><span class="n">treatment_mean</span> <span class="o">-</span> <span class="n">control_mean</span><span class="p">)</span> <span class="o">/</span> <span class="n">pooled_std</span>
+    <span class="n">balance_results</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+        <span class="s1">&#39;Variable&#39;</span><span class="p">:</span> <span class="n">var</span><span class="p">,</span>
+        <span class="s1">&#39;Control Mean (SD)&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">control_mean</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> (</span><span class="si">{</span><span class="n">control_std</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Treatment Mean (SD)&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">treatment_mean</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> (</span><span class="si">{</span><span class="n">treatment_std</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;SMD&#39;</span><span class="p">:</span> <span class="n">smd</span><span class="p">,</span>
+        <span class="s1">&#39;P-Value&#39;</span><span class="p">:</span> <span class="n">p_value</span>
+    <span class="p">})</span>
+<span class="n">balance_table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">balance_results</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notice we compare the mean values of each covariate between the control and treatment groups using a t-test to evaluate the null hypothesis. If the p-value exceeds the significance level (e.g., <span class="math notranslate nohighlight">\(\alpha = 0.05\)</span>), we fail to reject the null hypothesis, suggesting that the means are not significantly different.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">balance_table</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-f203d679-b022-4c7e-96d5-cd456d3b0513" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Variable</th>
+      <th>Control Mean (SD)</th>
+      <th>Treatment Mean (SD)</th>
+      <th>SMD</th>
+      <th>P-Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>age</td>
+      <td>24.45 (6.59)</td>
+      <td>24.63 (6.69)</td>
+      <td>0.026995</td>
+      <td>0.721607</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>education</td>
+      <td>10.19 (1.62)</td>
+      <td>10.38 (1.82)</td>
+      <td>0.111695</td>
+      <td>0.144283</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>black</td>
+      <td>0.80 (0.40)</td>
+      <td>0.80 (0.40)</td>
+      <td>0.003366</td>
+      <td>0.964504</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>hispanic</td>
+      <td>0.11 (0.32)</td>
+      <td>0.09 (0.29)</td>
+      <td>-0.061189</td>
+      <td>0.415479</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>married</td>
+      <td>0.16 (0.36)</td>
+      <td>0.17 (0.37)</td>
+      <td>0.028938</td>
+      <td>0.702799</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>nodegree</td>
+      <td>0.81 (0.39)</td>
+      <td>0.73 (0.44)</td>
+      <td>-0.199791</td>
+      <td>0.009247</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-f203d679-b022-4c7e-96d5-cd456d3b0513')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-f203d679-b022-4c7e-96d5-cd456d3b0513 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-f203d679-b022-4c7e-96d5-cd456d3b0513');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-f78bf2c8-059c-4cbb-b353-9cda62c69e1b">
+  <button class="colab-df-quickchart" onclick="quickchart('df-f78bf2c8-059c-4cbb-b353-9cda62c69e1b')"
+            title="Suggest charts"
+            style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-f78bf2c8-059c-4cbb-b353-9cda62c69e1b button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+
+  <div id="id_3559f3c9-1ee1-40c5-b35b-b03d900026b0">
+    <style>
+      .colab-df-generate {
+        background-color: #E8F0FE;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: none;
+        fill: #1967D2;
+        height: 32px;
+        padding: 0 0 0 0;
+        width: 32px;
+      }
+
+      .colab-df-generate:hover {
+        background-color: #E2EBFA;
+        box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+        fill: #174EA6;
+      }
+
+      [theme=dark] .colab-df-generate {
+        background-color: #3B4455;
+        fill: #D2E3FC;
+      }
+
+      [theme=dark] .colab-df-generate:hover {
+        background-color: #434B5C;
+        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+        fill: #FFFFFF;
+      }
+    </style>
+    <button class="colab-df-generate" onclick="generateWithVariable('balance_table')"
+            title="Generate code using this dataframe."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M7,19H8.4L18.45,9,17,7.55,7,17.6ZM5,21V16.75L18.45,3.32a2,2,0,0,1,2.83,0l1.4,1.43a1.91,1.91,0,0,1,.58,1.4,1.91,1.91,0,0,1-.58,1.4L9.25,21ZM18.45,9,17,7.55Zm-12,3A5.31,5.31,0,0,0,4.9,8.1,5.31,5.31,0,0,0,1,6.5,5.31,5.31,0,0,0,4.9,4.9,5.31,5.31,0,0,0,6.5,1,5.31,5.31,0,0,0,8.1,4.9,5.31,5.31,0,0,0,12,6.5,5.46,5.46,0,0,0,6.5,12Z"/>
+  </svg>
+    </button>
+    <script>
+      (() => {
+      const buttonEl =
+        document.querySelector('#id_3559f3c9-1ee1-40c5-b35b-b03d900026b0 button.colab-df-generate');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      buttonEl.onclick = () => {
+        google.colab.notebook.generateWithVariable('balance_table');
+      }
+      })();
+    </script>
+  </div>
+
+    </div>
+  </div>
+</div></div>
+</div>
+<blockquote>
+<div><p><strong>How do we interpret this balance table?</strong>
+Consider the first t-test, where <span class="math notranslate nohighlight">\(X=age\)</span>:</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>The average age of individuals in the control group is <strong>24.45 years</strong> with a standard deviation of <strong>6.59 years</strong>.The average age of individuals in the treatment group is <strong>24.63 years</strong> with a standard deviation of <strong>6.69 years</strong>.</p></li>
+<li><p>An SMD of <strong>0.027</strong> indicates that the difference between the control and treatment groups in terms of age is very small (close to zero). Generally, SMD values below <strong>0.1</strong> are considered to indicate good balance between groups.</p></li>
+<li><p>The p-value from the t-test is <strong>0.722</strong>, which is much greater than the common significance level of <strong>0.05</strong>. This means we <strong>fail to reject the null hypothesis</strong>, indicating that there is <strong>no statistically significant difference</strong> in the mean age between the control and treatment groups.</p></li>
+</ul>
+<p>We can further visualize the SMD through a plot:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;whitegrid&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;deep&#39;</span><span class="p">)</span>
+<span class="n">smd_df</span> <span class="o">=</span> <span class="n">balance_table</span><span class="p">[[</span><span class="s1">&#39;Variable&#39;</span><span class="p">,</span> <span class="s1">&#39;SMD&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Variable&#39;</span><span class="p">:</span> <span class="s1">&#39;Covariate&#39;</span><span class="p">})</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;SMD&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Covariate&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">smd_df</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Threshold (0.1)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=-</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Standardized Mean Difference (SMD)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Covariate&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Balance of Covariates&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/6c12efd57cb4a3de98c46b54ced42ee785d3f8c566bf17202cb2be1982c0e52b.png" src="_images/6c12efd57cb4a3de98c46b54ced42ee785d3f8c566bf17202cb2be1982c0e52b.png" />
+</div>
+</div>
+</section>
+<section id="relaxing-assumptions-imperfect-compliance-and-sutva-violations">
+<h1>3. Relaxing Assumptions: Imperfect Compliance and SUTVA Violations<a class="headerlink" href="#relaxing-assumptions-imperfect-compliance-and-sutva-violations" title="Link to this heading">#</a></h1>
+<p><strong>What if we relaxed our assumptions of perfect compliance and SUTVA? When and why might these violations occur?</strong></p>
+<ul class="simple">
+<li><p>Imperfect compliance can occur due to non-adherence, cross-over, dropouts, or other practical challenges in real-world implementation.</p></li>
+<li><p>SUTVA violations may arise from interference between participants, different versions of the treatment, or external contamination of the control group.</p></li>
+</ul>
+<p>Such violations complicate causal effect estimation, potentially shifting our target parameters or requiring alternative techniques to adjust for these issues.</p>
+<section id="imperfect-compliance">
+<h2>3.1. Imperfect Compliance<a class="headerlink" href="#imperfect-compliance" title="Link to this heading">#</a></h2>
+<p>Perfect compliance is rarely observed in real-world scenarios, making it reasonable to assume imperfect compliance. This means that not all individuals adhere to their assigned treatment (<span class="math notranslate nohighlight">\(S\)</span>), which can introduce bias when estimating the causal effect.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gr_imp</span> <span class="o">=</span> <span class="n">Digraph</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s2">&quot;png&quot;</span><span class="p">,</span> <span class="n">graph_attr</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;rankdir&quot;</span><span class="p">:</span> <span class="s2">&quot;LR&quot;</span><span class="p">,</span> <span class="s2">&quot;size&quot;</span><span class="p">:</span> <span class="s2">&quot;8&quot;</span><span class="p">})</span>
+<span class="n">gr_imp</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="s2">&quot;Z&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Z: Assignment&quot;</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="s2">&quot;0,0!&quot;</span><span class="p">)</span>
+<span class="n">gr_imp</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;S: Treatment&quot;</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="s2">&quot;1,0!&quot;</span><span class="p">)</span>
+<span class="n">gr_imp</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="s2">&quot;Y&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Y: Outcome&quot;</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="s2">&quot;2,0!&quot;</span><span class="p">)</span>
+<span class="n">gr_imp</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="s2">&quot;U&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;U: Confounder&quot;</span><span class="p">)</span>
+<span class="n">gr_imp</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="s2">&quot;Z&quot;</span><span class="p">,</span> <span class="s2">&quot;S&quot;</span><span class="p">)</span>
+<span class="n">gr_imp</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="s2">&quot;Y&quot;</span><span class="p">)</span>
+<span class="n">gr_imp</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="s2">&quot;U&quot;</span><span class="p">,</span> <span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="n">constraint</span><span class="o">=</span><span class="s2">&quot;false&quot;</span><span class="p">)</span>
+<span class="n">gr_imp</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="s2">&quot;U&quot;</span><span class="p">,</span> <span class="s2">&quot;Y&quot;</span><span class="p">,</span> <span class="n">constraint</span><span class="o">=</span><span class="s2">&quot;false&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Perfect compliance</span>
+<span class="n">gr_per</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/da8bddf0358634b6cfd8bc5088a9282283b12567fdc57fc830a501a694878747.svg" src="_images/da8bddf0358634b6cfd8bc5088a9282283b12567fdc57fc830a501a694878747.svg" />
+</div>
+</div>
+<p>Under perfect compliance, we expect <span class="math notranslate nohighlight">\(P(Z) = P(S)\)</span>. When compliance is imperfect, however, <span class="math notranslate nohighlight">\(P(Z) \neq P(S)\)</span>, as some individuals may not adhere to their assigned treatment. This discrepancy complicates causal inference, especially when unobserved variables (<span class="math notranslate nohighlight">\(U\)</span>) influence both the treatment received (<span class="math notranslate nohighlight">\(S\)</span>) and the outcome (<span class="math notranslate nohighlight">\(Y\)</span>), creating confounding.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Imperfect compliance</span>
+<span class="n">gr_imp</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/57d246c86ffe178557e8810d6c13ddc1c358d4d5c086b0cf2e7ab8440fa96e08.svg" src="_images/57d246c86ffe178557e8810d6c13ddc1c358d4d5c086b0cf2e7ab8440fa96e08.svg" />
+</div>
+</div>
+<p>To address imperfect compliance, we can employ several methods:</p>
+<ul class="simple">
+<li><p><strong>Local Average Treatment Effect (LATE)</strong>: Uses instrumental variable techniques to estimate causal effects among compliers (we will cover this later).</p></li>
+<li><p><strong>Bounding Methods</strong>: Establishes bounds on treatment effects when compliance is imperfect.</p></li>
+<li><p><strong>Redefining the Target Parameter</strong>: Adjusts the focus of the analysis to reflect the realities of non-compliance.</p></li>
+</ul>
+<p>For now, we will focus on redefining our parameter of interest from ATE to <strong>Intention to Treat (ITT)</strong>, which measures the causal effect of <strong>being assigned</strong> to treatment, regardless of whether the treatment was actually received.</p>
+<p>Let’s revisit the example we previously discussed regarding a job training program (<span class="math notranslate nohighlight">\(S\)</span>) and its impact on participants’ wages (<span class="math notranslate nohighlight">\(Y\)</span>). Initially, we observed that <strong>~59% of the individuals</strong> received the job training program, while <strong>~41% of the individuals did not</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">treat</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>proportion</th>
+    </tr>
+    <tr>
+      <th>treat</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>58.864266</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>41.135734</td>
+    </tr>
+  </tbody>
+</table>
+</div><br><label><b>dtype:</b> float64</label></div></div>
+</div>
+<p>Imagine a twist in the narrative: <strong>It is later revealed that the original design of the study assigned 50% of the sample to the treatment group.</strong></p>
+<p>However, we have recently observed that not all participants adhered to their assigned groups.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">desired_treatment_proportion</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">n_treatment_assigned</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">n</span> <span class="o">*</span> <span class="n">desired_treatment_proportion</span><span class="p">)</span>
+<span class="n">assignment</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">assignment</span><span class="p">[:</span><span class="n">n_treatment_assigned</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">assignment</span><span class="p">)</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;assign&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">assignment</span>
+<span class="n">data</span><span class="p">[[</span><span class="s1">&#39;assign&#39;</span><span class="p">,</span> <span class="s1">&#39;treat&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>count</th>
+    </tr>
+    <tr>
+      <th>assign</th>
+      <th>treat</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0.0</th>
+      <th>0</th>
+      <td>225</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">1.0</th>
+      <th>0</th>
+      <td>200</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>161</td>
+    </tr>
+    <tr>
+      <th>0.0</th>
+      <th>1</th>
+      <td>136</td>
+    </tr>
+  </tbody>
+</table>
+</div><br><label><b>dtype:</b> int64</label></div></div>
+</div>
+<p>This discrepancy raises significant questions about the validity of the study’s findings and complicates the interpretation of the treatment’s effectiveness! <strong>What could we do</strong>?</p>
+<p><strong>Why would non-compliance occur?</strong>  More importantly, should we reconsider our target parameter? <strong>Why?</strong></p>
+<p>Perhaps, it might be more appropiate to calculate the ITT for the job training program, where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(S_A = 1\)</span> if an individual is assigned to receive the job training program (told to participate).</p></li>
+<li><p><span class="math notranslate nohighlight">\(S_A = 0\)</span> if an individual is not assigned to receive the training.</p></li>
+<li><p><span class="math notranslate nohighlight">\(Y(S_A, U)\)</span> represents the outcome variable, which in this case is the wage of participants one month after the assignment.</p></li>
+<li><p><span class="math notranslate nohighlight">\(U\)</span> captures all other factors that influence wages.</p></li>
+</ul>
+<p>The ITT is defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+ITT = \mathbb{E}[Y(S_A = 1, U)] - \mathbb{E}[Y(S_A = 0, U)].
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean_itt_treated</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;assign&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">][</span><span class="s1">&#39;re78&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">mean_itt_control</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;assign&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">][</span><span class="s1">&#39;re78&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">itt</span> <span class="o">=</span> <span class="n">mean_itt_treated</span> <span class="o">-</span> <span class="n">mean_itt_control</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Estimated ITT: </span><span class="si">{</span><span class="n">itt</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Estimated ITT: 833.30
+</pre></div>
+</div>
+</div>
+</div>
+<p>This is the average effect <strong>of being assigned</strong> to the job training program on wages, while holding constant all other determinants captured by <span class="math notranslate nohighlight">\(U\)</span>. Would this approach be useful for policymakers assessing the program’s potential benefits in a real-world setting?</p>
+</section>
+<section id="sutva-violation">
+<h2>3.2. SUTVA violation<a class="headerlink" href="#sutva-violation" title="Link to this heading">#</a></h2>
+<p>SUTVA implies two conditions:</p>
+<ol class="arabic simple">
+<li><p>No interference between units.-  The treatment of one unit doesn’t affect another unit.</p></li>
+<li><p>Consistency.- Each unit has a single potential outcome under each treatment condition.</p></li>
+</ol>
+<p>SUTVA violation occurs when the no interference assumption does not hold. This is known as a <strong>spillover</strong> effect, which means the</p>
+<blockquote>
+<div><p>treatment effect <em>spills over</em> to others who weren’t treated.</p>
+</div></blockquote>
+<p>Spillovers make it hard to estimate the <em>pure effect</em> of treatment because the control group may still be affected by the treatment due to interactions with treated units.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  T_1         T_2        T_3        T_4
+   |           |          |          |
+ Y_1 &lt;-----  Y_2 &lt;----- Y_3 ------ Y_4
+</pre></div>
+</div>
+<p>Consider the graph above, where we have different treatment groups represented by <span class="math notranslate nohighlight">\(T_1, T_2, T_3, T_4\)</span> and their corresponding outcomes represented by <span class="math notranslate nohighlight">\(Y_1, Y_2, Y_3, Y_4\)</span>.</p>
+<ul class="simple">
+<li><p>Notice the arrows in the graph indicate that the outcomes are interconnected in a way that violates the SUTVA assumption. This means we cannot cleanly separate treated and untreated outcomes, which complicates our estimates. <strong>How do we handle spillovers?</strong></p></li>
+</ul>
+<p>Suppose we are interested in understanding the impact of tutoring programs. Say we randomly assign some students to receive tutoring (the treatment). <strong>Would we be able to identify  ATE?</strong></p>
+<p>This experiment would presumably fail! Why? Spillover effects are highly likely as knowledge gained by treated students could positively influence untreated peers due to peer interactions.</p>
+<p><strong>How could we manage spillover effects?</strong> We can randomize entire classrooms or schools to either receive the tutoring intervention or not. Meaning, given that <span class="math notranslate nohighlight">\(S_G \perp\!\!\!\perp U \)</span>, where <span class="math notranslate nohighlight">\(S_G\)</span> denotes the group-level treatment and <span class="math notranslate nohighlight">\( U\)</span> represents unobserved confounders, we have:</p>
+<div class="math notranslate nohighlight">
+\[
+   \text{ATE}_G = \mathbb{E}[Y_G(S_G = 1, U_G) | S_G = 1] - \mathbb{E}[Y_G(S_G = 0, U_G) | S_G = 0],
+   \]</div>
+<p>where <span class="math notranslate nohighlight">\(Y_G\)</span> is the school-level outcome.</p>
+<p>This approach enables us to estimate the average treatment effect (ATE) at the group level by comparing outcomes between treated and untreated groups, capturing both the treatment and spillover effects.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">n_schools</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">students_per_school</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">school_ids</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_schools</span><span class="p">)</span>
+<span class="n">treatment_assignment</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_schools</span><span class="p">)</span>
+<span class="n">num_treated</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
+<span class="n">treated_schools</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">school_ids</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">num_treated</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">treatment_assignment</span><span class="p">[</span><span class="n">treated_schools</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">school_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;school_id&#39;</span><span class="p">:</span> <span class="n">school_ids</span><span class="p">,</span>
+    <span class="s1">&#39;treat&#39;</span><span class="p">:</span> <span class="n">treatment_assignment</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">simulate_group_outcome</span><span class="p">(</span><span class="n">treatment</span><span class="p">):</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+    <span class="n">base_outcome</span> <span class="o">=</span> <span class="mi">50</span>  <span class="c1"># Base score</span>
+    <span class="k">return</span> <span class="n">base_outcome</span> <span class="o">+</span> <span class="n">treatment</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>  <span class="c1"># Adding treatment effect</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">school_data</span><span class="p">[</span><span class="s1">&#39;mean_outcome&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">school_data</span><span class="p">[</span><span class="s1">&#39;treat&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">simulate_group_outcome</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">school_data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-4abdb633-350e-4cbc-9266-496297a966f9" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>school_id</th>
+      <th>treat</th>
+      <th>mean_outcome</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>1.0</td>
+      <td>62.483571</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>1.0</td>
+      <td>62.483571</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>0.0</td>
+      <td>50.000000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>1.0</td>
+      <td>62.483571</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>1.0</td>
+      <td>62.483571</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>5</td>
+      <td>1.0</td>
+      <td>62.483571</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>6</td>
+      <td>0.0</td>
+      <td>50.000000</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>7</td>
+      <td>0.0</td>
+      <td>50.000000</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>8</td>
+      <td>1.0</td>
+      <td>62.483571</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>9</td>
+      <td>0.0</td>
+      <td>50.000000</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>10</td>
+      <td>0.0</td>
+      <td>50.000000</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>11</td>
+      <td>1.0</td>
+      <td>62.483571</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>12</td>
+      <td>1.0</td>
+      <td>62.483571</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>13</td>
+      <td>1.0</td>
+      <td>62.483571</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>14</td>
+      <td>0.0</td>
+      <td>50.000000</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>15</td>
+      <td>1.0</td>
+      <td>62.483571</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>16</td>
+      <td>0.0</td>
+      <td>50.000000</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>17</td>
+      <td>1.0</td>
+      <td>62.483571</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>18</td>
+      <td>1.0</td>
+      <td>62.483571</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>19</td>
+      <td>1.0</td>
+      <td>62.483571</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-4abdb633-350e-4cbc-9266-496297a966f9')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-4abdb633-350e-4cbc-9266-496297a966f9 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-4abdb633-350e-4cbc-9266-496297a966f9');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-14da4895-ff2d-4ff7-bf34-b4f710a9c280">
+  <button class="colab-df-quickchart" onclick="quickchart('df-14da4895-ff2d-4ff7-bf34-b4f710a9c280')"
+            title="Suggest charts"
+            style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-14da4895-ff2d-4ff7-bf34-b4f710a9c280 button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+
+  <div id="id_f5470412-747d-4d31-a7b7-1dfb212991b1">
+    <style>
+      .colab-df-generate {
+        background-color: #E8F0FE;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: none;
+        fill: #1967D2;
+        height: 32px;
+        padding: 0 0 0 0;
+        width: 32px;
+      }
+
+      .colab-df-generate:hover {
+        background-color: #E2EBFA;
+        box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+        fill: #174EA6;
+      }
+
+      [theme=dark] .colab-df-generate {
+        background-color: #3B4455;
+        fill: #D2E3FC;
+      }
+
+      [theme=dark] .colab-df-generate:hover {
+        background-color: #434B5C;
+        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+        fill: #FFFFFF;
+      }
+    </style>
+    <button class="colab-df-generate" onclick="generateWithVariable('school_data')"
+            title="Generate code using this dataframe."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M7,19H8.4L18.45,9,17,7.55,7,17.6ZM5,21V16.75L18.45,3.32a2,2,0,0,1,2.83,0l1.4,1.43a1.91,1.91,0,0,1,.58,1.4,1.91,1.91,0,0,1-.58,1.4L9.25,21ZM18.45,9,17,7.55Zm-12,3A5.31,5.31,0,0,0,4.9,8.1,5.31,5.31,0,0,0,1,6.5,5.31,5.31,0,0,0,4.9,4.9,5.31,5.31,0,0,0,6.5,1,5.31,5.31,0,0,0,8.1,4.9,5.31,5.31,0,0,0,12,6.5,5.46,5.46,0,0,0,6.5,12Z"/>
+  </svg>
+    </button>
+    <script>
+      (() => {
+      const buttonEl =
+        document.querySelector('#id_f5470412-747d-4d31-a7b7-1dfb212991b1 button.colab-df-generate');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      buttonEl.onclick = () => {
+        google.colab.notebook.generateWithVariable('school_data');
+      }
+      })();
+    </script>
+  </div>
+
+    </div>
+  </div>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean_ate_treated_g</span> <span class="o">=</span> <span class="n">school_data</span><span class="p">[</span><span class="n">school_data</span><span class="p">[</span><span class="s1">&#39;treat&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">][</span><span class="s1">&#39;mean_outcome&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">mean_ate_control_g</span> <span class="o">=</span> <span class="n">school_data</span><span class="p">[</span><span class="n">school_data</span><span class="p">[</span><span class="s1">&#39;treat&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">][</span><span class="s1">&#39;mean_outcome&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">ate_g</span> <span class="o">=</span> <span class="n">mean_ate_treated_g</span> <span class="o">-</span> <span class="n">mean_ate_control_g</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Estimated ATE_g: </span><span class="si">{</span><span class="n">ate_g</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Estimated ATE_g: 12.48
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notice the contrast when assigning treatment at the individual level, where we estimate the ATE based on the differences in outcomes between individuals assigned to treatment and control.</p>
+</section>
+<section id="rcts-the-gold-standard-a-side-note-on-their-limitations">
+<h2>4. RCTs: The Gold Standard? A Side Note on Their Limitations<a class="headerlink" href="#rcts-the-gold-standard-a-side-note-on-their-limitations" title="Link to this heading">#</a></h2>
+<p>RCTs are often seen as the gold standard in research due to their high internal validity. However, they have significant limitations:</p>
+<ul class="simple">
+<li><p>Ethical Concerns</p></li>
+<li><p>Limited Generalizability</p></li>
+<li><p>Attrition Bias</p></li>
+<li><p>Variability in Implementation</p></li>
+<li><p>Sample Size Issues</p></li>
+<li><p>Cost and Time Constraints</p></li>
+<li><p>Hawthorne Effect</p></li>
+</ul>
+<p>A key example is the debate over Miguel and Kremer’s (2004) deworming study (reviews in class), which demonstrated strong effects on worm infections and school attendance.</p>
+<p>Critics have questioned the validity of Miguel and Kremer’s (2004) findings, citing the Hawthorne effect, where participants’ behavior may have been influenced simply by their awareness of being observed.</p>
+</section>
+</section>
+<section id="recap-on-sampling-distributions-and-the-central-limit-theorem-clt-on-python-help-for-homework">
+<h1>5. Recap on sampling distributions and the Central Limit Theorem (CLT) on Python – HELP FOR HOMEWORK!<a class="headerlink" href="#recap-on-sampling-distributions-and-the-central-limit-theorem-clt-on-python-help-for-homework" title="Link to this heading">#</a></h1>
+<p>When we want to sample from a <strong>uniform distribution</strong>, we’re interested in generating random values that have an equal likelihood of falling anywhere within a specified interval. This can be accomplished using the NumPy library in Python.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># For reproducibility</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To draw samples from a uniform distribution, we can use the following function:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Parameters</strong>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">low</span></code>: The lower bound of the interval (inclusive).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">high</span></code>: The upper bound of the interval (exclusive).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">size</span></code>: This parameter specifies the shape of the output array.</p></li>
+</ul>
+<p>Note that samples are drawn from the half-open interval: $<span class="math notranslate nohighlight">\([\text{low}, \text{high}).\)</span>$</p>
+<p>Say we want to generate samples uniformly distributed over <span class="math notranslate nohighlight">\([-1, 1]\)</span>. To include 1 in the upper bound, we can add a small value, called <strong>epsilon</strong>, which is the smallest representable positive number such that (1 + \text{epsilon}) is greater than <span class="math notranslate nohighlight">\(1\)</span>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">finfo</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">eps</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Lastly, the <code class="docutils literal notranslate"><span class="pre">size=(num_samples,</span> <span class="pre">n)</span></code> parameter can be a tuple to define the shape of the generated array.</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">num_samples</span></code></strong>: This represents the number of independent samples or trials we want to generate.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">n</span></code></strong>: This is the number of random values (the sample size) in each trial.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate samples</span>
+<span class="n">num_samples</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span>
+<span class="n">samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">finfo</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">eps</span><span class="p">,</span> <span class="p">(</span><span class="n">num_samples</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">samples</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-0.25091976,  0.90142861,  0.46398788,  0.19731697, -0.68796272])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute sample means</span>
+<span class="n">sample_means</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sample_means</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 0.1247702  -0.04422325 -0.11315957 -0.30576906 -0.25363071 -0.14482033
+  0.10305526 -0.0659725  -0.27211838 -0.10965355]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Proportion of the sample means lie within the range [-0.1,0.1]</span>
+<span class="n">proportion</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">sample_means</span> <span class="o">&gt;=</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">sample_means</span> <span class="o">&lt;=</span> <span class="mf">0.1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Proportion of the sample means lie within the range [-0.1,0.1]:&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">proportion</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Proportion of the sample means lie within the range [-0.1,0.1]: {0.2}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;whitegrid&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;deep&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">sample_means</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Value&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/87e113e01c2380cd3ece4ee38f5563d7ca9dc5b10ebd42eed6f126079159b924.png" src="_images/87e113e01c2380cd3ece4ee38f5563d7ca9dc5b10ebd42eed6f126079159b924.png" />
+</div>
+</div>
+</section>
+<section id="path-forward">
+<h1>5. Path Forward<a class="headerlink" href="#path-forward" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>Advanced causal inference methods, e.g., regression, natural experiments, etc.</p></li>
+</ul>
+<hr class="docutils" />
+<p><strong>References:</strong></p>
+<ul class="simple">
+<li><p>Lalonde, R. J. (1986). <em>Evaluating the Econometric Evaluations of Training Programs with Experimental Data.</em> American Economic Review, 76(4), 604-620.</p></li>
+<li><p>Athey, S., Chetty, R., &amp; Imbens, G. W. (2020). Combining Experimental and Observational Data to Estimate Treatment Effects on Long-Term Outcomes. [<a class="reference external" href="https://arxiv.org/pdf/2006.09676">https://arxiv.org/pdf/2006.09676</a>]</p></li>
+<li><p>Miguel, Edward and Michael Kremer. 2004. “Worms: Identifying Impacts on Education and Health in the Presence of Treatment Externalities.” Econometrica 72 (1): 159-217. <a class="reference external" href="https://www.jstor.org/stable/3598853">https://www.jstor.org/stable/3598853</a>.</p></li>
+</ul>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="4_Statistics_and_Experiments.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">0. Recap from last class</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="6_Regression_1-2.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><a id='toc1_'></a><span class="xref myst">Descriptive Regression</span></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">0. Recap From Last Class</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-for-today">1. Goals For Today</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-causal-effects-from-sample-data">2. Estimating Causal Effects from Sample Data</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#causal-model-for-the-impact-of-the-job-training-program-on-wages">2.1) Causal Model for the Impact of the Job Training Program on Wages</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hypothesis-testing-for-the-ate">Hypothesis Testing for the ATE</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-our-assumptions">2.4) Testing our Assumptions</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#s-perp-perp-u"><span class="math notranslate nohighlight">\(S \perp\!\!\!\perp U\)</span></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#relaxing-assumptions-imperfect-compliance-and-sutva-violations">3. Relaxing Assumptions: Imperfect Compliance and SUTVA Violations</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imperfect-compliance">3.1. Imperfect Compliance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sutva-violation">3.2. SUTVA violation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcts-the-gold-standard-a-side-note-on-their-limitations">4. RCTs: The Gold Standard? A Side Note on Their Limitations</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#recap-on-sampling-distributions-and-the-central-limit-theorem-clt-on-python-help-for-homework">5. Recap on sampling distributions and the Central Limit Theorem (CLT) on Python – HELP FOR HOMEWORK!</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#path-forward">5. Path Forward</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
