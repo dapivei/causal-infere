@@ -1,0 +1,2239 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>49. $$ \begin{array}{c} \textbf{DIFFERENCE-IN-DIFFERENCES}\ \\ \textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \ \textit{Center for Data Science, New York University} \\ \textit{December 6, 2024} \end{array} $$ &#8212; Causal Inference for Data Science</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'sections/13_Difference_in_Differences';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="55. Final Course Review" href="14_Review.html" />
+    <link rel="prev" title="41. $$ \begin{array}{c} \textbf{IV (Conitnued) / Intro to RDD}\ \textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \ \textit{Center for Data Science, New York University} \\ \textit{November 15, 2024} \end{array} $$" href="12_RDD.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Causal Inference for Data Science - Home"/>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="Causal Inference for Data Science - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to Causal Inference
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="1_Introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_Probability_1-2.html">2. Probability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_Probability_Statistics.html">3. Probability, All Causes Model and Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_Statistics_and_Experiments.html">4. Hypothesis testing and Introduction to Experiments</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="5_Experiments.html">6. Experiments (Cont.)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_Regression_1-2.html">7. $$
+\begin{array}{c}
+\textbf{INTRODUCTION TO CAUSAL INFERENCE}\\
+\textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \
+\textit{Center for Data Science, New York University} \\
+\end{array}
+$$</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="7_Natural_Experiments.html">13. $$
+\begin{array}{c}
+\textbf{INTRODUCTION TO CAUSAL INFERENCE}\\
+\textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \
+\textit{Center for Data Science, New York University} \\
+\textit{October 18, 2024}
+\end{array}
+$$</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="8_ML_and_Causality.html">19. $$
+\begin{array}{c}
+\textbf{INTRODUCTION TO CAUSAL INFERENCE}\\
+\textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \
+\textit{Center for Data Science, New York University} \\
+\textit{October 25, 2024}
+\end{array}
+$$</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="9_Matching.html">23. $$
+\begin{array}{c}
+\textbf{INTRODUCTION TO CAUSAL INFERENCE}\\
+\textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \
+\textit{Center for Data Science, New York University} \\
+\textit{Lab 9 Control Variables}
+\end{array}
+$$</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="10_Instruments.html">28. $$
+\begin{array}{c}
+\textbf{INSTRUMENTAL VARIABLES}\
+\text(PART , I)\
+\textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \
+\textit{Center for Data Science, New York University} \\
+\textit{November 8, 2024}
+\end{array}
+$$</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="11_Instruments_RDD.html">34. $$
+\begin{array}{c}
+\textbf{IV (Conitnued) / Intro to RDD}\
+\textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \
+\textit{Center for Data Science, New York University} \\
+\textit{November 15, 2024}
+\end{array}
+$$</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="12_RDD.html">41. $$
+\begin{array}{c}
+\textbf{IV (Conitnued) / Intro to RDD}\
+\textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \
+\textit{Center for Data Science, New York University} \\
+\textit{November 15, 2024}
+\end{array}
+$$</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">49. $$
+\begin{array}{c}
+\textbf{DIFFERENCE-IN-DIFFERENCES}\
+\\
+\textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \
+\textit{Center for Data Science, New York University} \\
+\textit{December 6, 2024}
+\end{array}
+$$</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="14_Review.html">55. Final Course Review</a></li>
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fsections/13_Difference_in_Differences.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/sections/13_Difference_in_Differences.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>$$
+\begin{array}{c}
+\textbf{DIFFERENCE-IN-DIFFERENCES}\
+\\
+\textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \
+\textit{Center for Data Science, New York University} \\
+\textit{December 6, 2024}
+\end{array}
+$$</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">49. $$
+\begin{array}{c}
+\textbf{DIFFERENCE-IN-DIFFERENCES}\
+\\
+\textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \
+\textit{Center for Data Science, New York University} \\
+\textit{December 6, 2024}
+\end{array}
+$$</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#recap-from-last-class">50. 0. Recap From Last Class</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-for-today">51. 1. Goals For Today</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#difference-in-differences">52. 2. Difference-in-Differences</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#consider-a-2x2-did">53. Consider a “2x2” DiD.</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assumptions">53.1. Assumptions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#identifying-the-average-treatment-on-the-treated-att">53.2. Identifying the Average Treatment on the Treated (ATT)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#research-question-does-raising-the-minimum-wage-help-workers-by-improving-their-earnings-or-does-it-inadvertently-harm-them-by-reducing-job-opportunities">53.3. Research Question: Does raising the minimum wage help workers by improving their earnings, or does it inadvertently harm them by reducing job opportunities?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-setup">53.4. Model Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-challenge">53.5. The challenge</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">53.6. Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">53.7. Solution?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-estimation">53.8. Regression estimation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#does-the-parallel-trends-hold">53.9. Does the Parallel Trends Hold?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fallback">53.9.1. Fallback</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-varying-treatment-effects">53.10. Time Varying Treatment Effects</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recall-standard-errors-of-linear-regression">53.11. (Recall) Standard Errors of Linear Regression</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#robust-standard-errors">53.11.1. Robust Standard Errors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cluster-robust-standard-errors">53.11.2. Cluster-Robust Standard Errors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#permutation-test">53.11.3. Permutation Test</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#path-forward">54. 3. Path Forward</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div align="center">
+<p><a class="reference external" href="https://colab.research.google.com/github/dapivei/causal-infere/blob/main/sections/13_Difference_in_Differences.ipynb"><img alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+</div>
+<section id="begin-array-c-textbf-difference-in-differences-textbf-daniela-pinto-veizaga-xiang-pan-and-xiang-gao-textit-center-for-data-science-new-york-university-textit-december-6-2024-end-array">
+<h1><span class="section-number">49. </span>$$
+\begin{array}{c}
+\textbf{DIFFERENCE-IN-DIFFERENCES}\
+\\
+\textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \
+\textit{Center for Data Science, New York University} \\
+\textit{December 6, 2024}
+\end{array}
+$$<a class="headerlink" href="#begin-array-c-textbf-difference-in-differences-textbf-daniela-pinto-veizaga-xiang-pan-and-xiang-gao-textit-center-for-data-science-new-york-university-textit-december-6-2024-end-array" title="Link to this heading">#</a></h1>
+</section>
+<section id="recap-from-last-class">
+<h1><span class="section-number">50. </span>0. Recap From Last Class<a class="headerlink" href="#recap-from-last-class" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>Regression Discontinuity, Instrumental Variables</p></li>
+</ul>
+</section>
+<section id="goals-for-today">
+<h1><span class="section-number">51. </span>1. Goals For Today<a class="headerlink" href="#goals-for-today" title="Link to this heading">#</a></h1>
+<hr class="docutils" />
+<ol class="arabic simple">
+<li><p>Understand the intuition behind Differences in Differences (DiD).</p></li>
+<li><p>Implement DiD analysis using Python.</p></li>
+<li><p>Visualize the results and interpret the coefficients.</p></li>
+</ol>
+</section>
+<section id="difference-in-differences">
+<h1><span class="section-number">52. </span>2. Difference-in-Differences<a class="headerlink" href="#difference-in-differences" title="Link to this heading">#</a></h1>
+</section>
+<section id="consider-a-2x2-did">
+<h1><span class="section-number">53. </span>Consider a “2x2” DiD.<a class="headerlink" href="#consider-a-2x2-did" title="Link to this heading">#</a></h1>
+<p>Let the outcomes $ Y_{g,t}(S, U) $ represent the observed values of an outcome variable, where:</p>
+<p>$$\begin{aligned}
+g=\left{\begin{array}{l}
+1 \text { if exposed to treatment $S$} \
+0 \text { if not }
+\end{array}\right., ,
+t =\left{\begin{array}{l}
+1 \text { post-treatment period} \
+0 \text { pre-treatment period  }
+\end{array}\right., ,
+S =\left{\begin{array}{l}
+1 \text { for treatment }\
+0 \text { no treatment }
+\end{array}\right.
+\end{aligned}$$</p>
+<p>Difference-in-Differences (DiD) is a quasi-experimental design used to estimate causal effects of policy changes $S$ on an outcome of interest $ Y_{g,t}(S, U)$ by</p>
+<blockquote>
+<div><p>Comparing <strong>changes over $t$</strong> between a <strong>$g=1$</strong>  and a <strong>$g=0$</strong>.</p>
+</div></blockquote>
+<p>This 2x2 DiD is limited to two periods and two groups. Extending $t$ to include multiple time periods would enable a more comprehensive evaluation of parallel trends.</p>
+<section id="assumptions">
+<h2><span class="section-number">53.1. </span>Assumptions<a class="headerlink" href="#assumptions" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Parallel Trends</strong>
+In the absence of treatment $S=0$, both groups would have followed similar trends over time.
+$$\mathbb{E}[Y_{1,1}(S =0,U)−Y_{1,0}(S =0,U)]
+=\mathbb{E}[Y_{0,1}(S =0,U)−Y_{0,0}(S =0,U)]$$</p></li>
+</ul>
+<p>Ensuring that any post-treatment divergence between the groups can be causally attributed to the intervention.</p>
+<ul class="simple">
+<li><p><strong>No Spillover Effects</strong>: Treatment in one group must not influence outcomes in the other group.</p></li>
+</ul>
+</section>
+<section id="identifying-the-average-treatment-on-the-treated-att">
+<h2><span class="section-number">53.2. </span>Identifying the Average Treatment on the Treated (ATT)<a class="headerlink" href="#identifying-the-average-treatment-on-the-treated-att" title="Link to this heading">#</a></h2>
+<p>There are two equivalent ways to estimate the ATT under the parallel trends assumption:</p>
+<ol class="arabic simple">
+<li><p><strong>Difference in Means (Naïve DiD)</strong>.
+Comparing the <strong>change in outcomes for the treated group</strong> against the <strong>change for the control group</strong>:
+$$\begin{aligned}
+DiD&amp;=\mathbb{E}[Y_{1,1}(S =1,U)]-\mathbb{E}[Y_{1,0}(S =0,U)]-
+(\mathbb{E}[Y_{0,1}(S =0,U)]-\mathbb{E}[Y_{0,0}(S =0,U)])
+\end{aligned}$$
+where all terms are <strong>observable</strong>, making it implementable using sample means. <strong>Recall that under the parallel trends assumption</strong>,
+$$DiD=ATT.$$
+See class notes for proof.</p></li>
+<li><p><strong>Regression-Based Estimation</strong>.  Capturing differences across groups and time through an interaction term, define:</p></li>
+</ol>
+<p>$$\begin{aligned}
+G_i &amp; =\left{\begin{array}{l}
+1 \text { if unit $i$ has been exposed to $S$ at some point } \
+0 \text { if not }
+\end{array}\right. \
+T_t &amp; =\left{\begin{array}{l}
+1 \text { if after treatment event } \
+0 \text { if before }
+\end{array}\right. \
+D &amp; =\left{\begin{array}{l}
+1 \text { if } T=1 \text { and } G=1 \
+0 \text { if not }
+\end{array}\right.
+\end{aligned}$$
+The regression equation is:</p>
+<blockquote>
+<div><p>$$
+Y_{it} = \beta_0 + \beta_1 \text{T}_t + \beta_2 \text{G}_i + \beta_3 (\text{T}_t \times \text{G}<em>i) + \epsilon</em>{it}
+$$</p>
+</div></blockquote>
+<p>where:</p>
+<ul class="simple">
+<li><p>$Y_{it} $: Outcome variable</p></li>
+<li><p>$ \text{T}_t $: Binary variable for time (0 = pre-treatment, 1 = post-treatment)</p></li>
+<li><p>$ \text{G}_i $: Binary variable for group (0 if not exposed, 1 if exposed to treatment)</p></li>
+<li><p>$ \text{T}_t \times \text{G}_i $: Interaction term, capturing the DiD effect.</p></li>
+</ul>
+<p>## 3. Motivating Case: Do increases in the minimum wage affect employment?</p>
+</section>
+<section id="research-question-does-raising-the-minimum-wage-help-workers-by-improving-their-earnings-or-does-it-inadvertently-harm-them-by-reducing-job-opportunities">
+<h2><span class="section-number">53.3. </span>Research Question: Does raising the minimum wage help workers by improving their earnings, or does it inadvertently harm them by reducing job opportunities?<a class="headerlink" href="#research-question-does-raising-the-minimum-wage-help-workers-by-improving-their-earnings-or-does-it-inadvertently-harm-them-by-reducing-job-opportunities" title="Link to this heading">#</a></h2>
+<p>There is an ambiguity about whether increasing the minimum wage is truly beneficial for workers overall:</p>
+<ul class="simple">
+<li><p>raising the minimum wage directly increases earnings for workers currently earning less than the new minimum, improving their financial stability.</p></li>
+<li><p>economic theory predicts that higher wages increase labor costs, leading employers to cut jobs or reduce hiring to offset these costs.</p></li>
+</ul>
+<p>On 1992 New Jersey increased the minimum wage. <strong>What was the effect of this rise on employment in fast-food restaurants?</strong> <a class="reference external" href="https://davidcard.berkeley.edu/papers/njmin-aer.pdf">Card and Krueger (1994)</a> investigate this!</p>
+</section>
+<section id="model-setup">
+<h2><span class="section-number">53.4. </span>Model Setup<a class="headerlink" href="#model-setup" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Unit of observation $g$: Restaurant, identified by location (NJ, 1 or PA, 0).</p></li>
+<li><p>Time $t$: Period of observation (Pre-1992, 0 or Post-1992, 1).</p></li>
+<li><p>Policy Intervention $S$: Minimum wage increase in NJ.</p></li>
+<li><p>Outcome Variable $Y_{g,t}(S, U)$: Employment rate (e.g., number of employees) at restaurant $g$ at time $t$.</p></li>
+</ul>
+</section>
+<section id="the-challenge">
+<h2><span class="section-number">53.5. </span>The challenge<a class="headerlink" href="#the-challenge" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Do we know the counterfactual? Meaning the employment rate in NJ had it not implemented the minimum wage policy?
+$$ATT = \mathbb{E}[Y_{1,1}(S =1,U)−Y_{1,1}(S =0,U)]$$
+No, the fundamental problem of causal inference means half of the ATT is never directly observed
+$\mathbb{E}[Y1,1(S = 0,U)]$.</p></li>
+<li><p>Can we compare employment in NJ before and after the change?
+$$\mathbb{E}\big[\text{Employ.}|\text{NJ}, \text{Post-92}\big]-\mathbb{E}\big[\text{Employ.}|\text{NJ}, \text{Pre-92}\big]$$</p></li>
+<li><p>No, the pre-post comparison is confounded by a <strong>time trend</strong>.</p></li>
+<li><p>Compare post-increase NJ unemployment to a bordering state who did not increase their minimum wage? Pennsylvania (PA) is a bordering state.
+$$\mathbb{E}\big[\text{Employ.}|\text{NJ}, \text{Post-92}\big]-\mathbb{E}\big[\text{Employ.}|\text{PA}, \text{Post-92}\big]$$</p>
+<ul>
+<li><p>No, the PA/NJ-comparison is confounded by the pre-change differences b/w the states.</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+
+<span class="c1"># Define the data points</span>
+<span class="n">years</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;1991&#39;</span><span class="p">,</span> <span class="s1">&#39;1992&#39;</span><span class="p">,</span> <span class="s1">&#39;1993&#39;</span><span class="p">]</span>
+<span class="n">pa_values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">60</span><span class="p">]</span>
+<span class="n">nj_actual</span> <span class="o">=</span> <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">45</span><span class="p">]</span>
+<span class="n">nj_assumed</span> <span class="o">=</span> <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">pa_values</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;PA (Control Group)&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">nj_actual</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;NJ, real (Treatment Group)&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">years</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">nj_assumed</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;NJ, assumed (Counterfactual)&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>  <span class="c1"># Vertical dashed line at intervention</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">1.02</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="s1">&#39;Intervention&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s1">&#39;1991&#39;</span><span class="p">,</span> <span class="n">pa_values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mf">1.5</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">pa_values</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s1">&#39;1993&#39;</span><span class="p">,</span> <span class="n">pa_values</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="mf">1.5</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">pa_values</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s1">&#39;1991&#39;</span><span class="p">,</span> <span class="n">nj_actual</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">3</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">nj_actual</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s1">&#39;1993&#39;</span><span class="p">,</span> <span class="n">nj_actual</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="mi">3</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">nj_actual</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s1">&#39;1993&#39;</span><span class="p">,</span> <span class="n">nj_assumed</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="mf">1.5</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">nj_assumed</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;1993&#39;</span><span class="p">,</span> <span class="n">nj_actual</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;1993&#39;</span><span class="p">,</span> <span class="n">nj_assumed</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span>
+             <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">arrowstyle</span><span class="o">=</span><span class="s1">&#39;&lt;-&gt;&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">1.5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s1">&#39;1993&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">nj_actual</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">nj_assumed</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="mf">2.2</span><span class="p">,</span> <span class="s1">&#39;ATT&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Employment&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">years</span><span class="p">)),</span> <span class="n">years</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([</span><span class="mi">30</span><span class="p">,</span> <span class="mi">60</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;30&#39;</span><span class="p">,</span> <span class="s1">&#39;60&#39;</span><span class="p">],</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">65</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;right&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;left&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;bottom&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># @title</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># Define the data points</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">years</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;1991&#39;</span><span class="p">,</span> <span class="s1">&#39;1992&#39;</span><span class="p">,</span> <span class="s1">&#39;1993&#39;</span><span class="p">]</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;matplotlib&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="data">
+<h2><span class="section-number">53.6. </span>Data<a class="headerlink" href="#data" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com//DS4PS/PROG-EVAL-III/master/TEXTBOOK/DATA/DID_Example.csv&quot;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Treatment&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-98af57a6-82b0-48c9-ae18-3bf54ef915c2" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ID</th>
+      <th>Chain</th>
+      <th>SouthJ</th>
+      <th>CentralJ</th>
+      <th>NorthJ</th>
+      <th>PA1</th>
+      <th>PA2</th>
+      <th>Shore</th>
+      <th>Group</th>
+      <th>Empl</th>
+      <th>C_Owned</th>
+      <th>Hours_Opening</th>
+      <th>Soda</th>
+      <th>Fries</th>
+      <th>Treatment</th>
+      <th>Time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>46</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>30.0</td>
+      <td>0</td>
+      <td>16.5</td>
+      <td>1.03</td>
+      <td>1.03</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>49</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>6.5</td>
+      <td>0</td>
+      <td>13.0</td>
+      <td>1.01</td>
+      <td>0.90</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>506</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3.0</td>
+      <td>1</td>
+      <td>10.0</td>
+      <td>0.95</td>
+      <td>0.74</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>56</td>
+      <td>4</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>20.0</td>
+      <td>1</td>
+      <td>12.0</td>
+      <td>0.87</td>
+      <td>0.82</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>61</td>
+      <td>4</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>6.0</td>
+      <td>1</td>
+      <td>12.0</td>
+      <td>0.87</td>
+      <td>0.77</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>815</th>
+      <td>423</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>19.0</td>
+      <td>1</td>
+      <td>4.0</td>
+      <td>1.05</td>
+      <td>0.84</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>816</th>
+      <td>424</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>12.0</td>
+      <td>1</td>
+      <td>10.0</td>
+      <td>1.05</td>
+      <td>0.94</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>817</th>
+      <td>426</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>5.0</td>
+      <td>1</td>
+      <td>19.0</td>
+      <td>1.11</td>
+      <td>1.05</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>818</th>
+      <td>427</td>
+      <td>4</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.0</td>
+      <td>0</td>
+      <td>7.0</td>
+      <td>1.11</td>
+      <td>1.09</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>819</th>
+      <td>428</td>
+      <td>4</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>10.0</td>
+      <td>0</td>
+      <td>7.0</td>
+      <td>1.05</td>
+      <td>0.89</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+<p>820 rows × 16 columns</p>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-98af57a6-82b0-48c9-ae18-3bf54ef915c2')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-98af57a6-82b0-48c9-ae18-3bf54ef915c2 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-98af57a6-82b0-48c9-ae18-3bf54ef915c2');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-87fc448a-93f9-4dbc-a4be-29a587c028d7">
+  <button class="colab-df-quickchart" onclick="quickchart('df-87fc448a-93f9-4dbc-a4be-29a587c028d7')"
+            title="Suggest charts"
+            style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-87fc448a-93f9-4dbc-a4be-29a587c028d7 button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+
+  <div id="id_4a5b3fd3-7fa8-4f06-9851-e1c6f82333d7">
+    <style>
+      .colab-df-generate {
+        background-color: #E8F0FE;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: none;
+        fill: #1967D2;
+        height: 32px;
+        padding: 0 0 0 0;
+        width: 32px;
+      }
+
+      .colab-df-generate:hover {
+        background-color: #E2EBFA;
+        box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+        fill: #174EA6;
+      }
+
+      [theme=dark] .colab-df-generate {
+        background-color: #3B4455;
+        fill: #D2E3FC;
+      }
+
+      [theme=dark] .colab-df-generate:hover {
+        background-color: #434B5C;
+        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+        fill: #FFFFFF;
+      }
+    </style>
+    <button class="colab-df-generate" onclick="generateWithVariable('df')"
+            title="Generate code using this dataframe."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M7,19H8.4L18.45,9,17,7.55,7,17.6ZM5,21V16.75L18.45,3.32a2,2,0,0,1,2.83,0l1.4,1.43a1.91,1.91,0,0,1,.58,1.4,1.91,1.91,0,0,1-.58,1.4L9.25,21ZM18.45,9,17,7.55Zm-12,3A5.31,5.31,0,0,0,4.9,8.1,5.31,5.31,0,0,0,1,6.5,5.31,5.31,0,0,0,4.9,4.9,5.31,5.31,0,0,0,6.5,1,5.31,5.31,0,0,0,8.1,4.9,5.31,5.31,0,0,0,12,6.5,5.46,5.46,0,0,0,6.5,12Z"/>
+  </svg>
+    </button>
+    <script>
+      (() => {
+      const buttonEl =
+        document.querySelector('#id_4a5b3fd3-7fa8-4f06-9851-e1c6f82333d7 button.colab-df-generate');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      buttonEl.onclick = () => {
+        google.colab.notebook.generateWithVariable('df');
+      }
+      })();
+    </script>
+  </div>
+
+    </div>
+  </div>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;ID&#39;, &#39;Chain&#39;, &#39;SouthJ&#39;, &#39;CentralJ&#39;, &#39;NorthJ&#39;, &#39;PA1&#39;, &#39;PA2&#39;, &#39;Shore&#39;,
+       &#39;Group&#39;, &#39;Empl&#39;, &#39;C_Owned&#39;, &#39;Hours_Opening&#39;, &#39;Soda&#39;, &#39;Fries&#39;,
+       &#39;Treatment&#39;, &#39;Time&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 820 entries, 0 to 819
+Data columns (total 16 columns):
+ #   Column         Non-Null Count  Dtype  
+---  ------         --------------  -----  
+ 0   ID             820 non-null    int64  
+ 1   Chain          820 non-null    int64  
+ 2   SouthJ         820 non-null    int64  
+ 3   CentralJ       820 non-null    int64  
+ 4   NorthJ         820 non-null    int64  
+ 5   PA1            820 non-null    int64  
+ 6   PA2            820 non-null    int64  
+ 7   Shore          820 non-null    int64  
+ 8   Group          820 non-null    int64  
+ 9   Empl           802 non-null    float64
+ 10  C_Owned        820 non-null    int64  
+ 11  Hours_Opening  820 non-null    float64
+ 12  Soda           790 non-null    float64
+ 13  Fries          775 non-null    float64
+ 14  Treatment      820 non-null    int64  
+ 15  Time           820 non-null    int64  
+dtypes: float64(4), int64(12)
+memory usage: 102.6 KB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Group&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>count</th>
+    </tr>
+    <tr>
+      <th>Group</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>662</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>158</td>
+    </tr>
+  </tbody>
+</table>
+</div><br><label><b>dtype:</b> int64</label></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>count</th>
+    </tr>
+    <tr>
+      <th>Time</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>410</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>410</td>
+    </tr>
+  </tbody>
+</table>
+</div><br><label><b>dtype:</b> int64</label></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Time&#39;</span><span class="p">,</span> <span class="s1">&#39;Group&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Counts&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-868d1197-be5f-4fb9-8114-d705140126e0" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Time</th>
+      <th>Group</th>
+      <th>Counts</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>0</td>
+      <td>79</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0</td>
+      <td>1</td>
+      <td>331</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>0</td>
+      <td>79</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>1</td>
+      <td>331</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-868d1197-be5f-4fb9-8114-d705140126e0')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-868d1197-be5f-4fb9-8114-d705140126e0 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-868d1197-be5f-4fb9-8114-d705140126e0');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-fdb2670c-662f-4f35-936c-0656bd6add1f">
+  <button class="colab-df-quickchart" onclick="quickchart('df-fdb2670c-662f-4f35-936c-0656bd6add1f')"
+            title="Suggest charts"
+            style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-fdb2670c-662f-4f35-936c-0656bd6add1f button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+
+    </div>
+  </div>
+</div></div>
+</div>
+</section>
+<section id="solution">
+<h2><span class="section-number">53.7. </span>Solution?<a class="headerlink" href="#solution" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Compare how the difference in employment before and after 1992 differs b/w NJ and PA?
+$$\text{DiD} = \big(\mathbb{E}\big[\text{Employ.}|\text{NJ}, \text{Post-92}\big]-\mathbb{E}\big[\text{Employ.}|\text{NJ}, \text{Pre-92}\big]\big) - \big(\mathbb{E}\big[\text{Employ.}|\text{PA}, \text{Post-92}\big] - \mathbb{E}\big[\text{Employ.}|\text{PA}, \text{Pre-92}\big]]\big)$$</p>
+<ul>
+<li><p>Assuming that if NJ had not increased its minimum wage, its employment would have evolved the same way as PA’s.</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">summary</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s2">&quot;Group&quot;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s2">&quot;Time&quot;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s2">&quot;Empl&quot;</span><span class="p">)</span>
+<span class="n">nj_diff</span> <span class="o">=</span> <span class="n">summary</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">summary</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">pa_diff</span> <span class="o">=</span> <span class="n">summary</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">summary</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">did_estimate</span> <span class="o">=</span> <span class="n">nj_diff</span> <span class="o">-</span> <span class="n">pa_diff</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Difference-in-Differences Estimate:&quot;</span><span class="p">,</span> <span class="n">did_estimate</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Difference-in-Differences Estimate: 3.3617496258686552
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title</span>
+
+<span class="c1"># Compute group means</span>
+<span class="n">group_means</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Time&#39;</span><span class="p">,</span> <span class="s1">&#39;Group&#39;</span><span class="p">])[</span><span class="s1">&#39;Empl&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+<span class="n">group_0</span> <span class="o">=</span> <span class="n">group_means</span><span class="p">[</span><span class="n">group_means</span><span class="p">[</span><span class="s1">&#39;Group&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">group_1</span> <span class="o">=</span> <span class="n">group_means</span><span class="p">[</span><span class="n">group_means</span><span class="p">[</span><span class="s1">&#39;Group&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="n">pre_treatment_group_0</span> <span class="o">=</span> <span class="n">group_0</span><span class="p">[</span><span class="n">group_0</span><span class="p">[</span><span class="s1">&#39;Time&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">][</span><span class="s1">&#39;Empl&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">pre_treatment_group_1</span> <span class="o">=</span> <span class="n">group_1</span><span class="p">[</span><span class="n">group_1</span><span class="p">[</span><span class="s1">&#39;Time&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">][</span><span class="s1">&#39;Empl&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">trend_diff</span> <span class="o">=</span> <span class="n">pre_treatment_group_1</span> <span class="o">-</span> <span class="n">pre_treatment_group_0</span>
+
+<span class="n">parallel_group_1</span> <span class="o">=</span> <span class="n">group_0</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">parallel_group_1</span><span class="p">[</span><span class="s1">&#39;Empl&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">parallel_group_1</span><span class="p">[</span><span class="s1">&#39;Empl&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">trend_diff</span>
+
+<span class="n">post_treatment_group_1</span> <span class="o">=</span> <span class="n">group_1</span><span class="p">[</span><span class="n">group_1</span><span class="p">[</span><span class="s1">&#39;Time&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mf">0.5</span><span class="p">]</span>
+
+<span class="n">parallel_at_0_5</span> <span class="o">=</span> <span class="p">(</span><span class="n">summary</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">summary</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.3</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">summary</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="n">actual_post_treatment_group_1</span> <span class="o">=</span> <span class="n">post_treatment_group_1</span><span class="p">[</span><span class="n">post_treatment_group_1</span><span class="p">[</span><span class="s1">&#39;Time&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">][</span><span class="s1">&#39;Empl&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">group_0</span><span class="p">[</span><span class="s1">&#39;Time&#39;</span><span class="p">],</span> <span class="n">group_0</span><span class="p">[</span><span class="s1">&#39;Empl&#39;</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">parallel_group_1</span><span class="p">[</span><span class="s1">&#39;Time&#39;</span><span class="p">],</span> <span class="n">parallel_group_1</span><span class="p">[</span><span class="s1">&#39;Empl&#39;</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">post_treatment_group_1</span><span class="p">[</span><span class="s1">&#39;Time&#39;</span><span class="p">],</span> <span class="n">post_treatment_group_1</span><span class="p">[</span><span class="s1">&#39;Empl&#39;</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="n">parallel_at_0_5</span><span class="p">,</span> <span class="n">actual_post_treatment_group_1</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Outcome Over Time by Group&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time (Pre, Post)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Average Employment Rate&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Pre&#39;</span><span class="p">,</span> <span class="s1">&#39;Post&#39;</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">parallel_at_0_5</span> <span class="o">+</span><span class="mf">2.3</span><span class="p">,</span> <span class="s2">&quot;NJ&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">pre_treatment_group_0</span> <span class="o">+</span> <span class="mf">0.1</span><span class="p">,</span> <span class="s2">&quot;PA&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/f459213193ed97653cdda974753d39f562b73e354a28526fb9eac73ca38f24d5.png" src="../_images/f459213193ed97653cdda974753d39f562b73e354a28526fb9eac73ca38f24d5.png" />
+</div>
+</div>
+</section>
+<section id="regression-estimation">
+<h2><span class="section-number">53.8. </span>Regression estimation<a class="headerlink" href="#regression-estimation" title="Link to this heading">#</a></h2>
+<p>As shown above, we could also frame our problme in terms of a regression problem, where:</p>
+<ol class="arabic">
+<li><p><strong>Group variable ($G$)</strong>:<br />
+$$
+G =
+\begin{cases}
+1 &amp; \text{if restaurant is in NJ (treatment group)} \
+0 &amp; \text{if restaurant is in PA (control group)}
+\end{cases}
+$$</p></li>
+<li><p><strong>Time variable ($T$)</strong>:<br />
+$$
+T =
+\begin{cases}
+1 &amp; \text{if after the minimum wage increase in NJ (post-treatment)} \
+0 &amp; \text{if before the minimum wage increase in NJ (pre-treatment)}
+\end{cases}
+$$</p></li>
+<li><p><strong>Interaction term ($D$)</strong>:</p>
+<p>$$
+D = G \times T =
+\begin{cases}
+1 &amp; \text{if the restaurant is in NJ after the wage increase (treated group, post-treatment)} \
+0 &amp; \text{otherwise}
+\end{cases}
+$$</p>
+</li>
+</ol>
+<p>Leading to:
+$$
+Y = \beta_0 + \beta_1 T + \beta_2 G + \beta_3 (T \times G) + \epsilon
+$$</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">statsmodels.formula.api</span> <span class="k">as</span> <span class="nn">smf</span>
+
+<span class="c1"># Run regression</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="s2">&quot;Empl ~ Group + Time + Group*Time&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                   Empl   R-squared:                       0.008
+Model:                            OLS   Adj. R-squared:                  0.004
+Method:                 Least Squares   F-statistic:                     2.122
+Date:                Tue, 03 Dec 2024   Prob (F-statistic):             0.0959
+Time:                        21:27:31   Log-Likelihood:                -2831.4
+No. Observations:                 802   AIC:                             5671.
+Df Residuals:                     798   BIC:                             5690.
+Df Model:                           3                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P&gt;|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept     10.2051      0.938     10.883      0.000       8.365      12.046
+Group         -2.4812      1.044     -2.377      0.018      -4.530      -0.432
+Time          -2.6402      1.330     -1.985      0.048      -5.252      -0.029
+Group:Time     3.3617      1.481      2.270      0.023       0.454       6.269
+==============================================================================
+Omnibus:                      242.796   Durbin-Watson:                   2.006
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):              677.203
+Skew:                           1.524   Prob(JB):                    8.86e-148
+Kurtosis:                       6.313   Cond. No.                         11.3
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Regardless of the method, we find that the minimum wage increase cause NJ fast food branches to increase employment by 3.36.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">formula</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">Empl ~ Group + Treatment +</span>
+<span class="s2">Treatment * Group + C_Owned +</span>
+<span class="s2">Hours_Opening + Soda +</span>
+<span class="s2">         Fries +</span>
+<span class="s2">         C(Chain) +</span>
+<span class="s2">         SouthJ +</span>
+<span class="s2">         CentralJ +</span>
+<span class="s2">         NorthJ +</span>
+<span class="s2">         PA1 +</span>
+<span class="s2">         PA2 +</span>
+<span class="s2">         Shore</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">reg</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="n">formula</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+
+<span class="n">reg</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="simpletable">
+<caption>OLS Regression Results</caption>
+<tr>
+  <th>Dep. Variable:</th>          <td>Empl</td>       <th>  R-squared:         </th> <td>   0.126</td>
+</tr>
+<tr>
+  <th>Model:</th>                   <td>OLS</td>       <th>  Adj. R-squared:    </th> <td>   0.110</td>
+</tr>
+<tr>
+  <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   7.670</td>
+</tr>
+<tr>
+  <th>Date:</th>             <td>Tue, 03 Dec 2024</td> <th>  Prob (F-statistic):</th> <td>2.94e-15</td>
+</tr>
+<tr>
+  <th>Time:</th>                 <td>21:27:31</td>     <th>  Log-Likelihood:    </th> <td> -2608.8</td>
+</tr>
+<tr>
+  <th>No. Observations:</th>      <td>   757</td>      <th>  AIC:               </th> <td>   5248.</td>
+</tr>
+<tr>
+  <th>Df Residuals:</th>          <td>   742</td>      <th>  BIC:               </th> <td>   5317.</td>
+</tr>
+<tr>
+  <th>Df Model:</th>              <td>    14</td>      <th>                     </th>     <td> </td>   
+</tr>
+<tr>
+  <th>Covariance Type:</th>      <td>nonrobust</td>    <th>                     </th>     <td> </td>   
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+         <td></td>            <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>Intercept</th>       <td>   -0.3236</td> <td>    3.414</td> <td>   -0.095</td> <td> 0.925</td> <td>   -7.025</td> <td>    6.378</td>
+</tr>
+<tr>
+  <th>C(Chain)[T.2]</th>   <td>   -0.5951</td> <td>    1.089</td> <td>   -0.546</td> <td> 0.585</td> <td>   -2.733</td> <td>    1.543</td>
+</tr>
+<tr>
+  <th>C(Chain)[T.3]</th>   <td>   -1.7984</td> <td>    0.907</td> <td>   -1.982</td> <td> 0.048</td> <td>   -3.580</td> <td>   -0.017</td>
+</tr>
+<tr>
+  <th>C(Chain)[T.4]</th>   <td>    2.2299</td> <td>    1.055</td> <td>    2.114</td> <td> 0.035</td> <td>    0.160</td> <td>    4.300</td>
+</tr>
+<tr>
+  <th>Group</th>           <td>   -1.7994</td> <td>    1.195</td> <td>   -1.505</td> <td> 0.133</td> <td>   -4.146</td> <td>    0.547</td>
+</tr>
+<tr>
+  <th>Treatment</th>       <td>   -1.3162</td> <td>    1.293</td> <td>   -1.018</td> <td> 0.309</td> <td>   -3.855</td> <td>    1.223</td>
+</tr>
+<tr>
+  <th>Treatment:Group</th> <td>    4.1237</td> <td>    1.414</td> <td>    2.917</td> <td> 0.004</td> <td>    1.348</td> <td>    6.899</td>
+</tr>
+<tr>
+  <th>C_Owned</th>         <td>   -0.1287</td> <td>    0.681</td> <td>   -0.189</td> <td> 0.850</td> <td>   -1.466</td> <td>    1.208</td>
+</tr>
+<tr>
+  <th>Hours_Opening</th>   <td>    0.5499</td> <td>    0.099</td> <td>    5.579</td> <td> 0.000</td> <td>    0.356</td> <td>    0.743</td>
+</tr>
+<tr>
+  <th>Soda</th>            <td>    2.7274</td> <td>    4.260</td> <td>    0.640</td> <td> 0.522</td> <td>   -5.635</td> <td>   11.090</td>
+</tr>
+<tr>
+  <th>Fries</th>           <td>   -0.6461</td> <td>    4.065</td> <td>   -0.159</td> <td> 0.874</td> <td>   -8.627</td> <td>    7.335</td>
+</tr>
+<tr>
+  <th>SouthJ</th>          <td>   -1.7821</td> <td>    0.561</td> <td>   -3.176</td> <td> 0.002</td> <td>   -2.884</td> <td>   -0.681</td>
+</tr>
+<tr>
+  <th>CentralJ</th>        <td>   -0.6918</td> <td>    0.699</td> <td>   -0.989</td> <td> 0.323</td> <td>   -2.065</td> <td>    0.681</td>
+</tr>
+<tr>
+  <th>NorthJ</th>          <td>    0.6744</td> <td>    0.679</td> <td>    0.994</td> <td> 0.321</td> <td>   -0.658</td> <td>    2.007</td>
+</tr>
+<tr>
+  <th>PA1</th>             <td>   -0.4646</td> <td>    1.381</td> <td>   -0.336</td> <td> 0.737</td> <td>   -3.175</td> <td>    2.246</td>
+</tr>
+<tr>
+  <th>PA2</th>             <td>    1.9404</td> <td>    1.380</td> <td>    1.406</td> <td> 0.160</td> <td>   -0.769</td> <td>    4.650</td>
+</tr>
+<tr>
+  <th>Shore</th>           <td>    0.8405</td> <td>    1.047</td> <td>    0.803</td> <td> 0.422</td> <td>   -1.214</td> <td>    2.895</td>
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+  <th>Omnibus:</th>       <td>152.622</td> <th>  Durbin-Watson:     </th> <td>   2.081</td>
+</tr>
+<tr>
+  <th>Prob(Omnibus):</th> <td> 0.000</td>  <th>  Jarque-Bera (JB):  </th> <td> 284.331</td>
+</tr>
+<tr>
+  <th>Skew:</th>          <td> 1.181</td>  <th>  Prob(JB):          </th> <td>1.81e-62</td>
+</tr>
+<tr>
+  <th>Kurtosis:</th>      <td> 4.855</td>  <th>  Cond. No.          </th> <td>1.36e+17</td>
+</tr>
+</table><br/><br/>Notes:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.<br/>[2] The smallest eigenvalue is 7.71e-30. This might indicate that there are<br/>strong multicollinearity problems or that the design matrix is singular.</div></div>
+</div>
+</section>
+<section id="does-the-parallel-trends-hold">
+<h2><span class="section-number">53.9. </span>Does the Parallel Trends Hold?<a class="headerlink" href="#does-the-parallel-trends-hold" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Are the treated and untreated groups fundamentally “similar”?</p></li>
+<li><p>Why did the treated group get the treatment (and why didn’t
+the untreated group)?</p></li>
+<li><p>Was the treatment event anticipated by the treated group?</p></li>
+<li><p>Were there parallel trends in the pre-period?</p></li>
+</ol>
+<section id="fallback">
+<h3><span class="section-number">53.9.1. </span>Fallback<a class="headerlink" href="#fallback" title="Link to this heading">#</a></h3>
+<p>What if the Parallel Trends Assumption Does Not Hold? (We reject the parallel trends assumption)</p>
+<ol class="arabic simple">
+<li><p>matching/synthetic control method (weighted control groups to mimic the treated group)</p></li>
+<li><p>Regression Discontinuity Design (RDD)</p></li>
+<li><p>Instrumental Variables (IV)</p></li>
+</ol>
+</section>
+</section>
+<section id="time-varying-treatment-effects">
+<h2><span class="section-number">53.10. </span>Time Varying Treatment Effects<a class="headerlink" href="#time-varying-treatment-effects" title="Link to this heading">#</a></h2>
+<p>Are the effects varying? Meaning the minimum wage increase on employment varies over time, initially increasing employment but eventually decreasing as firms substitute workers with machines?</p>
+<p>Our model can capture this dynamic with multiple time periods $t$:</p>
+<p>$$
+Y_{g, t} = \sum_{i=-\underline{t}}^{\bar{t}} \beta_i T_i + \gamma G + \sum_{j=0}^{\bar{t}} \alpha_j D_j \
+\alpha_j = A T T_j
+$$</p>
+<ul class="simple">
+<li><p>$\beta_i$ captures general time trends</p></li>
+<li><p>$\gamma$ represents the difference between treated and untreated groups.</p></li>
+<li><p>$\alpha_j$ estimates the time-varying Average Treatment Effects on the Treated (ATTs).</p></li>
+</ul>
+</section>
+<section id="recall-standard-errors-of-linear-regression">
+<h2><span class="section-number">53.11. </span>(Recall) Standard Errors of Linear Regression<a class="headerlink" href="#recall-standard-errors-of-linear-regression" title="Link to this heading">#</a></h2>
+<section id="robust-standard-errors">
+<h3><span class="section-number">53.11.1. </span>Robust Standard Errors<a class="headerlink" href="#robust-standard-errors" title="Link to this heading">#</a></h3>
+<p>$$</p>
+<div class="amsmath math notranslate nohighlight" id="equation-adae88e3-64f1-4983-81df-52376413010d">
+<span class="eqno">(53.1)<a class="headerlink" href="#equation-adae88e3-64f1-4983-81df-52376413010d" title="Permalink to this equation">#</a></span>\[\begin{align}
+V_{\text {robust }}=\left(X^{T} X\right)^{-1} X^{T} \Omega X\left(X^{T} X\right)^{-1},
+\end{align}\]</div>
+<p>$$</p>
+</section>
+<section id="cluster-robust-standard-errors">
+<h3><span class="section-number">53.11.2. </span>Cluster-Robust Standard Errors<a class="headerlink" href="#cluster-robust-standard-errors" title="Link to this heading">#</a></h3>
+<p>Recall: iid residuals are not realistic in most cases, but we can assume the residuals are <strong>clustered</strong> by the group, which means between-group correlation is zero, but within-group correlation is positive. Block diagonal matrix $\Omega$.</p>
+<p>$$</p>
+<div class="amsmath math notranslate nohighlight" id="equation-5a98d1c7-9d8a-40aa-88a4-216731f021b9">
+<span class="eqno">(53.2)<a class="headerlink" href="#equation-5a98d1c7-9d8a-40aa-88a4-216731f021b9" title="Permalink to this equation">#</a></span>\[\begin{align}
+V_{\text {clustered }}=\left(X^{T} X\right)^{-1}\left(\sum_{c=1}^C X_c^{T} \hat{u}_c \hat{u}_c^{T} X_c\right)\left(X^{T} X\right)^{-1}
+\end{align}\]</div>
+<p>$$
+where $\Omega$ is a block diagonal matrix with each block being the covariance matrix of the residuals within each cluster.</p>
+<p>you need to provide the clusters.</p>
+<p>$$</p>
+<div class="amsmath math notranslate nohighlight" id="equation-8af9c6ec-db97-4f8e-acbe-99890e111b08">
+<span class="eqno">(53.3)<a class="headerlink" href="#equation-8af9c6ec-db97-4f8e-acbe-99890e111b08" title="Permalink to this equation">#</a></span>\[\begin{align}
+\operatorname{Cov}\left(Y_{i, g, t}, Y_{i, g, t+1}\right)&gt;0
+\end{align}\]</div>
+<p>$$</p>
+<p>We need to use cluster-robust standard errors to account for the auto-correlation along the time dimension.</p>
+<p>For clustered standard errors to make sense, we need:</p>
+<ul class="simple">
+<li><p>Each cluster is independent of the other clusters</p></li>
+<li><p>A large number of clusters (both treated and untreated)</p></li>
+</ul>
+</section>
+<section id="permutation-test">
+<h3><span class="section-number">53.11.3. </span>Permutation Test<a class="headerlink" href="#permutation-test" title="Link to this heading">#</a></h3>
+</section>
+</section>
+</section>
+<section id="path-forward">
+<h1><span class="section-number">54. </span>3. Path Forward<a class="headerlink" href="#path-forward" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>Recap of methods learned in this class, and wrap up!</p></li>
+</ul>
+<hr class="docutils" />
+<p><strong>References:</strong></p>
+<ul class="simple">
+<li><p>Tutorials:</p>
+<ul>
+<li><p>https://rpubs.com/phle/r_tutorial_difference_in_differences</p></li>
+<li><p>https://bookdown.org/cuborican/RE_STAT/difference-in-differences.html</p></li>
+</ul>
+</li>
+<li><p>Card, David and Alan B. Krueger. 1994. “Minimum Wages
+and Employment: A Case Study of the Fast-Food Industry in
+New Jersey and Pennsylvania.” The American Economic
+Review 84 (4): 772-793.
+https://www.jstor.org/stable/2677856.</p></li>
+<li><p>Sah, Sidharth. Causal Inference: Difference-in-Differences. 2024. PowerPoint presentation.</p></li>
+</ul>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./sections"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="12_RDD.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">41. </span>$$
+\begin{array}{c}
+\textbf{IV (Conitnued) / Intro to RDD}\
+\textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \
+\textit{Center for Data Science, New York University} \\
+\textit{November 15, 2024}
+\end{array}
+$$</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="14_Review.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">55. </span>Final Course Review</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">49. $$
+\begin{array}{c}
+\textbf{DIFFERENCE-IN-DIFFERENCES}\
+\\
+\textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \
+\textit{Center for Data Science, New York University} \\
+\textit{December 6, 2024}
+\end{array}
+$$</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#recap-from-last-class">50. 0. Recap From Last Class</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-for-today">51. 1. Goals For Today</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#difference-in-differences">52. 2. Difference-in-Differences</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#consider-a-2x2-did">53. Consider a “2x2” DiD.</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assumptions">53.1. Assumptions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#identifying-the-average-treatment-on-the-treated-att">53.2. Identifying the Average Treatment on the Treated (ATT)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#research-question-does-raising-the-minimum-wage-help-workers-by-improving-their-earnings-or-does-it-inadvertently-harm-them-by-reducing-job-opportunities">53.3. Research Question: Does raising the minimum wage help workers by improving their earnings, or does it inadvertently harm them by reducing job opportunities?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-setup">53.4. Model Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-challenge">53.5. The challenge</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">53.6. Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">53.7. Solution?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-estimation">53.8. Regression estimation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#does-the-parallel-trends-hold">53.9. Does the Parallel Trends Hold?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fallback">53.9.1. Fallback</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-varying-treatment-effects">53.10. Time Varying Treatment Effects</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recall-standard-errors-of-linear-regression">53.11. (Recall) Standard Errors of Linear Regression</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#robust-standard-errors">53.11.1. Robust Standard Errors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cluster-robust-standard-errors">53.11.2. Cluster-Robust Standard Errors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#permutation-test">53.11.3. Permutation Test</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#path-forward">54. 3. Path Forward</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

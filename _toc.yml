@@ -2,18 +2,20 @@
 
 format: jb-book
 root: intro
+options:
+  numbered: True
 chapters:
-- file: 1_Introduction
-- file: 2_Probability_1-2
-- file: 3_Probability_Statistics
-- file: 4_Statistics_and_Experiments
-- file: 5_Experiments
-- file: 6_Regression_1-2
-- file: 7_Natural_Experiments
-- file: 8_ML_and_Causality.ipynb
-- file: 9_matching.ipynb
-- file: 10_Instruments.ipynb
-- file: 11_Instruments_RDD.ipynb
-- file: 12_RDD.ipynb
-- file: 13_Difference_in_Differences.ipynb
-- file: 14_Review.ipynb
+- file: sections/1_Introduction
+- file: sections/2_Probability_1-2
+- file: sections/3_Probability_Statistics
+- file: sections/4_Statistics_and_Experiments
+- file: sections/5_Experiments
+- file: sections/6_Regression_1-2
+- file: sections/7_Natural_Experiments
+- file: sections/8_ML_and_Causality.ipynb
+- file: sections/9_Matching.ipynb
+- file: sections/10_Instruments.ipynb
+- file: sections/11_Instruments_RDD.ipynb
+- file: sections/12_RDD.ipynb
+- file: sections/13_Difference_in_Differences.ipynb
+- file: sections/14_Review.ipynb
