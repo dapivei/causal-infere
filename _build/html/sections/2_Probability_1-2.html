@@ -60,6 +60,8 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"TeX": {"equationNumbers": {"autoNumber": "AMS"}}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'sections/2_Probability_1-2';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -497,18 +499,20 @@
 </section>
 <section id="function-of-rvs">
 <h2><span class="section-number">2.2. </span>Function of rvs<a class="headerlink" href="#function-of-rvs" title="Link to this heading">#</a></h2>
-<p>\begin{aligned}
+<div class="amsmath math notranslate nohighlight" id="equation-f04c26ef-4e5a-4d2e-97ae-cf5848771ece">
+<span class="eqno">(2.1)<a class="headerlink" href="#equation-f04c26ef-4e5a-4d2e-97ae-cf5848771ece" title="Permalink to this equation">#</a></span>\[\begin{align}
 E[g(X)]=\int_{-\infty}^{\infty} g(x) f(x) d x
-\end{aligned}</p>
+\end{align}\]</div>
 </section>
 <section id="variance">
 <h2><span class="section-number">2.3. </span>Variance<a class="headerlink" href="#variance" title="Link to this heading">#</a></h2>
-<p>\begin{aligned}
-E\left[(X-E[X])^2\right] &amp; =E\left[X^2-2 X E[X]+E[X]^2\right] \
-&amp; =E\left[X^2\right]-E[2 X E[X]]+E[X]^2 \
-&amp; =E\left[X^2\right]-2 E[X] E[X]+E[X]^2 \
+<div class="amsmath math notranslate nohighlight" id="equation-9ff1d870-8165-4611-9631-8f8f47740e8e">
+<span class="eqno">(2.2)<a class="headerlink" href="#equation-9ff1d870-8165-4611-9631-8f8f47740e8e" title="Permalink to this equation">#</a></span>\[\begin{align}
+E\left[(X-E[X])^2\right] &amp; =E\left[X^2-2 X E[X]+E[X]^2\right] \\
+&amp; =E\left[X^2\right]-E[2 X E[X]]+E[X]^2 \\
+&amp; =E\left[X^2\right]-2 E[X] E[X]+E[X]^2 \\
 &amp; =E\left[X^2\right]-E[X]^2
-\end{aligned}</p>
+\end{align}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># kaggle datasets download -d saranpannasuriyaporn/male-female-height-and-weight</span>
@@ -741,8 +745,8 @@ $$</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1.00312747 2.00625494]
- [2.00625494 4.01250989]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1.02814608 2.05629216]
+ [2.05629216 4.11258432]]
 </pre></div>
 </div>
 </div>
@@ -756,7 +760,7 @@ $$</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.98925605 0.        ]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.98168202 0.        ]
  [0.         0.        ]]
 </pre></div>
 </div>
@@ -828,7 +832,7 @@ $$</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0008452459767114
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0066689000585463
 </pre></div>
 </div>
 </div>
@@ -840,7 +844,7 @@ $$</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.009373100409477
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.00695610396887
 </pre></div>
 </div>
 </div>
@@ -852,7 +856,7 @@ $$</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.95409271 1.04759329]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.96517469 1.0481145 ]
 </pre></div>
 </div>
 </div>
@@ -864,7 +868,7 @@ $$</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[3.81637084 4.19037318]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[3.86069877 4.192458  ]
 </pre></div>
 </div>
 </div>
@@ -897,8 +901,8 @@ $$</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1.0394554  2.07891079]
- [2.07891079 4.15782158]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.99368037 1.98736074]
+ [1.98736074 3.97472148]]
 </pre></div>
 </div>
 </div>
@@ -913,9 +917,9 @@ $$</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0384159402263977 4.153663760905591 9.345743462037579
-2.0789107912440397
-9.349901283620067
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9926866885755314 3.9707467543021258 8.934180197179783
+1.9873607378889517
+8.938154918655561
 </pre></div>
 </div>
 </div>
@@ -1005,7 +1009,7 @@ We can represent this situation with a directed acyclic graph (DAG), where:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_169594/2404936834.py:24: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_200876/2404936834.py:24: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
   plt.tight_layout()
 </pre></div>
 </div>

@@ -60,7 +60,8 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"TeX": {"equationNumbers": {"autoNumber": "AMS"}}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'sections/13_Difference_in_Differences';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -2070,8 +2071,8 @@ $$</p>
 <section id="robust-standard-errors">
 <h4><span class="section-number">14.4.11.1. </span>Robust Standard Errors<a class="headerlink" href="#robust-standard-errors" title="Link to this heading">#</a></h4>
 <p>$$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f8a71b01-9b45-46c8-aad6-97940b8a48ee">
-<span class="eqno">(14.1)<a class="headerlink" href="#equation-f8a71b01-9b45-46c8-aad6-97940b8a48ee" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-651ce2fe-85da-484e-9424-86bf72b50532">
+<span class="eqno">(14.1)<a class="headerlink" href="#equation-651ce2fe-85da-484e-9424-86bf72b50532" title="Permalink to this equation">#</a></span>\[\begin{align}
 V_{\text {robust }}=\left(X^{T} X\right)^{-1} X^{T} \Omega X\left(X^{T} X\right)^{-1},
 \end{align}\]</div>
 <p>$$</p>
@@ -2080,16 +2081,16 @@ V_{\text {robust }}=\left(X^{T} X\right)^{-1} X^{T} \Omega X\left(X^{T} X\right)
 <h4><span class="section-number">14.4.11.2. </span>Cluster-Robust Standard Errors<a class="headerlink" href="#cluster-robust-standard-errors" title="Link to this heading">#</a></h4>
 <p>Recall: iid residuals are not realistic in most cases, but we can assume the residuals are <strong>clustered</strong> by the group, which means between-group correlation is zero, but within-group correlation is positive. Block diagonal matrix $\Omega$.</p>
 <p>$$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-37366e8b-f43b-4391-96e7-063f7c8aff4e">
-<span class="eqno">(14.2)<a class="headerlink" href="#equation-37366e8b-f43b-4391-96e7-063f7c8aff4e" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-12899630-e10c-450f-bb47-8d1a55aef5d6">
+<span class="eqno">(14.2)<a class="headerlink" href="#equation-12899630-e10c-450f-bb47-8d1a55aef5d6" title="Permalink to this equation">#</a></span>\[\begin{align}
 V_{\text {clustered }}=\left(X^{T} X\right)^{-1}\left(\sum_{c=1}^C X_c^{T} \hat{u}_c \hat{u}_c^{T} X_c\right)\left(X^{T} X\right)^{-1}
 \end{align}\]</div>
 <p>$$
 where $\Omega$ is a block diagonal matrix with each block being the covariance matrix of the residuals within each cluster.</p>
 <p>you need to provide the clusters.</p>
 <p>$$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-853f4b1c-27b2-4724-aafa-7f798947e378">
-<span class="eqno">(14.3)<a class="headerlink" href="#equation-853f4b1c-27b2-4724-aafa-7f798947e378" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-59236ca2-89fc-4550-9d14-97b8001e4fa2">
+<span class="eqno">(14.3)<a class="headerlink" href="#equation-59236ca2-89fc-4550-9d14-97b8001e4fa2" title="Permalink to this equation">#</a></span>\[\begin{align}
 \operatorname{Cov}\left(Y_{i, g, t}, Y_{i, g, t+1}\right)&gt;0
 \end{align}\]</div>
 <p>$$</p>

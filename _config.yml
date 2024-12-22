@@ -37,3 +37,10 @@ parse:
     # don't forget to list any other extensions you want enabled,
     # including those that are enabled by default!
     - amsmath
+
+
+sphinx:
+  config:
+    mathjax_config:
+      TeX:
+        equationNumbers: { autoNumber: "AMS" }

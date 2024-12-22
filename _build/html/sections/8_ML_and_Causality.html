@@ -60,7 +60,8 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"TeX": {"equationNumbers": {"autoNumber": "AMS"}}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'sections/8_ML_and_Causality';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -415,36 +416,36 @@
 <section id="machine-learning-for-causality">
 <h2><span class="section-number">8.1. </span>1. Machine Learning for Causality<a class="headerlink" href="#machine-learning-for-causality" title="Link to this heading">#</a></h2>
 <p>The first step in performing causal inference is knowing the causal parameter we are trying to identify and estimate. In this class, we have been mostly focused on the average treatment effect (ATE):</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b3456f4b-f569-4533-be35-29ce05e6b13c">
-<span class="eqno">(8.1)<a class="headerlink" href="#equation-b3456f4b-f569-4533-be35-29ce05e6b13c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-a369812e-eb02-4d03-886b-a44c38623c41">
+<span class="eqno">(8.1)<a class="headerlink" href="#equation-a369812e-eb02-4d03-886b-a44c38623c41" title="Permalink to this equation">#</a></span>\[\begin{equation}
 ATE = \mathbb{E}[Y(1, U) - Y(0, U)]
 \end{equation}\]</div>
 <p>We can identify the above equation to form a statistical estimand by conditioning if $S \perp U$:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4020fdd1-0456-4ca6-913c-614d567aa6c4">
-<span class="eqno">(8.2)<a class="headerlink" href="#equation-4020fdd1-0456-4ca6-913c-614d567aa6c4" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-a5810fc3-5a2d-4347-8c66-feec47819b14">
+<span class="eqno">(8.2)<a class="headerlink" href="#equation-a5810fc3-5a2d-4347-8c66-feec47819b14" title="Permalink to this equation">#</a></span>\[\begin{equation}
 ATE = \mathbb{E}[Y(1, U)|S=1] - \mathbb{E}[Y(0, U)|S=0]
 \end{equation}\]</div>
 <p>Last week, we also learned that the identification of ATE can be facilitated through conditional independence.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d73a982a-6273-442f-9bd0-c9bd6e4d1623">
-<span class="eqno">(8.3)<a class="headerlink" href="#equation-d73a982a-6273-442f-9bd0-c9bd6e4d1623" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-580566b8-b359-4162-bfd5-752278ab8c15">
+<span class="eqno">(8.3)<a class="headerlink" href="#equation-580566b8-b359-4162-bfd5-752278ab8c15" title="Permalink to this equation">#</a></span>\[\begin{equation}
 S \perp U \ | \ C
 \end{equation}\]</div>
 <p>Remember, we cannot just make any (machine-learning) models as being “causal” models, but we know the conditions and assumptions under which causality is feasible: descriptive regression $→$ causal regression.</p>
 <section id="other-causal-parameters">
 <h3><span class="section-number">8.1.1. </span>1.1 Other Causal Parameters?<a class="headerlink" href="#other-causal-parameters" title="Link to this heading">#</a></h3>
 <p>Actually, you have seen another causal parameter: individualized treatment effect (ITE). It is the most straightforward to write down, but it is also the most difficult one (almost impossible) to identify. Instead of estimating causal effects on a population level, the inidividual level effect is much more helpful as it underpins the promises of things like personalized medicine (one medication could be helpful on average but harmful for a particular individual).</p>
-<div class="amsmath math notranslate nohighlight" id="equation-716bb5a1-a3ce-4880-9a98-f5eeda65f351">
-<span class="eqno">(8.4)<a class="headerlink" href="#equation-716bb5a1-a3ce-4880-9a98-f5eeda65f351" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-28e7f15a-5537-48ab-9b7c-bf08d9ad1265">
+<span class="eqno">(8.4)<a class="headerlink" href="#equation-28e7f15a-5537-48ab-9b7c-bf08d9ad1265" title="Permalink to this equation">#</a></span>\[\begin{equation}
 ITE = Y_i(1, u) - Y_i(0, u)
 \end{equation}\]</div>
 <p>Instead, an easier quantity to learn is called conditional average treatment effect (CATE). For the rest of the lab, we will use a more standard machine learning notation involving $(Y, X, T)$ and not writing $U$ for simplicity.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-cc69f10f-16cd-4b29-9fab-ea0812f00869">
-<span class="eqno">(8.5)<a class="headerlink" href="#equation-cc69f10f-16cd-4b29-9fab-ea0812f00869" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-efc2f97c-930a-4024-927f-a706742b8dc7">
+<span class="eqno">(8.5)<a class="headerlink" href="#equation-efc2f97c-930a-4024-927f-a706742b8dc7" title="Permalink to this equation">#</a></span>\[\begin{equation}
 CATE = \mathbb{E}[Y(1) - Y(0) | X]
 \end{equation}\]</div>
 <p>If we are simply leveraging the conditional independence assumption for identifying ATE, this can be written as the following:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5fe9f07c-4fa8-47d8-9b70-9a51fc09d539">
-<span class="eqno">(8.6)<a class="headerlink" href="#equation-5fe9f07c-4fa8-47d8-9b70-9a51fc09d539" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-814390d6-8602-42cd-862f-86e960f6e2f5">
+<span class="eqno">(8.6)<a class="headerlink" href="#equation-814390d6-8602-42cd-862f-86e960f6e2f5" title="Permalink to this equation">#</a></span>\[\begin{equation}
 ATE = \mathbb{E}_{X}\left[\mathbb{E}[Y(1) - Y(0) | X]\right]
 \end{equation}\]</div>
 </section>
@@ -458,16 +459,16 @@ ATE = \mathbb{E}_{X}\left[\mathbb{E}[Y(1) - Y(0) | X]\right]
 <p>We have seen the first one! It reads as the treatment assignment does not influence the potential outcomes condition on the features $X$, i.e., the treatment group and the control group should have similar characteristics ($S \perp U | C$).</p>
 <p>We haven’t talked much about positivity yet as we are just beginning to touch on control variables, but this is intuitive: there always should be people taking all the treatment options among the subpopulation on which they are conditioned. For example, if all college graduates do not attend the job training program, this assumption will be violated.</p>
 <p>We can derive the statistical estimand for CATE and ATE just as in lectures.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ddeb8589-9651-49b8-a6b5-549802a8234c">
-<span class="eqno">(8.7)<a class="headerlink" href="#equation-ddeb8589-9651-49b8-a6b5-549802a8234c" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-77c584ab-9917-4e92-8256-fc9ceec72981">
+<span class="eqno">(8.7)<a class="headerlink" href="#equation-77c584ab-9917-4e92-8256-fc9ceec72981" title="Permalink to this equation">#</a></span>\[\begin{align}
 CATE &amp;= \mathbb{E}[Y(1) - Y(0) | X] \\
 &amp;= \mathbb{E}[Y(1)|X] - \mathbb{E}[Y(0) | X] \\
 &amp;= \mathbb{E}[Y(1)|T=1, X] - \mathbb{E}[Y(0) |T=0, X] \\
 &amp;= \mathbb{E}[Y|T=1, X] - \mathbb{E}[Y|T=0, X] \\
 \end{align}\]</div>
 <p>and,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c7eedf12-0f91-4891-92fc-fd91339ec4c6">
-<span class="eqno">(8.8)<a class="headerlink" href="#equation-c7eedf12-0f91-4891-92fc-fd91339ec4c6" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d473a8a5-39e9-4ab1-9bd7-d65e6a267d88">
+<span class="eqno">(8.8)<a class="headerlink" href="#equation-d473a8a5-39e9-4ab1-9bd7-d65e6a267d88" title="Permalink to this equation">#</a></span>\[\begin{align}
 ATE &amp;= \mathbb{E}_{X}\left[\mathbb{E}[Y(1) - Y(0) | X]\right] \\
 &amp;= \mathbb{E}_{X}\left[\mathbb{E}[Y|T=1, X] - \mathbb{E}[Y|T=0, X]\right] \\
 \end{align}\]</div>
