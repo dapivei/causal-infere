@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>12. Instrumental Variables(Continued) &#8212; Causal Inference for Data Science</title>
+    <title>11. Instrumental Variables(Continued) &#8212; Causal Inference for Data Science</title>
   
   
   
@@ -64,8 +64,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'sections/11_Instruments_RDD';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="13. Instrumental Variables (Continued) and Intro to Regression Discontinuity (RDD)" href="12_RDD.html" />
-    <link rel="prev" title="11. Instrumental Variables" href="10_Instruments.html" />
+    <link rel="next" title="12. Instrumental Variables (Continued) and Intro to Regression Discontinuity (RDD)" href="12_RDD.html" />
+    <link rel="prev" title="10. Instrumental Variables" href="10_Instruments.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -174,22 +174,21 @@
 <li class="toctree-l1"><a class="reference internal" href="2_Probability_1-2.html">2. Probability</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3_Probability_Statistics.html">3. Probability, All Causes Model and Statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="4_Statistics_and_Experiments.html">4. Hypothesis testing and Introduction to Experiments</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="5_Experiments.html">6. Experiments (Cont.)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="6_Regression_1-2.html">7. Regression</a></li>
-<li class="toctree-l1"><a class="reference internal" href="7_Natural_Experiments.html">8. Natural Experiments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="8_ML_and_Causality.html">9. The Interplay between Machine Learning and Causal Inference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="9_Matching.html">10. Matching</a></li>
-<li class="toctree-l1"><a class="reference internal" href="10_Instruments.html">11. Instrumental Variables</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">12. Instrumental Variables(Continued)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="12_RDD.html">13. Instrumental Variables (Continued) and Intro to Regression Discontinuity (RDD)</a></li>
-
+<li class="toctree-l1"><a class="reference internal" href="5_Experiments.html">5. Experiments (Cont.)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_Regression_1-2.html">6. Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7_Natural_Experiments.html">7. Natural Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8_ML_and_Causality.html">8. The Interplay between Machine Learning and Causal Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9_Matching.html">9. Matching</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_Instruments.html">10. Instrumental Variables</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">11. Instrumental Variables(Continued)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_RDD.html">12. Instrumental Variables (Continued) and Intro to Regression Discontinuity (RDD)</a></li>
 
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="13_Difference_in_Differences.html">19. Difference in Differences</a></li>
-<li class="toctree-l1"><a class="reference internal" href="14_Review.html">20. Final Course Review</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="13_Difference_in_Differences.html">18. Difference in Differences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14_Review.html">19. Final Review</a></li>
 
 
 </ul>
@@ -384,31 +383,31 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recap-from-last-class">12.1. Recap From Last Class</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-for-today">12.2. Goals For Today</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">12.3. 2. Instrumental Variables (Continued)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#revisit-the-effect-of-watching-sesame-street-on-later-academic-achievement">12.3.1. Revisit - The effect of watching sesame street on later academic achievement.</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data">12.3.2. Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reduced-form">12.3.3. “Reduced Form”</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#remember-non-compliance-and-itt">12.3.3.1. <strong>Remember non-compliance and ITT?</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recap-from-last-class">11.1. Recap From Last Class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-for-today">11.2. Goals For Today</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">11.3. 2. Instrumental Variables (Continued)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#revisit-the-effect-of-watching-sesame-street-on-later-academic-achievement">11.3.1. Revisit - The effect of watching sesame street on later academic achievement.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data">11.3.2. Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reduced-form">11.3.3. “Reduced Form”</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#remember-non-compliance-and-itt">11.3.3.1. <strong>Remember non-compliance and ITT?</strong></a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#weak-instrument">12.3.4. Weak Instrument</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimation">12.3.5. Estimation</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#via-the-explicit-two-stage-least-squares-2sls-estimation">12.3.5.1. Via the (explicit) Two-Stage Least Squares (2SLS) Estimation</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#via-the-iv2sls-function-from-linearmodels">12.3.5.2. Via the IV2SLS Function from linearmodels</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#weak-instrument">11.3.4. Weak Instrument</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimation">11.3.5. Estimation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#via-the-explicit-two-stage-least-squares-2sls-estimation">11.3.5.1. Via the (explicit) Two-Stage Least Squares (2SLS) Estimation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#via-the-iv2sls-function-from-linearmodels">11.3.5.2. Via the IV2SLS Function from linearmodels</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instrument-with-control">12.3.6. Instrument with Control</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instrument-with-control">11.3.6. Instrument with Control</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#colider-bias">12.4. 3. Colider Bias</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-regression-discontinuity">12.5. 4. Introduction to Regression Discontinuity</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#major-assumption">12.5.1. Major Assumption</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">12.5.2. Estimation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#colider-bias">11.4. 3. Colider Bias</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-regression-discontinuity">11.5. 4. Introduction to Regression Discontinuity</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#major-assumption">11.5.1. Major Assumption</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">11.5.2. Estimation</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#path-forward">12.6. 5. Path Forward</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#path-forward">11.6. 5. Path Forward</a></li>
 </ul>
             </nav>
         </div>
@@ -423,15 +422,15 @@
   <div align="center">
 <p><a class="reference external" href="https://colab.research.google.com/github/dapivei/causal-infere/blob/main/sections/11_Instruments_RDD.ipynb"><img alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 </div><section id="instrumental-variables-continued">
-<h1><span class="section-number">12. </span>Instrumental Variables(Continued)<a class="headerlink" href="#instrumental-variables-continued" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">11. </span>Instrumental Variables(Continued)<a class="headerlink" href="#instrumental-variables-continued" title="Link to this heading">#</a></h1>
 <section id="recap-from-last-class">
-<h2><span class="section-number">12.1. </span>Recap From Last Class<a class="headerlink" href="#recap-from-last-class" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.1. </span>Recap From Last Class<a class="headerlink" href="#recap-from-last-class" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Instrumental Variables</p></li>
 </ul>
 </section>
 <section id="goals-for-today">
-<h2><span class="section-number">12.2. </span>Goals For Today<a class="headerlink" href="#goals-for-today" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.2. </span>Goals For Today<a class="headerlink" href="#goals-for-today" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Direct Effect and Connection to ITT</p></li>
 <li><p>Weak Instruments</p></li>
@@ -441,7 +440,7 @@
 </ol>
 </section>
 <section id="id1">
-<h2><span class="section-number">12.3. </span>2. Instrumental Variables (Continued)<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.3. </span>2. Instrumental Variables (Continued)<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>Often, we cannot establish the following conditions to identify the causal parameter as (ubobserved) confounding can <strong>bias</strong> our estimates.</p>
 <p>$$S \not!\perp!!!\perp U, \ \ S \not!\perp!!!\perp U \ | \ C$$</p>
 <p>Instrumental variables is a specific setup to help identification even in the presence of <em>unobserved confounding</em> (when control/matching would not be able to identify).</p>
@@ -455,7 +454,7 @@
 <div><p>Thus, <strong>LATE</strong> is the <strong>difference in outcomes</strong> between those who received the treatment and those who did not, <strong>for the compliers</strong>.</p>
 </div></blockquote>
 <section id="revisit-the-effect-of-watching-sesame-street-on-later-academic-achievement">
-<h3><span class="section-number">12.3.1. </span>Revisit - The effect of watching sesame street on later academic achievement.<a class="headerlink" href="#revisit-the-effect-of-watching-sesame-street-on-later-academic-achievement" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.3.1. </span>Revisit - The effect of watching sesame street on later academic achievement.<a class="headerlink" href="#revisit-the-effect-of-watching-sesame-street-on-later-academic-achievement" title="Link to this heading">#</a></h3>
 <blockquote>
 <div><p>Does watching Sesame Street ($S$) have a positive impact on later academic achievement ($Y$)?</p>
 </div></blockquote>
@@ -483,7 +482,7 @@ U &amp; =\text { other determinants of } Y,
 </div></blockquote>
 </section>
 <section id="data">
-<h3><span class="section-number">12.3.2. </span>Data<a class="headerlink" href="#data" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.3.2. </span>Data<a class="headerlink" href="#data" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">encour</span></code></strong>: Indicator variable for whether the child was encouraged to watch Sesame Stree. Instrument $Z$.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">watched</span></code></strong>: Indicator variable for whether the child actually watched Sesame Street. Treatment $S$.</p></li>
@@ -513,21 +512,195 @@ U &amp; =\text { other determinants of } Y,
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="ne">SSLCertVerificationError</span><span class="g g-Whitespace">                  </span>Traceback (most recent call last)
+<span class="nn">File /ext3/miniforge3/lib/python3.12/urllib/request.py:1344,</span> in <span class="ni">AbstractHTTPHandler.do_open</span><span class="nt">(self, http_class, req, **http_conn_args)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1343</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1344</span>     <span class="n">h</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">get_method</span><span class="p">(),</span> <span class="n">req</span><span class="o">.</span><span class="n">selector</span><span class="p">,</span> <span class="n">req</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">headers</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1345</span>               <span class="n">encode_chunked</span><span class="o">=</span><span class="n">req</span><span class="o">.</span><span class="n">has_header</span><span class="p">(</span><span class="s1">&#39;Transfer-encoding&#39;</span><span class="p">))</span>
+<span class="g g-Whitespace">   </span><span class="mi">1346</span> <span class="k">except</span> <span class="ne">OSError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span> <span class="c1"># timeout error</span>
 
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;statsmodels&#39;
+<span class="nn">File /ext3/miniforge3/lib/python3.12/http/client.py:1336,</span> in <span class="ni">HTTPConnection.request</span><span class="nt">(self, method, url, body, headers, encode_chunked)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1335</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Send a complete request to the server.&quot;&quot;&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1336</span> <span class="bp">self</span><span class="o">.</span><span class="n">_send_request</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">body</span><span class="p">,</span> <span class="n">headers</span><span class="p">,</span> <span class="n">encode_chunked</span><span class="p">)</span>
+
+<span class="nn">File /ext3/miniforge3/lib/python3.12/http/client.py:1382,</span> in <span class="ni">HTTPConnection._send_request</span><span class="nt">(self, method, url, body, headers, encode_chunked)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1381</span>     <span class="n">body</span> <span class="o">=</span> <span class="n">_encode</span><span class="p">(</span><span class="n">body</span><span class="p">,</span> <span class="s1">&#39;body&#39;</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1382</span> <span class="bp">self</span><span class="o">.</span><span class="n">endheaders</span><span class="p">(</span><span class="n">body</span><span class="p">,</span> <span class="n">encode_chunked</span><span class="o">=</span><span class="n">encode_chunked</span><span class="p">)</span>
+
+<span class="nn">File /ext3/miniforge3/lib/python3.12/http/client.py:1331,</span> in <span class="ni">HTTPConnection.endheaders</span><span class="nt">(self, message_body, encode_chunked)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1330</span>     <span class="k">raise</span> <span class="n">CannotSendHeader</span><span class="p">()</span>
+<span class="ne">-&gt; </span><span class="mi">1331</span> <span class="bp">self</span><span class="o">.</span><span class="n">_send_output</span><span class="p">(</span><span class="n">message_body</span><span class="p">,</span> <span class="n">encode_chunked</span><span class="o">=</span><span class="n">encode_chunked</span><span class="p">)</span>
+
+<span class="nn">File /ext3/miniforge3/lib/python3.12/http/client.py:1091,</span> in <span class="ni">HTTPConnection._send_output</span><span class="nt">(self, message_body, encode_chunked)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1090</span> <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span><span class="p">[:]</span>
+<span class="ne">-&gt; </span><span class="mi">1091</span> <span class="bp">self</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1093</span> <span class="k">if</span> <span class="n">message_body</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1094</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1095</span>     <span class="c1"># create a consistent interface to message_body</span>
+
+<span class="nn">File /ext3/miniforge3/lib/python3.12/http/client.py:1035,</span> in <span class="ni">HTTPConnection.send</span><span class="nt">(self, data)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1034</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">auto_open</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1035</span>     <span class="bp">self</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1036</span> <span class="k">else</span><span class="p">:</span>
+
+<span class="nn">File /ext3/miniforge3/lib/python3.12/http/client.py:1477,</span> in <span class="ni">HTTPSConnection.connect</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1475</span>     <span class="n">server_hostname</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">host</span>
+<span class="ne">-&gt; </span><span class="mi">1477</span> <span class="bp">self</span><span class="o">.</span><span class="n">sock</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_context</span><span class="o">.</span><span class="n">wrap_socket</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sock</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1478</span>                                       <span class="n">server_hostname</span><span class="o">=</span><span class="n">server_hostname</span><span class="p">)</span>
+
+<span class="nn">File /ext3/miniforge3/lib/python3.12/ssl.py:455,</span> in <span class="ni">SSLContext.wrap_socket</span><span class="nt">(self, sock, server_side, do_handshake_on_connect, suppress_ragged_eofs, server_hostname, session)</span>
+<span class="g g-Whitespace">    </span><span class="mi">449</span> <span class="k">def</span> <span class="nf">wrap_socket</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sock</span><span class="p">,</span> <span class="n">server_side</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">450</span>                 <span class="n">do_handshake_on_connect</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">451</span>                 <span class="n">suppress_ragged_eofs</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">452</span>                 <span class="n">server_hostname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">453</span>     <span class="c1"># SSLSocket class handles server_hostname encoding before it calls</span>
+<span class="g g-Whitespace">    </span><span class="mi">454</span>     <span class="c1"># ctx._wrap_socket()</span>
+<span class="ne">--&gt; </span><span class="mi">455</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">sslsocket_class</span><span class="o">.</span><span class="n">_create</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">456</span>         <span class="n">sock</span><span class="o">=</span><span class="n">sock</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">457</span>         <span class="n">server_side</span><span class="o">=</span><span class="n">server_side</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">458</span>         <span class="n">do_handshake_on_connect</span><span class="o">=</span><span class="n">do_handshake_on_connect</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">459</span>         <span class="n">suppress_ragged_eofs</span><span class="o">=</span><span class="n">suppress_ragged_eofs</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">460</span>         <span class="n">server_hostname</span><span class="o">=</span><span class="n">server_hostname</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">461</span>         <span class="n">context</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">462</span>         <span class="n">session</span><span class="o">=</span><span class="n">session</span>
+<span class="g g-Whitespace">    </span><span class="mi">463</span>     <span class="p">)</span>
+
+<span class="nn">File /ext3/miniforge3/lib/python3.12/ssl.py:1041,</span> in <span class="ni">SSLSocket._create</span><span class="nt">(cls, sock, server_side, do_handshake_on_connect, suppress_ragged_eofs, server_hostname, context, session)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1040</span>                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;do_handshake_on_connect should not be specified for non-blocking sockets&quot;</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1041</span>             <span class="bp">self</span><span class="o">.</span><span class="n">do_handshake</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1042</span> <span class="k">except</span><span class="p">:</span>
+
+<span class="nn">File /ext3/miniforge3/lib/python3.12/ssl.py:1319,</span> in <span class="ni">SSLSocket.do_handshake</span><span class="nt">(self, block)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1318</span>         <span class="bp">self</span><span class="o">.</span><span class="n">settimeout</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1319</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_sslobj</span><span class="o">.</span><span class="n">do_handshake</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1320</span> <span class="k">finally</span><span class="p">:</span>
+
+<span class="ne">SSLCertVerificationError</span>: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)
+
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">URLError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">13</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/avehtari/ROS-Examples/master/Sesame/data/sesame.csv&quot;</span>
+<span class="ne">---&gt; </span><span class="mi">13</span> <span class="n">sesame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="n">sesame</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+
+<span class="nn">File ~/.local/lib/python3.12/site-packages/pandas/io/parsers/readers.py:1026,</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1013</span> <span class="n">kwds_defaults</span> <span class="o">=</span> <span class="n">_refine_defaults_read</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1014</span>     <span class="n">dialect</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1015</span>     <span class="n">delimiter</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1022</span>     <span class="n">dtype_backend</span><span class="o">=</span><span class="n">dtype_backend</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1023</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1024</span> <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1026</span> <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
+
+<span class="nn">File ~/.local/lib/python3.12/site-packages/pandas/io/parsers/readers.py:620,</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">617</span> <span class="n">_validate_names</span><span class="p">(</span><span class="n">kwds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;names&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">619</span> <span class="c1"># Create the parser.</span>
+<span class="ne">--&gt; </span><span class="mi">620</span> <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">622</span> <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">623</span>     <span class="k">return</span> <span class="n">parser</span>
+
+<span class="nn">File ~/.local/lib/python3.12/site-packages/pandas/io/parsers/readers.py:1620,</span> in <span class="ni">TextFileReader.__init__</span><span class="nt">(self, f, engine, **kwds)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1617</span>     <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1619</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="p">:</span> <span class="n">IOHandles</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="ne">-&gt; </span><span class="mi">1620</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
+
+<span class="nn">File ~/.local/lib/python3.12/site-packages/pandas/io/parsers/readers.py:1880,</span> in <span class="ni">TextFileReader._make_engine</span><span class="nt">(self, f, engine)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1878</span>     <span class="k">if</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">mode</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1879</span>         <span class="n">mode</span> <span class="o">+=</span> <span class="s2">&quot;b&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1880</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="o">=</span> <span class="n">get_handle</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1881</span>     <span class="n">f</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1882</span>     <span class="n">mode</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1883</span>     <span class="n">encoding</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1884</span>     <span class="n">compression</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;compression&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1885</span>     <span class="n">memory_map</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;memory_map&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1886</span>     <span class="n">is_text</span><span class="o">=</span><span class="n">is_text</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1887</span>     <span class="n">errors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding_errors&quot;</span><span class="p">,</span> <span class="s2">&quot;strict&quot;</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1888</span>     <span class="n">storage_options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;storage_options&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1889</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1890</span> <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+<span class="g g-Whitespace">   </span><span class="mi">1891</span> <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="o">.</span><span class="n">handle</span>
+
+<span class="nn">File ~/.local/lib/python3.12/site-packages/pandas/io/common.py:728,</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">725</span>     <span class="n">codecs</span><span class="o">.</span><span class="n">lookup_error</span><span class="p">(</span><span class="n">errors</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">727</span> <span class="c1"># open URLs</span>
+<span class="ne">--&gt; </span><span class="mi">728</span> <span class="n">ioargs</span> <span class="o">=</span> <span class="n">_get_filepath_or_buffer</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">729</span>     <span class="n">path_or_buf</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">730</span>     <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">731</span>     <span class="n">compression</span><span class="o">=</span><span class="n">compression</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">732</span>     <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">733</span>     <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">734</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">736</span> <span class="n">handle</span> <span class="o">=</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">filepath_or_buffer</span>
+<span class="g g-Whitespace">    </span><span class="mi">737</span> <span class="n">handles</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">BaseBuffer</span><span class="p">]</span>
+
+<span class="nn">File ~/.local/lib/python3.12/site-packages/pandas/io/common.py:384,</span> in <span class="ni">_get_filepath_or_buffer</span><span class="nt">(filepath_or_buffer, encoding, compression, mode, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">382</span> <span class="c1"># assuming storage_options is to be interpreted as headers</span>
+<span class="g g-Whitespace">    </span><span class="mi">383</span> <span class="n">req_info</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">storage_options</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">384</span> <span class="k">with</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">req_info</span><span class="p">)</span> <span class="k">as</span> <span class="n">req</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">385</span>     <span class="n">content_encoding</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Content-Encoding&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">386</span>     <span class="k">if</span> <span class="n">content_encoding</span> <span class="o">==</span> <span class="s2">&quot;gzip&quot;</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">387</span>         <span class="c1"># Override compression based on Content-Encoding header</span>
+
+<span class="nn">File ~/.local/lib/python3.12/site-packages/pandas/io/common.py:289,</span> in <span class="ni">urlopen</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">283</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">284</span><span class="sd"> Lazy-import wrapper for stdlib urlopen, as that imports a big chunk of</span>
+<span class="g g-Whitespace">    </span><span class="mi">285</span><span class="sd"> the stdlib.</span>
+<span class="g g-Whitespace">    </span><span class="mi">286</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">287</span> <span class="kn">import</span> <span class="nn">urllib.request</span>
+<span class="ne">--&gt; </span><span class="mi">289</span> <span class="k">return</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File /ext3/miniforge3/lib/python3.12/urllib/request.py:215,</span> in <span class="ni">urlopen</span><span class="nt">(url, data, timeout, cafile, capath, cadefault, context)</span>
+<span class="g g-Whitespace">    </span><span class="mi">213</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">214</span>     <span class="n">opener</span> <span class="o">=</span> <span class="n">_opener</span>
+<span class="ne">--&gt; </span><span class="mi">215</span> <span class="k">return</span> <span class="n">opener</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span>
+
+<span class="nn">File /ext3/miniforge3/lib/python3.12/urllib/request.py:515,</span> in <span class="ni">OpenerDirector.open</span><span class="nt">(self, fullurl, data, timeout)</span>
+<span class="g g-Whitespace">    </span><span class="mi">512</span>     <span class="n">req</span> <span class="o">=</span> <span class="n">meth</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">514</span> <span class="n">sys</span><span class="o">.</span><span class="n">audit</span><span class="p">(</span><span class="s1">&#39;urllib.Request&#39;</span><span class="p">,</span> <span class="n">req</span><span class="o">.</span><span class="n">full_url</span><span class="p">,</span> <span class="n">req</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">req</span><span class="o">.</span><span class="n">headers</span><span class="p">,</span> <span class="n">req</span><span class="o">.</span><span class="n">get_method</span><span class="p">())</span>
+<span class="ne">--&gt; </span><span class="mi">515</span> <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_open</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">517</span> <span class="c1"># post-process response</span>
+<span class="g g-Whitespace">    </span><span class="mi">518</span> <span class="n">meth_name</span> <span class="o">=</span> <span class="n">protocol</span><span class="o">+</span><span class="s2">&quot;_response&quot;</span>
+
+<span class="nn">File /ext3/miniforge3/lib/python3.12/urllib/request.py:532,</span> in <span class="ni">OpenerDirector._open</span><span class="nt">(self, req, data)</span>
+<span class="g g-Whitespace">    </span><span class="mi">529</span>     <span class="k">return</span> <span class="n">result</span>
+<span class="g g-Whitespace">    </span><span class="mi">531</span> <span class="n">protocol</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">type</span>
+<span class="ne">--&gt; </span><span class="mi">532</span> <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call_chain</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">handle_open</span><span class="p">,</span> <span class="n">protocol</span><span class="p">,</span> <span class="n">protocol</span> <span class="o">+</span>
+<span class="g g-Whitespace">    </span><span class="mi">533</span>                           <span class="s1">&#39;_open&#39;</span><span class="p">,</span> <span class="n">req</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">534</span> <span class="k">if</span> <span class="n">result</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">535</span>     <span class="k">return</span> <span class="n">result</span>
+
+<span class="nn">File /ext3/miniforge3/lib/python3.12/urllib/request.py:492,</span> in <span class="ni">OpenerDirector._call_chain</span><span class="nt">(self, chain, kind, meth_name, *args)</span>
+<span class="g g-Whitespace">    </span><span class="mi">490</span> <span class="k">for</span> <span class="n">handler</span> <span class="ow">in</span> <span class="n">handlers</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">491</span>     <span class="n">func</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">handler</span><span class="p">,</span> <span class="n">meth_name</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">492</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">493</span>     <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">494</span>         <span class="k">return</span> <span class="n">result</span>
+
+<span class="nn">File /ext3/miniforge3/lib/python3.12/urllib/request.py:1392,</span> in <span class="ni">HTTPSHandler.https_open</span><span class="nt">(self, req)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1391</span> <span class="k">def</span> <span class="nf">https_open</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">req</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">1392</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">do_open</span><span class="p">(</span><span class="n">http</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">HTTPSConnection</span><span class="p">,</span> <span class="n">req</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1393</span>                         <span class="n">context</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_context</span><span class="p">)</span>
+
+<span class="nn">File /ext3/miniforge3/lib/python3.12/urllib/request.py:1347,</span> in <span class="ni">AbstractHTTPHandler.do_open</span><span class="nt">(self, http_class, req, **http_conn_args)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1344</span>         <span class="n">h</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">get_method</span><span class="p">(),</span> <span class="n">req</span><span class="o">.</span><span class="n">selector</span><span class="p">,</span> <span class="n">req</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">headers</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1345</span>                   <span class="n">encode_chunked</span><span class="o">=</span><span class="n">req</span><span class="o">.</span><span class="n">has_header</span><span class="p">(</span><span class="s1">&#39;Transfer-encoding&#39;</span><span class="p">))</span>
+<span class="g g-Whitespace">   </span><span class="mi">1346</span>     <span class="k">except</span> <span class="ne">OSError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span> <span class="c1"># timeout error</span>
+<span class="ne">-&gt; </span><span class="mi">1347</span>         <span class="k">raise</span> <span class="n">URLError</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1348</span>     <span class="n">r</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">getresponse</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1349</span> <span class="k">except</span><span class="p">:</span>
+
+<span class="ne">URLError</span>: &lt;urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)&gt;
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="reduced-form">
-<h3><span class="section-number">12.3.3. </span>“Reduced Form”<a class="headerlink" href="#reduced-form" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.3.3. </span>“Reduced Form”<a class="headerlink" href="#reduced-form" title="Link to this heading">#</a></h3>
 <p>We can estimate the direct effect (ATE) of $Z$ on $Y$: how does the act of encouraging influence the later score performance?</p>
 <p>This would be a valid causal estimate as the exogeneity assumption informs us of the independence assumption: $Z \perp U$.</p>
 <div class="cell docutils container">
@@ -595,7 +768,7 @@ U &amp; =\text { other determinants of } Y,
 </div>
 <p>The act of encouraging kids to watch Sesame Street has a nearly 3-point increase in their test scores! (though the p-value is not particularly small)</p>
 <section id="remember-non-compliance-and-itt">
-<h4><span class="section-number">12.3.3.1. </span><strong>Remember non-compliance and ITT?</strong><a class="headerlink" href="#remember-non-compliance-and-itt" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">11.3.3.1. </span><strong>Remember non-compliance and ITT?</strong><a class="headerlink" href="#remember-non-compliance-and-itt" title="Link to this heading">#</a></h4>
 <p>We can re-interpret this setup as the old ATE estimation problem. The treatment of interest, in this case, watching Sesame, cannot be enforced. We can randomize who are asked to watch Sesame Street, but there will be the non-compliance issue that prevents us from deriving ATE (given the always-takers and never-takers).</p>
 <p>We have learned that we can change the causal question when there is non-compliance from ATE to Intent-to-Treat (ITT) effect.</p>
 <p>The ITT estimates the causal effect of <em>treatment assignment</em> on the outcome of interest. Here, the ITT estimates the causal effect of being encouraged to watch Sesame Street on a child’s score on the literacy test.</p>
@@ -603,7 +776,7 @@ U &amp; =\text { other determinants of } Y,
 </section>
 </section>
 <section id="weak-instrument">
-<h3><span class="section-number">12.3.4. </span>Weak Instrument<a class="headerlink" href="#weak-instrument" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.3.4. </span>Weak Instrument<a class="headerlink" href="#weak-instrument" title="Link to this heading">#</a></h3>
 <p>We have briefly covered testing assumptions from last week’s lab.</p>
 <p>For <strong>exogeneity</strong>, we can check for the distribution balance for some control variables across different values of instrument $Z$.</p>
 <p>For <strong>relevance</strong>, in general, we can check the relationship between $S$ and $Z$. One approach is to look at the first-stage regression.</p>
@@ -685,14 +858,14 @@ Once we fit the model, we can check for the F-statistic or t-statistic as we onl
 <p>Both p-values for the F/t-statistic are extremely small. Hence, we do not have a weak instrument problem here.</p>
 </section>
 <section id="estimation">
-<h3><span class="section-number">12.3.5. </span>Estimation<a class="headerlink" href="#estimation" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.3.5. </span>Estimation<a class="headerlink" href="#estimation" title="Link to this heading">#</a></h3>
 <p>From last week, we saw that we can estimate using the covariance functions as well as running two-stage squares.</p>
 <p>A more direct method is to call <code class="docutils literal notranslate"><span class="pre">IV2SLS</span></code> from <code class="docutils literal notranslate"><span class="pre">linearmodels</span></code> package.</p>
 <ul class="simple">
 <li><p>We would need to install it first in Colab.</p></li>
 </ul>
 <section id="via-the-explicit-two-stage-least-squares-2sls-estimation">
-<h4><span class="section-number">12.3.5.1. </span>Via the (explicit) Two-Stage Least Squares (2SLS) Estimation<a class="headerlink" href="#via-the-explicit-two-stage-least-squares-2sls-estimation" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">11.3.5.1. </span>Via the (explicit) Two-Stage Least Squares (2SLS) Estimation<a class="headerlink" href="#via-the-explicit-two-stage-least-squares-2sls-estimation" title="Link to this heading">#</a></h4>
 <ol class="arabic simple">
 <li><p><strong>First stage</strong>: Regress whether children watched Sesame Street $S$ on the instrument $Z$ (whether they were encouraged to watch).</p></li>
 <li><p><strong>Second stage</strong>: Regress the outcome (e.g., academic performance $Y$) on the predicted values of $S$ from the first stage.</p></li>
@@ -717,7 +890,7 @@ Once we fit the model, we can check for the F-statistic or t-statistic as we onl
 <p>For those children who are encouraged to watch Sesame Street and actually end up watching it, their academic achievement (e.g., literacy scores) increases by 7.94 units on average.</p>
 </section>
 <section id="via-the-iv2sls-function-from-linearmodels">
-<h4><span class="section-number">12.3.5.2. </span>Via the IV2SLS Function from linearmodels<a class="headerlink" href="#via-the-iv2sls-function-from-linearmodels" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">11.3.5.2. </span>Via the IV2SLS Function from linearmodels<a class="headerlink" href="#via-the-iv2sls-function-from-linearmodels" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>linearmodels
@@ -799,7 +972,7 @@ Requirement already satisfied: six in /usr/local/lib/python3.10/dist-packages (f
 </section>
 </section>
 <section id="instrument-with-control">
-<h3><span class="section-number">12.3.6. </span>Instrument with Control<a class="headerlink" href="#instrument-with-control" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.3.6. </span>Instrument with Control<a class="headerlink" href="#instrument-with-control" title="Link to this heading">#</a></h3>
 <p>If we have extra observed characteristics, we can control them as part of the IV procedure.</p>
 <p>This could potentially make the exogeneity argument stronger via conditional independence.</p>
 <p>$$
@@ -881,7 +1054,7 @@ $$</p>
 </section>
 </section>
 <section id="colider-bias">
-<h2><span class="section-number">12.4. </span>3. Colider Bias<a class="headerlink" href="#colider-bias" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.4. </span>3. Colider Bias<a class="headerlink" href="#colider-bias" title="Link to this heading">#</a></h2>
 <p>Besides complicated interpretations, controlling for more variables can also get us in trouble due to colider bias.</p>
 <p>In previous labs, we covered a brief overview of different types of conditional independence structures.</p>
 <p><img alt="Indep" src="https://catalogofbias.org/wp-content/uploads/sites/2/2019/03/Collider-bias_fig-1-e1551439537528.png" /></p>
@@ -964,7 +1137,7 @@ $$</p>
 <p>We should be careful about which variables to control and reason about them based on the problem context to avoid additional bias.</p>
 </section>
 <section id="introduction-to-regression-discontinuity">
-<h2><span class="section-number">12.5. </span>4. Introduction to Regression Discontinuity<a class="headerlink" href="#introduction-to-regression-discontinuity" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.5. </span>4. Introduction to Regression Discontinuity<a class="headerlink" href="#introduction-to-regression-discontinuity" title="Link to this heading">#</a></h2>
 <p>Most things in nature are continuous. If we see spikes or jumps, they are very likely to be <strong>artificial</strong>.</p>
 <p>How can we leverage this phenomenon to derive valid causal estimates?</p>
 <p>We will need to rely on some continuous variables $R$ that defines the treatment/control group via thresholds $c$ of $R$.</p>
@@ -978,8 +1151,8 @@ $$</p>
 <p>The core intuition for the validity of this method is that people near/around this cutoff $c$ should be randomly placed into treatment vs. control.</p>
 <p>For example, there is no systematic reason for why someone got 91 on a test vs. someone got 89 except for some random chance.</p>
 <p>Therefore, similar to LATE, the causal estimate from RDD can only be applied to the subgroup around cutoffs instead of the general population.</p>
-<img src="https://raw.githubusercontent.com/dapivei/causal-infere/a5e0159feda3746ba84a5e9bfec4e2a890685eb4/sections/images/rdd.png" width="600"><section id="major-assumption">
-<h3><span class="section-number">12.5.1. </span>Major Assumption<a class="headerlink" href="#major-assumption" title="Link to this heading">#</a></h3>
+<img src="https://raw.githubusercontent.com/dapivei/causal-infere/a5e0159feda3746ba84a5e9bfec4e2a890685eb4/images/rdd.png" width="600"><section id="major-assumption">
+<h3><span class="section-number">11.5.1. </span>Major Assumption<a class="headerlink" href="#major-assumption" title="Link to this heading">#</a></h3>
 <p>To estimate the differences, we require the expected potential outcomes is a <em><strong>continuous</strong></em> function of the running variable at the cutoff $c$ (smoothness assumption).</p>
 <p>$$</p>
 <div class="amsmath math notranslate nohighlight">
@@ -993,7 +1166,7 @@ $$</p>
 <p>We can also simply check for multiple options of $b$ for robustness.</p>
 </section>
 <section id="id2">
-<h3><span class="section-number">12.5.2. </span>Estimation<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.5.2. </span>Estimation<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <p>We can estimate the difference in the above potential outcomes by selecting a bandwidth and using local linear regression:</p>
 <p>$$
 Y = \alpha_0 + \alpha_1 S + \alpha_2 (R - c) + \alpha_3 S \cdot (R - c) + \epsilon
@@ -1209,7 +1382,7 @@ Notes:
 </section>
 </section>
 <section id="path-forward">
-<h2><span class="section-number">12.6. </span>5. Path Forward<a class="headerlink" href="#path-forward" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.6. </span>5. Path Forward<a class="headerlink" href="#path-forward" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>More on Regression Discontinuity</p></li>
 </ul>
@@ -1252,7 +1425,7 @@ Notes:
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">11. </span>Instrumental Variables</p>
+        <p class="prev-next-title"><span class="section-number">10. </span>Instrumental Variables</p>
       </div>
     </a>
     <a class="right-next"
@@ -1260,7 +1433,7 @@ Notes:
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">13. </span>Instrumental Variables (Continued) and Intro to Regression Discontinuity (RDD)</p>
+        <p class="prev-next-title"><span class="section-number">12. </span>Instrumental Variables (Continued) and Intro to Regression Discontinuity (RDD)</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1281,31 +1454,31 @@ Notes:
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recap-from-last-class">12.1. Recap From Last Class</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-for-today">12.2. Goals For Today</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">12.3. 2. Instrumental Variables (Continued)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#revisit-the-effect-of-watching-sesame-street-on-later-academic-achievement">12.3.1. Revisit - The effect of watching sesame street on later academic achievement.</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data">12.3.2. Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reduced-form">12.3.3. “Reduced Form”</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#remember-non-compliance-and-itt">12.3.3.1. <strong>Remember non-compliance and ITT?</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recap-from-last-class">11.1. Recap From Last Class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-for-today">11.2. Goals For Today</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">11.3. 2. Instrumental Variables (Continued)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#revisit-the-effect-of-watching-sesame-street-on-later-academic-achievement">11.3.1. Revisit - The effect of watching sesame street on later academic achievement.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data">11.3.2. Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reduced-form">11.3.3. “Reduced Form”</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#remember-non-compliance-and-itt">11.3.3.1. <strong>Remember non-compliance and ITT?</strong></a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#weak-instrument">12.3.4. Weak Instrument</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimation">12.3.5. Estimation</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#via-the-explicit-two-stage-least-squares-2sls-estimation">12.3.5.1. Via the (explicit) Two-Stage Least Squares (2SLS) Estimation</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#via-the-iv2sls-function-from-linearmodels">12.3.5.2. Via the IV2SLS Function from linearmodels</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#weak-instrument">11.3.4. Weak Instrument</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimation">11.3.5. Estimation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#via-the-explicit-two-stage-least-squares-2sls-estimation">11.3.5.1. Via the (explicit) Two-Stage Least Squares (2SLS) Estimation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#via-the-iv2sls-function-from-linearmodels">11.3.5.2. Via the IV2SLS Function from linearmodels</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instrument-with-control">12.3.6. Instrument with Control</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instrument-with-control">11.3.6. Instrument with Control</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#colider-bias">12.4. 3. Colider Bias</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-regression-discontinuity">12.5. 4. Introduction to Regression Discontinuity</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#major-assumption">12.5.1. Major Assumption</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">12.5.2. Estimation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#colider-bias">11.4. 3. Colider Bias</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-regression-discontinuity">11.5. 4. Introduction to Regression Discontinuity</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#major-assumption">11.5.1. Major Assumption</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">11.5.2. Estimation</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#path-forward">12.6. 5. Path Forward</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#path-forward">11.6. 5. Path Forward</a></li>
 </ul>
   </nav></div>
 

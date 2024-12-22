@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>6. Experiments (Cont.) &#8212; Causal Inference for Data Science</title>
+    <title>5. Experiments (Cont.) &#8212; Causal Inference for Data Science</title>
   
   
   
@@ -63,7 +63,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'sections/5_Experiments';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="7. Regression" href="6_Regression_1-2.html" />
+    <link rel="next" title="6. Regression" href="6_Regression_1-2.html" />
     <link rel="prev" title="4. Hypothesis testing and Introduction to Experiments" href="4_Statistics_and_Experiments.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -173,22 +173,21 @@
 <li class="toctree-l1"><a class="reference internal" href="2_Probability_1-2.html">2. Probability</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3_Probability_Statistics.html">3. Probability, All Causes Model and Statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="4_Statistics_and_Experiments.html">4. Hypothesis testing and Introduction to Experiments</a></li>
-
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">6. Experiments (Cont.)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="6_Regression_1-2.html">7. Regression</a></li>
-<li class="toctree-l1"><a class="reference internal" href="7_Natural_Experiments.html">8. Natural Experiments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="8_ML_and_Causality.html">9. The Interplay between Machine Learning and Causal Inference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="9_Matching.html">10. Matching</a></li>
-<li class="toctree-l1"><a class="reference internal" href="10_Instruments.html">11. Instrumental Variables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="11_Instruments_RDD.html">12. Instrumental Variables(Continued)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="12_RDD.html">13. Instrumental Variables (Continued) and Intro to Regression Discontinuity (RDD)</a></li>
-
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">5. Experiments (Cont.)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_Regression_1-2.html">6. Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7_Natural_Experiments.html">7. Natural Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8_ML_and_Causality.html">8. The Interplay between Machine Learning and Causal Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9_Matching.html">9. Matching</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_Instruments.html">10. Instrumental Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_Instruments_RDD.html">11. Instrumental Variables(Continued)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_RDD.html">12. Instrumental Variables (Continued) and Intro to Regression Discontinuity (RDD)</a></li>
 
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="13_Difference_in_Differences.html">19. Difference in Differences</a></li>
-<li class="toctree-l1"><a class="reference internal" href="14_Review.html">20. Final Course Review</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="13_Difference_in_Differences.html">18. Difference in Differences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14_Review.html">19. Final Review</a></li>
 
 
 </ul>
@@ -383,25 +382,25 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recap-from-last-class">6.1. Recap From Last Class</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-for-today">6.2. Goals For Today</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-causal-effects-from-sample-data">6.3. Estimating Causal Effects from Sample Data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#causal-model-for-the-impact-of-the-job-training-program-on-wages">6.3.1. Causal Model for the Impact of the Job Training Program on Wages</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#hypothesis-testing-for-the-ate">6.3.1.1. Hypothesis Testing for the ATE</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recap-from-last-class">5.1. Recap From Last Class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-for-today">5.2. Goals For Today</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-causal-effects-from-sample-data">5.3. Estimating Causal Effects from Sample Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#causal-model-for-the-impact-of-the-job-training-program-on-wages">5.3.1. Causal Model for the Impact of the Job Training Program on Wages</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#hypothesis-testing-for-the-ate">5.3.1.1. Hypothesis Testing for the ATE</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-our-assumptions">6.3.2. 2.4) Testing our Assumptions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-our-assumptions">5.3.2. 2.4) Testing our Assumptions</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#s-perp-perp-u">6.4. $S \perp!!!\perp U$</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relaxing-assumptions-imperfect-compliance-and-sutva-violations">6.5. 3. Relaxing Assumptions: Imperfect Compliance and SUTVA Violations</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imperfect-compliance">6.5.1. 3.1. Imperfect Compliance</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sutva-violation">6.5.2. SUTVA violation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rcts-the-gold-standard-a-side-note-on-their-limitations">6.5.3. RCTs: The Gold Standard? A Side Note on Their Limitations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#s-perp-perp-u">5.4. $S \perp!!!\perp U$</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relaxing-assumptions-imperfect-compliance-and-sutva-violations">5.5. 3. Relaxing Assumptions: Imperfect Compliance and SUTVA Violations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imperfect-compliance">5.5.1. 3.1. Imperfect Compliance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sutva-violation">5.5.2. SUTVA violation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rcts-the-gold-standard-a-side-note-on-their-limitations">5.5.3. RCTs: The Gold Standard? A Side Note on Their Limitations</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recap-on-sampling-distributions-and-the-central-limit-theorem-clt-on-python-help-for-homework">6.6. Recap on sampling distributions and the Central Limit Theorem (CLT) on Python – HELP FOR HOMEWORK!</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#path-forward">6.7. 5. Path Forward</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recap-on-sampling-distributions-and-the-central-limit-theorem-clt-on-python-help-for-homework">5.6. Recap on sampling distributions and the Central Limit Theorem (CLT) on Python – HELP FOR HOMEWORK!</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#path-forward">5.7. 5. Path Forward</a></li>
 </ul>
             </nav>
         </div>
@@ -415,16 +414,16 @@
                   
   <p><a class="reference external" href="https://colab.research.google.com/github/dapivei/causal-infere/blob/main/sections/5_Experiments.ipynb"><img alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 <section id="experiments-cont">
-<h1><span class="section-number">6. </span>Experiments (Cont.)<a class="headerlink" href="#experiments-cont" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">5. </span>Experiments (Cont.)<a class="headerlink" href="#experiments-cont" title="Link to this heading">#</a></h1>
 <section id="recap-from-last-class">
-<h2><span class="section-number">6.1. </span>Recap From Last Class<a class="headerlink" href="#recap-from-last-class" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.1. </span>Recap From Last Class<a class="headerlink" href="#recap-from-last-class" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>A final review of Statistics</p></li>
 <li><p>An introduction to Randomized Controlled Trials (RCTs): <strong>identifying our ATE</strong>.</p></li>
 </ul>
 </section>
 <section id="goals-for-today">
-<h2><span class="section-number">6.2. </span>Goals For Today<a class="headerlink" href="#goals-for-today" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.2. </span>Goals For Today<a class="headerlink" href="#goals-for-today" title="Link to this heading">#</a></h2>
 <p>Continuing with RCTs:</p>
 <ul class="simple">
 <li><p><strong>The measurement of our ATE</strong>: estimating causal quantities from sample data.</p></li>
@@ -438,7 +437,7 @@
 </ul>
 </section>
 <section id="estimating-causal-effects-from-sample-data">
-<h2><span class="section-number">6.3. </span>Estimating Causal Effects from Sample Data<a class="headerlink" href="#estimating-causal-effects-from-sample-data" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.3. </span>Estimating Causal Effects from Sample Data<a class="headerlink" href="#estimating-causal-effects-from-sample-data" title="Link to this heading">#</a></h2>
 <p>The fundamental principle of randomization is straightforward:</p>
 <blockquote>
 <div><p>When units are randomly assigned to a treatment, the only distinction between those receiving the treatment and those who do not is the treatment itself. Consequently, any observed differences between the two groups can be attributed solely to the treatment.</p>
@@ -492,7 +491,7 @@ $$</p>
 </div>
 </div>
 <section id="causal-model-for-the-impact-of-the-job-training-program-on-wages">
-<h3><span class="section-number">6.3.1. </span>Causal Model for the Impact of the Job Training Program on Wages<a class="headerlink" href="#causal-model-for-the-impact-of-the-job-training-program-on-wages" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">5.3.1. </span>Causal Model for the Impact of the Job Training Program on Wages<a class="headerlink" href="#causal-model-for-the-impact-of-the-job-training-program-on-wages" title="Link to this heading">#</a></h3>
 <p>Some key components of this causal model are:</p>
 <ul class="simple">
 <li><p><strong>Treatment Indicator ($S$)</strong>: A binary variable, denoted as $\text{treat}$, which indicates whether an individual received job training (1) or not (0).</p></li>
@@ -922,7 +921,7 @@ $$</p>
 <p>### 2.3) How confidente are we on our $\hat{ATE}$?</p>
 <p>This is only an estimate of the ATE, and we cannot be certain it reflects the true value. Fortunately, the Central Limit Theorem (CLT) allows us to approximate the distribution of errors in the estimated conditional sample means.</p>
 <section id="hypothesis-testing-for-the-ate">
-<h4><span class="section-number">6.3.1.1. </span>Hypothesis Testing for the ATE<a class="headerlink" href="#hypothesis-testing-for-the-ate" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">5.3.1.1. </span>Hypothesis Testing for the ATE<a class="headerlink" href="#hypothesis-testing-for-the-ate" title="Link to this heading">#</a></h4>
 <p>To determine whether the work program has a positive impact on wages, our hypothesis is as follows:</p>
 <ul class="simple">
 <li><p><strong>Null Hypothesis ($H_0$)</strong>:
@@ -954,7 +953,7 @@ $$\mathbb{E}[Y(S = 1, U)] = \mathbb{E}[Y(S = 0, U)] \implies \text{ATE}=0.$$</p>
 </section>
 </section>
 <section id="testing-our-assumptions">
-<h3><span class="section-number">6.3.2. </span>2.4) Testing our Assumptions<a class="headerlink" href="#testing-our-assumptions" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">5.3.2. </span>2.4) Testing our Assumptions<a class="headerlink" href="#testing-our-assumptions" title="Link to this heading">#</a></h3>
 <p>So far we have relied on a crucial assumption: $$S \perp!!!\perp U.$$</p>
 <p>This assumption is supported by:</p>
 <p><strong>a) perfect compliance</strong>, our assumption that all participants adhere to their assigned treatments, and</p>
@@ -980,7 +979,7 @@ $$\mathbb{E}[Y(S = 1, U)] = \mathbb{E}[Y(S = 0, U)] \implies \text{ATE}=0.$$</p>
 </section>
 </section>
 <section id="s-perp-perp-u">
-<h2><span class="section-number">6.4. </span>$S \perp!!!\perp U$<a class="headerlink" href="#s-perp-perp-u" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.4. </span>$S \perp!!!\perp U$<a class="headerlink" href="#s-perp-perp-u" title="Link to this heading">#</a></h2>
 <p>Independence between $S$ and $U$ implies that the distribution of potential outcomes $Y$ given treatment status is the same across groups:</p>
 <p>$$
 P(Y \mid S=1, U) = P(Y \mid S=0, U).
@@ -1475,7 +1474,7 @@ Consider the first t-test, where $X=age$:</p>
 </div>
 </section>
 <section id="relaxing-assumptions-imperfect-compliance-and-sutva-violations">
-<h2><span class="section-number">6.5. </span>3. Relaxing Assumptions: Imperfect Compliance and SUTVA Violations<a class="headerlink" href="#relaxing-assumptions-imperfect-compliance-and-sutva-violations" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.5. </span>3. Relaxing Assumptions: Imperfect Compliance and SUTVA Violations<a class="headerlink" href="#relaxing-assumptions-imperfect-compliance-and-sutva-violations" title="Link to this heading">#</a></h2>
 <p><strong>What if we relaxed our assumptions of perfect compliance and SUTVA? When and why might these violations occur?</strong></p>
 <ul class="simple">
 <li><p>Imperfect compliance can occur due to non-adherence, cross-over, dropouts, or other practical challenges in real-world implementation.</p></li>
@@ -1483,7 +1482,7 @@ Consider the first t-test, where $X=age$:</p>
 </ul>
 <p>Such violations complicate causal effect estimation, potentially shifting our target parameters or requiring alternative techniques to adjust for these issues.</p>
 <section id="imperfect-compliance">
-<h3><span class="section-number">6.5.1. </span>3.1. Imperfect Compliance<a class="headerlink" href="#imperfect-compliance" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">5.5.1. </span>3.1. Imperfect Compliance<a class="headerlink" href="#imperfect-compliance" title="Link to this heading">#</a></h3>
 <p>Perfect compliance is rarely observed in real-world scenarios, making it reasonable to assume imperfect compliance. This means that not all individuals adhere to their assigned treatment ($S$), which can introduce bias when estimating the causal effect.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1675,7 +1674,7 @@ $$</p>
 <p>This is the average effect <strong>of being assigned</strong> to the job training program on wages, while holding constant all other determinants captured by $U$. Would this approach be useful for policymakers assessing the program’s potential benefits in a real-world setting?</p>
 </section>
 <section id="sutva-violation">
-<h3><span class="section-number">6.5.2. </span>SUTVA violation<a class="headerlink" href="#sutva-violation" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">5.5.2. </span>SUTVA violation<a class="headerlink" href="#sutva-violation" title="Link to this heading">#</a></h3>
 <p>SUTVA implies two conditions:</p>
 <ol class="arabic simple">
 <li><p>No interference between units.-  The treatment of one unit doesn’t affect another unit.</p></li>
@@ -2178,7 +2177,7 @@ $$</p>
 <p>Notice the contrast when assigning treatment at the individual level, where we estimate the ATE based on the differences in outcomes between individuals assigned to treatment and control.</p>
 </section>
 <section id="rcts-the-gold-standard-a-side-note-on-their-limitations">
-<h3><span class="section-number">6.5.3. </span>RCTs: The Gold Standard? A Side Note on Their Limitations<a class="headerlink" href="#rcts-the-gold-standard-a-side-note-on-their-limitations" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">5.5.3. </span>RCTs: The Gold Standard? A Side Note on Their Limitations<a class="headerlink" href="#rcts-the-gold-standard-a-side-note-on-their-limitations" title="Link to this heading">#</a></h3>
 <p>RCTs are often seen as the gold standard in research due to their high internal validity. However, they have significant limitations:</p>
 <ul class="simple">
 <li><p>Ethical Concerns</p></li>
@@ -2194,7 +2193,7 @@ $$</p>
 </section>
 </section>
 <section id="recap-on-sampling-distributions-and-the-central-limit-theorem-clt-on-python-help-for-homework">
-<h2><span class="section-number">6.6. </span>Recap on sampling distributions and the Central Limit Theorem (CLT) on Python – HELP FOR HOMEWORK!<a class="headerlink" href="#recap-on-sampling-distributions-and-the-central-limit-theorem-clt-on-python-help-for-homework" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.6. </span>Recap on sampling distributions and the Central Limit Theorem (CLT) on Python – HELP FOR HOMEWORK!<a class="headerlink" href="#recap-on-sampling-distributions-and-the-central-limit-theorem-clt-on-python-help-for-homework" title="Link to this heading">#</a></h2>
 <p>When we want to sample from a <strong>uniform distribution</strong>, we’re interested in generating random values that have an equal likelihood of falling anywhere within a specified interval. This can be accomplished using the NumPy library in Python.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2307,7 +2306,7 @@ $$</p>
 </div>
 </section>
 <section id="path-forward">
-<h2><span class="section-number">6.7. </span>5. Path Forward<a class="headerlink" href="#path-forward" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.7. </span>5. Path Forward<a class="headerlink" href="#path-forward" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Advanced causal inference methods, e.g., regression, natural experiments, etc.</p></li>
 </ul>
@@ -2365,7 +2364,7 @@ $$</p>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">7. </span>Regression</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>Regression</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -2386,25 +2385,25 @@ $$</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recap-from-last-class">6.1. Recap From Last Class</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-for-today">6.2. Goals For Today</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-causal-effects-from-sample-data">6.3. Estimating Causal Effects from Sample Data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#causal-model-for-the-impact-of-the-job-training-program-on-wages">6.3.1. Causal Model for the Impact of the Job Training Program on Wages</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#hypothesis-testing-for-the-ate">6.3.1.1. Hypothesis Testing for the ATE</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recap-from-last-class">5.1. Recap From Last Class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-for-today">5.2. Goals For Today</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-causal-effects-from-sample-data">5.3. Estimating Causal Effects from Sample Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#causal-model-for-the-impact-of-the-job-training-program-on-wages">5.3.1. Causal Model for the Impact of the Job Training Program on Wages</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#hypothesis-testing-for-the-ate">5.3.1.1. Hypothesis Testing for the ATE</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-our-assumptions">6.3.2. 2.4) Testing our Assumptions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-our-assumptions">5.3.2. 2.4) Testing our Assumptions</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#s-perp-perp-u">6.4. $S \perp!!!\perp U$</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relaxing-assumptions-imperfect-compliance-and-sutva-violations">6.5. 3. Relaxing Assumptions: Imperfect Compliance and SUTVA Violations</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imperfect-compliance">6.5.1. 3.1. Imperfect Compliance</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sutva-violation">6.5.2. SUTVA violation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rcts-the-gold-standard-a-side-note-on-their-limitations">6.5.3. RCTs: The Gold Standard? A Side Note on Their Limitations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#s-perp-perp-u">5.4. $S \perp!!!\perp U$</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relaxing-assumptions-imperfect-compliance-and-sutva-violations">5.5. 3. Relaxing Assumptions: Imperfect Compliance and SUTVA Violations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imperfect-compliance">5.5.1. 3.1. Imperfect Compliance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sutva-violation">5.5.2. SUTVA violation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rcts-the-gold-standard-a-side-note-on-their-limitations">5.5.3. RCTs: The Gold Standard? A Side Note on Their Limitations</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recap-on-sampling-distributions-and-the-central-limit-theorem-clt-on-python-help-for-homework">6.6. Recap on sampling distributions and the Central Limit Theorem (CLT) on Python – HELP FOR HOMEWORK!</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#path-forward">6.7. 5. Path Forward</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recap-on-sampling-distributions-and-the-central-limit-theorem-clt-on-python-help-for-homework">5.6. Recap on sampling distributions and the Central Limit Theorem (CLT) on Python – HELP FOR HOMEWORK!</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#path-forward">5.7. 5. Path Forward</a></li>
 </ul>
   </nav></div>
 
