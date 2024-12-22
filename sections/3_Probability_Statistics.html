@@ -188,22 +188,10 @@ $$</a></li>
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="7_Natural_Experiments.html">13. $$
-\begin{array}{c}
-\textbf{INTRODUCTION TO CAUSAL INFERENCE}\\
-\textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \
-\textit{Center for Data Science, New York University} \\
-\textit{October 18, 2024}
-\end{array}
-$$</a></li>
-
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="8_ML_and_Causality.html">19. The Interplay between Machine Learning and Causal Inference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="9_Matching.html">20. Matching</a></li>
-<li class="toctree-l1"><a class="reference internal" href="10_Instruments.html">21. $$
+<li class="toctree-l1"><a class="reference internal" href="7_Natural_Experiments.html">13. Natural Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8_ML_and_Causality.html">14. The Interplay between Machine Learning and Causal Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9_Matching.html">15. Matching</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_Instruments.html">16. $$
 \begin{array}{c}
 \textbf{INSTRUMENTAL VARIABLES}\
 \text(PART , I)\
@@ -213,8 +201,8 @@ $$</a></li>
 \end{array}
 $$</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="11_Instruments_RDD.html">23. Instrumental Variables(Continued)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="12_RDD.html">24. $$
+<li class="toctree-l1"><a class="reference internal" href="11_Instruments_RDD.html">18. Instrumental Variables(Continued)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_RDD.html">19. $$
 \begin{array}{c}
 \textbf{IV (Conitnued) / Intro to RDD}\
 \textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \
@@ -229,7 +217,7 @@ $$</a></li>
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="13_Difference_in_Differences.html">32. $$
+<li class="toctree-l1"><a class="reference internal" href="13_Difference_in_Differences.html">27. $$
 \begin{array}{c}
 \textbf{DIFFERENCE-IN-DIFFERENCES}\
 \\
@@ -243,7 +231,7 @@ $$</a></li>
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="14_Review.html">38. Final Course Review</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14_Review.html">33. Final Course Review</a></li>
 
 
 </ul>
@@ -493,13 +481,12 @@ $$</a></li>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">6</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">7</span>
 <span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="ne">----&gt; </span><span class="mi">6</span> <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="ne">----&gt; </span><span class="mi">7</span> <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
 
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;seaborn&#39;
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;networkx&#39;
 </pre></div>
 </div>
 </div>
@@ -510,8 +497,8 @@ $$</a></li>
 <section id="conditional-variance">
 <h3><span class="section-number">3.2.1. </span>1.1 Conditional Variance<a class="headerlink" href="#conditional-variance" title="Link to this heading">#</a></h3>
 <p>$$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-920ffb22-8d97-4e62-a51f-3ec8aef4f0f8">
-<span class="eqno">(3.1)<a class="headerlink" href="#equation-920ffb22-8d97-4e62-a51f-3ec8aef4f0f8" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-8fdba163-bd5c-4e7b-b518-6d3f135e8d7a">
+<span class="eqno">(3.1)<a class="headerlink" href="#equation-8fdba163-bd5c-4e7b-b518-6d3f135e8d7a" title="Permalink to this equation">#</a></span>\[\begin{align}
  \text{Var}(Y|X) &amp;= E[(Y - E[Y|X])^2 | X] \\
  &amp;= E[Y^2|X] - (E[Y|X])^2
 \end{align}\]</div>
@@ -713,8 +700,8 @@ Covariance of dependent variables: 12.798416177120513
 <p>Also, for simplicity, consider $S$ as a binary treatment variable (0 or 1).</p>
 <p>Causal quantities of interest:</p>
 <p>$$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-754c86a8-1e05-40d7-9d68-1517782f4999">
-<span class="eqno">(3.2)<a class="headerlink" href="#equation-754c86a8-1e05-40d7-9d68-1517782f4999" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-b1e3a5e9-f4e6-4c76-a6aa-2c240410b9ad">
+<span class="eqno">(3.2)<a class="headerlink" href="#equation-b1e3a5e9-f4e6-4c76-a6aa-2c240410b9ad" title="Permalink to this equation">#</a></span>\[\begin{align}
 \text{ATE} &amp;= E[Y(S=1, U) - Y(S=0, U)]\\
 \text{ATT} &amp;= E[Y(S=1, U) - Y(S=0, U)|S=1]\\
 \text{ATU} &amp;= E[Y(S=1, U) - Y(S=0, U)|S=0]
