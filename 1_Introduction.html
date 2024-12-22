@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>1. Goals For Today &#8212; Causal Inference for Data Science</title>
+    <title>Introduction &#8212; Causal Inference for Data Science</title>
   
   
   
@@ -65,8 +65,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = '1_Introduction';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Probability Mass and Density Function" href="2_Probability_1-2.html" />
-    <link rel="prev" title="Welcome to your Jupyter Book" href="intro.html" />
+    <link rel="next" title="Probability" href="2_Probability_1-2.html" />
+    <link rel="prev" title="Welcome to Causal Inference" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -166,17 +166,13 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    Welcome to your Jupyter Book
+                    Welcome to Causal Inference
                 </a>
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">1. Goals For Today</a></li>
-
-
-<li class="toctree-l1"><a class="reference internal" href="2_Probability_1-2.html">Probability Mass and Density Function</a></li>
-
-
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_Probability_1-2.html">Probability</a></li>
 
 
 
@@ -243,8 +239,7 @@
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="14_Review.html">1. Goals For Today</a></li>
-
+<li class="toctree-l1"><a class="reference internal" href="14_Review.html">Final Course Review</a></li>
 
 
 </ul>
@@ -429,7 +424,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>1. Goals For Today</h1>
+    <h1>Introduction</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -439,16 +434,15 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">1. Goals For Today</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#review-of-setup-and-tools-for-running-code">2. Review of setup and tools for running code.</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notation">2.1) Notation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#descriptive-analysis">2.2) Descriptive Analysis</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-descriptive-to-causal-analysis-in-a-perfect-world-for-now">2.3) From Descriptive to Causal Analysis in a Perfect World (For Now)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals">1. Goals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#review-of-setup-and-tools-for-running-code">2. Review of setup and tools for running code.</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notation">2.1) Notation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#descriptive-analysis">2.2) Descriptive Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-descriptive-to-causal-analysis-in-a-perfect-world-for-now">2.3) From Descriptive to Causal Analysis in a Perfect World (For Now)</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#path-forward">3. Path Forward</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#path-forward">3. Path Forward</a></li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -462,19 +456,11 @@
   <div align="center">
 <p><a class="reference external" href="https://colab.research.google.com/github/dapivei/causal-infere/blob/main/sections/1-Introduction.ipynb"><img alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 </div>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{array}{c}
-\textbf{INTRODUCTION TO CAUSAL INFERENCE}\\\\\\\\
-\textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \\
-\textit{Center for Data Science, New York University} \\\\\\
-\textit{September 6, 2024}
-\end{array}
-\end{split}\]</div>
-<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h1>
 <p><img alt="Causality" src="https://simons.berkeley.edu/sites/default/files/styles/hero_xxl_1x/public/2023-01/Causality_hi-res.jpg?h=6dcb57f1&amp;itok=5R0Da6OT.png?raw=true" /></p>
-<section id="goals-for-today">
-<h1>1. Goals For Today<a class="headerlink" href="#goals-for-today" title="Link to this heading">#</a></h1>
+<section id="goals">
+<h2>1. Goals<a class="headerlink" href="#goals" title="Link to this heading">#</a></h2>
 <p>Through a guiding dummy example, the goal of this class is to:</p>
 <ul class="simple">
 <li><p>Review of setup and tools for running code.</p></li>
@@ -483,10 +469,10 @@
 <li><p>Identify and estimate causal parameters with simulated data.</p></li>
 <li><p>Understand the key concepts behind identifying and estimating causal effects.</p></li>
 </ul>
-<hr class="docutils" />
 </section>
+<hr class="docutils" />
 <section id="review-of-setup-and-tools-for-running-code">
-<h1>2. Review of setup and tools for running code.<a class="headerlink" href="#review-of-setup-and-tools-for-running-code" title="Link to this heading">#</a></h1>
+<h2>2. Review of setup and tools for running code.<a class="headerlink" href="#review-of-setup-and-tools-for-running-code" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Tutorial to install Python, available <a class="reference external" href="https://realpython.com/installing-python/">here</a>.</p></li>
 <li><p>Tutorial to install Jupyter <a class="reference external" href="https://jupyter.org/install">here</a>.</p></li>
@@ -521,7 +507,7 @@
 <p>Imagine this: A curious professor is on a mission to find out if attending classes regularly really gives students that extra grade boost. But there’s more to it — he’s not just interested in <em>describing</em> what’s happening. He’s after something bigger: figuring out the <em>actual effect</em> of attendance on grades.</p>
 <p>So, how do we go from simply observing grades to truly understanding <em>what causes</em> better performance? That’s where the <em>all causes model</em> comes in. We’re going to dive into a hands-on exploration to see how we can separate what’s just descriptive from what’s truly causal. Let’s find out if showing up to class makes all the difference!</p>
 <section id="notation">
-<h2>2.1) Notation<a class="headerlink" href="#notation" title="Link to this heading">#</a></h2>
+<h3>2.1) Notation<a class="headerlink" href="#notation" title="Link to this heading">#</a></h3>
 <p>To dive deeper into the problem, let’s define some key components:</p>
 <ul class="simple">
 <li><p><strong><span class="math notranslate nohighlight">\(Y_i(s, u)\)</span></strong>: The outcome of interest or dependant variable, in this case, the grades for student <span class="math notranslate nohighlight">\(i\)</span> under potential state <span class="math notranslate nohighlight">\(s\)</span> and given all other factors <span class="math notranslate nohighlight">\(u\)</span>.</p></li>
@@ -531,7 +517,7 @@
 </ul>
 </section>
 <section id="descriptive-analysis">
-<h2>2.2) Descriptive Analysis<a class="headerlink" href="#descriptive-analysis" title="Link to this heading">#</a></h2>
+<h3>2.2) Descriptive Analysis<a class="headerlink" href="#descriptive-analysis" title="Link to this heading">#</a></h3>
 <p>For learning purposes, let’s simulate grades based on a normal distribution. This allows us to later analyze how attendance impacts these grades.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -872,7 +858,7 @@
 <p>We have no idea what would happen to their grades if they switched their attendance pattern! This missing information —<strong>the counterfactual</strong>— is exactly what makes causal inference so tricky and it’s known as <strong>the fundamental problem of causal inference</strong>.</p>
 </section>
 <section id="from-descriptive-to-causal-analysis-in-a-perfect-world-for-now">
-<h2>2.3) From Descriptive to Causal Analysis in a Perfect World (For Now)<a class="headerlink" href="#from-descriptive-to-causal-analysis-in-a-perfect-world-for-now" title="Link to this heading">#</a></h2>
+<h3>2.3) From Descriptive to Causal Analysis in a Perfect World (For Now)<a class="headerlink" href="#from-descriptive-to-causal-analysis-in-a-perfect-world-for-now" title="Link to this heading">#</a></h3>
 <p>Assumptions:</p>
 <ol class="arabic simple">
 <li><p><strong>Perfect Knowledge of Both States:</strong> We can observe both regular <span class="math notranslate nohighlight">\(Y_i(1, u)\)</span> and irregular attendance <span class="math notranslate nohighlight">\(Y_i(0, u)\)</span> grades for every student — something that’s impossible in the real world.</p></li>
@@ -1543,16 +1529,14 @@ Regular attendance improves grades by 4.92 points.
 </section>
 </section>
 <section id="path-forward">
-<h1>3. Path Forward<a class="headerlink" href="#path-forward" title="Link to this heading">#</a></h1>
+<h2>3. Path Forward<a class="headerlink" href="#path-forward" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Dive deeper into the assumptions we’ve made and understand how to relax or verify them.</p></li>
 <li><p>Explore statistical methods to estimate causal effects in more complex, real-world data settings.</p></li>
 <li><p>Investigate how to identify and handle confounding variables using techniques like matching, regression, and instrumental variables.</p></li>
 </ol>
 <p>Moving from simple descriptive analysis to robust causal inference!</p>
-<hr class="docutils" />
-<p><strong>References:</strong></p>
-<p>Angrist, Joshua D., and Jörn-Steffen Pischke. 2009. “Preliminaries: 1. Questions About Questions.” In Mostly Harmless Econometrics: An Empiricist’s Companion, 3–8. Princeton: Princeton University Press.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1591,7 +1575,7 @@ Regular attendance improves grades by 4.92 points.
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Welcome to your Jupyter Book</p>
+        <p class="prev-next-title">Welcome to Causal Inference</p>
       </div>
     </a>
     <a class="right-next"
@@ -1599,7 +1583,7 @@ Regular attendance improves grades by 4.92 points.
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Probability Mass and Density Function</p>
+        <p class="prev-next-title">Probability</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1620,16 +1604,15 @@ Regular attendance improves grades by 4.92 points.
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">1. Goals For Today</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#review-of-setup-and-tools-for-running-code">2. Review of setup and tools for running code.</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notation">2.1) Notation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#descriptive-analysis">2.2) Descriptive Analysis</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-descriptive-to-causal-analysis-in-a-perfect-world-for-now">2.3) From Descriptive to Causal Analysis in a Perfect World (For Now)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals">1. Goals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#review-of-setup-and-tools-for-running-code">2. Review of setup and tools for running code.</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notation">2.1) Notation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#descriptive-analysis">2.2) Descriptive Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-descriptive-to-causal-analysis-in-a-perfect-world-for-now">2.3) From Descriptive to Causal Analysis in a Perfect World (For Now)</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#path-forward">3. Path Forward</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#path-forward">3. Path Forward</a></li>
 </ul>
-
   </nav></div>
 
 </div></div>

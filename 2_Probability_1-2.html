@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Probability Mass and Density Function &#8212; Causal Inference for Data Science</title>
+    <title>Probability &#8212; Causal Inference for Data Science</title>
   
   
   
@@ -66,7 +66,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Overview For Today" href="3_Probability_Statistics.html" />
-    <link rel="prev" title="1. Goals For Today" href="1_Introduction.html" />
+    <link rel="prev" title="Introduction" href="1_Introduction.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -166,17 +166,13 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    Welcome to your Jupyter Book
+                    Welcome to Causal Inference
                 </a>
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="1_Introduction.html">1. Goals For Today</a></li>
-
-
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Probability Mass and Density Function</a></li>
-
-
+<li class="toctree-l1"><a class="reference internal" href="1_Introduction.html">Introduction</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Probability</a></li>
 
 
 
@@ -243,8 +239,7 @@
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="14_Review.html">1. Goals For Today</a></li>
-
+<li class="toctree-l1"><a class="reference internal" href="14_Review.html">Final Course Review</a></li>
 
 
 </ul>
@@ -429,7 +424,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Probability Mass and Density Function</h1>
+    <h1>Probability</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -439,9 +434,12 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Probability Mass and Density Function</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#function-of-rvs">Function of rvs</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#variance">Variance</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Probability</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-mass-and-density-function">Probability Mass and Density Function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#function-of-rvs">Function of rvs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variance">Variance</a></li>
+</ul>
+</li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#joint-probability"><a id="toc3_"></a><span class="xref myst">Joint Probability</span></a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#joint-distribution"><a id="toc4_"></a><span class="xref myst">Joint Distribution</span></a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-the-joint-distribution-to-marginal-distribution"><a id="toc5_"></a><span class="xref myst">Convert the Joint Distribution to Marginal Distribution</span></a></li>
@@ -476,21 +474,10 @@
   <div align="center">
 <p><a class="reference external" href="https://colab.research.google.com/github/dapivei/causal-infere/blob/main/sections/2_Probability_1-2.ipynb"><img alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 </div>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{array}{c}
-\textbf{INTRODUCTION TO CAUSAL INFERENCE}\\\\\\\\
-\textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \\
-\textit{Center for Data Science, New York University} \\\\\\
-\end{array}
-\end{split}\]</div>
-<hr class="docutils" />
-<div class="math notranslate nohighlight">
-\[
-\textit{Week 2 Probability 1}
-\]</div>
-<section class="tex2jax_ignore mathjax_ignore" id="probability-mass-and-density-function">
-<h1>Probability Mass and Density Function<a class="headerlink" href="#probability-mass-and-density-function" title="Link to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="probability">
+<h1>Probability<a class="headerlink" href="#probability" title="Link to this heading">#</a></h1>
+<section id="probability-mass-and-density-function">
+<h2>Probability Mass and Density Function<a class="headerlink" href="#probability-mass-and-density-function" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -581,15 +568,15 @@
 </div>
 </div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="function-of-rvs">
-<h1>Function of rvs<a class="headerlink" href="#function-of-rvs" title="Link to this heading">#</a></h1>
+<section id="function-of-rvs">
+<h2>Function of rvs<a class="headerlink" href="#function-of-rvs" title="Link to this heading">#</a></h2>
 <div class="math notranslate nohighlight">
 \[
 E[g(X)]=\int_{-\infty}^{\infty} g(x) f(x) d x
 \]</div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="variance">
-<h1>Variance<a class="headerlink" href="#variance" title="Link to this heading">#</a></h1>
+<section id="variance">
+<h2>Variance<a class="headerlink" href="#variance" title="Link to this heading">#</a></h2>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{aligned}
@@ -610,6 +597,7 @@ E\left[(X-E[X])^2\right] &amp; =E\left[X^2-2 X E[X]+E[X]^2\right] \\
 </div>
 </div>
 </div>
+</section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="joint-probability">
 <h1><a id='toc3_'></a><a class="reference internal" href="#toc0_"><span class="xref myst">Joint Probability</span></a><a class="headerlink" href="#joint-probability" title="Link to this heading">#</a></h1>
@@ -1432,7 +1420,7 @@ $<span class="math notranslate nohighlight">\(
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">1. Goals For Today</p>
+        <p class="prev-next-title">Introduction</p>
       </div>
     </a>
     <a class="right-next"
@@ -1461,9 +1449,12 @@ $<span class="math notranslate nohighlight">\(
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Probability Mass and Density Function</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#function-of-rvs">Function of rvs</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#variance">Variance</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Probability</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-mass-and-density-function">Probability Mass and Density Function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#function-of-rvs">Function of rvs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variance">Variance</a></li>
+</ul>
+</li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#joint-probability"><a id="toc3_"></a><span class="xref myst">Joint Probability</span></a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#joint-distribution"><a id="toc4_"></a><span class="xref myst">Joint Distribution</span></a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-the-joint-distribution-to-marginal-distribution"><a id="toc5_"></a><span class="xref myst">Convert the Joint Distribution to Marginal Distribution</span></a></li>
