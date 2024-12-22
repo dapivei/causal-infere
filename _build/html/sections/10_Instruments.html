@@ -182,14 +182,8 @@
 <li class="toctree-l1"><a class="reference internal" href="11_Instruments_RDD.html">11. Instrumental Variables(Continued)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="12_RDD.html">12. Instrumental Variables (Continued) and Intro to Regression Discontinuity (RDD)</a></li>
 
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="13_Difference_in_Differences.html">18. Difference in Differences</a></li>
-<li class="toctree-l1"><a class="reference internal" href="14_Review.html">19. Final Review</a></li>
-
-
+<li class="toctree-l1"><a class="reference internal" href="13_Difference_in_Differences.html">14. Difference in Differences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14_Review.html">15. Final Review</a></li>
 </ul>
 
     </div>
@@ -384,7 +378,7 @@
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recap-from-last-class">10.1. Recap From Last Class</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-for-today">10.2. Goals For Today</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">10.3. 2. Instrumental Variables</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">10.3. Instrumental Variables</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-an-instrumental-variable">10.3.1. What is an Instrumental Variable?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#when-should-we-use-ivs">10.3.2. When Should We Use IVs?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-assumptions-for-a-valid-instrument">10.3.3. Key Assumptions for a Valid Instrument</a></li>
@@ -393,7 +387,7 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identifying-the-local-average-treatment-effect-late">10.3.6. Identifying the Local Average Treatment Effect (LATE)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivating-case-the-effect-of-watching-sesame-street-on-later-academic-achievement">10.4. 3. Motivating Case: The effect of watching sesame street on later academic achievement.</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivating-case-the-effect-of-watching-sesame-street-on-later-academic-achievement">10.4. Motivating Case: The effect of watching sesame street on later academic achievement.</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#research-question">10.4.1. Research Question</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-setup">10.4.2. Model Setup</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-challenge">10.4.3. The challenge</a></li>
@@ -441,7 +435,7 @@
 </ol>
 </section>
 <section id="id1">
-<h2><span class="section-number">10.3. </span>2. Instrumental Variables<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">10.3. </span>Instrumental Variables<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>Imagine we want to estimate the <strong>causal effect</strong> of a treatment variable, $S$, on some outcome, $Y$. But there’s a problem: we suspect that $S$ is <strong>correlated with unobserved factors</strong> that also affect $Y$. These unobserved factors are captured by the variable $U$. This means:</p>
 <p>$$S \not!\perp!!!\perp U,$$</p>
 <p>In other words, $S$ and $U$ are related, which can lead to <strong>biased and inconsistent estimates</strong> when we try to estimate the causal effect of $S$ on $Y$.</p>
@@ -524,7 +518,7 @@ $$ S(Z=1, V) = 0 \quad \text{and} \quad S(Z=0, V) = 1 $$</p></li>
 </section>
 </section>
 <section id="motivating-case-the-effect-of-watching-sesame-street-on-later-academic-achievement">
-<h2><span class="section-number">10.4. </span>3. Motivating Case: The effect of watching sesame street on later academic achievement.<a class="headerlink" href="#motivating-case-the-effect-of-watching-sesame-street-on-later-academic-achievement" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">10.4. </span>Motivating Case: The effect of watching sesame street on later academic achievement.<a class="headerlink" href="#motivating-case-the-effect-of-watching-sesame-street-on-later-academic-achievement" title="Link to this heading">#</a></h2>
 <img src="https://www.aeaweb.org/content/file?id=8888.png?raw=true" width="500" height="auto" />
 <section id="research-question">
 <h3><span class="section-number">10.4.1. </span>Research Question<a class="headerlink" href="#research-question" title="Link to this heading">#</a></h3>
@@ -1508,7 +1502,7 @@ site          -0.7509      0.155     -4.833      0.000      -1.056      -0.446
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recap-from-last-class">10.1. Recap From Last Class</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-for-today">10.2. Goals For Today</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">10.3. 2. Instrumental Variables</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">10.3. Instrumental Variables</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-an-instrumental-variable">10.3.1. What is an Instrumental Variable?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#when-should-we-use-ivs">10.3.2. When Should We Use IVs?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-assumptions-for-a-valid-instrument">10.3.3. Key Assumptions for a Valid Instrument</a></li>
@@ -1517,7 +1511,7 @@ site          -0.7509      0.155     -4.833      0.000      -1.056      -0.446
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identifying-the-local-average-treatment-effect-late">10.3.6. Identifying the Local Average Treatment Effect (LATE)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivating-case-the-effect-of-watching-sesame-street-on-later-academic-achievement">10.4. 3. Motivating Case: The effect of watching sesame street on later academic achievement.</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivating-case-the-effect-of-watching-sesame-street-on-later-academic-achievement">10.4. Motivating Case: The effect of watching sesame street on later academic achievement.</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#research-question">10.4.1. Research Question</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-setup">10.4.2. Model Setup</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-challenge">10.4.3. The challenge</a></li>

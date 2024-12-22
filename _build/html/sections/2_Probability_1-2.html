@@ -182,14 +182,8 @@
 <li class="toctree-l1"><a class="reference internal" href="11_Instruments_RDD.html">11. Instrumental Variables(Continued)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="12_RDD.html">12. Instrumental Variables (Continued) and Intro to Regression Discontinuity (RDD)</a></li>
 
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="13_Difference_in_Differences.html">18. Difference in Differences</a></li>
-<li class="toctree-l1"><a class="reference internal" href="14_Review.html">19. Final Review</a></li>
-
-
+<li class="toctree-l1"><a class="reference internal" href="13_Difference_in_Differences.html">14. Difference in Differences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14_Review.html">15. Final Review</a></li>
 </ul>
 
     </div>
@@ -503,23 +497,18 @@
 </section>
 <section id="function-of-rvs">
 <h2><span class="section-number">2.2. </span>Function of rvs<a class="headerlink" href="#function-of-rvs" title="Link to this heading">#</a></h2>
-<p>$$
+<p>\begin{aligned}
 E[g(X)]=\int_{-\infty}^{\infty} g(x) f(x) d x
-$$</p>
+\end{aligned}</p>
 </section>
 <section id="variance">
 <h2><span class="section-number">2.3. </span>Variance<a class="headerlink" href="#variance" title="Link to this heading">#</a></h2>
-<p>$$
-\begin{aligned}
+<p>\begin{aligned}
 E\left[(X-E[X])^2\right] &amp; =E\left[X^2-2 X E[X]+E[X]^2\right] \
 &amp; =E\left[X^2\right]-E[2 X E[X]]+E[X]^2 \
 &amp; =E\left[X^2\right]-2 E[X] E[X]+E[X]^2 \
 &amp; =E\left[X^2\right]-E[X]^2
-\end{aligned}
-$$</p>
-<p>$$
-\textit{Week 2 Probability 2}
-$$</p>
+\end{aligned}</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># kaggle datasets download -d saranpannasuriyaporn/male-female-height-and-weight</span>
@@ -650,13 +639,13 @@ $$</p>
 <section id="joint-distribution">
 <h2><span class="section-number">2.5. </span>Joint Distribution<a class="headerlink" href="#joint-distribution" title="Link to this heading">#</a></h2>
 <p>The data is continuous, but we can bin it to make it discrete.</p>
-<p>$$
+<p>\begin{aligned}
 P(X = x, Y = y) = \frac{N_{x,y}}{N}
-$$</p>
+\end{aligned}</p>
 <p>We want to know what’s the probability of height larger than $h$ and gender is male.</p>
-<p>$$
+<p>\begin{aligned}
 P(H &gt; h, G = M) = \frac{N_{h, M}}{N}
-$$</p>
+\end{aligned}</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">h</span> <span class="o">=</span> <span class="mi">180</span>
@@ -678,9 +667,9 @@ $$</p>
 <h2><span class="section-number">2.6. </span>Convert the Joint Distribution to Marginal Distribution<a class="headerlink" href="#convert-the-joint-distribution-to-marginal-distribution" title="Link to this heading">#</a></h2>
 <p>What is the probability of height larger than $h$?</p>
 <p>We can sum over all the weights.</p>
-<p>$$
+<p>\begin{aligned}
 P(H &gt; h) = \sum_{g} P(H &gt; h, G = g) = \sum_{g} \frac{N_{h, g}}{N}
-$$</p>
+\end{aligned}</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">group_male_height</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Height&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">h</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Sex&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Male&quot;</span><span class="p">)]</span>
@@ -719,14 +708,14 @@ The probability of a person being taller than 180 cm is 0.08633333333333333
 </section>
 <section id="covariance">
 <h2><span class="section-number">2.7. </span>Covariance<a class="headerlink" href="#covariance" title="Link to this heading">#</a></h2>
-<p>$$
+<p>\begin{aligned}
 Cov(X, Y)
 = E[(X - E[X])(Y - E[Y])]
 = E[XY] - E[X]E[Y]
-$$</p>
-<p>$$
+\end{aligned}</p>
+<p>\begin{aligned}
 Cov(X, Y) = \frac{1}{N} \sum_{i=1}^{N} (x_i - \mu_x)(y_i - \mu_y)
-$$</p>
+\end{aligned}</p>
 </section>
 <section id="covariance-is-a-measure-of-the-linear-relationship-between-two-variables">
 <h2><span class="section-number">2.8. </span>Covariance is a measure of the linear relationship between two variables.<a class="headerlink" href="#covariance-is-a-measure-of-the-linear-relationship-between-two-variables" title="Link to this heading">#</a></h2>
@@ -752,8 +741,8 @@ $$</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.98841574 1.97683149]
- [1.97683149 3.95366297]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1.00312747 2.00625494]
+ [2.00625494 4.01250989]]
 </pre></div>
 </div>
 </div>
@@ -767,7 +756,7 @@ $$</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.98467113 0.        ]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.98925605 0.        ]
  [0.         0.        ]]
 </pre></div>
 </div>
@@ -839,7 +828,7 @@ $$</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0000790267747668
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0008452459767114
 </pre></div>
 </div>
 </div>
@@ -851,7 +840,7 @@ $$</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.016272708468011
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.009373100409477
 </pre></div>
 </div>
 </div>
@@ -863,7 +852,7 @@ $$</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.97430113 1.0258251 ]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.95409271 1.04759329]
 </pre></div>
 </div>
 </div>
@@ -875,7 +864,7 @@ $$</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[3.89720452 4.10330039]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[3.81637084 4.19037318]
 </pre></div>
 </div>
 </div>
@@ -908,8 +897,8 @@ $$</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1.01436471 2.02872942]
- [2.02872942 4.05745883]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1.0394554  2.07891079]
+ [2.07891079 4.15782158]]
 </pre></div>
 </div>
 </div>
@@ -924,9 +913,9 @@ $$</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0133503428078032 4.053401371231213 9.120153085270227
-2.0287294150306368
-9.12421054410029
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0384159402263977 4.153663760905591 9.345743462037579
+2.0789107912440397
+9.349901283620067
 </pre></div>
 </div>
 </div>
@@ -1016,7 +1005,7 @@ We can represent this situation with a directed acyclic graph (DAG), where:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_4004501/2404936834.py:24: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_169594/2404936834.py:24: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
   plt.tight_layout()
 </pre></div>
 </div>
@@ -1261,9 +1250,8 @@ $$</p>
 <section id="law-of-iterated-expectations">
 <h2><span class="section-number">2.15. </span>Law of Iterated Expectations<a class="headerlink" href="#law-of-iterated-expectations" title="Link to this heading">#</a></h2>
 <p>$$E[X]=E[E[X \mid Y]]$$</p>
-<p>Trivial Proof:
-$$
-\begin{aligned}
+<p>Trivial Proof:</p>
+<p>\begin{aligned}
 \mathrm{E}[\mathrm{E}(X \mid Y)] &amp; =\mathrm{E}\left[\sum_{x \in \mathcal{X}} x \cdot \operatorname{Pr}(X=x \mid Y)\right] \
 &amp; =\sum_{y \in \mathcal{Y}}\left[\sum_{x \in \mathcal{X}} x \cdot \operatorname{Pr}(X=x \mid Y=y)\right] \cdot \operatorname{Pr}(Y=y) \
 &amp; =\sum_{x \in \mathcal{X}} \sum_{y \in \mathcal{Y}} x \cdot \operatorname{Pr}(X=x \mid Y=y) \cdot \operatorname{Pr}(Y=y) \
@@ -1271,8 +1259,7 @@ $$
 &amp; =\sum_{x \in \mathcal{X}} x \sum_{y \in \mathcal{Y}} \operatorname{Pr}(X=x, Y=y) \
 &amp; =\sum_{x \in \mathcal{X}} x \cdot \operatorname{Pr}(X=x) \
 &amp; =\mathrm{E}(X)
-\end{aligned}
-$$</p>
+\end{aligned}</p>
 </section>
 </section>
 
