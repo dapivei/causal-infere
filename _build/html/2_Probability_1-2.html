@@ -173,16 +173,6 @@
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="1_Introduction.html">Introduction</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Probability</a></li>
-
-
-
-
-
-
-
-
-
-
 <li class="toctree-l1"><a class="reference internal" href="3_Probability_Statistics.html">Overview For Today</a></li>
 
 
@@ -434,33 +424,25 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Probability</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-mass-and-density-function">Probability Mass and Density Function</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#function-of-rvs">Function of rvs</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variance">Variance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#joint-probability">Joint Probability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#joint-distribution">Joint Distribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-the-joint-distribution-to-marginal-distribution">Convert the Joint Distribution to Marginal Distribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#covariance">Covariance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#covariance-is-a-measure-of-the-linear-relationship-between-two-variables">Covariance is a measure of the linear relationship between two variables.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-of-x">variance of x</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#properties">Properties</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation">Correlation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation">Interpretation:</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#joint-probability"><a id="toc3_"></a><span class="xref myst">Joint Probability</span></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#joint-distribution"><a id="toc4_"></a><span class="xref myst">Joint Distribution</span></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-the-joint-distribution-to-marginal-distribution"><a id="toc5_"></a><span class="xref myst">Convert the Joint Distribution to Marginal Distribution</span></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#covariance"><a id="toc6_"></a><span class="xref myst">Covariance</span></a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#covariance-is-a-measure-of-the-linear-relationship-between-two-variables"><a id="toc6_1_"></a><span class="xref myst">Covariance is a measure of the linear relationship between two variables.</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation-not-implies-causation">Correlation <span class="math notranslate nohighlight">\(\not\implies\)</span> Causation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#causation-not-implies-correlation">Causation <span class="math notranslate nohighlight">\(\not\implies\)</span> Correlation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-distribution">Conditional Distribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#law-of-iterated-expectations">Law of Iterated Expectations</a></li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-of-x">variance of x</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#properties"><a id="toc6_2_"></a><span class="xref myst">Properties</span></a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation"><a id="toc7_"></a><span class="xref myst">Correlation</span></a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation"><a id="toc7_1_"></a><span class="xref myst">Interpretation:</span></a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation-not-implies-causation"><a id="toc8_"></a><span class="xref myst">Correlation <span class="math notranslate nohighlight">\(\not\implies\)</span> Causation</span></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#causation-not-implies-correlation"><a id="toc9_"></a><span class="xref myst">Causation <span class="math notranslate nohighlight">\(\not\implies\)</span> Correlation</span></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-distribution"><a id="toc10_"></a><span class="xref myst">Conditional Distribution</span></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#law-of-iterated-expectations"><a id="toc11_"></a><span class="xref myst">Law of Iterated Expectations</span></a></li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -482,25 +464,29 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-
-<span class="c1"># Define the probability mass function for a fair six-sided die</span>
-<span class="k">def</span> <span class="nf">pmf_die</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]:</span>
-        <span class="k">return</span> <span class="mi">1</span><span class="o">/</span><span class="mi">6</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="mi">0</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># Define the probability mass function for a fair six-sided die</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;numpy&#39;
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;matplotlib&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the probability mass function for a fair six-sided die</span>
+<span class="k">def</span> <span class="nf">pmf_die</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="mi">1</span><span class="o">/</span><span class="mi">6</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
 </pre></div>
 </div>
 </div>
@@ -598,9 +584,8 @@ E\left[(X-E[X])^2\right] &amp; =E\left[X^2-2 X E[X]+E[X]^2\right] \\
 </div>
 </div>
 </section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="joint-probability">
-<h1><a id='toc3_'></a><a class="reference internal" href="#toc0_"><span class="xref myst">Joint Probability</span></a><a class="headerlink" href="#joint-probability" title="Link to this heading">#</a></h1>
+<section id="joint-probability">
+<h2>Joint Probability<a class="headerlink" href="#joint-probability" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -718,8 +703,8 @@ E\left[(X-E[X])^2\right] &amp; =E\left[X^2-2 X E[X]+E[X]^2\right] \\
 </div></div></div>
 </div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="joint-distribution">
-<h1><a id='toc4_'></a><a class="reference internal" href="#toc0_"><span class="xref myst">Joint Distribution</span></a><a class="headerlink" href="#joint-distribution" title="Link to this heading">#</a></h1>
+<section id="joint-distribution">
+<h2>Joint Distribution<a class="headerlink" href="#joint-distribution" title="Link to this heading">#</a></h2>
 <p>The data is continuous, but we can bin it to make it discrete.</p>
 <div class="math notranslate nohighlight">
 \[
@@ -747,8 +732,8 @@ P(H &gt; h, G = M) = \frac{N_{h, M}}{N}
 </div>
 </div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="convert-the-joint-distribution-to-marginal-distribution">
-<h1><a id='toc5_'></a><a class="reference internal" href="#toc0_"><span class="xref myst">Convert the Joint Distribution to Marginal Distribution</span></a><a class="headerlink" href="#convert-the-joint-distribution-to-marginal-distribution" title="Link to this heading">#</a></h1>
+<section id="convert-the-joint-distribution-to-marginal-distribution">
+<h2>Convert the Joint Distribution to Marginal Distribution<a class="headerlink" href="#convert-the-joint-distribution-to-marginal-distribution" title="Link to this heading">#</a></h2>
 <p>What is the probability of height larger than <span class="math notranslate nohighlight">\(h\)</span>?</p>
 <p>We can sum over all the weights.</p>
 <div class="math notranslate nohighlight">
@@ -791,8 +776,8 @@ The probability of a person being taller than 180 cm is 0.08633333333333333
 </div>
 </div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="covariance">
-<h1><a id='toc6_'></a><a class="reference internal" href="#toc0_"><span class="xref myst">Covariance</span></a><a class="headerlink" href="#covariance" title="Link to this heading">#</a></h1>
+<section id="covariance">
+<h2>Covariance<a class="headerlink" href="#covariance" title="Link to this heading">#</a></h2>
 <div class="math notranslate nohighlight">
 \[
 Cov(X, Y) 
@@ -804,8 +789,9 @@ Cov(X, Y)
 Cov(X, Y) = \frac{1}{N} \sum_{i=1}^{N} (x_i - \mu_x)(y_i - \mu_y)
 \]</div>
 <p>$$</p>
+</section>
 <section id="covariance-is-a-measure-of-the-linear-relationship-between-two-variables">
-<h2><a id='toc6_1_'></a><a class="reference internal" href="#toc0_"><span class="xref myst">Covariance is a measure of the linear relationship between two variables.</span></a><a class="headerlink" href="#covariance-is-a-measure-of-the-linear-relationship-between-two-variables" title="Link to this heading">#</a></h2>
+<h2>Covariance is a measure of the linear relationship between two variables.<a class="headerlink" href="#covariance-is-a-measure-of-the-linear-relationship-between-two-variables" title="Link to this heading">#</a></h2>
 <!-- - Let \(X, Y\), and \(Z\) be rv's and \(a\) and \(b\) scalars. Then
 (i) \(\operatorname{Cov}(X, Y)=\operatorname{Cov}(Y, X)\)
 (ii) \(\operatorname{Cov}(X, a)=0\)
@@ -971,15 +957,15 @@ Y \sim N(a\mu_X + b, a^2\Sigma_X)
 </div>
 </div>
 </section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="variance-of-x">
-<h1>variance of x<a class="headerlink" href="#variance-of-x" title="Link to this heading">#</a></h1>
+<section id="variance-of-x">
+<h2>variance of x<a class="headerlink" href="#variance-of-x" title="Link to this heading">#</a></h2>
 <div class="math notranslate nohighlight">
 \[
 \operatorname{Var}(X) = \frac{1}{N} \sum_{i=1}^{N} (x_i - \mu_x)^2
 \]</div>
+</section>
 <section id="properties">
-<h2><a id='toc6_2_'></a><a class="reference internal" href="#toc0_"><span class="xref myst">Properties</span></a><a class="headerlink" href="#properties" title="Link to this heading">#</a></h2>
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading">#</a></h2>
 <!-- \operatorname{Var}(X+Y)=\operatorname{Var}(X)+\operatorname{Var}(Y)+2 \operatorname{Cov}(X, Y) -->
 <div class="math notranslate nohighlight">
 \[
@@ -1036,9 +1022,8 @@ Y \sim N(a\mu_X + b, a^2\Sigma_X)
 \end{aligned}
 \end{split}\]</div>
 </section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="correlation">
-<h1><a id='toc7_'></a><a class="reference internal" href="#toc0_"><span class="xref myst">Correlation</span></a><a class="headerlink" href="#correlation" title="Link to this heading">#</a></h1>
+<section id="correlation">
+<h2>Correlation<a class="headerlink" href="#correlation" title="Link to this heading">#</a></h2>
 <p>Covariance has the unit of the product of the units of the two variables.</p>
 <p>X: cm, Y: kg
 $<span class="math notranslate nohighlight">\(
@@ -1062,14 +1047,14 @@ $<span class="math notranslate nohighlight">\(
 |\operatorname{Cov}(X, Y)|=|\mathbb{E}[(X-\mathbb{E}[X])(Y-\mathbb{E}[Y])]| \leq \sqrt{\mathbb{E}\left[(X-\mathbb{E}[X])^2\right] \cdot \mathbb{E}\left[(Y-\mathbb{E}[Y])^2\right]}
 \]</div>
 <section id="interpretation">
-<h2><a id='toc7_1_'></a><a class="reference internal" href="#toc0_"><span class="xref myst">Interpretation:</span></a><a class="headerlink" href="#interpretation" title="Link to this heading">#</a></h2>
+<h3>Interpretation:<a class="headerlink" href="#interpretation" title="Link to this heading">#</a></h3>
 <p>If <span class="math notranslate nohighlight">\(\rho_{X, Y} = 1\)</span>, then <span class="math notranslate nohighlight">\(Y = aX + b\)</span> with <span class="math notranslate nohighlight">\(a &gt; 0\)</span>.</p>
 <p>If <span class="math notranslate nohighlight">\(\rho_{X, Y} = -1\)</span>, then <span class="math notranslate nohighlight">\(Y = aX + b\)</span> with <span class="math notranslate nohighlight">\(a &lt; 0\)</span>.</p>
 <p>If <span class="math notranslate nohighlight">\(\rho_{X, Y} = 0\)</span>, then <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> are independent, <span class="math notranslate nohighlight">\(Y\)</span> is constant to <span class="math notranslate nohighlight">\(X\)</span>.</p>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="correlation-not-implies-causation">
-<h1><a id='toc8_'></a><a class="reference internal" href="#toc0_"><span class="xref myst">Correlation <span class="math notranslate nohighlight">\(\not\implies\)</span> Causation</span></a><a class="headerlink" href="#correlation-not-implies-causation" title="Link to this heading">#</a></h1>
+<section id="correlation-not-implies-causation">
+<h2>Correlation <span class="math notranslate nohighlight">\(\not\implies\)</span> Causation<a class="headerlink" href="#correlation-not-implies-causation" title="Link to this heading">#</a></h2>
 <p>Causal Graph (DAG)
 We can represent this situation with a directed acyclic graph (DAG), where:</p>
 <ul class="simple">
@@ -1202,8 +1187,8 @@ Name: Drowning Incidents, dtype: float64
 </div>
 </div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="causation-not-implies-correlation">
-<h1><a id='toc9_'></a><a class="reference internal" href="#toc0_"><span class="xref myst">Causation <span class="math notranslate nohighlight">\(\not\implies\)</span> Correlation</span></a><a class="headerlink" href="#causation-not-implies-correlation" title="Link to this heading">#</a></h1>
+<section id="causation-not-implies-correlation">
+<h2>Causation <span class="math notranslate nohighlight">\(\not\implies\)</span> Correlation<a class="headerlink" href="#causation-not-implies-correlation" title="Link to this heading">#</a></h2>
 <p>Antihistamines causally reduce sneezing</p>
 <p>People taking antihistamines sneeze more than average</p>
 <p>Negative causal effect of antihistamines on sneezing but</p>
@@ -1347,8 +1332,8 @@ Name: Sneezing, dtype: float64
 </div>
 </div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="conditional-distribution">
-<h1><a id='toc10_'></a><a class="reference internal" href="#toc0_"><span class="xref myst">Conditional Distribution</span></a><a class="headerlink" href="#conditional-distribution" title="Link to this heading">#</a></h1>
+<section id="conditional-distribution">
+<h2>Conditional Distribution<a class="headerlink" href="#conditional-distribution" title="Link to this heading">#</a></h2>
 <div class="math notranslate nohighlight">
 \[
 E\left[Y \mid X=x_i\right]=\sum_{j=1}^k y_j P\left(Y=y_j \mid X=x_i\right)
@@ -1364,8 +1349,8 @@ E[Y \mid X=x]=\int_{-\infty}^{\infty} y f(y \mid x) d y
 </ol>
 <p>Recall: <span class="math notranslate nohighlight">\(E\)</span> is a linear operator</p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="law-of-iterated-expectations">
-<h1><a id='toc11_'></a><a class="reference internal" href="#toc0_"><span class="xref myst">Law of Iterated Expectations</span></a><a class="headerlink" href="#law-of-iterated-expectations" title="Link to this heading">#</a></h1>
+<section id="law-of-iterated-expectations">
+<h2>Law of Iterated Expectations<a class="headerlink" href="#law-of-iterated-expectations" title="Link to this heading">#</a></h2>
 <div class="math notranslate nohighlight">
 \[
 E[X]=E[E[X \mid Y]]
@@ -1382,6 +1367,7 @@ $<span class="math notranslate nohighlight">\(
 &amp; =\mathrm{E}(X)
 \end{aligned}
 \)</span>$</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1449,33 +1435,25 @@ $<span class="math notranslate nohighlight">\(
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Probability</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-mass-and-density-function">Probability Mass and Density Function</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#function-of-rvs">Function of rvs</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variance">Variance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#joint-probability">Joint Probability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#joint-distribution">Joint Distribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-the-joint-distribution-to-marginal-distribution">Convert the Joint Distribution to Marginal Distribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#covariance">Covariance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#covariance-is-a-measure-of-the-linear-relationship-between-two-variables">Covariance is a measure of the linear relationship between two variables.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-of-x">variance of x</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#properties">Properties</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation">Correlation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation">Interpretation:</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#joint-probability"><a id="toc3_"></a><span class="xref myst">Joint Probability</span></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#joint-distribution"><a id="toc4_"></a><span class="xref myst">Joint Distribution</span></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-the-joint-distribution-to-marginal-distribution"><a id="toc5_"></a><span class="xref myst">Convert the Joint Distribution to Marginal Distribution</span></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#covariance"><a id="toc6_"></a><span class="xref myst">Covariance</span></a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#covariance-is-a-measure-of-the-linear-relationship-between-two-variables"><a id="toc6_1_"></a><span class="xref myst">Covariance is a measure of the linear relationship between two variables.</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation-not-implies-causation">Correlation <span class="math notranslate nohighlight">\(\not\implies\)</span> Causation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#causation-not-implies-correlation">Causation <span class="math notranslate nohighlight">\(\not\implies\)</span> Correlation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-distribution">Conditional Distribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#law-of-iterated-expectations">Law of Iterated Expectations</a></li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-of-x">variance of x</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#properties"><a id="toc6_2_"></a><span class="xref myst">Properties</span></a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation"><a id="toc7_"></a><span class="xref myst">Correlation</span></a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation"><a id="toc7_1_"></a><span class="xref myst">Interpretation:</span></a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation-not-implies-causation"><a id="toc8_"></a><span class="xref myst">Correlation <span class="math notranslate nohighlight">\(\not\implies\)</span> Causation</span></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#causation-not-implies-correlation"><a id="toc9_"></a><span class="xref myst">Causation <span class="math notranslate nohighlight">\(\not\implies\)</span> Correlation</span></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-distribution"><a id="toc10_"></a><span class="xref myst">Conditional Distribution</span></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#law-of-iterated-expectations"><a id="toc11_"></a><span class="xref myst">Law of Iterated Expectations</span></a></li>
-</ul>
-
   </nav></div>
 
 </div></div>
