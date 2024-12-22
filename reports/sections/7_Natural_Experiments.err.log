@@ -19,43 +19,20 @@ Traceback (most recent call last):
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
 import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
+import statsmodels.formula.api as sm
 
-# simulating random treatment assignment
-np.random.seed(201)
-N = 500
-treatment = np.random.binomial(1, 0.5, N)
-data_random = pd.DataFrame({
-    'treatment': treatment,
-    'outcome': np.random.normal(0, 1, N) + 2 * treatment
-})
-
-# non-random treatment assignment based on a confounder
-confounder = np.random.normal(0, 1, N)
-treatment = (confounder > 0).astype(int) # treatment based on signs of U
-data_non_random = pd.DataFrame({
-    'confounder': confounder,
-    'treatment': treatment,
-    'outcome': confounder + 2 * treatment + np.random.normal(0, 1, N)
-})
-
-
-print("Random assignment")
-print(data_random.head(10))
-print("Non-random assignment")
-print(data_non_random.head(10))
+lotto = pd.read_stata('FinalAnon.dta')
+lotto
 ------------------
 
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
-Cell [0;32mIn[1], line 3[0m
+Cell [0;32mIn[4], line 2[0m
 [1;32m      1[0m [38;5;28;01mimport[39;00m [38;5;21;01mpandas[39;00m [38;5;28;01mas[39;00m [38;5;21;01mpd[39;00m
-[1;32m      2[0m [38;5;28;01mimport[39;00m [38;5;21;01mnumpy[39;00m [38;5;28;01mas[39;00m [38;5;21;01mnp[39;00m
-[0;32m----> 3[0m [38;5;28;01mimport[39;00m [38;5;21;01mmatplotlib[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpyplot[39;00m [38;5;28;01mas[39;00m [38;5;21;01mplt[39;00m
-[1;32m      5[0m [38;5;66;03m# simulating random treatment assignment[39;00m
-[1;32m      6[0m np[38;5;241m.[39mrandom[38;5;241m.[39mseed([38;5;241m201[39m)
+[0;32m----> 2[0m [38;5;28;01mimport[39;00m [38;5;21;01mstatsmodels[39;00m[38;5;21;01m.[39;00m[38;5;21;01mformula[39;00m[38;5;21;01m.[39;00m[38;5;21;01mapi[39;00m [38;5;28;01mas[39;00m [38;5;21;01msm[39;00m
+[1;32m      4[0m lotto [38;5;241m=[39m pd[38;5;241m.[39mread_stata([38;5;124m'[39m[38;5;124mFinalAnon.dta[39m[38;5;124m'[39m)
+[1;32m      5[0m lotto
 
-[0;31mModuleNotFoundError[0m: No module named 'matplotlib'
+[0;31mModuleNotFoundError[0m: No module named 'statsmodels'
 

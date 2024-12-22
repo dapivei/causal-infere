@@ -64,7 +64,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'sections/7_Natural_Experiments';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="19. $$ \begin{array}{c} \textbf{INTRODUCTION TO CAUSAL INFERENCE}\\ \textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \ \textit{Center for Data Science, New York University} \\ \textit{October 25, 2024} \end{array} $$" href="8_ML_and_Causality.html" />
+    <link rel="next" title="19. The Interplay between Machine Learning and Causal Inference" href="8_ML_and_Causality.html" />
     <link rel="prev" title="7. $$ \begin{array}{c} \textbf{INTRODUCTION TO CAUSAL INFERENCE}\\ \textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \ \textit{Center for Data Science, New York University} \\ \end{array} $$" href="6_Regression_1-2.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -201,30 +201,9 @@ $$</a></li>
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="8_ML_and_Causality.html">19. $$
-\begin{array}{c}
-\textbf{INTRODUCTION TO CAUSAL INFERENCE}\\
-\textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \
-\textit{Center for Data Science, New York University} \\
-\textit{October 25, 2024}
-\end{array}
-$$</a></li>
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="9_Matching.html">23. $$
-\begin{array}{c}
-\textbf{INTRODUCTION TO CAUSAL INFERENCE}\\
-\textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \
-\textit{Center for Data Science, New York University} \\
-\textit{Lab 9 Control Variables}
-\end{array}
-$$</a></li>
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="10_Instruments.html">28. $$
+<li class="toctree-l1"><a class="reference internal" href="8_ML_and_Causality.html">19. The Interplay between Machine Learning and Causal Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9_Matching.html">20. Matching</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_Instruments.html">21. $$
 \begin{array}{c}
 \textbf{INSTRUMENTAL VARIABLES}\
 \text(PART , I)\
@@ -234,25 +213,8 @@ $$</a></li>
 \end{array}
 $$</a></li>
 
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="11_Instruments_RDD.html">34. $$
-\begin{array}{c}
-\textbf{IV (Conitnued) / Intro to RDD}\
-\textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \
-\textit{Center for Data Science, New York University} \\
-\textit{November 15, 2024}
-\end{array}
-$$</a></li>
-
-
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="12_RDD.html">41. $$
+<li class="toctree-l1"><a class="reference internal" href="11_Instruments_RDD.html">23. Instrumental Variables(Continued)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_RDD.html">24. $$
 \begin{array}{c}
 \textbf{IV (Conitnued) / Intro to RDD}\
 \textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \
@@ -267,7 +229,7 @@ $$</a></li>
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="13_Difference_in_Differences.html">49. $$
+<li class="toctree-l1"><a class="reference internal" href="13_Difference_in_Differences.html">32. $$
 \begin{array}{c}
 \textbf{DIFFERENCE-IN-DIFFERENCES}\
 \\
@@ -281,7 +243,7 @@ $$</a></li>
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="14_Review.html">55. Final Course Review</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14_Review.html">38. Final Course Review</a></li>
 
 
 </ul>
@@ -537,8 +499,8 @@ $$<a class="headerlink" href="#begin-array-c-textbf-introduction-to-causal-infer
 <section id="causality-from-observational-data">
 <h1><span class="section-number">14. </span>Causality from Observational Data<a class="headerlink" href="#causality-from-observational-data" title="Link to this heading">#</a></h1>
 <p>Experiments / Random control trials (RCT) are often referred as the gold standards for causality. We can easily establish the important independence assumption by randomizing treatments in experiments:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-96473c18-c5dd-4722-9083-94807f0ce6ef">
-<span class="eqno">(14.1)<a class="headerlink" href="#equation-96473c18-c5dd-4722-9083-94807f0ce6ef" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-19eb2bbd-1663-4542-bdc7-69858ec3f22b">
+<span class="eqno">(14.1)<a class="headerlink" href="#equation-19eb2bbd-1663-4542-bdc7-69858ec3f22b" title="Permalink to this equation">#</a></span>\[\begin{equation}
 S \perp U
 \end{equation}\]</div>
 <p>However, this is not always possible, and experiments are expensive.</p>
@@ -558,8 +520,8 @@ S \perp U
 <section id="natural-experiments">
 <h1><span class="section-number">15. </span>1. Natural Experiments<a class="headerlink" href="#natural-experiments" title="Link to this heading">#</a></h1>
 <p>Sometimes, natural processes give us a treatment that behaves “as-if” random. This allows us to establish the experimental assumption:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-745af256-6f6d-4c85-b992-19f5dfcdf48e">
-<span class="eqno">(15.1)<a class="headerlink" href="#equation-745af256-6f6d-4c85-b992-19f5dfcdf48e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d2b9ad6d-938e-458d-9d13-e84e3b4bf3bd">
+<span class="eqno">(15.1)<a class="headerlink" href="#equation-d2b9ad6d-938e-458d-9d13-e84e3b4bf3bd" title="Permalink to this equation">#</a></span>\[\begin{equation}
 S \perp U
 \end{equation}\]</div>
 <p>We would still need SUTVA and perfect compliance (compliance with the natural process of assigning treatment). Then, everything else follows from the process of estimating effects from experiments.</p>
@@ -605,23 +567,37 @@ S \perp U
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># simulating random treatment assignment</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">201</span><span class="p">)</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;matplotlib&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Random assignment
+   treatment   outcome
+0          0  0.208307
+1          1  1.365955
+2          1  0.343714
+3          1  0.916081
+4          1  0.350137
+5          0  0.383980
+6          0  0.292093
+7          0  1.160619
+8          0 -0.296647
+9          0 -0.679880
+Non-random assignment
+   confounder  treatment   outcome
+0   -0.125056          0 -1.547934
+1    1.496612          1  3.965643
+2    0.220468          1  2.315961
+3    0.011191          1  1.991408
+4   -0.378124          0  0.156474
+5   -2.436663          0 -2.242509
+6    0.223760          1  2.870007
+7   -0.553656          0  1.051514
+8    0.048394          1  1.850523
+9    0.226738          1  3.058482
 </pre></div>
 </div>
 </div>
 </div>
 <p>Will the second example pass the balance test?</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f62141e8-5acd-46fa-84ff-d50cd50d73c3">
-<span class="eqno">(15.2)<a class="headerlink" href="#equation-f62141e8-5acd-46fa-84ff-d50cd50d73c3" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-14a1e0f9-2963-4222-8acb-932639024e33">
+<span class="eqno">(15.2)<a class="headerlink" href="#equation-14a1e0f9-2963-4222-8acb-932639024e33" title="Permalink to this equation">#</a></span>\[\begin{equation}
 p(U|S=1) = p(U|S=0)
 \end{equation}\]</div>
 <div class="cell docutils container">
@@ -632,43 +608,13 @@ p(U|S=1) = p(U|S=0)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>confounder</th>
-    </tr>
-    <tr>
-      <th>treatment</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Axes(0.125,0.11;0.775x0.77)</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Axes(0.125,0.11;0.775x0.77)</td>
-    </tr>
-  </tbody>
-</table>
-</div><br><label><b>dtype:</b> object</label></div><img alt="../_images/e0732ac24835eeb6c30862b50e1424db7fe2dfb2d2794aef5edd6b807a1d697d.png" src="../_images/e0732ac24835eeb6c30862b50e1424db7fe2dfb2d2794aef5edd6b807a1d697d.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>treatment
+0    Axes(0.125,0.11;0.775x0.77)
+1    Axes(0.125,0.11;0.775x0.77)
+Name: confounder, dtype: object
+</pre></div>
+</div>
+<img alt="../_images/a2552a367671b65399f7a71cf01e9e23fb20774ea1184d7bc64ed38e90c0835d.png" src="../_images/a2552a367671b65399f7a71cf01e9e23fb20774ea1184d7bc64ed38e90c0835d.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -703,583 +649,18 @@ Name: confounder, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">
-  <div id="df-9b1b2026-ef6d-45cb-be98-10dd8343f98b" class="colab-df-container">
-    <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">statsmodels.formula.api</span> <span class="k">as</span> <span class="nn">sm</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">lotto</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_stata</span><span class="p">(</span><span class="s1">&#39;FinalAnon.dta&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">lotto</span>
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>NperPstk</th>
-      <th>v01</th>
-      <th>v02a1</th>
-      <th>v02b1a</th>
-      <th>v02b1b</th>
-      <th>v02b1c</th>
-      <th>v02c1</th>
-      <th>v02a2</th>
-      <th>v02b2a</th>
-      <th>v02b2b</th>
-      <th>...</th>
-      <th>rememberStreetPrize</th>
-      <th>know_winnersA</th>
-      <th>know_winnersB</th>
-      <th>num_neighbors_bot</th>
-      <th>num_neighbor_tixbot</th>
-      <th>neighbor_bot</th>
-      <th>num_neighbors_botA</th>
-      <th>neighbor_botA</th>
-      <th>pstk</th>
-      <th>codegroup</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>26.0</td>
-      <td>2</td>
-      <td>vrouw</td>
-      <td>16</td>
-      <td>augustus</td>
-      <td>1939</td>
-      <td>ja</td>
-      <td>man</td>
-      <td>16.0</td>
-      <td>september</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>512056</td>
-      <td>512044</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>26.0</td>
-      <td>2</td>
-      <td>man</td>
-      <td>17</td>
-      <td>mei</td>
-      <td>1924</td>
-      <td>ja</td>
-      <td>vrouw</td>
-      <td>27.0</td>
-      <td>januari</td>
-      <td>...</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>512056</td>
-      <td>512044</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>18.0</td>
-      <td>1</td>
-      <td>vrouw</td>
-      <td>14</td>
-      <td>december</td>
-      <td>1952</td>
-      <td>ja</td>
-      <td>persoon n.v.t.</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-      <td>4.0</td>
-      <td>1.0</td>
-      <td>1</td>
-      <td>1</td>
-      <td>512066</td>
-      <td>512044</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>18.0</td>
-      <td>1</td>
-      <td>man</td>
-      <td>18</td>
-      <td>april</td>
-      <td>1951</td>
-      <td>ja</td>
-      <td>persoon n.v.t.</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1</td>
-      <td>1</td>
-      <td>512066</td>
-      <td>512044</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>NaN</td>
-      <td>2</td>
-      <td>man</td>
-      <td>1</td>
-      <td>november</td>
-      <td>1928</td>
-      <td>ja</td>
-      <td>vrouw</td>
-      <td>12.0</td>
-      <td>april</td>
-      <td>...</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>512066</td>
-      <td>512044</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>1874</th>
-      <td>16.0</td>
-      <td>5</td>
-      <td>vrouw</td>
-      <td>17</td>
-      <td>april</td>
-      <td>1967</td>
-      <td>ja</td>
-      <td>man</td>
-      <td>19.0</td>
-      <td>oktober</td>
-      <td>...</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>4908271</td>
-      <td>490859</td>
-    </tr>
-    <tr>
-      <th>1875</th>
-      <td>16.0</td>
-      <td>2</td>
-      <td>man</td>
-      <td>13</td>
-      <td>november</td>
-      <td>1943</td>
-      <td>ja</td>
-      <td>vrouw</td>
-      <td>19.0</td>
-      <td>oktober</td>
-      <td>...</td>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>4908271</td>
-      <td>490859</td>
-    </tr>
-    <tr>
-      <th>1876</th>
-      <td>16.0</td>
-      <td>3</td>
-      <td>man</td>
-      <td>19</td>
-      <td>januari</td>
-      <td>1948</td>
-      <td>ja</td>
-      <td>vrouw</td>
-      <td>24.0</td>
-      <td>maart</td>
-      <td>...</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>4908271</td>
-      <td>490859</td>
-    </tr>
-    <tr>
-      <th>1877</th>
-      <td>16.0</td>
-      <td>4</td>
-      <td>vrouw</td>
-      <td>18</td>
-      <td>juli</td>
-      <td>1968</td>
-      <td>ja</td>
-      <td>man</td>
-      <td>24.0</td>
-      <td>maart</td>
-      <td>...</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>4908271</td>
-      <td>490859</td>
-    </tr>
-    <tr>
-      <th>1878</th>
-      <td>6.0</td>
-      <td>1</td>
-      <td>vrouw</td>
-      <td>24</td>
-      <td>december</td>
-      <td>1925</td>
-      <td>ja</td>
-      <td>persoon n.v.t.</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1958212</td>
-      <td>1958611</td>
-    </tr>
-  </tbody>
-</table>
-<p>1879 rows × 342 columns</p>
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;statsmodels&#39;
+</pre></div>
 </div>
-    <div class="colab-df-buttons">
-
-  <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-9b1b2026-ef6d-45cb-be98-10dd8343f98b')"
-            title="Convert this dataframe to an interactive table."
-            style="display:none;">
-
-  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
-    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
-  </svg>
-    </button>
-
-  <style>
-    .colab-df-container {
-      display:flex;
-      gap: 12px;
-    }
-
-    .colab-df-convert {
-      background-color: #E8F0FE;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      fill: #1967D2;
-      height: 32px;
-      padding: 0 0 0 0;
-      width: 32px;
-    }
-
-    .colab-df-convert:hover {
-      background-color: #E2EBFA;
-      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-      fill: #174EA6;
-    }
-
-    .colab-df-buttons div {
-      margin-bottom: 4px;
-    }
-
-    [theme=dark] .colab-df-convert {
-      background-color: #3B4455;
-      fill: #D2E3FC;
-    }
-
-    [theme=dark] .colab-df-convert:hover {
-      background-color: #434B5C;
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-      fill: #FFFFFF;
-    }
-  </style>
-
-    <script>
-      const buttonEl =
-        document.querySelector('#df-9b1b2026-ef6d-45cb-be98-10dd8343f98b button.colab-df-convert');
-      buttonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-      async function convertToInteractive(key) {
-        const element = document.querySelector('#df-9b1b2026-ef6d-45cb-be98-10dd8343f98b');
-        const dataTable =
-          await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                    [key], {});
-        if (!dataTable) return;
-
-        const docLinkHtml = 'Like what you see? Visit the ' +
-          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-          + ' to learn more about interactive tables.';
-        element.innerHTML = '';
-        dataTable['output_type'] = 'display_data';
-        await google.colab.output.renderOutput(dataTable, element);
-        const docLink = document.createElement('div');
-        docLink.innerHTML = docLinkHtml;
-        element.appendChild(docLink);
-      }
-    </script>
-  </div>
-
-
-<div id="df-f8ac2193-172d-4dc2-9880-49e95b4fd963">
-  <button class="colab-df-quickchart" onclick="quickchart('df-f8ac2193-172d-4dc2-9880-49e95b4fd963')"
-            title="Suggest charts"
-            style="display:none;">
-
-<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
-     width="24px">
-    <g>
-        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
-    </g>
-</svg>
-  </button>
-
-<style>
-  .colab-df-quickchart {
-      --bg-color: #E8F0FE;
-      --fill-color: #1967D2;
-      --hover-bg-color: #E2EBFA;
-      --hover-fill-color: #174EA6;
-      --disabled-fill-color: #AAA;
-      --disabled-bg-color: #DDD;
-  }
-
-  [theme=dark] .colab-df-quickchart {
-      --bg-color: #3B4455;
-      --fill-color: #D2E3FC;
-      --hover-bg-color: #434B5C;
-      --hover-fill-color: #FFFFFF;
-      --disabled-bg-color: #3B4455;
-      --disabled-fill-color: #666;
-  }
-
-  .colab-df-quickchart {
-    background-color: var(--bg-color);
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    display: none;
-    fill: var(--fill-color);
-    height: 32px;
-    padding: 0;
-    width: 32px;
-  }
-
-  .colab-df-quickchart:hover {
-    background-color: var(--hover-bg-color);
-    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
-    fill: var(--button-hover-fill-color);
-  }
-
-  .colab-df-quickchart-complete:disabled,
-  .colab-df-quickchart-complete:disabled:hover {
-    background-color: var(--disabled-bg-color);
-    fill: var(--disabled-fill-color);
-    box-shadow: none;
-  }
-
-  .colab-df-spinner {
-    border: 2px solid var(--fill-color);
-    border-color: transparent;
-    border-bottom-color: var(--fill-color);
-    animation:
-      spin 1s steps(1) infinite;
-  }
-
-  @keyframes spin {
-    0% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-      border-left-color: var(--fill-color);
-    }
-    20% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    30% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-      border-right-color: var(--fill-color);
-    }
-    40% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    60% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-    }
-    80% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-bottom-color: var(--fill-color);
-    }
-    90% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-    }
-  }
-</style>
-
-  <script>
-    async function quickchart(key) {
-      const quickchartButtonEl =
-        document.querySelector('#' + key + ' button');
-      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
-      quickchartButtonEl.classList.add('colab-df-spinner');
-      try {
-        const charts = await google.colab.kernel.invokeFunction(
-            'suggestCharts', [key], {});
-      } catch (error) {
-        console.error('Error during call to suggestCharts:', error);
-      }
-      quickchartButtonEl.classList.remove('colab-df-spinner');
-      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
-    }
-    (() => {
-      let quickchartButtonEl =
-        document.querySelector('#df-f8ac2193-172d-4dc2-9880-49e95b4fd963 button');
-      quickchartButtonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-    })();
-  </script>
 </div>
-
-  <div id="id_486e86a8-2caf-417b-bb3d-862332aad8ad">
-    <style>
-      .colab-df-generate {
-        background-color: #E8F0FE;
-        border: none;
-        border-radius: 50%;
-        cursor: pointer;
-        display: none;
-        fill: #1967D2;
-        height: 32px;
-        padding: 0 0 0 0;
-        width: 32px;
-      }
-
-      .colab-df-generate:hover {
-        background-color: #E2EBFA;
-        box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-        fill: #174EA6;
-      }
-
-      [theme=dark] .colab-df-generate {
-        background-color: #3B4455;
-        fill: #D2E3FC;
-      }
-
-      [theme=dark] .colab-df-generate:hover {
-        background-color: #434B5C;
-        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-        fill: #FFFFFF;
-      }
-    </style>
-    <button class="colab-df-generate" onclick="generateWithVariable('lotto')"
-            title="Generate code using this dataframe."
-            style="display:none;">
-
-  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
-       width="24px">
-    <path d="M7,19H8.4L18.45,9,17,7.55,7,17.6ZM5,21V16.75L18.45,3.32a2,2,0,0,1,2.83,0l1.4,1.43a1.91,1.91,0,0,1,.58,1.4,1.91,1.91,0,0,1-.58,1.4L9.25,21ZM18.45,9,17,7.55Zm-12,3A5.31,5.31,0,0,0,4.9,8.1,5.31,5.31,0,0,0,1,6.5,5.31,5.31,0,0,0,4.9,4.9,5.31,5.31,0,0,0,6.5,1,5.31,5.31,0,0,0,8.1,4.9,5.31,5.31,0,0,0,12,6.5,5.46,5.46,0,0,0,6.5,12Z"/>
-  </svg>
-    </button>
-    <script>
-      (() => {
-      const buttonEl =
-        document.querySelector('#id_486e86a8-2caf-417b-bb3d-862332aad8ad button.colab-df-generate');
-      buttonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-      buttonEl.onclick = () => {
-        google.colab.notebook.generateWithVariable('lotto');
-      }
-      })();
-    </script>
-  </div>
-
-    </div>
-  </div>
-</div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1892,8 +1273,8 @@ Name: confounder, dtype: float64
 <p>PSA: control variables will not be on the midterm, and we will cover more on it after the midterm.</p>
 <p>If the data-generating processes were not naturally randomizing treatment, we can seek to adjust the population in the treatment and control groups.</p>
 <p>One adjustment method is through controlling or conditioning on other factors $C$ such that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ce144ee1-ea0b-4b6e-a8dd-72fdb326fe09">
-<span class="eqno">(16.1)<a class="headerlink" href="#equation-ce144ee1-ea0b-4b6e-a8dd-72fdb326fe09" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-2a68c235-cfc3-4036-8b7c-c9451b7978a6">
+<span class="eqno">(16.1)<a class="headerlink" href="#equation-2a68c235-cfc3-4036-8b7c-c9451b7978a6" title="Permalink to this equation">#</a></span>\[\begin{equation}
 S \perp U \ | \ C
 \end{equation}\]</div>
 <p>In this case, we can say that $S$ and $U$ are <strong>conditionally independent</strong> given $C$.</p>
@@ -1984,8 +1365,8 @@ Covariance of dependent variables Y and Z condition on X = 9: -0.096520865877708
 <p>Also, for simplicity, consider $S$ as a binary treatment variable (0 or 1).</p>
 <p>Causal quantities of interest:</p>
 <p>$$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-66c5c86d-a532-4513-993c-f2a21cf06654">
-<span class="eqno">(16.2)<a class="headerlink" href="#equation-66c5c86d-a532-4513-993c-f2a21cf06654" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-24e3ac3b-1362-474c-a59b-6c4677c294b6">
+<span class="eqno">(16.2)<a class="headerlink" href="#equation-24e3ac3b-1362-474c-a59b-6c4677c294b6" title="Permalink to this equation">#</a></span>\[\begin{align}
 \text{ATE} &amp;= E[Y(S=1, U) - Y(S=0, U)]\\
 \text{ATT} &amp;= E[Y(S=1, U) - Y(S=0, U)|S=1]\\
 \text{ATU} &amp;= E[Y(S=1, U) - Y(S=0, U)|S=0]
@@ -2375,14 +1756,7 @@ $$</p>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">19. </span>$$
-\begin{array}{c}
-\textbf{INTRODUCTION TO CAUSAL INFERENCE}\\
-\textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \
-\textit{Center for Data Science, New York University} \\
-\textit{October 25, 2024}
-\end{array}
-$$</p>
+        <p class="prev-next-title"><span class="section-number">19. </span>The Interplay between Machine Learning and Causal Inference</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
