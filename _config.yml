@@ -43,4 +43,6 @@ sphinx:
   config:
     mathjax_config:
       TeX:
+        extensions: ["AMSmath.js", "AMSsymbols.js"]
         equationNumbers: { autoNumber: "AMS" }
+    mathjax_path: https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML

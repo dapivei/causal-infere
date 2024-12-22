@@ -60,8 +60,8 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"TeX": {"equationNumbers": {"autoNumber": "AMS"}}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"TeX": {"extensions": ["AMSmath.js", "AMSsymbols.js"], "equationNumbers": {"autoNumber": "AMS"}}}</script>
+    <script defer="defer" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'sections/2_Probability_1-2';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -183,9 +183,8 @@
 <li class="toctree-l1"><a class="reference internal" href="10_Instruments.html">10. Instrumental Variables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="11_Instruments_RDD.html">11. Instrumental Variables(Continued)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="12_RDD.html">12. Instrumental Variables (Continued) and Intro to Regression Discontinuity (RDD)</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="13_Difference_in_Differences.html">14. Difference in Differences</a></li>
-<li class="toctree-l1"><a class="reference internal" href="14_Review.html">15. Final Review</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13_Difference_in_Differences.html">13. Difference in Differences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14_Review.html">14. Final Review</a></li>
 </ul>
 
     </div>
@@ -379,14 +378,14 @@
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-mass-and-density-function">2.1. Probability Mass and Density Function</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#function-of-rvs">2.2. Function of rvs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#function-of-random-variables">2.2. Function of random variables</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variance">2.3. Variance</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#joint-probability">2.4. Joint Probability</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#joint-distribution">2.5. Joint Distribution</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-the-joint-distribution-to-marginal-distribution">2.6. Convert the Joint Distribution to Marginal Distribution</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#covariance">2.7. Covariance</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#covariance-is-a-measure-of-the-linear-relationship-between-two-variables">2.8. Covariance is a measure of the linear relationship between two variables.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-of-x">2.9. variance of x</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-of-x">2.9. Variance of x</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#properties">2.10. Properties</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation">2.11. Correlation</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation">2.11.1. Interpretation:</a></li>
@@ -424,23 +423,22 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the probability mass function for a fair six-sided die</span>
-<span class="k">def</span> <span class="nf">pmf_die</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">pmf_die</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]:</span>
         <span class="k">return</span> <span class="mi">1</span><span class="o">/</span><span class="mi">6</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">0</span>
+
+<span class="c1"># gaussian distribution</span>
+<span class="k">def</span> <span class="nf">pdf_gaussian</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">mu</span><span class="p">)</span> <span class="o">/</span> <span class="n">sigma</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">sigma</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># gaussian distribution</span>
-<span class="k">def</span> <span class="nf">pdf_gaussian</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">mu</span><span class="p">)</span> <span class="o">/</span> <span class="n">sigma</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">sigma</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span>
-
-<span class="c1"># plot the pdf</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot the pdf</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">pdf_gaussian</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
@@ -497,17 +495,17 @@
 </div>
 </div>
 </section>
-<section id="function-of-rvs">
-<h2><span class="section-number">2.2. </span>Function of rvs<a class="headerlink" href="#function-of-rvs" title="Link to this heading">#</a></h2>
-<div class="amsmath math notranslate nohighlight" id="equation-f04c26ef-4e5a-4d2e-97ae-cf5848771ece">
-<span class="eqno">(2.1)<a class="headerlink" href="#equation-f04c26ef-4e5a-4d2e-97ae-cf5848771ece" title="Permalink to this equation">#</a></span>\[\begin{align}
+<section id="function-of-random-variables">
+<h2><span class="section-number">2.2. </span>Function of random variables<a class="headerlink" href="#function-of-random-variables" title="Link to this heading">#</a></h2>
+<div class="amsmath math notranslate nohighlight" id="equation-ddc4e298-965f-411b-8c7a-2d496ad4a650">
+<span class="eqno">(2.1)<a class="headerlink" href="#equation-ddc4e298-965f-411b-8c7a-2d496ad4a650" title="Permalink to this equation">#</a></span>\[\begin{align}
 E[g(X)]=\int_{-\infty}^{\infty} g(x) f(x) d x
 \end{align}\]</div>
 </section>
 <section id="variance">
 <h2><span class="section-number">2.3. </span>Variance<a class="headerlink" href="#variance" title="Link to this heading">#</a></h2>
-<div class="amsmath math notranslate nohighlight" id="equation-9ff1d870-8165-4611-9631-8f8f47740e8e">
-<span class="eqno">(2.2)<a class="headerlink" href="#equation-9ff1d870-8165-4611-9631-8f8f47740e8e" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-90a34422-18e6-4e32-accc-7af190647316">
+<span class="eqno">(2.2)<a class="headerlink" href="#equation-90a34422-18e6-4e32-accc-7af190647316" title="Permalink to this equation">#</a></span>\[\begin{align}
 E\left[(X-E[X])^2\right] &amp; =E\left[X^2-2 X E[X]+E[X]^2\right] \\
 &amp; =E\left[X^2\right]-E[2 X E[X]]+E[X]^2 \\
 &amp; =E\left[X^2\right]-2 E[X] E[X]+E[X]^2 \\
@@ -643,13 +641,15 @@ E\left[(X-E[X])^2\right] &amp; =E\left[X^2-2 X E[X]+E[X]^2\right] \\
 <section id="joint-distribution">
 <h2><span class="section-number">2.5. </span>Joint Distribution<a class="headerlink" href="#joint-distribution" title="Link to this heading">#</a></h2>
 <p>The data is continuous, but we can bin it to make it discrete.</p>
-<p>\begin{aligned}
+<div class="amsmath math notranslate nohighlight" id="equation-feeb1567-973e-40f7-82ea-c8947f83e794">
+<span class="eqno">(2.3)<a class="headerlink" href="#equation-feeb1567-973e-40f7-82ea-c8947f83e794" title="Permalink to this equation">#</a></span>\[\begin{align}
 P(X = x, Y = y) = \frac{N_{x,y}}{N}
-\end{aligned}</p>
+\end{align}\]</div>
 <p>We want to know what’s the probability of height larger than $h$ and gender is male.</p>
-<p>\begin{aligned}
+<div class="amsmath math notranslate nohighlight" id="equation-ab2f670e-cdd2-4b5d-a659-5850b9b57b6e">
+<span class="eqno">(2.4)<a class="headerlink" href="#equation-ab2f670e-cdd2-4b5d-a659-5850b9b57b6e" title="Permalink to this equation">#</a></span>\[\begin{align}
 P(H &gt; h, G = M) = \frac{N_{h, M}}{N}
-\end{aligned}</p>
+\end{align}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">h</span> <span class="o">=</span> <span class="mi">180</span>
@@ -671,9 +671,10 @@ P(H &gt; h, G = M) = \frac{N_{h, M}}{N}
 <h2><span class="section-number">2.6. </span>Convert the Joint Distribution to Marginal Distribution<a class="headerlink" href="#convert-the-joint-distribution-to-marginal-distribution" title="Link to this heading">#</a></h2>
 <p>What is the probability of height larger than $h$?</p>
 <p>We can sum over all the weights.</p>
-<p>\begin{aligned}
+<div class="amsmath math notranslate nohighlight" id="equation-9c2d97c1-4ad4-45da-a008-c7831e979b4a">
+<span class="eqno">(2.5)<a class="headerlink" href="#equation-9c2d97c1-4ad4-45da-a008-c7831e979b4a" title="Permalink to this equation">#</a></span>\[\begin{align}
 P(H &gt; h) = \sum_{g} P(H &gt; h, G = g) = \sum_{g} \frac{N_{h, g}}{N}
-\end{aligned}</p>
+\end{align}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">group_male_height</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Height&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">h</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Sex&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Male&quot;</span><span class="p">)]</span>
@@ -712,14 +713,16 @@ The probability of a person being taller than 180 cm is 0.08633333333333333
 </section>
 <section id="covariance">
 <h2><span class="section-number">2.7. </span>Covariance<a class="headerlink" href="#covariance" title="Link to this heading">#</a></h2>
-<p>\begin{aligned}
-Cov(X, Y)
+<div class="amsmath math notranslate nohighlight" id="equation-946905cf-f69f-4a6c-8571-bcac24a8aa21">
+<span class="eqno">(2.6)<a class="headerlink" href="#equation-946905cf-f69f-4a6c-8571-bcac24a8aa21" title="Permalink to this equation">#</a></span>\[\begin{align}
+Cov(X, Y) 
 = E[(X - E[X])(Y - E[Y])]
 = E[XY] - E[X]E[Y]
-\end{aligned}</p>
-<p>\begin{aligned}
+\end{align}\]</div>
+<div class="amsmath math notranslate nohighlight" id="equation-353eebfd-a26f-49b2-822d-32dac6e708fa">
+<span class="eqno">(2.7)<a class="headerlink" href="#equation-353eebfd-a26f-49b2-822d-32dac6e708fa" title="Permalink to this equation">#</a></span>\[\begin{align}
 Cov(X, Y) = \frac{1}{N} \sum_{i=1}^{N} (x_i - \mu_x)(y_i - \mu_y)
-\end{aligned}</p>
+\end{align}\]</div>
 </section>
 <section id="covariance-is-a-measure-of-the-linear-relationship-between-two-variables">
 <h2><span class="section-number">2.8. </span>Covariance is a measure of the linear relationship between two variables.<a class="headerlink" href="#covariance-is-a-measure-of-the-linear-relationship-between-two-variables" title="Link to this heading">#</a></h2>
@@ -745,8 +748,8 @@ $$</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1.02814608 2.05629216]
- [2.05629216 4.11258432]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.99982472 1.99964943]
+ [1.99964943 3.99929886]]
 </pre></div>
 </div>
 </div>
@@ -760,7 +763,7 @@ $$</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.98168202 0.        ]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.89400377 0.        ]
  [0.         0.        ]]
 </pre></div>
 </div>
@@ -832,7 +835,7 @@ $$</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0066689000585463
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9938256098316159
 </pre></div>
 </div>
 </div>
@@ -844,7 +847,7 @@ $$</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.00695610396887
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.981283578654823
 </pre></div>
 </div>
 </div>
@@ -856,7 +859,7 @@ $$</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.96517469 1.0481145 ]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.93305033 1.05459642]
 </pre></div>
 </div>
 </div>
@@ -868,14 +871,14 @@ $$</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[3.86069877 4.192458  ]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[3.73220133 4.21838567]
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="variance-of-x">
-<h2><span class="section-number">2.9. </span>variance of x<a class="headerlink" href="#variance-of-x" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">2.9. </span>Variance of x<a class="headerlink" href="#variance-of-x" title="Link to this heading">#</a></h2>
 <p>$$
 \operatorname{Var}(X) = \frac{1}{N} \sum_{i=1}^{N} (x_i - \mu_x)^2
 $$</p>
@@ -901,8 +904,8 @@ $$</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.99368037 1.98736074]
- [1.98736074 3.97472148]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.99307915 1.9861583 ]
+ [1.9861583  3.97231659]]
 </pre></div>
 </div>
 </div>
@@ -917,9 +920,9 @@ $$</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9926866885755314 3.9707467543021258 8.934180197179783
-1.9873607378889517
-8.938154918655561
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9920860691190188 3.968344276476076 8.92877462207117
+1.9861582965345714
+8.932746938664238
 </pre></div>
 </div>
 </div>
@@ -1009,7 +1012,7 @@ We can represent this situation with a directed acyclic graph (DAG), where:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_200876/2404936834.py:24: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_889603/2404936834.py:24: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
   plt.tight_layout()
 </pre></div>
 </div>
@@ -1239,31 +1242,35 @@ Name: Sneezing, dtype: float64
 <section id="conditional-distribution">
 <h2><span class="section-number">2.14. </span>Conditional Distribution<a class="headerlink" href="#conditional-distribution" title="Link to this heading">#</a></h2>
 <p>$$
-E\left[Y \mid X=x_i\right]=\sum_{j=1}^k y_j P\left(Y=y_j \mid X=x_i\right)
+\mathbb{E}\left[Y \mid X=x_i\right]=\sum_{j=1}^k y_j P\left(Y=y_j \mid X=x_i\right)
 $$</p>
 <p>$$
-E[Y \mid X=x]=\int_{-\infty}^{\infty} y f(y \mid x) d y
+\mathbb{E}[Y \mid X=x]=\int_{-\infty}^{\infty} y f(y \mid x) d y
 $$</p>
 <ol class="arabic simple">
 <li><p>$E[g(X) + h(X)Y \mid X] = g(X) + h(X)E[Y \mid X]$</p></li>
 <li><p>$E[Y + Z \mid X] = E[Y \mid X] + E[Z \mid X]$</p></li>
 <li><p>If $Y \leq Z$ (always), then $E[Y \mid X] \leq E[Z \mid X]$</p></li>
 </ol>
-<p>Recall: $E$ is a linear operator</p>
+<p>Recall:</p>
+<ul class="simple">
+<li><p>$\mathbb{E}$ is a linear operator</p></li>
+</ul>
 </section>
 <section id="law-of-iterated-expectations">
 <h2><span class="section-number">2.15. </span>Law of Iterated Expectations<a class="headerlink" href="#law-of-iterated-expectations" title="Link to this heading">#</a></h2>
-<p>$$E[X]=E[E[X \mid Y]]$$</p>
+<p>$$\mathbb{E}[X]=\mathbb{E}[\mathbb{E}[X \mid Y]]$$</p>
 <p>Trivial Proof:</p>
-<p>\begin{aligned}
-\mathrm{E}[\mathrm{E}(X \mid Y)] &amp; =\mathrm{E}\left[\sum_{x \in \mathcal{X}} x \cdot \operatorname{Pr}(X=x \mid Y)\right] \
-&amp; =\sum_{y \in \mathcal{Y}}\left[\sum_{x \in \mathcal{X}} x \cdot \operatorname{Pr}(X=x \mid Y=y)\right] \cdot \operatorname{Pr}(Y=y) \
-&amp; =\sum_{x \in \mathcal{X}} \sum_{y \in \mathcal{Y}} x \cdot \operatorname{Pr}(X=x \mid Y=y) \cdot \operatorname{Pr}(Y=y) \
-&amp; =\sum_{x \in \mathcal{X}} \sum_{y \in \mathcal{Y}} x \cdot \operatorname{Pr}(X=x, Y=y) \
-&amp; =\sum_{x \in \mathcal{X}} x \sum_{y \in \mathcal{Y}} \operatorname{Pr}(X=x, Y=y) \
-&amp; =\sum_{x \in \mathcal{X}} x \cdot \operatorname{Pr}(X=x) \
-&amp; =\mathrm{E}(X)
-\end{aligned}</p>
+<div class="amsmath math notranslate nohighlight" id="equation-c4d5be67-7030-434d-9adc-926e53105563">
+<span class="eqno">(2.8)<a class="headerlink" href="#equation-c4d5be67-7030-434d-9adc-926e53105563" title="Permalink to this equation">#</a></span>\[\begin{align}
+\mathbb{E}[\mathbb{E}(X \mid Y)] &amp; =\mathbb{E}\left[\sum_{x \in \mathcal{X}} x \cdot \operatorname{Pr}(X=x \mid Y)\right] \\
+&amp; =\sum_{y \in \mathcal{Y}}\left[\sum_{x \in \mathcal{X}} x \cdot \operatorname{Pr}(X=x \mid Y=y)\right] \cdot \operatorname{Pr}(Y=y) \\
+&amp; =\sum_{x \in \mathcal{X}} \sum_{y \in \mathcal{Y}} x \cdot \operatorname{Pr}(X=x \mid Y=y) \cdot \operatorname{Pr}(Y=y) \\
+&amp; =\sum_{x \in \mathcal{X}} \sum_{y \in \mathcal{Y}} x \cdot \operatorname{Pr}(X=x, Y=y) \\
+&amp; =\sum_{x \in \mathcal{X}} x \sum_{y \in \mathcal{Y}} \operatorname{Pr}(X=x, Y=y) \\
+&amp; =\sum_{x \in \mathcal{X}} x \cdot \operatorname{Pr}(X=x) \\
+&amp; =\mathbb{E}(X)
+\end{align}\]</div>
 </section>
 </section>
 
@@ -1333,14 +1340,14 @@ $$</p>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-mass-and-density-function">2.1. Probability Mass and Density Function</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#function-of-rvs">2.2. Function of rvs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#function-of-random-variables">2.2. Function of random variables</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variance">2.3. Variance</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#joint-probability">2.4. Joint Probability</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#joint-distribution">2.5. Joint Distribution</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-the-joint-distribution-to-marginal-distribution">2.6. Convert the Joint Distribution to Marginal Distribution</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#covariance">2.7. Covariance</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#covariance-is-a-measure-of-the-linear-relationship-between-two-variables">2.8. Covariance is a measure of the linear relationship between two variables.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-of-x">2.9. variance of x</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-of-x">2.9. Variance of x</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#properties">2.10. Properties</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation">2.11. Correlation</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation">2.11.1. Interpretation:</a></li>
