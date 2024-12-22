@@ -201,30 +201,9 @@ $$</a></li>
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="8_ML_and_Causality.html">19. $$
-\begin{array}{c}
-\textbf{INTRODUCTION TO CAUSAL INFERENCE}\\
-\textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \
-\textit{Center for Data Science, New York University} \\
-\textit{October 25, 2024}
-\end{array}
-$$</a></li>
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="9_Matching.html">23. $$
-\begin{array}{c}
-\textbf{INTRODUCTION TO CAUSAL INFERENCE}\\
-\textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \
-\textit{Center for Data Science, New York University} \\
-\textit{Lab 9 Control Variables}
-\end{array}
-$$</a></li>
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="10_Instruments.html">28. $$
+<li class="toctree-l1"><a class="reference internal" href="8_ML_and_Causality.html">19. The Interplay between Machine Learning and Causal Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9_Matching.html">20. Matching</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_Instruments.html">21. $$
 \begin{array}{c}
 \textbf{INSTRUMENTAL VARIABLES}\
 \text(PART , I)\
@@ -234,25 +213,8 @@ $$</a></li>
 \end{array}
 $$</a></li>
 
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="11_Instruments_RDD.html">34. $$
-\begin{array}{c}
-\textbf{IV (Conitnued) / Intro to RDD}\
-\textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \
-\textit{Center for Data Science, New York University} \\
-\textit{November 15, 2024}
-\end{array}
-$$</a></li>
-
-
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="12_RDD.html">41. $$
+<li class="toctree-l1"><a class="reference internal" href="11_Instruments_RDD.html">23. Instrumental Variables(Continued)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_RDD.html">24. $$
 \begin{array}{c}
 \textbf{IV (Conitnued) / Intro to RDD}\
 \textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \
@@ -267,7 +229,7 @@ $$</a></li>
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="13_Difference_in_Differences.html">49. $$
+<li class="toctree-l1"><a class="reference internal" href="13_Difference_in_Differences.html">32. $$
 \begin{array}{c}
 \textbf{DIFFERENCE-IN-DIFFERENCES}\
 \\
@@ -281,7 +243,7 @@ $$</a></li>
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="14_Review.html">55. Final Course Review</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14_Review.html">38. Final Course Review</a></li>
 
 
 </ul>
@@ -560,21 +522,21 @@ $$</p>
 <!-- THIS CELL WILL BE REPLACED ON TOC UPDATE. DO NOT WRITE YOUR TEXT IN THIS CELL --></section>
 <section id="descriptive-regression">
 <h1><span class="section-number">8. </span><a id='toc1_'></a><a class="reference internal" href="#toc0_"><span class="xref myst">Descriptive Regression</span></a><a class="headerlink" href="#descriptive-regression" title="Link to this heading">#</a></h1>
-<div class="amsmath math notranslate nohighlight" id="equation-931e71d0-1ae1-4260-acc8-dbc5ff6f4fb7">
-<span class="eqno">(8.1)<a class="headerlink" href="#equation-931e71d0-1ae1-4260-acc8-dbc5ff6f4fb7" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-5eb5850a-7208-4b81-a201-46908f438469">
+<span class="eqno">(8.1)<a class="headerlink" href="#equation-5eb5850a-7208-4b81-a201-46908f438469" title="Permalink to this equation">#</a></span>\[\begin{align}
 Y=\beta_0+\beta_1 X+\varepsilon
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-1adab6b1-4fc4-4ed1-b580-fb47e2ad5633">
-<span class="eqno">(8.2)<a class="headerlink" href="#equation-1adab6b1-4fc4-4ed1-b580-fb47e2ad5633" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-cb219e00-554c-4ba2-940f-c561fc5c4cb2">
+<span class="eqno">(8.2)<a class="headerlink" href="#equation-cb219e00-554c-4ba2-940f-c561fc5c4cb2" title="Permalink to this equation">#</a></span>\[\begin{align}
 \min _{b_0, b_1} E\left[\left(Y-\left(b_0+b_1 X\right)\right)^2\right]
 \end{align}\]</div>
 <p>Residual:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8628262e-3df4-4389-acc2-17feb9e84984">
-<span class="eqno">(8.3)<a class="headerlink" href="#equation-8628262e-3df4-4389-acc2-17feb9e84984" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-fb5b39da-b80b-40bf-b615-a27c3eca5f0a">
+<span class="eqno">(8.3)<a class="headerlink" href="#equation-fb5b39da-b80b-40bf-b615-a27c3eca5f0a" title="Permalink to this equation">#</a></span>\[\begin{align}
 \varepsilon \equiv Y-\left(\beta_0+\beta_1 X\right)
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-8be53839-17de-4938-a790-0ec4540f24c7">
-<span class="eqno">(8.4)<a class="headerlink" href="#equation-8be53839-17de-4938-a790-0ec4540f24c7" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-633e9654-5390-482a-bbc9-d71d3e4694a2">
+<span class="eqno">(8.4)<a class="headerlink" href="#equation-633e9654-5390-482a-bbc9-d71d3e4694a2" title="Permalink to this equation">#</a></span>\[\begin{align}
 \begin{aligned}
 &amp; Y=X^2 \\
 &amp; \beta_0+\beta_1 X=1
@@ -642,14 +604,16 @@ Y=\beta_0+\beta_1 X+\varepsilon
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">20</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span>     <span class="k">return</span> <span class="n">beta_0</span><span class="p">,</span> <span class="n">beta_1</span>
-<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="c1"># Importing necessary libraries</span>
-<span class="ne">---&gt; </span><span class="mi">20</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">22</span>
+<span class="g g-Whitespace">     </span><span class="mi">20</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="g g-Whitespace">     </span><span class="mi">21</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="g g-Whitespace">     </span><span class="mi">22</span> <span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">interact</span><span class="p">,</span> <span class="n">FloatSlider</span>
+<span class="ne">---&gt; </span><span class="mi">22</span> <span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">interact</span><span class="p">,</span> <span class="n">FloatSlider</span>
+<span class="g g-Whitespace">     </span><span class="mi">24</span> <span class="c1"># Function to update plot with boundaries</span>
+<span class="g g-Whitespace">     </span><span class="mi">25</span> <span class="k">def</span> <span class="nf">update_plot</span><span class="p">(</span><span class="n">left_boundary</span><span class="p">,</span> <span class="n">right_boundary</span><span class="p">,</span> <span class="n">gap</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">26</span>     <span class="c1"># Generate data points within the specified boundary</span>
+<span class="g g-Whitespace">     </span><span class="mi">27</span>     <span class="c1"># x = np.linspace(left_boundary, right_boundary, gap)</span>
 
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;matplotlib&#39;
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;ipywidgets&#39;
 </pre></div>
 </div>
 </div>
@@ -659,12 +623,12 @@ Y=\beta_0+\beta_1 X+\varepsilon
 <h1><span class="section-number">9. </span><a id='toc2_'></a><a class="reference internal" href="#toc0_"><span class="xref myst">Vectorized implementation for linear regression</span></a><a class="headerlink" href="#vectorized-implementation-for-linear-regression" title="Link to this heading">#</a></h1>
 <section id="convert-a-lr-with-bias-to-a-lr-without-bias">
 <h2><span class="section-number">9.1. </span>Convert a LR with bias to a LR without bias<a class="headerlink" href="#convert-a-lr-with-bias-to-a-lr-without-bias" title="Link to this heading">#</a></h2>
-<div class="amsmath math notranslate nohighlight" id="equation-20120e4f-2b7a-43df-8b2e-92de1188ef7a">
-<span class="eqno">(9.1)<a class="headerlink" href="#equation-20120e4f-2b7a-43df-8b2e-92de1188ef7a" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-e5e2c6ce-0bc9-42c3-9e98-9c0545f9b34a">
+<span class="eqno">(9.1)<a class="headerlink" href="#equation-e5e2c6ce-0bc9-42c3-9e98-9c0545f9b34a" title="Permalink to this equation">#</a></span>\[\begin{align}
 Y = \beta_0 + \beta_1 X + \varepsilon
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-62d79ae5-f35e-47c2-b33c-0c1291b35dc8">
-<span class="eqno">(9.2)<a class="headerlink" href="#equation-62d79ae5-f35e-47c2-b33c-0c1291b35dc8" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-6376887e-735d-4d49-9e43-4ed11592e0aa">
+<span class="eqno">(9.2)<a class="headerlink" href="#equation-6376887e-735d-4d49-9e43-4ed11592e0aa" title="Permalink to this equation">#</a></span>\[\begin{align}
 \boldsymbol{\beta}=\left[\begin{array}{c}
 \beta_0 \\
 \beta_1 \\
@@ -674,8 +638,8 @@ Y = \beta_0 + \beta_1 X + \varepsilon
 1 &amp; x_1 &amp; \ldots &amp; x_d
 \end{array}\right]
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-706e0853-040b-4d63-8662-397d38d6bf1f">
-<span class="eqno">(9.3)<a class="headerlink" href="#equation-706e0853-040b-4d63-8662-397d38d6bf1f" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-901e1955-eb8d-438f-b2cf-68f011b5acc8">
+<span class="eqno">(9.3)<a class="headerlink" href="#equation-901e1955-eb8d-438f-b2cf-68f011b5acc8" title="Permalink to this equation">#</a></span>\[\begin{align}
 Y = \mathbb{x}^{\top} \mathbb{\beta} + \varepsilon
 \end{align}\]</div>
 <div class="cell docutils container">
@@ -776,19 +740,19 @@ Y = \mathbb{x}^{\top} \mathbb{\beta} + \varepsilon
 <section id="causal-regression">
 <h1><span class="section-number">11. </span><a id='toc4_'></a><a class="reference internal" href="#toc0_"><span class="xref myst">Causal Regression</span></a><a class="headerlink" href="#causal-regression" title="Link to this heading">#</a></h1>
 <p>If we assume the linear all-cause model,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5efe20dc-1fdf-4451-9f67-13925a13edf1">
-<span class="eqno">(11.1)<a class="headerlink" href="#equation-5efe20dc-1fdf-4451-9f67-13925a13edf1" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-342af8c7-fb39-496c-9c6a-bcf2839fa734">
+<span class="eqno">(11.1)<a class="headerlink" href="#equation-342af8c7-fb39-496c-9c6a-bcf2839fa734" title="Permalink to this equation">#</a></span>\[\begin{align}
     Y (S, U) = \alpha_0 + \alpha_1 S +U
 \end{align}\]</div>
 <p>The causal residual is U. For causal interpretation, $\mathbb{E}[U] = 0$.</p>
 <p>If,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-134a783b-96ae-4ab7-b6cd-2ddd51ea082b">
-<span class="eqno">(11.2)<a class="headerlink" href="#equation-134a783b-96ae-4ab7-b6cd-2ddd51ea082b" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-2cdbcf7c-c102-4b8d-bba2-b141bc26662f">
+<span class="eqno">(11.2)<a class="headerlink" href="#equation-2cdbcf7c-c102-4b8d-bba2-b141bc26662f" title="Permalink to this equation">#</a></span>\[\begin{align}
     E (U) \neq 0
 \end{align}\]</div>
 <p>we redefine the</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b1f5f67f-0c66-4d07-b2d6-d58b17c1e984">
-<span class="eqno">(11.3)<a class="headerlink" href="#equation-b1f5f67f-0c66-4d07-b2d6-d58b17c1e984" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-024d4460-4195-406a-ba81-6894347423d4">
+<span class="eqno">(11.3)<a class="headerlink" href="#equation-024d4460-4195-406a-ba81-6894347423d4" title="Permalink to this equation">#</a></span>\[\begin{align}
     &amp; Y (S, U) \\
     &amp;= \alpha_0 + \alpha_1 S +U \\
     &amp;= (\tilde{\alpha}_0 - \mathbb{E}[U]) + \alpha_1 S + \tilde{U} + \mathbb{E}[U] \\
@@ -797,8 +761,8 @@ Y = \mathbb{x}^{\top} \mathbb{\beta} + \varepsilon
 <p>Then we have the $\mathbb{E}[\tilde{U}] = 0$.</p>
 <p>Note:</p>
 <p>If we assume</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3cd0a3dc-0a86-4b94-a859-1e4b067baa82">
-<span class="eqno">(11.4)<a class="headerlink" href="#equation-3cd0a3dc-0a86-4b94-a859-1e4b067baa82" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-4c46512e-d41a-4b06-acb7-7c4f2cf76bf0">
+<span class="eqno">(11.4)<a class="headerlink" href="#equation-4c46512e-d41a-4b06-acb7-7c4f2cf76bf0" title="Permalink to this equation">#</a></span>\[\begin{align}
 S \perp U
 \end{align}\]</div>
 <p>we can say $\mathbb{E}[SU] = 0$.</p>
@@ -807,15 +771,15 @@ S \perp U
 <p>For descriptive regression, we can always identify.</p>
 <p>For causal regression, we need to make assumptions ($S \perp U$).</p>
 <p>By transformation, we can have</p>
-<div class="amsmath math notranslate nohighlight" id="equation-fc9f2c21-df3f-4ab5-b1c7-009a92810184">
-<span class="eqno">(11.5)<a class="headerlink" href="#equation-fc9f2c21-df3f-4ab5-b1c7-009a92810184" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-72de7413-6539-4b07-87d1-5fc065a2b53c">
+<span class="eqno">(11.5)<a class="headerlink" href="#equation-72de7413-6539-4b07-87d1-5fc065a2b53c" title="Permalink to this equation">#</a></span>\[\begin{align}
     \mathbb{E}[U] = 0 \\
     \implies \mathbb{E}[Y - \beta_0 - \beta_1 X] = 0 \\
     \implies \mathbb{E}[Y] = \beta_0 + \beta_1 X \\
     \implies \beta_0 = \mathbb{E}[Y] - \beta_1 X
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-c81a5ee4-e6f9-45e9-a360-847f92296f38">
-<span class="eqno">(11.6)<a class="headerlink" href="#equation-c81a5ee4-e6f9-45e9-a360-847f92296f38" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-8cc60c0c-3710-4404-9121-50b629c56e6b">
+<span class="eqno">(11.6)<a class="headerlink" href="#equation-8cc60c0c-3710-4404-9121-50b629c56e6b" title="Permalink to this equation">#</a></span>\[\begin{align}
 E[X U] &amp;=0 \\
 \Rightarrow E\left[X\left(Y-\beta_0+\beta_1 X\right)\right] &amp;=0 \\
 E\left[X\left(Y-\left(E[Y]-\beta_1 E[X]\right)+\beta_1 X\right)\right] &amp;=0 &amp; (\beta_0 = E[Y] - \beta_1 E[X]) \\
@@ -823,12 +787,12 @@ E\left[X\left(Y-E[Y]+\beta_1(X-E[X])\right)\right] &amp; =0 \\
 E\left[X(Y-E[Y])+\beta_1 X(X-E[X])\right] &amp; =0 \\
 E[X(Y-E[Y])]+\beta_1 E[X(X-E[X])] &amp; =0
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-34a117f9-36b1-475b-ac59-41103042c39a">
-<span class="eqno">(11.7)<a class="headerlink" href="#equation-34a117f9-36b1-475b-ac59-41103042c39a" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-76d04cdf-ddc6-4ca0-ad9b-74fb406a7869">
+<span class="eqno">(11.7)<a class="headerlink" href="#equation-76d04cdf-ddc6-4ca0-ad9b-74fb406a7869" title="Permalink to this equation">#</a></span>\[\begin{align}
 \operatorname{Cov}(X, Y)+\beta_1 \operatorname{Var}(X)=0
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-8ad24071-859b-4427-9feb-359671f7323b">
-<span class="eqno">(11.8)<a class="headerlink" href="#equation-8ad24071-859b-4427-9feb-359671f7323b" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-8bc9b8d8-998e-4bec-b3ba-3b555a74ad01">
+<span class="eqno">(11.8)<a class="headerlink" href="#equation-8bc9b8d8-998e-4bec-b3ba-3b555a74ad01" title="Permalink to this equation">#</a></span>\[\begin{align}
 \beta_1 = \frac{\operatorname{Cov}(X, Y)}{\operatorname{Var}(X)}
 \end{align}\]</div>
 </section>
@@ -836,38 +800,38 @@ E[X(Y-E[Y])]+\beta_1 E[X(X-E[X])] &amp; =0
 <section id="experiments">
 <h1><span class="section-number">12. </span><a id='toc5_'></a><a class="reference internal" href="#toc0_"><span class="xref myst">Experiments</span></a><a class="headerlink" href="#experiments" title="Link to this heading">#</a></h1>
 <p>S: the state.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-bab1cfc5-db71-4c24-838a-363745be72fa">
-<span class="eqno">(12.1)<a class="headerlink" href="#equation-bab1cfc5-db71-4c24-838a-363745be72fa" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-3a2890ee-8a92-46f8-ad2c-bf182c4eed6c">
+<span class="eqno">(12.1)<a class="headerlink" href="#equation-3a2890ee-8a92-46f8-ad2c-bf182c4eed6c" title="Permalink to this equation">#</a></span>\[\begin{align}
 Y(S, U)=\beta_0+\beta_1 S+U
 \end{align}\]</div>
 <p>Causal Interpretation, If $S \perp U$, then</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4ab27606-4bd1-4389-a01a-65330d0837b2">
-<span class="eqno">(12.2)<a class="headerlink" href="#equation-4ab27606-4bd1-4389-a01a-65330d0837b2" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-32669783-3adf-48f2-9473-03c490d4359e">
+<span class="eqno">(12.2)<a class="headerlink" href="#equation-32669783-3adf-48f2-9473-03c490d4359e" title="Permalink to this equation">#</a></span>\[\begin{align}
 \beta_1=\frac{\operatorname{Cov}(S, Y)}{\operatorname{Var}(S)}
 \end{align}\]</div>
 <p>Mapping those things to the experiments context, we have</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9c38f6a1-85de-4225-8c38-e640d69dbaa8">
-<span class="eqno">(12.3)<a class="headerlink" href="#equation-9c38f6a1-85de-4225-8c38-e640d69dbaa8" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-818bf029-02c4-4d3a-89cc-b2ed2ea1fc36">
+<span class="eqno">(12.3)<a class="headerlink" href="#equation-818bf029-02c4-4d3a-89cc-b2ed2ea1fc36" title="Permalink to this equation">#</a></span>\[\begin{align}
 \operatorname{Cov}(S, Y)
 &amp;=E[S Y]-E[S] E[Y]
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-57a9bc56-3ac6-41e5-9027-20253427dc0a">
-<span class="eqno">(12.4)<a class="headerlink" href="#equation-57a9bc56-3ac6-41e5-9027-20253427dc0a" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-4f210ab2-e083-4815-85e1-35ef1e46f36e">
+<span class="eqno">(12.4)<a class="headerlink" href="#equation-4f210ab2-e083-4815-85e1-35ef1e46f36e" title="Permalink to this equation">#</a></span>\[\begin{align}
 E[S Y] &amp; =E[E[S Y \mid S]] \\
 &amp; =E[S Y \mid S=1] P(S=1)+E[S Y \mid S=0] P(S=0) \\
 &amp; =E[Y \mid S=1] P(S=1) \\
 &amp; =E[Y \mid S=1] p
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-93699663-d316-4524-a907-fdc99b382762">
-<span class="eqno">(12.5)<a class="headerlink" href="#equation-93699663-d316-4524-a907-fdc99b382762" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-b70e3ac7-f5f3-409c-adb8-e09993c86d35">
+<span class="eqno">(12.5)<a class="headerlink" href="#equation-b70e3ac7-f5f3-409c-adb8-e09993c86d35" title="Permalink to this equation">#</a></span>\[\begin{align}
 \begin{aligned}
 E[S] E[Y] &amp; =P(S=1)(E[E[Y \mid S]]) \\
 &amp; =p([E[Y \mid S=1] p+E[Y \mid S=0](1-p)) \\
 &amp; =E[Y \mid S=1] p^2+E[Y \mid S=0] p(1-p)
 \end{aligned}
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-a47c9ef8-9495-4b11-9dfe-7a6920439785">
-<span class="eqno">(12.6)<a class="headerlink" href="#equation-a47c9ef8-9495-4b11-9dfe-7a6920439785" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-db80eaf6-a9da-41d6-9b92-524facedaa88">
+<span class="eqno">(12.6)<a class="headerlink" href="#equation-db80eaf6-a9da-41d6-9b92-524facedaa88" title="Permalink to this equation">#</a></span>\[\begin{align}
 \begin{aligned}
 \operatorname{Var}(X) &amp; =E\left[S^2\right]-E[S]^2 \\
 E\left[S^2\right] &amp; =E\left[S^2 \mid S=1\right] p+E\left[S^2 \mid S=1\right](1-p) \\
@@ -877,8 +841,8 @@ E[S]^2 &amp; =p^2 \\
 &amp; =p(1-p)
 \end{aligned}
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-c87adef4-8579-4a9e-b812-02850cd5d6bb">
-<span class="eqno">(12.7)<a class="headerlink" href="#equation-c87adef4-8579-4a9e-b812-02850cd5d6bb" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-e6f673af-e3a3-47ec-8614-a4fb32a79580">
+<span class="eqno">(12.7)<a class="headerlink" href="#equation-e6f673af-e3a3-47ec-8614-a4fb32a79580" title="Permalink to this equation">#</a></span>\[\begin{align}
 \begin{aligned}
 \beta_1 &amp; =\frac{\operatorname{Cov}(S, Y)}{\operatorname{Var}(S)} \\
 &amp; =\frac{p(1-p)(E[Y \mid S=1]-E[Y \mid S=0])}{p(1-p)} \\
@@ -889,35 +853,35 @@ E[S]^2 &amp; =p^2 \\
 <h2><span class="section-number">12.1. </span><a id='toc5_1_'></a><a class="reference internal" href="#toc0_"><span class="xref myst">Regression Standard Errors</span></a><a class="headerlink" href="#regression-standard-errors" title="Link to this heading">#</a></h2>
 <p>Reference: <a class="reference external" href="https://en.wikipedia.org/wiki/Heteroskedasticity-consistent_standard_errors">Heteroskedasticity-consistent standard errors</a></p>
 <p>For a given estimator,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ba8347ec-fda4-48d5-afea-0e298b6beb61">
-<span class="eqno">(12.8)<a class="headerlink" href="#equation-ba8347ec-fda4-48d5-afea-0e298b6beb61" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-e67a8bf6-da61-4ff5-ad30-6bcf8d3919be">
+<span class="eqno">(12.8)<a class="headerlink" href="#equation-e67a8bf6-da61-4ff5-ad30-6bcf8d3919be" title="Permalink to this equation">#</a></span>\[\begin{align}
 \hat{\beta} = \frac{\operatorname{Cov}(S, Y)}{\operatorname{Var}(S)}
 \end{align}\]</div>
 <p>Using the matrix form,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-04d23eba-9590-48b8-9f2e-74f81e24b0c7">
-<span class="eqno">(12.9)<a class="headerlink" href="#equation-04d23eba-9590-48b8-9f2e-74f81e24b0c7" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-691ed285-ae9d-4ae0-af9e-572550df5415">
+<span class="eqno">(12.9)<a class="headerlink" href="#equation-691ed285-ae9d-4ae0-af9e-572550df5415" title="Permalink to this equation">#</a></span>\[\begin{align}
 \widehat{\boldsymbol{\beta}}_{\mathrm{OLS}}=\left(\mathbf{X}^{\top} \mathbf{X}\right)^{-1} \mathbf{X}^{\top} \mathbf{y}
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-1ca41b9b-9490-47e2-88d0-e9a6f0aa85b7">
-<span class="eqno">(12.10)<a class="headerlink" href="#equation-1ca41b9b-9490-47e2-88d0-e9a6f0aa85b7" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-5b4bbb8c-f78f-4331-8892-cb8ceaee5ec7">
+<span class="eqno">(12.10)<a class="headerlink" href="#equation-5b4bbb8c-f78f-4331-8892-cb8ceaee5ec7" title="Permalink to this equation">#</a></span>\[\begin{align}
 \mathbb{V}\left[\widehat{\boldsymbol{\beta}}_{\text {OLS }}\right]=\mathbb{V}\left[\left(\mathbf{X}^{\top} \mathbf{X}\right)^{-1} \mathbf{X}^{\top} \mathbf{y}\right]=\left(\mathbf{X}^{\top} \mathbf{X}\right)^{-1} \mathbf{X}^{\top} \boldsymbol{\Sigma} \mathbf{X}\left(\mathbf{X}^{\top} \mathbf{X}\right)^{-1}
 \end{align}\]</div>
 <p>If we have the constant variance for all the residuals, we have</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1080908e-b732-469d-9b84-f37240b19fb4">
-<span class="eqno">(12.11)<a class="headerlink" href="#equation-1080908e-b732-469d-9b84-f37240b19fb4" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-0ac0d6a0-a089-44b3-ad76-e0cc312c2e80">
+<span class="eqno">(12.11)<a class="headerlink" href="#equation-0ac0d6a0-a089-44b3-ad76-e0cc312c2e80" title="Permalink to this equation">#</a></span>\[\begin{align}
 \mathbb{E}\left[\mathbf{u} \mathbf{u}^{\top}\right]=\sigma^2 \mathbf{I}_n
 \end{align}\]</div>
 <p>we can simplify the variance to be</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5f4f466f-a4aa-42e6-a9c7-d30d8cb4a8dd">
-<span class="eqno">(12.12)<a class="headerlink" href="#equation-5f4f466f-a4aa-42e6-a9c7-d30d8cb4a8dd" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-4fd76639-8272-4170-af94-89814e2e3168">
+<span class="eqno">(12.12)<a class="headerlink" href="#equation-4fd76639-8272-4170-af94-89814e2e3168" title="Permalink to this equation">#</a></span>\[\begin{align}
 \mathbb{V}\left[\widehat{\boldsymbol{\beta}}_{\text {OLS }}\right]=\sigma^2\left(\mathbf{X}^{\top} \mathbf{X}\right)^{-1}
 \end{align}\]</div>
 <section id="clustered-standard-errors-liang-zeger-standard-errors">
 <h3><span class="section-number">12.1.1. </span>Clustered Standard Errors (Liang-Zeger standard errors)<a class="headerlink" href="#clustered-standard-errors-liang-zeger-standard-errors" title="Link to this heading">#</a></h3>
 <p>If the assumption broken and it is hard for us to calculate the Covariance Matrix over all the residuals, we can cluster the data by the cluster variable $C$.</p>
 <p>Change the $\Sigma$ to be block diagonal.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b0e8dedc-c898-4220-a264-68f80657499c">
-<span class="eqno">(12.13)<a class="headerlink" href="#equation-b0e8dedc-c898-4220-a264-68f80657499c" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-7110d7c1-1357-4273-97ac-f5716c17bd7a">
+<span class="eqno">(12.13)<a class="headerlink" href="#equation-7110d7c1-1357-4273-97ac-f5716c17bd7a" title="Permalink to this equation">#</a></span>\[\begin{align}
 \mathbf{X}^{\top} \mathbf{\Sigma} \mathbf{X} = \sum_{c \in C} \mathbf{X}_{c}^{\top} \Omega_{c}  \mathbf{X}_{c}
 \end{align}\]</div>
 <p>(with an example)</p>
