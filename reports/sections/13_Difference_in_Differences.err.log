@@ -20,7 +20,7 @@ nbclient.exceptions.CellExecutionError: An error occurred while executing the fo
 ------------------
 import pandas as pd
 
-url = "https://raw.githubusercontent.com//DS4PS/PROG-EVAL-III/master/TEXTBOOK/DATA/DID_Example.csv"
+url = "https://raw.githubusercontent.com/DS4PS/PROG-EVAL-III/master/TEXTBOOK/DATA/DID_Example.csv"
 df = pd.read_csv(url)
 df.columns = df.columns.str.replace('.', '_', regex=False)
 df['Time'] = df['Treatment']
@@ -98,7 +98,7 @@ During handling of the above exception, another exception occurred:
 [0;31mURLError[0m                                  Traceback (most recent call last)
 Cell [0;32mIn[2], line 4[0m
 [1;32m      1[0m [38;5;28;01mimport[39;00m [38;5;21;01mpandas[39;00m [38;5;28;01mas[39;00m [38;5;21;01mpd[39;00m
-[1;32m      3[0m url [38;5;241m=[39m [38;5;124m"[39m[38;5;124mhttps://raw.githubusercontent.com//DS4PS/PROG-EVAL-III/master/TEXTBOOK/DATA/DID_Example.csv[39m[38;5;124m"[39m
+[1;32m      3[0m url [38;5;241m=[39m [38;5;124m"[39m[38;5;124mhttps://raw.githubusercontent.com/DS4PS/PROG-EVAL-III/master/TEXTBOOK/DATA/DID_Example.csv[39m[38;5;124m"[39m
 [0;32m----> 4[0m df [38;5;241m=[39m [43mpd[49m[38;5;241;43m.[39;49m[43mread_csv[49m[43m([49m[43murl[49m[43m)[49m
 [1;32m      5[0m df[38;5;241m.[39mcolumns [38;5;241m=[39m df[38;5;241m.[39mcolumns[38;5;241m.[39mstr[38;5;241m.[39mreplace([38;5;124m'[39m[38;5;124m.[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124m_[39m[38;5;124m'[39m, regex[38;5;241m=[39m[38;5;28;01mFalse[39;00m)
 [1;32m      6[0m df[[38;5;124m'[39m[38;5;124mTime[39m[38;5;124m'[39m] [38;5;241m=[39m df[[38;5;124m'[39m[38;5;124mTreatment[39m[38;5;124m'[39m]
