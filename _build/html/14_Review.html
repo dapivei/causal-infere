@@ -1,0 +1,877 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>1. Goals For Today &#8212; Causal Inference for Data Science</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '14_Review';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="0. Recap From Last Class" href="13_Difference_in_Differences.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Causal Inference for Data Science - Home"/>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="Causal Inference for Data Science - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="1_Introduction.html">1. Goals For Today</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="2_Probability_1-2.html">Probability Mass and Density Function</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="3_Probability_Statistics.html">Overview For Today</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="4_Statistics_and_Experiments.html">0. Recap from last class</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="5_Experiments.html">0. Recap From Last Class</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="6_Regression_1-2.html"><a id="toc1_"></a><span class="xref myst">Descriptive Regression</span></a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="7_Natural_Experiments.html">Causality from Observational Data</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="8_ML_and_Causality.html">The Interplay between Machine Learning and Causal Inference</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="9_matching.html">Control Variables</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="10_Instruments.html">0. Recap From Last Class</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="11_Instruments_RDD.html">0. Recap From Last Class</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="12_RDD.html">Recap: Local Linear Regression for RDD</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="13_Difference_in_Differences.html">0. Recap From Last Class</a></li>
+
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">1. Goals For Today</a></li>
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2F14_Review.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/14_Review.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>1. Goals For Today</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">1. Goals For Today</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#selected-problems">2. Selected Problems</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-1-ps3-q3">Problem 1 (PS3 Q3)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-2-practice-midterm-q6">Problem 2 (Practice Midterm Q6)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-2-1-midterm-q6">Problem 2.1 (Midterm Q6)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-3-ps4-q3">Problem 3 (PS4 Q3)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-4-midterm-bonus">Problem 4 (Midterm Bonus)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#selected-lecture-proofs">3. Selected Lecture Proofs</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proof-1">Proof 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proof-2">Proof 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proof-3">Proof 3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proof-4">Proof 4</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proof-5">Proof 5</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#good-luck-with-your-finals">Good luck with your finals!</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div align="center">
+<p><a class="reference external" href="https://colab.research.google.com/github/dapivei/causal-infere/blob/main/sections/14_Review.ipynb"><img alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+</div><div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{c}
+\textbf{Final Course Review}\\\\
+\textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \\
+\textit{Center for Data Science, New York University} \\\\\\
+\textit{December 11, 2024}
+\end{array}
+\end{split}\]</div>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="goals-for-today">
+<h1>1. Goals For Today<a class="headerlink" href="#goals-for-today" title="Link to this heading">#</a></h1>
+<ol class="arabic simple">
+<li><p>Review some selected problems from past homework/midterm.</p></li>
+<li><p>Review some selected proofs from lectures.</p></li>
+</ol>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="selected-problems">
+<h1>2. Selected Problems<a class="headerlink" href="#selected-problems" title="Link to this heading">#</a></h1>
+<section id="problem-1-ps3-q3">
+<h2>Problem 1 (PS3 Q3)<a class="headerlink" href="#problem-1-ps3-q3" title="Link to this heading">#</a></h2>
+<p>If we have a linear causal model, and treatment is independent of other causes
+(as in the case of a perfect experiment), then linear regression will estimate
+the linear, causal effect of <span class="math notranslate nohighlight">\(S\)</span> on <span class="math notranslate nohighlight">\(Y\)</span>.</p>
+<p>However, now let us suppose that a medical researcher does an experiment
+assigning different dosage levels of a drug, <span class="math notranslate nohighlight">\(D\)</span>, to see how dosage affects pain level <span class="math notranslate nohighlight">\(P\)</span>. The drug can have many dosage levels, so we think of it as a continuous variable. The true causal model, in real life, is</p>
+<div class="math notranslate nohighlight">
+\[
+P(D, U) = \gamma_1 D + \gamma_2 D^2 + U
+\]</div>
+<p>That is, the drug’s effect has a linear component, <span class="math notranslate nohighlight">\(\gamma_1 D\)</span>; a non-linear component, <span class="math notranslate nohighlight">\(\gamma_2 D^2\)</span>; and an idiosyncratic component <span class="math notranslate nohighlight">\(U\)</span>.</p>
+<p>The researcher naively runs a typical linear regression of the form
+$<span class="math notranslate nohighlight">\(
+P = \alpha_0 + \alpha_1 D + U
+\)</span><span class="math notranslate nohighlight">\(
+Because it is an experiment, we can assume \)</span>U \perp D<span class="math notranslate nohighlight">\(. Thus, the researcher's regression model will identify:
+\)</span><span class="math notranslate nohighlight">\(
+\alpha_1 = \frac{\text{Cov}(P, D)}{\text{Var}(D)}
+\)</span>$</p>
+<p>Show, by plugging the true causal model into the above expression and using properties of the covariance, that the researcher’s regression model will estimate <span class="math notranslate nohighlight">\(\gamma_1\)</span> plus something else.</p>
+<p>SOLUTION:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\alpha_1 &amp;= \frac{\text{Cov}(P, D)}{\text{Var}(D)} \\
+&amp;= \frac{\text{Cov}(\gamma_1 D + \gamma_2 D^2 + U, D)}{\text{Var}(D)} \\
+&amp;= \frac{\text{Cov}(\gamma_1 D, D) + \text{Cov}(\gamma_2 D^2, D) + \text{Cov}(U, D)}{\text{Var}(D)} \quad \text{(Prop of cov.)} \\
+&amp;= \frac{\gamma_1 \text{Cov}(D, D) + \gamma_2 \text{Cov}(D^2, D) + 0}{\text{Var}(D)} \quad \text{(Prop of cov. + $U \perp D$)} \\
+&amp;= \frac{\gamma_1 \text{Var}(D) + \gamma_2 \text{Cov}(D^2, D)}{\text{Var}(D)} \\
+&amp;= \gamma_1 + \gamma_2 \frac{\text{Cov}(D^2, D)}{\text{Var}(D)}
+\end{align*}
+\end{split}\]</div>
+<p>This tells us even if we can identify the causal parameter, we can still have estimation errors from model misspecification.</p>
+<p>See another example PS4 Q2.</p>
+</section>
+<section id="problem-2-practice-midterm-q6">
+<h2>Problem 2 (Practice Midterm Q6)<a class="headerlink" href="#problem-2-practice-midterm-q6" title="Link to this heading">#</a></h2>
+<p>Show, working from the definition of variance and using properties of expectations, that
+$<span class="math notranslate nohighlight">\(
+\text{Var}(X + Y) = \text{Var}(X) + \text{Var}(Y) + 2\text{Cov}(X, Y)
+\)</span>$
+Justify all steps (excluding simple algebra).</p>
+<p>\begin{align*}
+\text{Var}(X + Y) &amp;= \mathbb{E}[(X + Y - \mathbb{E}[X + Y])^2] \
+&amp;= \mathbb{E}[(X + Y - \mathbb{E}[X] - \mathbb{E}[Y])^2] \quad \text{(prop. of expec.)} \
+&amp;= \mathbb{E}[((X - \mathbb{E}[X]) + (Y - \mathbb{E}[Y]))^2] \
+&amp;= \mathbb{E}[(X - \mathbb{E}[X])^2 + (Y - \mathbb{E}[Y])^2 + 2(X - \mathbb{E}[X])(Y - \mathbb{E}[Y])] \
+&amp;= \mathbb{E}[(X - \mathbb{E}[X])^2] + \mathbb{E}[(Y - \mathbb{E}[Y])^2] + 2\mathbb{E}[(X - \mathbb{E}[X])(Y - \mathbb{E}[Y])] \quad \text{(prop. of expec.)} \
+&amp;= \text{Var}(X) + \text{Var}(Y) + 2\text{Cov}(X, Y)
+\end{align*}</p>
+<section id="problem-2-1-midterm-q6">
+<h3>Problem 2.1 (Midterm Q6)<a class="headerlink" href="#problem-2-1-midterm-q6" title="Link to this heading">#</a></h3>
+<p>Show, working from the definition of variance and using properties of expectations, that
+$<span class="math notranslate nohighlight">\(
+\text{Var}(a + bX) = b^2 \text{Var}(X)
+\)</span>$
+Justify all steps (excluding simple algebra). (Hint: use the first given definition of variance).</p>
+<p>\begin{align*}
+\text{Var}(a + bX) &amp;= \mathbb{E}[(a + bX - \mathbb{E}[a + bX])^2] \
+&amp;= \mathbb{E}[(a + bX - \mathbb{E}[a] - b\mathbb{E}[X])^2] \quad \text{(prop. of exp.)} \
+&amp;= \mathbb{E}[(a + bX - a - b\mathbb{E}[X])^2] \quad \text{(prop. of exp.)} \
+&amp;= \mathbb{E}[b^2 (X - \mathbb{E}[X])^2] \
+&amp;= b^2 \mathbb{E}[(X - \mathbb{E}[X])^2] \quad \text{(prop. of exp.)} \
+&amp;= b^2 \text{Var}(X)
+\end{align*}</p>
+</section>
+</section>
+<section id="problem-3-ps4-q3">
+<h2>Problem 3 (PS4 Q3)<a class="headerlink" href="#problem-3-ps4-q3" title="Link to this heading">#</a></h2>
+<p>How do we identify the ATE using the matching estimator under the conditional independence assumption?</p>
+<p>Suppose we have a single control variable, <span class="math notranslate nohighlight">\(C\)</span>, that takes on <span class="math notranslate nohighlight">\(k\)</span>
+values, <span class="math notranslate nohighlight">\(c_1, \dots, c_k\)</span>. Show, using the LIE, that
+$<span class="math notranslate nohighlight">\(
+\text{ATE} = \mathbb{E}[Y(S = 1, U) - Y(S = 0, U)] =
+\sum_{i=1}^k \mathbb{E}[Y(S = 1, U) - Y(S = 0, U) \mid C = c_i]P(C = c_i)
+\)</span>$</p>
+<p>This result follows from the LIE and the definition of the expectation of a random variable:
+\begin{align*}
+\text{ATE} &amp;= \mathbb{E}[Y(S = 1, U) - Y(S = 0, U)] \
+&amp;= \mathbb{E}[\mathbb{E}[Y(S = 1, U) - Y(S = 0, U) \mid C]] \quad \text{(LIE)} \
+&amp;= \sum_{i=1}^k \mathbb{E}[Y(S = 1, U) - Y(S = 0, U) \mid C = c_i]P(C = c_i)
+\end{align*}</p>
+<p>Now, assuming that <span class="math notranslate nohighlight">\(S \perp U \mid C\)</span>, show that
+$<span class="math notranslate nohighlight">\(
+\text{ATE} = \sum_{i=1}^k \mathbb{E}[Y(S = 1, U) - Y(S = 0, U) \mid C = c_i]P(C = c_i)
+\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(
+= \sum_{i=1}^k \left(\mathbb{E}[Y(S = 1, U) \mid C = c_i, S = 1] - \mathbb{E}[Y(S = 0, U) \mid C = c_i, S = 0]\right)P(C = c_i)
+\)</span>$</p>
+<p>Every term in the second line is estimable from data, implying that the ATE is identified. Indeed, this is the parameter equivalent of <span class="math notranslate nohighlight">\(\widehat{\text{ATE}}_m\)</span> from the lecture slides.</p>
+<p>This part is actually quite similar to showing that an experiment identifies the ATE. Basically, we’re saying that <span class="math notranslate nohighlight">\(S\)</span> is as-good-as-random within each <span class="math notranslate nohighlight">\(C = c_i\)</span> group, so we can treat <span class="math notranslate nohighlight">\(S\)</span> as being like an experimentally assigned variable within groups:
+\begin{align*}
+\text{ATE} &amp;= \sum_{i=1}^k \mathbb{E}[Y(S = 1, U) - Y(S = 0, U) \mid C = c_i]P(C = c_i) \
+&amp;= \sum_{i=1}^k \left(\mathbb{E}[Y(S = 1, U) \mid C = c_i] - \mathbb{E}[Y(S = 0, U) \mid C = c_i]\right)P(C = c_i) \quad \text{(Prop. of exp.)} \
+&amp;= \sum_{i=1}^k \left(\mathbb{E}[Y(S = 1, U) \mid C = c_i, S = 1] - \mathbb{E}[Y(S = 0, U) \mid C = c_i, S = 0]\right)P(C = c_i) \quad (S \perp U \mid C)
+\end{align*}</p>
+</section>
+<section id="problem-4-midterm-bonus">
+<h2>Problem 4 (Midterm Bonus)<a class="headerlink" href="#problem-4-midterm-bonus" title="Link to this heading">#</a></h2>
+<p>Show that independence implies zero covariance. (not vice versa)</p>
+<p>We have shown this in lectures before.</p>
+<p>Let <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> be independent random variables. By definition, the covariance of <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> is given by:
+$<span class="math notranslate nohighlight">\(
+\text{Cov}(X, Y) = \mathbb{E}[XY] - \mathbb{E}[X]\mathbb{E}[Y].
+\)</span>$</p>
+<p>Since <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> are independent, the joint expectation of <span class="math notranslate nohighlight">\(XY\)</span> can be written as the product of their marginal expectations:</p>
+<p>\begin{align*}
+\mathbb{E}[XY] &amp;= \mathbb{E}[\mathbb{E}[XY \mid X]] \quad \text{(LIE)} \
+&amp;= \mathbb{E}[X \mathbb{E}[Y \mid X]] \quad \text{(property of conditional expectation)} \
+&amp;= \mathbb{E}\left[X \int_{-\infty}^\infty y f(y \mid x) , dy \right] \quad \text{(definition of conditional expectation)} \
+&amp;= \mathbb{E}\left[X \int_{-\infty}^\infty y f(y) , dy \right] \quad \text{(independence: ( Y \perp X ))} \
+&amp;= \mathbb{E}[X \mathbb{E}[Y]] \
+&amp;= \mathbb{E}[X]\mathbb{E}[Y].
+\end{align*}</p>
+<p>(This also showed that <span class="math notranslate nohighlight">\(\mathbb{E}[Y|X] = \mathbb{E}[Y]\)</span> given independence.)</p>
+<p>Substituting this into the covariance formula:
+\begin{align*}
+\text{Cov}(X, Y) &amp;= \mathbb{E}[XY] - \mathbb{E}[X]\mathbb{E}[Y] \
+&amp;= \mathbb{E}[X]\mathbb{E}[Y] - \mathbb{E}[X]\mathbb{E}[Y] \
+&amp;= 0.
+\end{align*}</p>
+<p>Thus, if <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> are independent random variables, their covariance is zero.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="selected-lecture-proofs">
+<h1>3. Selected Lecture Proofs<a class="headerlink" href="#selected-lecture-proofs" title="Link to this heading">#</a></h1>
+<section id="proof-1">
+<h2>Proof 1<a class="headerlink" href="#proof-1" title="Link to this heading">#</a></h2>
+<p>Show DID estimator identifies the ATT under the parallel trends assumption.</p>
+<p>Recall the DID estimator as the following,</p>
+<div class="math notranslate nohighlight">
+\[
+DID = \mathbb{E}[Y_{1,1}(S = 1, U)] - \mathbb{E}[Y_{1,0}(S = 0, U)] -
+\Big(\mathbb{E}[Y_{0,1}(S = 0, U)] - \mathbb{E}[Y_{0,0}(S = 0, U)]\Big)
+\]</div>
+<p>and the parrlel trends assumption</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbb{E}[Y_{1,1}(S = 0, U) - Y_{1,0}(S = 0, U)] =
+\mathbb{E}[Y_{0,1}(S = 0, U) - Y_{0,0}(S = 0, U)]
+\]</div>
+<p>We would like to show that the DID estimator identifies ATT:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+DID &amp;= \mathbb{E}[Y_{1,1}(S = 1, U)] - \mathbb{E}[Y_{1,0}(S = 0, U)] -
+(\mathbb{E}[Y_{0,1}(S = 0, U)] - \mathbb{E}[Y_{0,0}(S = 0, U)]) \\
+&amp;= \mathbb{E}[Y_{1,1}(S = 1, U)] - \mathbb{E}[Y_{1,1}(S = 0, U)] +
+\mathbb{E}[Y_{1,1}(S = 0, U)] - \mathbb{E}[Y_{1,0}(S = 0, U)] -
+(\mathbb{E}[Y_{0,1}(S = 0, U)] - \mathbb{E}[Y_{0,0}(S = 0, U)]) \\
+&amp; = ATT +
+\mathbb{E}[Y_{1,1}(S = 0, U)] - \mathbb{E}[Y_{1,0}(S = 0, U)] -
+(\mathbb{E}[Y_{0,1}(S = 0, U)] - \mathbb{E}[Y_{0,0}(S = 0, U)]) \\
+&amp;= ATT + 0 \quad \text{(Parr. trends)}
+\end{align*}
+\end{split}\]</div>
+</section>
+<section id="proof-2">
+<h2>Proof 2<a class="headerlink" href="#proof-2" title="Link to this heading">#</a></h2>
+<p>Show why we can use linear regression to estimate the DID parameter with <span class="math notranslate nohighlight">\(\alpha_3\)</span> from the following:</p>
+<div class="math notranslate nohighlight">
+\[
+Y = \alpha_0 + \alpha_1 T + \alpha_2 G + \alpha_3 D
+\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\mathbb{E}[Y_{g,t} \mid T, G, D] &amp;= \mathbb{E}[Y_{0,0}] + T(\mathbb{E}[Y_{0,1}] - \mathbb{E}[Y_{0,0}]) \\
+&amp;\quad + S(\mathbb{E}[Y_{1,0}] - \mathbb{E}[Y_{0,0}]) \\
+&amp;\quad + D(\mathbb{E}[Y_{1,1}] - \mathbb{E}[Y_{1,0}] - \mathbb{E}[Y_{0,1}] + \mathbb{E}[Y_{0,0}]) \\
+&amp;= \mathbb{E}[Y_{0,0}] + T(\mathbb{E}[Y_{0,1}] - \mathbb{E}[Y_{0,0}]) \\
+&amp;\quad + S(\mathbb{E}[Y_{1,0}] - \mathbb{E}[Y_{0,0}]) + D \cdot DID
+\end{align*}
+\end{split}\]</div>
+</section>
+<section id="proof-3">
+<h2>Proof 3<a class="headerlink" href="#proof-3" title="Link to this heading">#</a></h2>
+<p>How did we identify the RDD estimator with the smoothness assumption?</p>
+<p>\begin{align*}
+\mathbb{E}[Y \mid R = c] &amp;= \mathbb{E}[Y(S = 1, U) \mid R = c] \quad \text{(r <span class="math notranslate nohighlight">\(\geq\)</span> c <span class="math notranslate nohighlight">\(\implies\)</span> S = 1)} \
+\lim_{r \uparrow c} \mathbb{E}[Y \mid R = r] &amp;= \lim_{r \uparrow c} \mathbb{E}[Y(S = 0, U) \mid R = r] \quad \text{(r <span class="math notranslate nohighlight">\(&lt;\)</span> c <span class="math notranslate nohighlight">\(\implies\)</span> S = 0)} \
+&amp;= \mathbb{E}[Y(S = 0, U) \mid R = c] \quad \text{(smoothness)}.
+\end{align*}</p>
+<p>\begin{align*}
+\implies \mathbb{E}[Y(S = 1, U) - Y(S = 0, U) \mid R = c]
+&amp;= \mathbb{E}[Y(S = 1, U) \mid R = c] - \lim_{r \uparrow c} \mathbb{E}[Y(S = 0, U) \mid R = r].
+\end{align*}</p>
+<p>We can estimate this using local linear regression below. Why does <span class="math notranslate nohighlight">\(\alpha_1\)</span> estimate the above effect, and what does each parameter do here?</p>
+<div class="math notranslate nohighlight">
+\[
+Y = \alpha_0 + \alpha_1 S + \alpha_2 (R - c) + \alpha_3 S \cdot (R - c)
+\]</div>
+</section>
+<section id="proof-4">
+<h2>Proof 4<a class="headerlink" href="#proof-4" title="Link to this heading">#</a></h2>
+<p>Show that the Wald estimator identifies LATE.</p>
+<p>The Wald estimator can be written as the following:</p>
+<p>\begin{align*}
+\alpha_1^{IV} &amp;= \frac{\text{Cov}(Z, Y)}{\text{Cov}(Z, S)} = \frac{\text{Cov}(Z, Y) / \text{Var}(Z)}{\text{Cov}(Z, S) / \text{Var}(Z)} = \frac{\mathbb{E}[Y \mid Z = 1] - \mathbb{E}[Y \mid Z = 0]}{\mathbb{E}[S \mid Z = 1] - \mathbb{E}[S \mid Z = 0]}.
+\end{align*}</p>
+<p>We expand the numerator and denominator separately.</p>
+<p>\begin{align*}
+\mathbb{E}[Y \mid Z = 1] - \mathbb{E}[Y \mid Z = 0]
+&amp;= \mathbb{E}[Y(S, U) \mid Z = 1] - \mathbb{E}[Y(S, U) \mid Z = 0] \
+&amp;= \mathbb{E}[Y(S(Z = 1, V), U) \mid Z = 1] - \mathbb{E}[Y(S(Z = 0, V), U) \mid Z = 0] \
+&amp;= \mathbb{E}[Y(S(Z = 1, V), U)] - \mathbb{E}[Y(S(Z = 0, V), U)] \quad \text{(Instr. Exog.)} \
+&amp;= \mathbb{E}[Y(S(Z = 1, V), U) - Y(S(Z = 0, V), U)] \
+&amp;= \mathbb{E}[\mathbb{E}[Y(S(1, V), U) - Y(S(0, V), U) \mid S(1, V), S(0, V)]] \quad \text{(LIE)} \
+&amp;= \mathbb{E}[Y(S = 1, U) - Y(S = 0, U) \mid \text{Complier}]P(\text{Complier}) \
+&amp;\quad + \mathbb{E}[Y(S = 1, U) - Y(S = 0, U) \mid \text{Defier}]P(\text{Defier}) \
+&amp;= \mathbb{E}[Y(S = 1, U) - Y(S = 0, U) \mid \text{Complier}]P(\text{Complier}) \quad \text{(Monot.)}.
+\end{align*}</p>
+<p>Now for the denominator,</p>
+<p>\begin{align*}
+\mathbb{E}[S \mid Z = 1] - \mathbb{E}[S \mid Z = 0]
+&amp;= \mathbb{E}[S(Z, V) \mid Z = 1] - \mathbb{E}[S(Z, V) \mid Z = 0] \
+&amp;= \mathbb{E}[S(Z = 1, V) \mid Z = 1] - \mathbb{E}[S(Z = 0, V) \mid Z = 0] \
+&amp;= \mathbb{E}[S(Z = 1, V)] - \mathbb{E}[S(Z = 0, V)] \quad \text{(Instr. Exog.)} \
+&amp;= \mathbb{E}[S(Z = 1, V) - S(Z = 0, V)] \
+&amp;= \mathbb{E}[\mathbb{E}[S(Z = 1, V) - S(Z = 0, V) \mid S(1, V), S(0, V)]] \quad \text{(LIE)} \
+&amp;= \mathbb{E}[1 - 0 \mid \text{Complier}]P(\text{Complier}) + \mathbb{E}[0 - 1 \mid \text{Defier}]P(\text{Defier}) \
+&amp;= P(\text{Complier}) \quad \text{(Monot.)}.
+\end{align*}</p>
+<p>Putting it all together,</p>
+<p>\begin{align*}
+\alpha_1^{IV}
+&amp;= \frac{\mathbb{E}[Y \mid Z = 1] - \mathbb{E}[Y \mid Z = 0]}{\mathbb{E}[S \mid Z = 1] - \mathbb{E}[S \mid Z = 0]} \
+&amp;= \frac{\mathbb{E}[Y(S = 1, U) - Y(S = 0, U) \mid \text{Complier}]P(\text{Complier})}{P(\text{Complier})} \
+&amp;= \mathbb{E}[Y(S = 1, U) - Y(S = 0, U) \mid \text{Complier}] \quad \text{(Instr. Rel.)} \
+&amp;= \text{LATE}.
+\end{align*}</p>
+</section>
+<section id="proof-5">
+<h2>Proof 5<a class="headerlink" href="#proof-5" title="Link to this heading">#</a></h2>
+<p>Show the common alternative form of the covariance definition:
+$<span class="math notranslate nohighlight">\(
+\text{Cov}(X, Y) = \mathbb{E}[XY] - \mathbb{E}[X]\mathbb{E}[Y]
+\)</span>$</p>
+<p>\begin{align*}
+\text{Cov}(X, Y) &amp;= \mathbb{E}[(X - \mathbb{E}[X])(Y - \mathbb{E}[Y])] \
+&amp;= \mathbb{E}[XY - X\mathbb{E}[Y] - Y\mathbb{E}[X] + \mathbb{E}[X]\mathbb{E}[Y]] \
+&amp;= \mathbb{E}[XY] - \mathbb{E}[X]\mathbb{E}[Y] - \mathbb{E}[Y]\mathbb{E}[X] + \mathbb{E}[X]\mathbb{E}[Y] \
+&amp;= \mathbb{E}[XY] - 2\mathbb{E}[X]\mathbb{E}[Y] + \mathbb{E}[X]\mathbb{E}[Y] \
+&amp;= \mathbb{E}[XY] - \mathbb{E}[X]\mathbb{E}[Y]
+\end{align*}</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="good-luck-with-your-finals">
+<h1>Good luck with your finals!<a class="headerlink" href="#good-luck-with-your-finals" title="Link to this heading">#</a></h1>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="13_Difference_in_Differences.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">0. Recap From Last Class</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">1. Goals For Today</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#selected-problems">2. Selected Problems</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-1-ps3-q3">Problem 1 (PS3 Q3)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-2-practice-midterm-q6">Problem 2 (Practice Midterm Q6)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-2-1-midterm-q6">Problem 2.1 (Midterm Q6)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-3-ps4-q3">Problem 3 (PS4 Q3)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-4-midterm-bonus">Problem 4 (Midterm Bonus)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#selected-lecture-proofs">3. Selected Lecture Proofs</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proof-1">Proof 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proof-2">Proof 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proof-3">Proof 3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proof-4">Proof 4</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proof-5">Proof 5</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#good-luck-with-your-finals">Good luck with your finals!</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

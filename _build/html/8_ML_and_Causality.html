@@ -1,0 +1,1016 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>The Interplay between Machine Learning and Causal Inference &#8212; Causal Inference for Data Science</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '8_ML_and_Causality';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Control Variables" href="9_matching.html" />
+    <link rel="prev" title="Causality from Observational Data" href="7_Natural_Experiments.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Causal Inference for Data Science - Home"/>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="Causal Inference for Data Science - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="1_Introduction.html">1. Goals For Today</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="2_Probability_1-2.html">Probability Mass and Density Function</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="3_Probability_Statistics.html">Overview For Today</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="4_Statistics_and_Experiments.html">0. Recap from last class</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="5_Experiments.html">0. Recap From Last Class</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="6_Regression_1-2.html"><a id="toc1_"></a><span class="xref myst">Descriptive Regression</span></a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="7_Natural_Experiments.html">Causality from Observational Data</a></li>
+
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">The Interplay between Machine Learning and Causal Inference</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="9_matching.html">Control Variables</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="10_Instruments.html">0. Recap From Last Class</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="11_Instruments_RDD.html">0. Recap From Last Class</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="12_RDD.html">Recap: Local Linear Regression for RDD</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="13_Difference_in_Differences.html">0. Recap From Last Class</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="14_Review.html">1. Goals For Today</a></li>
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2F8_ML_and_Causality.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/8_ML_and_Causality.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>The Interplay between Machine Learning and Causal Inference</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">The Interplay between Machine Learning and Causal Inference</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-learning-for-causality">1. Machine Learning for Causality</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-causal-parameters">1.1 Other Causal Parameters?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-estimands">1.2 Statistical Estimands</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-estimation">1.3 Advanced Estimation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#s-learner">1.3.1 S-learner</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#t-learner">1.3.2 T-learner</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tar-net">1.3.3 TAR-Net</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#double-machine-learning">1.3.4 Double Machine Learning</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#causal-inference-for-machine-learning">2. Causal Inference for Machine Learning</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div align="center">
+<p><a class="reference external" href="https://colab.research.google.com/github/dapivei/causal-infere/blob/main/sections/8_ML_and_Causality.ipynb"><img alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{c}
+\textbf{INTRODUCTION TO CAUSAL INFERENCE}\\\\\\\\
+\textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \\
+\textit{Center for Data Science, New York University} \\\\\\
+\textit{October 25, 2024}
+\end{array}
+\end{split}\]</div>
+<hr class="docutils" />
+<section id="the-interplay-between-machine-learning-and-causal-inference">
+<h1>The Interplay between Machine Learning and Causal Inference<a class="headerlink" href="#the-interplay-between-machine-learning-and-causal-inference" title="Link to this heading">#</a></h1>
+<p>There is an increasing interest in</p>
+<ol class="arabic simple">
+<li><p>how machine learning techniques can improve causal effect estimation</p></li>
+<li><p>how causal inference principles can enhance machine learning algorithms, particularly for robustness</p></li>
+</ol>
+<p>The aim of this lab is to give you a broad overview of existing work and research at the intersection of machine learning and causal inference.</p>
+</section>
+<section id="machine-learning-for-causality">
+<h1>1. Machine Learning for Causality<a class="headerlink" href="#machine-learning-for-causality" title="Link to this heading">#</a></h1>
+<p>The first step in performing causal inference is knowing the causal parameter we are trying to identify and estimate. In this class, we have been mostly focused on the average treatment effect (ATE):</p>
+<p>\begin{equation}
+ATE = \mathbb{E}[Y(1, U) - Y(0, U)]
+\end{equation}</p>
+<p>We can identify the above equation to form a statistical estimand by conditioning if <span class="math notranslate nohighlight">\(S \perp U\)</span>:</p>
+<p>\begin{equation}
+ATE = \mathbb{E}[Y(1, U)|S=1] - \mathbb{E}[Y(0, U)|S=0]
+\end{equation}</p>
+<p>Last week, we also learned that the identification of ATE can be facilitated through conditional independence.</p>
+<p>\begin{equation}
+S \perp U \ | \ C
+\end{equation}</p>
+<p>Remember, we cannot just make any (machine-learning) models as being “causal” models, but we know the conditions and assumptions under which causality is feasible: descriptive regression <span class="math notranslate nohighlight">\(→\)</span> causal regression.</p>
+<section id="other-causal-parameters">
+<h2>1.1 Other Causal Parameters?<a class="headerlink" href="#other-causal-parameters" title="Link to this heading">#</a></h2>
+<p>Actually, you have seen another causal parameter: individualized treatment effect (ITE). It is the most straightforward to write down, but it is also the most difficult one (almost impossible) to identify. Instead of estimating causal effects on a population level, the inidividual level effect is much more helpful as it underpins the promises of things like personalized medicine (one medication could be helpful on average but harmful for a particular individual).</p>
+<p>\begin{equation}
+ITE = Y_i(1, u) - Y_i(0, u)
+\end{equation}</p>
+<p>Instead, an easier quantity to learn is called conditional average treatment effect (CATE). For the rest of the lab, we will use a more standard machine learning notation involving <span class="math notranslate nohighlight">\((Y, X, T)\)</span> and not writing <span class="math notranslate nohighlight">\(U\)</span> for simplicity.</p>
+<p>\begin{equation}
+CATE = \mathbb{E}[Y(1) - Y(0) | X]
+\end{equation}</p>
+<p>If we are simply leveraging the conditional independence assumption for identifying ATE, this can be written as the following:</p>
+<p>\begin{equation}
+ATE = \mathbb{E}_{X}\left[\mathbb{E}[Y(1) - Y(0) | X]\right]
+\end{equation}</p>
+</section>
+<section id="statistical-estimands">
+<h2>1.2 Statistical Estimands<a class="headerlink" href="#statistical-estimands" title="Link to this heading">#</a></h2>
+<p>Given a dataset of <span class="math notranslate nohighlight">\(D = \{Y, X, T\}\)</span>, we can identify the above ATE and CATE with two major assumptions:</p>
+<ol class="arabic simple">
+<li><p>Ignorability: <span class="math notranslate nohighlight">\(Y(1), Y(0) \perp T | X\)</span></p></li>
+<li><p>Positivity: <span class="math notranslate nohighlight">\(p(T=t | X = \mathbf{x}) &gt;0, ∀t, \mathbf{x}\)</span></p></li>
+</ol>
+<p>We have seen the first one! It reads as the treatment assignment does not influence the potential outcomes condition on the features <span class="math notranslate nohighlight">\(X\)</span>, i.e., the treatment group and the control group should have similar characteristics (<span class="math notranslate nohighlight">\(S \perp U | C\)</span>).</p>
+<p>We haven’t talked much about positivity yet as we are just beginning to touch on control variables, but this is intuitive: there always should be people taking all the treatment options among the subpopulation on which they are conditioned. For example, if all college graduates do not attend the job training program, this assumption will be violated.</p>
+<p>We can derive the statistical estimand for CATE and ATE just as in lectures.</p>
+<p>\begin{align}
+CATE &amp;= \mathbb{E}[Y(1) - Y(0) | X] \
+&amp;= \mathbb{E}[Y(1)|X] - \mathbb{E}[Y(0) | X] \
+&amp;= \mathbb{E}[Y(1)|T=1, X] - \mathbb{E}[Y(0) |T=0, X] \
+&amp;= \mathbb{E}[Y|T=1, X] - \mathbb{E}[Y|T=0, X] \
+\end{align}</p>
+<p>and,</p>
+<p>\begin{align}
+ATE &amp;= \mathbb{E}<em>{X}\left[\mathbb{E}[Y(1) - Y(0) | X]\right] \
+&amp;= \mathbb{E}</em>{X}\left[\mathbb{E}[Y|T=1, X] - \mathbb{E}[Y|T=0, X]\right] \
+\end{align}</p>
+</section>
+<section id="advanced-estimation">
+<h2>1.3 Advanced Estimation<a class="headerlink" href="#advanced-estimation" title="Link to this heading">#</a></h2>
+<p>When the assumptions hold, we can simply regress the outcome on the treatment and features, and we have shown in class that the coefficient for the treatment variable is the corresponding ATE. For CATE, we can add an interaction term between treatment and the conditioned feature like <span class="math notranslate nohighlight">\(\beta XT\)</span>.</p>
+<p>However, what if the underlying true model is <strong>not</strong> a linear model?</p>
+<p>In general, we can use any model class for estimating <span class="math notranslate nohighlight">\(\mathbb{E}[Y|T=1, X]\)</span> and <span class="math notranslate nohighlight">\(\mathbb{E}[Y|T=0, X]\)</span>.</p>
+<section id="s-learner">
+<h3>1.3.1 S-learner<a class="headerlink" href="#s-learner" title="Link to this heading">#</a></h3>
+<p>We can use a single model <span class="math notranslate nohighlight">\(f(\mathbf{x}_i, t_i)\)</span> to predict <span class="math notranslate nohighlight">\(Y\)</span> based on <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(T\)</span>.</p>
+<p><img alt="S-learner" src="https://github.com/dapivei/causal-infere/blob/main/sections/images/S-learner.png?raw=true" /></p>
+<p>image credit: <a class="reference external" href="https://csc2541-2022.github.io/lectures/CSC2541_lecture4_estimation.pdf">link</a></p>
+<p>Let’s simulate some data!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># simulate features</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">5000</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="c1"># simulate treatment assignment (binary treatment)</span>
+<span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+
+<span class="c1"># define true treatment effect function</span>
+<span class="k">def</span> <span class="nf">true_effect</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># simulate outcomes</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">true_effect</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">*</span> <span class="n">T</span> <span class="o">+</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+
+<span class="c1"># create a DataFrame</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;X</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)])</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">T</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Y</span>
+
+<span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># simulate features</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;numpy&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="c1"># features and target</span>
+<span class="n">X_all</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">y_all</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">]</span>
+
+<span class="c1"># perform train-test split</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_all</span><span class="p">,</span> <span class="n">y_all</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># separate T and X in training and test sets</span>
+<span class="n">T_train</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">]</span>
+<span class="n">X_train_features</span> <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">T_test</span> <span class="o">=</span> <span class="n">X_test</span><span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">]</span>
+<span class="n">X_test_features</span> <span class="o">=</span> <span class="n">X_test</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestRegressor</span>
+
+<span class="c1"># include T in the features</span>
+<span class="n">X_train_s</span> <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">y_train_s</span> <span class="o">=</span> <span class="n">y_train</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="c1"># train the S-Learner</span>
+<span class="n">model_s</span> <span class="o">=</span> <span class="n">RandomForestRegressor</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">model_s</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_s</span><span class="p">,</span> <span class="n">y_train_s</span><span class="p">)</span>
+
+<span class="c1"># prepare test data with T=1 and T=0</span>
+<span class="n">X_test_T1</span> <span class="o">=</span> <span class="n">X_test</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">X_test_T1</span><span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">X_test_T0</span> <span class="o">=</span> <span class="n">X_test</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">X_test_T0</span><span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="c1"># predict outcomes</span>
+<span class="n">y_pred_T1</span> <span class="o">=</span> <span class="n">model_s</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_T1</span><span class="p">)</span>
+<span class="n">y_pred_T0</span> <span class="o">=</span> <span class="n">model_s</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_T0</span><span class="p">)</span>
+
+<span class="c1"># estimate ITE</span>
+<span class="n">ite_s</span> <span class="o">=</span> <span class="n">y_pred_T1</span> <span class="o">-</span> <span class="n">y_pred_T0</span>
+
+<span class="c1"># compute ATE</span>
+<span class="n">ate_s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">ite_s</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Estimated ATE using S-Learner: </span><span class="si">{</span><span class="n">ate_s</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Estimated ATE using S-Learner: -0.0193
+</pre></div>
+</div>
+</div>
+</div>
+<p>What are some potential problems if we have high-dimensional <span class="math notranslate nohighlight">\(X\)</span>, i.e., <span class="math notranslate nohighlight">\(D\)</span> is very large?</p>
+</section>
+<section id="t-learner">
+<h3>1.3.2 T-learner<a class="headerlink" href="#t-learner" title="Link to this heading">#</a></h3>
+<p>Alternatively, we can build separate models <span class="math notranslate nohighlight">\(f_1(\mathbf{x}_i, T=1)\)</span> and <span class="math notranslate nohighlight">\(f_0(\mathbf{x}_i, T=0)\)</span> for the treatment and control group.</p>
+<p><img alt="T-learner" src="https://github.com/dapivei/causal-infere/blob/main/sections/images/T-learner.png?raw=true" /></p>
+<p>image credit: <a class="reference external" href="https://csc2541-2022.github.io/lectures/CSC2541_lecture4_estimation.pdf">link</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># split training data by treatment</span>
+<span class="n">train_data</span> <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">train_data</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">y_train</span>
+
+<span class="n">train_treated</span> <span class="o">=</span> <span class="n">train_data</span><span class="p">[</span><span class="n">train_data</span><span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">train_control</span> <span class="o">=</span> <span class="n">train_data</span><span class="p">[</span><span class="n">train_data</span><span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># features and target for treated group</span>
+<span class="n">X_treated</span> <span class="o">=</span> <span class="n">train_treated</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">y_treated</span> <span class="o">=</span> <span class="n">train_treated</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">]</span>
+
+<span class="c1"># features and target for control group</span>
+<span class="n">X_control</span> <span class="o">=</span> <span class="n">train_control</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">y_control</span> <span class="o">=</span> <span class="n">train_control</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">]</span>
+
+<span class="c1"># train models</span>
+<span class="n">model_treated</span> <span class="o">=</span> <span class="n">RandomForestRegressor</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">model_control</span> <span class="o">=</span> <span class="n">RandomForestRegressor</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="n">model_treated</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_treated</span><span class="p">,</span> <span class="n">y_treated</span><span class="p">)</span>
+<span class="n">model_control</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_control</span><span class="p">,</span> <span class="n">y_control</span><span class="p">)</span>
+
+<span class="c1"># predict outcomes on test set</span>
+<span class="n">y_pred_treated</span> <span class="o">=</span> <span class="n">model_treated</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_features</span><span class="p">)</span>
+<span class="n">y_pred_control</span> <span class="o">=</span> <span class="n">model_control</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_features</span><span class="p">)</span>
+
+<span class="c1"># estimate ITE</span>
+<span class="n">ite_t</span> <span class="o">=</span> <span class="n">y_pred_treated</span> <span class="o">-</span> <span class="n">y_pred_control</span>
+
+<span class="c1"># compute ATE</span>
+<span class="n">ate_t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">ite_t</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Estimated ATE using T-Learner: </span><span class="si">{</span><span class="n">ate_t</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Estimated ATE using T-Learner: -0.0338
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="tar-net">
+<h3>1.3.3 TAR-Net<a class="headerlink" href="#tar-net" title="Link to this heading">#</a></h3>
+<p>What are some of the drawbacks of the above approaches?</p>
+<p><img alt="Tradeoff" src="https://github.com/dapivei/causal-infere/blob/main/sections/images/Trade-off.png?raw=true" /></p>
+<p><a class="reference external" href="https://arxiv.org/abs/1606.03976">Johansson, Shalit, and Sontag, 2016</a> leveraged neural networks to overcome the above challenge via learning a common representation.</p>
+<p>(Additional regularization needed to ensure balanced representations for both groups)</p>
+<p><img alt="TAR-Net" src="https://github.com/dapivei/causal-infere/blob/main/sections/images/TAR-Net.png?raw=true" /></p>
+<p>image credit: <a class="reference external" href="https://csc2541-2022.github.io/lectures/CSC2541_lecture4_estimation.pdf">link</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+<span class="kn">import</span> <span class="nn">torch.optim</span> <span class="k">as</span> <span class="nn">optim</span>
+<span class="kn">from</span> <span class="nn">torch.utils.data</span> <span class="kn">import</span> <span class="n">TensorDataset</span><span class="p">,</span> <span class="n">DataLoader</span>
+
+<span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># prepare training data tensors</span>
+<span class="n">X_train_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">X_train_features</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">T_train_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">T_train</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">Y_train_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">y_train</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># create DataLoader</span>
+<span class="n">train_dataset</span> <span class="o">=</span> <span class="n">TensorDataset</span><span class="p">(</span><span class="n">X_train_tensor</span><span class="p">,</span> <span class="n">T_train_tensor</span><span class="p">,</span> <span class="n">Y_train_tensor</span><span class="p">)</span>
+<span class="n">train_loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># define TARNet model</span>
+<span class="k">class</span> <span class="nc">TARNet</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dim</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">TARNet</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">shared</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">outcome_0</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">outcome_1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+        <span class="n">phi</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">shared</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">y0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">outcome_0</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
+        <span class="n">y1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">outcome_1</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
+        <span class="n">y_pred</span> <span class="o">=</span> <span class="n">t</span> <span class="o">*</span> <span class="n">y1</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">t</span><span class="p">)</span> <span class="o">*</span> <span class="n">y0</span>
+        <span class="k">return</span> <span class="n">y_pred</span>
+
+    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">phi</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">shared</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">y0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">outcome_0</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
+        <span class="n">y1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">outcome_1</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">y0</span><span class="p">,</span> <span class="n">y1</span>
+
+<span class="c1"># initialize model, loss function, and optimizer</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">TARNet</span><span class="p">(</span><span class="n">input_dim</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">MSELoss</span><span class="p">()</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.001</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># training loop</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+    <span class="n">total_loss</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">X_batch</span><span class="p">,</span> <span class="n">T_batch</span><span class="p">,</span> <span class="n">Y_batch</span> <span class="ow">in</span> <span class="n">train_loader</span><span class="p">:</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+        <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X_batch</span><span class="p">,</span> <span class="n">T_batch</span><span class="p">)</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">Y_batch</span><span class="p">)</span>
+        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+        <span class="n">total_loss</span> <span class="o">+=</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">epoch</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Epoch </span><span class="si">{</span><span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">, Loss: </span><span class="si">{</span><span class="n">total_loss</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">train_loader</span><span class="p">)</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 5, Loss: 1.0349
+Epoch 10, Loss: 1.0132
+Epoch 15, Loss: 1.0015
+Epoch 20, Loss: 0.9859
+Epoch 25, Loss: 0.9719
+Epoch 30, Loss: 0.9615
+Epoch 35, Loss: 0.9574
+Epoch 40, Loss: 0.9332
+Epoch 45, Loss: 0.9291
+Epoch 50, Loss: 0.9166
+Epoch 55, Loss: 0.9037
+Epoch 60, Loss: 0.8932
+Epoch 65, Loss: 0.8889
+Epoch 70, Loss: 0.8796
+Epoch 75, Loss: 0.8734
+Epoch 80, Loss: 0.8613
+Epoch 85, Loss: 0.8584
+Epoch 90, Loss: 0.8423
+Epoch 95, Loss: 0.8357
+Epoch 100, Loss: 0.8344
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># prepare test data tensors</span>
+<span class="n">X_test_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">X_test_features</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+<span class="c1"># estimate ITE</span>
+<span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+<span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="n">y0_pred</span><span class="p">,</span> <span class="n">y1_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_tensor</span><span class="p">)</span>
+    <span class="n">ite_tar</span> <span class="o">=</span> <span class="p">(</span><span class="n">y1_pred</span> <span class="o">-</span> <span class="n">y0_pred</span><span class="p">)</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+
+<span class="c1"># compute ATE</span>
+<span class="n">ate_tar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">ite_tar</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Estimated ATE using TARNet: </span><span class="si">{</span><span class="n">ate_tar</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Estimated ATE using TARNet: -0.0584
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute true ATE</span>
+<span class="n">X_test_array</span> <span class="o">=</span> <span class="n">X_test_features</span><span class="o">.</span><span class="n">values</span>
+<span class="n">true_ite</span> <span class="o">=</span> <span class="n">true_effect</span><span class="p">(</span><span class="n">X_test_array</span><span class="p">)</span>
+<span class="n">true_ate</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">true_ite</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;True ATE:    </span><span class="si">{</span><span class="n">true_ate</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True ATE:    -0.0276
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="double-machine-learning">
+<h2>1.3.4 Double Machine Learning<a class="headerlink" href="#double-machine-learning" title="Link to this heading">#</a></h2>
+<p>TAR-Net still suffers a few problems:</p>
+<ul class="simple">
+<li><p>does not support other machine learning models</p></li>
+<li><p>only applies to binary treatment</p></li>
+<li><p>no uncertainty quantification</p></li>
+</ul>
+<p>Double ML provides a framework that leverage general machine learning models to obtain <strong>unbiased</strong> causal effect estimates with <em>fast convergence</em> and <em>confidence intervals</em>, and it is still among the best methods in causal effect estimation. (You just need to know such a method exists. Further reading: <a class="reference external" href="https://econml.azurewebsites.net/spec/estimation/dml.html">link</a>)</p>
+</section>
+</section>
+<section id="causal-inference-for-machine-learning">
+<h1>2. Causal Inference for Machine Learning<a class="headerlink" href="#causal-inference-for-machine-learning" title="Link to this heading">#</a></h1>
+<p>We will not go into technical detail in this section but aim to provide you with a high-level intuition on how causality can help predictions.</p>
+<p>The standard machine-learning pipeline assumes that the test examples are I.I.D as the training data distribution. However, in practice, this is often violated. For instance, we train an imaging model to read CT scans using data from NYU Langone, will this model do well if it is deployed in other countries w. different imaging equipment and lighting conditions?</p>
+<p><img alt="OOD-eg" src="https://github.com/dapivei/causal-infere/blob/main/sections/images/OOD.png?raw=true" /></p>
+<p>image credit: <a class="reference external" href="https://arxiv.org/abs/1911.08731">link</a></p>
+<p>We hope to build models that are robust to changes to test distribution, i.e., achieving out-of-distribution generalization. Why is this difficult?</p>
+<p>During training, the model can easily pick up on predictive signals from features that are relevant in distribution, e.g., image background. This relationship will not hold in other data distributions.</p>
+<p>However, causal relationships are reliable associations across different distributions. We can formalize it through causality so that we can build models that only rely on causal features/representations.</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="7_Natural_Experiments.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Causality from Observational Data</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="9_matching.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Control Variables</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">The Interplay between Machine Learning and Causal Inference</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-learning-for-causality">1. Machine Learning for Causality</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-causal-parameters">1.1 Other Causal Parameters?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-estimands">1.2 Statistical Estimands</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-estimation">1.3 Advanced Estimation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#s-learner">1.3.1 S-learner</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#t-learner">1.3.2 T-learner</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tar-net">1.3.3 TAR-Net</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#double-machine-learning">1.3.4 Double Machine Learning</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#causal-inference-for-machine-learning">2. Causal Inference for Machine Learning</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
