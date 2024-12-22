@@ -181,9 +181,8 @@
 <li class="toctree-l1"><a class="reference internal" href="10_Instruments.html">10. Instrumental Variables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="11_Instruments_RDD.html">11. Instrumental Variables(Continued)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="12_RDD.html">12. Instrumental Variables (Continued) and Intro to Regression Discontinuity (RDD)</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="13_Difference_in_Differences.html">14. Difference in Differences</a></li>
-<li class="toctree-l1"><a class="reference internal" href="14_Review.html">15. Final Review</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13_Difference_in_Differences.html">13. Difference in Differences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14_Review.html">14. Final Review</a></li>
 </ul>
 
     </div>
@@ -377,13 +376,14 @@
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals">1.1. Goals</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#review-of-setup-and-tools-for-running-code">1.2. Review of setup and tools for running code.</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notation">1.2.1. Notation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#descriptive-analysis">1.2.2. Descriptive Analysis</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-descriptive-to-causal-analysis-in-a-perfect-world-for-now">1.2.3. 2.3) From Descriptive to Causal Analysis in a Perfect World (For Now)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#review-of-setup-and-tools-for-running-code">1.2. Review of setup and tools for running code.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-effect-of-class-attendace-on-grades">1.3. The effect of class attendace on grades</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notation">1.3.1. Notation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#descriptive-analysis">1.3.2. Descriptive Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-descriptive-to-causal-analysis-in-a-perfect-world-for-now">1.3.3. From Descriptive to Causal Analysis in a Perfect World (For Now)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#path-forward">1.3. Path Forward</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#path-forward">1.4. Path Forward</a></li>
 </ul>
             </nav>
         </div>
@@ -421,7 +421,9 @@
 <li><p>Tutorial to work with NYU’s High Performance Computing (<a class="reference external" href="https://sites.google.com/nyu.edu/nyu-hpc">NYU HPC</a>).</p></li>
 <li><p>Easiest way for now: <a class="reference external" href="https://colab.research.google.com/drive/16pBJQePbqkz3QFV54L4NIkOn1kwpuRrj">Google Colab</a>.</p></li>
 </ul>
-<p>## 3. Motivating Case: The Effect of Class Attendance On Grades</p>
+</section>
+<section id="the-effect-of-class-attendace-on-grades">
+<h2><span class="section-number">1.3. </span>The effect of class attendace on grades<a class="headerlink" href="#the-effect-of-class-attendace-on-grades" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importing necessary libraries</span>
@@ -436,7 +438,7 @@
 <p>Imagine this: A curious professor is on a mission to find out if attending classes regularly really gives students that extra grade boost. But there’s more to it — he’s not just interested in <em>describing</em> what’s happening. He’s after something bigger: figuring out the <em>actual effect</em> of attendance on grades.</p>
 <p>So, how do we go from simply observing grades to truly understanding <em>what causes</em> better performance? That’s where the <em>all causes model</em> comes in. We’re going to dive into a hands-on exploration to see how we can separate what’s just descriptive from what’s truly causal. Let’s find out if showing up to class makes all the difference!</p>
 <section id="notation">
-<h3><span class="section-number">1.2.1. </span>Notation<a class="headerlink" href="#notation" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">1.3.1. </span>Notation<a class="headerlink" href="#notation" title="Link to this heading">#</a></h3>
 <p>To dive deeper into the problem, let’s define some key components:</p>
 <ul class="simple">
 <li><p><strong>$Y_i(s, u)$</strong>: The outcome of interest or dependant variable, in this case, the grades for student $i$ under potential state $s$ and given all other factors $u$.</p></li>
@@ -446,7 +448,7 @@
 </ul>
 </section>
 <section id="descriptive-analysis">
-<h3><span class="section-number">1.2.2. </span>Descriptive Analysis<a class="headerlink" href="#descriptive-analysis" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">1.3.2. </span>Descriptive Analysis<a class="headerlink" href="#descriptive-analysis" title="Link to this heading">#</a></h3>
 <p>For learning purposes, let’s simulate grades based on a normal distribution. This allows us to later analyze how attendance impacts these grades.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -574,7 +576,7 @@
 <p>We have no idea what would happen to their grades if they switched their attendance pattern! This missing information —<strong>the counterfactual</strong>— is exactly what makes causal inference so tricky and it’s known as <strong>the fundamental problem of causal inference</strong>.</p>
 </section>
 <section id="from-descriptive-to-causal-analysis-in-a-perfect-world-for-now">
-<h3><span class="section-number">1.2.3. </span>2.3) From Descriptive to Causal Analysis in a Perfect World (For Now)<a class="headerlink" href="#from-descriptive-to-causal-analysis-in-a-perfect-world-for-now" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">1.3.3. </span>From Descriptive to Causal Analysis in a Perfect World (For Now)<a class="headerlink" href="#from-descriptive-to-causal-analysis-in-a-perfect-world-for-now" title="Link to this heading">#</a></h3>
 <p>Assumptions:</p>
 <ol class="arabic simple">
 <li><p><strong>Perfect Knowledge of Both States:</strong> We can observe both regular $Y_i(1, u)$ and irregular attendance $Y_i(0, u)$ grades for every student — something that’s impossible in the real world.</p></li>
@@ -820,7 +822,7 @@ Regular attendance improves grades by 4.92 points.
 </section>
 </section>
 <section id="path-forward">
-<h2><span class="section-number">1.3. </span>Path Forward<a class="headerlink" href="#path-forward" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">1.4. </span>Path Forward<a class="headerlink" href="#path-forward" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Dive deeper into the assumptions we’ve made and understand how to relax or verify them.</p></li>
 <li><p>Explore statistical methods to estimate causal effects in more complex, real-world data settings.</p></li>
@@ -896,13 +898,14 @@ Regular attendance improves grades by 4.92 points.
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals">1.1. Goals</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#review-of-setup-and-tools-for-running-code">1.2. Review of setup and tools for running code.</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notation">1.2.1. Notation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#descriptive-analysis">1.2.2. Descriptive Analysis</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-descriptive-to-causal-analysis-in-a-perfect-world-for-now">1.2.3. 2.3) From Descriptive to Causal Analysis in a Perfect World (For Now)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#review-of-setup-and-tools-for-running-code">1.2. Review of setup and tools for running code.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-effect-of-class-attendace-on-grades">1.3. The effect of class attendace on grades</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notation">1.3.1. Notation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#descriptive-analysis">1.3.2. Descriptive Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-descriptive-to-causal-analysis-in-a-perfect-world-for-now">1.3.3. From Descriptive to Causal Analysis in a Perfect World (For Now)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#path-forward">1.3. Path Forward</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#path-forward">1.4. Path Forward</a></li>
 </ul>
   </nav></div>
 
