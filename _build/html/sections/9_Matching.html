@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>20. Matching &#8212; Causal Inference for Data Science</title>
+    <title>15. Matching &#8212; Causal Inference for Data Science</title>
   
   
   
@@ -64,8 +64,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'sections/9_Matching';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="21. $$ \begin{array}{c} \textbf{INSTRUMENTAL VARIABLES}\ \text(PART , I)\ \textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \ \textit{Center for Data Science, New York University} \\ \textit{November 8, 2024} \end{array} $$" href="10_Instruments.html" />
-    <link rel="prev" title="19. The Interplay between Machine Learning and Causal Inference" href="8_ML_and_Causality.html" />
+    <link rel="next" title="16. $$ \begin{array}{c} \textbf{INSTRUMENTAL VARIABLES}\ \text(PART , I)\ \textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \ \textit{Center for Data Science, New York University} \\ \textit{November 8, 2024} \end{array} $$" href="10_Instruments.html" />
+    <link rel="prev" title="14. The Interplay between Machine Learning and Causal Inference" href="8_ML_and_Causality.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -188,22 +188,10 @@ $$</a></li>
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="7_Natural_Experiments.html">13. $$
-\begin{array}{c}
-\textbf{INTRODUCTION TO CAUSAL INFERENCE}\\
-\textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \
-\textit{Center for Data Science, New York University} \\
-\textit{October 18, 2024}
-\end{array}
-$$</a></li>
-
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="8_ML_and_Causality.html">19. The Interplay between Machine Learning and Causal Inference</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">20. Matching</a></li>
-<li class="toctree-l1"><a class="reference internal" href="10_Instruments.html">21. $$
+<li class="toctree-l1"><a class="reference internal" href="7_Natural_Experiments.html">13. Natural Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8_ML_and_Causality.html">14. The Interplay between Machine Learning and Causal Inference</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">15. Matching</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_Instruments.html">16. $$
 \begin{array}{c}
 \textbf{INSTRUMENTAL VARIABLES}\
 \text(PART , I)\
@@ -213,8 +201,8 @@ $$</a></li>
 \end{array}
 $$</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="11_Instruments_RDD.html">23. Instrumental Variables(Continued)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="12_RDD.html">24. $$
+<li class="toctree-l1"><a class="reference internal" href="11_Instruments_RDD.html">18. Instrumental Variables(Continued)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_RDD.html">19. $$
 \begin{array}{c}
 \textbf{IV (Conitnued) / Intro to RDD}\
 \textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \
@@ -229,7 +217,7 @@ $$</a></li>
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="13_Difference_in_Differences.html">32. $$
+<li class="toctree-l1"><a class="reference internal" href="13_Difference_in_Differences.html">27. $$
 \begin{array}{c}
 \textbf{DIFFERENCE-IN-DIFFERENCES}\
 \\
@@ -243,7 +231,7 @@ $$</a></li>
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="14_Review.html">38. Final Course Review</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14_Review.html">33. Final Course Review</a></li>
 
 
 </ul>
@@ -438,15 +426,15 @@ $$</a></li>
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#control-variables">20.1. Control Variables</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#high-level-idea">20.1.1. High level idea</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#control-variables">15.1. Control Variables</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#high-level-idea">15.1.1. High level idea</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formal-derivation">20.2. Formal derivation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-independence-test">20.3. Conditional Independence Test</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">20.4. Matching</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-weight-is-not-the-probability">20.4.1. Regression (weight is not the probability)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#curse-of-dimensionality-matching">20.4.2. Curse of Dimensionality (matching)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formal-derivation">15.2. Formal derivation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-independence-test">15.3. Conditional Independence Test</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">15.4. Matching</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-weight-is-not-the-probability">15.4.1. Regression (weight is not the probability)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#curse-of-dimensionality-matching">15.4.2. Curse of Dimensionality (matching)</a></li>
 </ul>
 </li>
 </ul>
@@ -464,11 +452,11 @@ $$</a></li>
 <p><a class="reference external" href="https://colab.research.google.com/github/dapivei/causal-infere/blob/main/sections/9_matching.ipynb"><img alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 </div>
 <section id="matching">
-<h1><span class="section-number">20. </span>Matching<a class="headerlink" href="#matching" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">15. </span>Matching<a class="headerlink" href="#matching" title="Link to this heading">#</a></h1>
 <section id="control-variables">
-<h2><span class="section-number">20.1. </span>Control Variables<a class="headerlink" href="#control-variables" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">15.1. </span>Control Variables<a class="headerlink" href="#control-variables" title="Link to this heading">#</a></h2>
 <section id="high-level-idea">
-<h3><span class="section-number">20.1.1. </span>High level idea<a class="headerlink" href="#high-level-idea" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">15.1.1. </span>High level idea<a class="headerlink" href="#high-level-idea" title="Link to this heading">#</a></h3>
 <p>Why we want the control variables?</p>
 <ul class="simple">
 <li><p>The treatment effect is random given the control variables.</p></li>
@@ -480,7 +468,7 @@ $$</a></li>
 </section>
 </section>
 <section id="formal-derivation">
-<h2><span class="section-number">20.2. </span>Formal derivation<a class="headerlink" href="#formal-derivation" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">15.2. </span>Formal derivation<a class="headerlink" href="#formal-derivation" title="Link to this heading">#</a></h2>
 <p>$$
 Y(S, U) = \alpha_0 + \alpha_1 S + U
 $$</p>
@@ -512,7 +500,7 @@ $$</p>
 <p>We peeled off the effect of $C$ from the $U$.</p>
 </section>
 <section id="conditional-independence-test">
-<h2><span class="section-number">20.3. </span>Conditional Independence Test<a class="headerlink" href="#conditional-independence-test" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">15.3. </span>Conditional Independence Test<a class="headerlink" href="#conditional-independence-test" title="Link to this heading">#</a></h2>
 <p>If we know that if we have $U \perp S | C$, and $U \mid C$ is linear, then we can use the control variables to estimate the treatment effect.</p>
 <p>How should we test the assumption?</p>
 <ol class="arabic simple">
@@ -532,7 +520,7 @@ $$</p>
 <p>high-dim continuous CI test is non-trivial.</p>
 </section>
 <section id="id1">
-<h2><span class="section-number">20.4. </span>Matching<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">15.4. </span>Matching<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>To obtain treated and control groups with similar covariate distributions.</p>
 <p>We have multiple subgroups based on the control variables, we can just</p>
 <p>$$
@@ -542,9 +530,9 @@ $$</p>
 \end{aligned}
 $$</p>
 <section id="regression-weight-is-not-the-probability">
-<h3><span class="section-number">20.4.1. </span>Regression (weight is not the probability)<a class="headerlink" href="#regression-weight-is-not-the-probability" title="Link to this heading">#</a></h3>
-<div class="amsmath math notranslate nohighlight" id="equation-369c3c97-9b2e-42cf-9110-20565761a6ce">
-<span class="eqno">(20.1)<a class="headerlink" href="#equation-369c3c97-9b2e-42cf-9110-20565761a6ce" title="Permalink to this equation">#</a></span>\[\begin{align}
+<h3><span class="section-number">15.4.1. </span>Regression (weight is not the probability)<a class="headerlink" href="#regression-weight-is-not-the-probability" title="Link to this heading">#</a></h3>
+<div class="amsmath math notranslate nohighlight" id="equation-6bace074-865c-4bb9-b674-37a60c7e3025">
+<span class="eqno">(15.1)<a class="headerlink" href="#equation-6bace074-865c-4bb9-b674-37a60c7e3025" title="Permalink to this equation">#</a></span>\[\begin{align}
 \alpha_1=\sum_{k=1}^K E\left[Y(S=1, U)-Y(S=0, U) \mid \mathbf{C}=\mathbf{c}_k\right] W\left(\mathbf{C}=\mathbf{c}_k\right)
 \end{align}\]</div>
 <p>$W$ is the weight of the subgroup, which might not be the same as the probability of the subgroup.</p>
@@ -558,8 +546,8 @@ What we are doing is to estimate $\beta$ (we are using the traditional linear re
 <p>$$
 Y = X \beta + \epsilon
 $$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1870ede6-795a-44d2-9b48-c82b04b965ee">
-<span class="eqno">(20.2)<a class="headerlink" href="#equation-1870ede6-795a-44d2-9b48-c82b04b965ee" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-9df1fe5f-1e17-4681-88a0-b26ce602d669">
+<span class="eqno">(15.2)<a class="headerlink" href="#equation-9df1fe5f-1e17-4681-88a0-b26ce602d669" title="Permalink to this equation">#</a></span>\[\begin{align}
 X=\left[\begin{array}{l}
 X_1 \\
 X_2
@@ -568,39 +556,39 @@ Y_1 \\
 Y_2
 \end{array}\right]
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-5c4280c8-59ae-4749-878c-8125d48dc98d">
-<span class="eqno">(20.3)<a class="headerlink" href="#equation-5c4280c8-59ae-4749-878c-8125d48dc98d" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-02126007-0ec5-46d0-9391-017239a8acf8">
+<span class="eqno">(15.3)<a class="headerlink" href="#equation-02126007-0ec5-46d0-9391-017239a8acf8" title="Permalink to this equation">#</a></span>\[\begin{align}
 X^T X=X_1^T X_1+X_2^T X_2 \quad \text { and } \quad X^T Y=X_1^T Y_1+X_2^T Y_2
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-6676ff7d-d70e-403b-8f0c-56f64d1f33f3">
-<span class="eqno">(20.4)<a class="headerlink" href="#equation-6676ff7d-d70e-403b-8f0c-56f64d1f33f3" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d25eef43-cdda-4bbb-a724-1ac48a71f9b4">
+<span class="eqno">(15.4)<a class="headerlink" href="#equation-d25eef43-cdda-4bbb-a724-1ac48a71f9b4" title="Permalink to this equation">#</a></span>\[\begin{align}
 \hat{\beta}_{\text {pooled }}=\left(X_1^T X_1+X_2^T X_2\right)^{-1}\left(X_1^T Y_1+X_2^T Y_2\right)
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-de36c1d2-2b27-4629-beab-5ce3fb49a626">
-<span class="eqno">(20.5)<a class="headerlink" href="#equation-de36c1d2-2b27-4629-beab-5ce3fb49a626" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-21bfe63a-d512-497e-a2d5-57f569dac297">
+<span class="eqno">(15.5)<a class="headerlink" href="#equation-21bfe63a-d512-497e-a2d5-57f569dac297" title="Permalink to this equation">#</a></span>\[\begin{align}
 \hat{\beta}_{\text {pooled }}=W_1 \hat{\beta}_1+W_2 \hat{\beta}_2
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-e9e60792-227e-4c15-b933-6fbd409204ed">
-<span class="eqno">(20.6)<a class="headerlink" href="#equation-e9e60792-227e-4c15-b933-6fbd409204ed" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-a3ec355d-3f68-4790-801d-b7fba7780375">
+<span class="eqno">(15.6)<a class="headerlink" href="#equation-a3ec355d-3f68-4790-801d-b7fba7780375" title="Permalink to this equation">#</a></span>\[\begin{align}
 \hat{\beta}_1=\left(X_1^T X_1\right)^{-1} X_1^T Y_1 \quad \text { and } \quad \hat{\beta}_2=\left(X_2^T X_2\right)^{-1} X_2^T Y_2
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-a89f8b97-2818-47bb-847f-fffd25d1d196">
-<span class="eqno">(20.7)<a class="headerlink" href="#equation-a89f8b97-2818-47bb-847f-fffd25d1d196" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-9a074e02-e4a7-46af-ada0-06284cffd371">
+<span class="eqno">(15.7)<a class="headerlink" href="#equation-9a074e02-e4a7-46af-ada0-06284cffd371" title="Permalink to this equation">#</a></span>\[\begin{align}
 \hat{\beta}_{\text {pooled }}=\left(X_1^T X_1+X_2^T X_2\right)^{-1}\left(X_1^T X_1 \hat{\beta}_1+X_2^T X_2 \hat{\beta}_2\right)
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-e9a5e108-ad73-46db-aaff-85da8096c4d9">
-<span class="eqno">(20.8)<a class="headerlink" href="#equation-e9a5e108-ad73-46db-aaff-85da8096c4d9" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-7ee962e9-02a4-41d2-9ed5-5c3b87f26f86">
+<span class="eqno">(15.8)<a class="headerlink" href="#equation-7ee962e9-02a4-41d2-9ed5-5c3b87f26f86" title="Permalink to this equation">#</a></span>\[\begin{align}
 W_1=\left(X_1^T X_1+X_2^T X_2\right)^{-1} X_1^T X_1
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-c37734d2-e5c4-495f-afc5-e14a81c691bc">
-<span class="eqno">(20.9)<a class="headerlink" href="#equation-c37734d2-e5c4-495f-afc5-e14a81c691bc" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-73fbeb6c-c3b9-4f39-9fbd-56eb2a5de232">
+<span class="eqno">(15.9)<a class="headerlink" href="#equation-73fbeb6c-c3b9-4f39-9fbd-56eb2a5de232" title="Permalink to this equation">#</a></span>\[\begin{align}
 W_2=\left(X_1^T X_1+X_2^T X_2\right)^{-1} X_2^T X_2
 \end{align}\]</div>
 <p>Map back to our problem, the $X$ is the treatment variable, and the $Y$ is the outcome variable.</p>
 <p>So larger treatment variance will have larger weight.</p>
 </section>
 <section id="curse-of-dimensionality-matching">
-<h3><span class="section-number">20.4.2. </span>Curse of Dimensionality (matching)<a class="headerlink" href="#curse-of-dimensionality-matching" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">15.4.2. </span>Curse of Dimensionality (matching)<a class="headerlink" href="#curse-of-dimensionality-matching" title="Link to this heading">#</a></h3>
 <p>If you have large number of control variables, say k, and we assume the control variables are binary, then the number of subgroups you need to match is $2^k$.</p>
 <p>If you have continuous control variables, you can discretize them into bins, and the number of subgroups you need to match is the number of bins.</p>
 <ol class="arabic simple">
@@ -651,7 +639,7 @@ W_2=\left(X_1^T X_1+X_2^T X_2\right)^{-1} X_2^T X_2
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">19. </span>The Interplay between Machine Learning and Causal Inference</p>
+        <p class="prev-next-title"><span class="section-number">14. </span>The Interplay between Machine Learning and Causal Inference</p>
       </div>
     </a>
     <a class="right-next"
@@ -659,7 +647,7 @@ W_2=\left(X_1^T X_1+X_2^T X_2\right)^{-1} X_2^T X_2
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">21. </span>$$
+        <p class="prev-next-title"><span class="section-number">16. </span>$$
 \begin{array}{c}
 \textbf{INSTRUMENTAL VARIABLES}\
 \text(PART , I)\
@@ -688,15 +676,15 @@ $$</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#control-variables">20.1. Control Variables</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#high-level-idea">20.1.1. High level idea</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#control-variables">15.1. Control Variables</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#high-level-idea">15.1.1. High level idea</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formal-derivation">20.2. Formal derivation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-independence-test">20.3. Conditional Independence Test</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">20.4. Matching</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-weight-is-not-the-probability">20.4.1. Regression (weight is not the probability)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#curse-of-dimensionality-matching">20.4.2. Curse of Dimensionality (matching)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formal-derivation">15.2. Formal derivation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-independence-test">15.3. Conditional Independence Test</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">15.4. Matching</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-weight-is-not-the-probability">15.4.1. Regression (weight is not the probability)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#curse-of-dimensionality-matching">15.4.2. Curse of Dimensionality (matching)</a></li>
 </ul>
 </li>
 </ul>

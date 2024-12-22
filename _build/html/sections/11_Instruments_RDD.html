@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>23. Instrumental Variables(Continued) &#8212; Causal Inference for Data Science</title>
+    <title>18. Instrumental Variables(Continued) &#8212; Causal Inference for Data Science</title>
   
   
   
@@ -64,8 +64,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'sections/11_Instruments_RDD';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="24. $$ \begin{array}{c} \textbf{IV (Conitnued) / Intro to RDD}\ \textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \ \textit{Center for Data Science, New York University} \\ \textit{November 15, 2024} \end{array} $$" href="12_RDD.html" />
-    <link rel="prev" title="21. $$ \begin{array}{c} \textbf{INSTRUMENTAL VARIABLES}\ \text(PART , I)\ \textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \ \textit{Center for Data Science, New York University} \\ \textit{November 8, 2024} \end{array} $$" href="10_Instruments.html" />
+    <link rel="next" title="19. $$ \begin{array}{c} \textbf{IV (Conitnued) / Intro to RDD}\ \textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \ \textit{Center for Data Science, New York University} \\ \textit{November 15, 2024} \end{array} $$" href="12_RDD.html" />
+    <link rel="prev" title="16. $$ \begin{array}{c} \textbf{INSTRUMENTAL VARIABLES}\ \text(PART , I)\ \textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \ \textit{Center for Data Science, New York University} \\ \textit{November 8, 2024} \end{array} $$" href="10_Instruments.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -188,22 +188,10 @@ $$</a></li>
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="7_Natural_Experiments.html">13. $$
-\begin{array}{c}
-\textbf{INTRODUCTION TO CAUSAL INFERENCE}\\
-\textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \
-\textit{Center for Data Science, New York University} \\
-\textit{October 18, 2024}
-\end{array}
-$$</a></li>
-
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="8_ML_and_Causality.html">19. The Interplay between Machine Learning and Causal Inference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="9_Matching.html">20. Matching</a></li>
-<li class="toctree-l1"><a class="reference internal" href="10_Instruments.html">21. $$
+<li class="toctree-l1"><a class="reference internal" href="7_Natural_Experiments.html">13. Natural Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8_ML_and_Causality.html">14. The Interplay between Machine Learning and Causal Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9_Matching.html">15. Matching</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_Instruments.html">16. $$
 \begin{array}{c}
 \textbf{INSTRUMENTAL VARIABLES}\
 \text(PART , I)\
@@ -213,8 +201,8 @@ $$</a></li>
 \end{array}
 $$</a></li>
 
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">23. Instrumental Variables(Continued)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="12_RDD.html">24. $$
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">18. Instrumental Variables(Continued)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_RDD.html">19. $$
 \begin{array}{c}
 \textbf{IV (Conitnued) / Intro to RDD}\
 \textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \
@@ -229,7 +217,7 @@ $$</a></li>
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="13_Difference_in_Differences.html">32. $$
+<li class="toctree-l1"><a class="reference internal" href="13_Difference_in_Differences.html">27. $$
 \begin{array}{c}
 \textbf{DIFFERENCE-IN-DIFFERENCES}\
 \\
@@ -243,7 +231,7 @@ $$</a></li>
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="14_Review.html">38. Final Course Review</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14_Review.html">33. Final Course Review</a></li>
 
 
 </ul>
@@ -438,31 +426,31 @@ $$</a></li>
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recap-from-last-class">23.1. Recap From Last Class</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-for-today">23.2. Goals For Today</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">23.3. 2. Instrumental Variables (Continued)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#revisit-the-effect-of-watching-sesame-street-on-later-academic-achievement">23.3.1. Revisit - The effect of watching sesame street on later academic achievement.</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data">23.3.2. Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reduced-form">23.3.3. “Reduced Form”</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#remember-non-compliance-and-itt">23.3.3.1. <strong>Remember non-compliance and ITT?</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recap-from-last-class">18.1. Recap From Last Class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-for-today">18.2. Goals For Today</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">18.3. 2. Instrumental Variables (Continued)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#revisit-the-effect-of-watching-sesame-street-on-later-academic-achievement">18.3.1. Revisit - The effect of watching sesame street on later academic achievement.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data">18.3.2. Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reduced-form">18.3.3. “Reduced Form”</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#remember-non-compliance-and-itt">18.3.3.1. <strong>Remember non-compliance and ITT?</strong></a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#weak-instrument">23.3.4. Weak Instrument</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimation">23.3.5. Estimation</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#via-the-explicit-two-stage-least-squares-2sls-estimation">23.3.5.1. Via the (explicit) Two-Stage Least Squares (2SLS) Estimation</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#via-the-iv2sls-function-from-linearmodels">23.3.5.2. Via the IV2SLS Function from linearmodels</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#weak-instrument">18.3.4. Weak Instrument</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimation">18.3.5. Estimation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#via-the-explicit-two-stage-least-squares-2sls-estimation">18.3.5.1. Via the (explicit) Two-Stage Least Squares (2SLS) Estimation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#via-the-iv2sls-function-from-linearmodels">18.3.5.2. Via the IV2SLS Function from linearmodels</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instrument-with-control">23.3.6. Instrument with Control</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instrument-with-control">18.3.6. Instrument with Control</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#colider-bias">23.4. 3. Colider Bias</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-regression-discontinuity">23.5. 4. Introduction to Regression Discontinuity</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#major-assumption">23.5.1. Major Assumption</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">23.5.2. Estimation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#colider-bias">18.4. 3. Colider Bias</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-regression-discontinuity">18.5. 4. Introduction to Regression Discontinuity</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#major-assumption">18.5.1. Major Assumption</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">18.5.2. Estimation</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#path-forward">23.6. 5. Path Forward</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#path-forward">18.6. 5. Path Forward</a></li>
 </ul>
             </nav>
         </div>
@@ -477,15 +465,15 @@ $$</a></li>
   <div align="center">
 <p><a class="reference external" href="https://colab.research.google.com/github/dapivei/causal-infere/blob/main/sections/11_Instruments_RDD.ipynb"><img alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 </div><section id="instrumental-variables-continued">
-<h1><span class="section-number">23. </span>Instrumental Variables(Continued)<a class="headerlink" href="#instrumental-variables-continued" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">18. </span>Instrumental Variables(Continued)<a class="headerlink" href="#instrumental-variables-continued" title="Link to this heading">#</a></h1>
 <section id="recap-from-last-class">
-<h2><span class="section-number">23.1. </span>Recap From Last Class<a class="headerlink" href="#recap-from-last-class" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">18.1. </span>Recap From Last Class<a class="headerlink" href="#recap-from-last-class" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Instrumental Variables</p></li>
 </ul>
 </section>
 <section id="goals-for-today">
-<h2><span class="section-number">23.2. </span>Goals For Today<a class="headerlink" href="#goals-for-today" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">18.2. </span>Goals For Today<a class="headerlink" href="#goals-for-today" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Direct Effect and Connection to ITT</p></li>
 <li><p>Weak Instruments</p></li>
@@ -495,7 +483,7 @@ $$</a></li>
 </ol>
 </section>
 <section id="id1">
-<h2><span class="section-number">23.3. </span>2. Instrumental Variables (Continued)<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">18.3. </span>2. Instrumental Variables (Continued)<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>Often, we cannot establish the following conditions to identify the causal parameter as (ubobserved) confounding can <strong>bias</strong> our estimates.</p>
 <p>$$S \not!\perp!!!\perp U, \ \ S \not!\perp!!!\perp U \ | \ C$$</p>
 <p>Instrumental variables is a specific setup to help identification even in the presence of <em>unobserved confounding</em> (when control/matching would not be able to identify).</p>
@@ -509,7 +497,7 @@ $$</a></li>
 <div><p>Thus, <strong>LATE</strong> is the <strong>difference in outcomes</strong> between those who received the treatment and those who did not, <strong>for the compliers</strong>.</p>
 </div></blockquote>
 <section id="revisit-the-effect-of-watching-sesame-street-on-later-academic-achievement">
-<h3><span class="section-number">23.3.1. </span>Revisit - The effect of watching sesame street on later academic achievement.<a class="headerlink" href="#revisit-the-effect-of-watching-sesame-street-on-later-academic-achievement" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">18.3.1. </span>Revisit - The effect of watching sesame street on later academic achievement.<a class="headerlink" href="#revisit-the-effect-of-watching-sesame-street-on-later-academic-achievement" title="Link to this heading">#</a></h3>
 <blockquote>
 <div><p>Does watching Sesame Street ($S$) have a positive impact on later academic achievement ($Y$)?</p>
 </div></blockquote>
@@ -537,7 +525,7 @@ U &amp; =\text { other determinants of } Y,
 </div></blockquote>
 </section>
 <section id="data">
-<h3><span class="section-number">23.3.2. </span>Data<a class="headerlink" href="#data" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">18.3.2. </span>Data<a class="headerlink" href="#data" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">encour</span></code></strong>: Indicator variable for whether the child was encouraged to watch Sesame Stree. Instrument $Z$.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">watched</span></code></strong>: Indicator variable for whether the child actually watched Sesame Street. Treatment $S$.</p></li>
@@ -581,7 +569,7 @@ U &amp; =\text { other determinants of } Y,
 </div>
 </section>
 <section id="reduced-form">
-<h3><span class="section-number">23.3.3. </span>“Reduced Form”<a class="headerlink" href="#reduced-form" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">18.3.3. </span>“Reduced Form”<a class="headerlink" href="#reduced-form" title="Link to this heading">#</a></h3>
 <p>We can estimate the direct effect (ATE) of $Z$ on $Y$: how does the act of encouraging influence the later score performance?</p>
 <p>This would be a valid causal estimate as the exogeneity assumption informs us of the independence assumption: $Z \perp U$.</p>
 <div class="cell docutils container">
@@ -649,7 +637,7 @@ U &amp; =\text { other determinants of } Y,
 </div>
 <p>The act of encouraging kids to watch Sesame Street has a nearly 3-point increase in their test scores! (though the p-value is not particularly small)</p>
 <section id="remember-non-compliance-and-itt">
-<h4><span class="section-number">23.3.3.1. </span><strong>Remember non-compliance and ITT?</strong><a class="headerlink" href="#remember-non-compliance-and-itt" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">18.3.3.1. </span><strong>Remember non-compliance and ITT?</strong><a class="headerlink" href="#remember-non-compliance-and-itt" title="Link to this heading">#</a></h4>
 <p>We can re-interpret this setup as the old ATE estimation problem. The treatment of interest, in this case, watching Sesame, cannot be enforced. We can randomize who are asked to watch Sesame Street, but there will be the non-compliance issue that prevents us from deriving ATE (given the always-takers and never-takers).</p>
 <p>We have learned that we can change the causal question when there is non-compliance from ATE to Intent-to-Treat (ITT) effect.</p>
 <p>The ITT estimates the causal effect of <em>treatment assignment</em> on the outcome of interest. Here, the ITT estimates the causal effect of being encouraged to watch Sesame Street on a child’s score on the literacy test.</p>
@@ -657,7 +645,7 @@ U &amp; =\text { other determinants of } Y,
 </section>
 </section>
 <section id="weak-instrument">
-<h3><span class="section-number">23.3.4. </span>Weak Instrument<a class="headerlink" href="#weak-instrument" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">18.3.4. </span>Weak Instrument<a class="headerlink" href="#weak-instrument" title="Link to this heading">#</a></h3>
 <p>We have briefly covered testing assumptions from last week’s lab.</p>
 <p>For <strong>exogeneity</strong>, we can check for the distribution balance for some control variables across different values of instrument $Z$.</p>
 <p>For <strong>relevance</strong>, in general, we can check the relationship between $S$ and $Z$. One approach is to look at the first-stage regression.</p>
@@ -739,14 +727,14 @@ Once we fit the model, we can check for the F-statistic or t-statistic as we onl
 <p>Both p-values for the F/t-statistic are extremely small. Hence, we do not have a weak instrument problem here.</p>
 </section>
 <section id="estimation">
-<h3><span class="section-number">23.3.5. </span>Estimation<a class="headerlink" href="#estimation" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">18.3.5. </span>Estimation<a class="headerlink" href="#estimation" title="Link to this heading">#</a></h3>
 <p>From last week, we saw that we can estimate using the covariance functions as well as running two-stage squares.</p>
 <p>A more direct method is to call <code class="docutils literal notranslate"><span class="pre">IV2SLS</span></code> from <code class="docutils literal notranslate"><span class="pre">linearmodels</span></code> package.</p>
 <ul class="simple">
 <li><p>We would need to install it first in Colab.</p></li>
 </ul>
 <section id="via-the-explicit-two-stage-least-squares-2sls-estimation">
-<h4><span class="section-number">23.3.5.1. </span>Via the (explicit) Two-Stage Least Squares (2SLS) Estimation<a class="headerlink" href="#via-the-explicit-two-stage-least-squares-2sls-estimation" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">18.3.5.1. </span>Via the (explicit) Two-Stage Least Squares (2SLS) Estimation<a class="headerlink" href="#via-the-explicit-two-stage-least-squares-2sls-estimation" title="Link to this heading">#</a></h4>
 <ol class="arabic simple">
 <li><p><strong>First stage</strong>: Regress whether children watched Sesame Street $S$ on the instrument $Z$ (whether they were encouraged to watch).</p></li>
 <li><p><strong>Second stage</strong>: Regress the outcome (e.g., academic performance $Y$) on the predicted values of $S$ from the first stage.</p></li>
@@ -771,7 +759,7 @@ Once we fit the model, we can check for the F-statistic or t-statistic as we onl
 <p>For those children who are encouraged to watch Sesame Street and actually end up watching it, their academic achievement (e.g., literacy scores) increases by 7.94 units on average.</p>
 </section>
 <section id="via-the-iv2sls-function-from-linearmodels">
-<h4><span class="section-number">23.3.5.2. </span>Via the IV2SLS Function from linearmodels<a class="headerlink" href="#via-the-iv2sls-function-from-linearmodels" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">18.3.5.2. </span>Via the IV2SLS Function from linearmodels<a class="headerlink" href="#via-the-iv2sls-function-from-linearmodels" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>linearmodels
@@ -853,7 +841,7 @@ Requirement already satisfied: six in /usr/local/lib/python3.10/dist-packages (f
 </section>
 </section>
 <section id="instrument-with-control">
-<h3><span class="section-number">23.3.6. </span>Instrument with Control<a class="headerlink" href="#instrument-with-control" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">18.3.6. </span>Instrument with Control<a class="headerlink" href="#instrument-with-control" title="Link to this heading">#</a></h3>
 <p>If we have extra observed characteristics, we can control them as part of the IV procedure.</p>
 <p>This could potentially make the exogeneity argument stronger via conditional independence.</p>
 <p>$$
@@ -935,7 +923,7 @@ $$</p>
 </section>
 </section>
 <section id="colider-bias">
-<h2><span class="section-number">23.4. </span>3. Colider Bias<a class="headerlink" href="#colider-bias" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">18.4. </span>3. Colider Bias<a class="headerlink" href="#colider-bias" title="Link to this heading">#</a></h2>
 <p>Besides complicated interpretations, controlling for more variables can also get us in trouble due to colider bias.</p>
 <p>In previous labs, we covered a brief overview of different types of conditional independence structures.</p>
 <p><img alt="Indep" src="https://catalogofbias.org/wp-content/uploads/sites/2/2019/03/Collider-bias_fig-1-e1551439537528.png" /></p>
@@ -1018,7 +1006,7 @@ $$</p>
 <p>We should be careful about which variables to control and reason about them based on the problem context to avoid additional bias.</p>
 </section>
 <section id="introduction-to-regression-discontinuity">
-<h2><span class="section-number">23.5. </span>4. Introduction to Regression Discontinuity<a class="headerlink" href="#introduction-to-regression-discontinuity" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">18.5. </span>4. Introduction to Regression Discontinuity<a class="headerlink" href="#introduction-to-regression-discontinuity" title="Link to this heading">#</a></h2>
 <p>Most things in nature are continuous. If we see spikes or jumps, they are very likely to be <strong>artificial</strong>.</p>
 <p>How can we leverage this phenomenon to derive valid causal estimates?</p>
 <p>We will need to rely on some continuous variables $R$ that defines the treatment/control group via thresholds $c$ of $R$.</p>
@@ -1033,7 +1021,7 @@ $$</p>
 <p>For example, there is no systematic reason for why someone got 91 on a test vs. someone got 89 except for some random chance.</p>
 <p>Therefore, similar to LATE, the causal estimate from RDD can only be applied to the subgroup around cutoffs instead of the general population.</p>
 <img src="https://raw.githubusercontent.com/dapivei/causal-infere/a5e0159feda3746ba84a5e9bfec4e2a890685eb4/sections/images/rdd.png" width="600"><section id="major-assumption">
-<h3><span class="section-number">23.5.1. </span>Major Assumption<a class="headerlink" href="#major-assumption" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">18.5.1. </span>Major Assumption<a class="headerlink" href="#major-assumption" title="Link to this heading">#</a></h3>
 <p>To estimate the differences, we require the expected potential outcomes is a <em><strong>continuous</strong></em> function of the running variable at the cutoff $c$ (smoothness assumption).</p>
 <p>$$</p>
 <div class="amsmath math notranslate nohighlight">
@@ -1047,7 +1035,7 @@ $$</p>
 <p>We can also simply check for multiple options of $b$ for robustness.</p>
 </section>
 <section id="id2">
-<h3><span class="section-number">23.5.2. </span>Estimation<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">18.5.2. </span>Estimation<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <p>We can estimate the difference in the above potential outcomes by selecting a bandwidth and using local linear regression:</p>
 <p>$$
 Y = \alpha_0 + \alpha_1 S + \alpha_2 (R - c) + \alpha_3 S \cdot (R - c) + \epsilon
@@ -1263,7 +1251,7 @@ Notes:
 </section>
 </section>
 <section id="path-forward">
-<h2><span class="section-number">23.6. </span>5. Path Forward<a class="headerlink" href="#path-forward" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">18.6. </span>5. Path Forward<a class="headerlink" href="#path-forward" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>More on Regression Discontinuity</p></li>
 </ul>
@@ -1306,7 +1294,7 @@ Notes:
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">21. </span>$$
+        <p class="prev-next-title"><span class="section-number">16. </span>$$
 \begin{array}{c}
 \textbf{INSTRUMENTAL VARIABLES}\
 \text(PART , I)\
@@ -1322,7 +1310,7 @@ $$</p>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">24. </span>$$
+        <p class="prev-next-title"><span class="section-number">19. </span>$$
 \begin{array}{c}
 \textbf{IV (Conitnued) / Intro to RDD}\
 \textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \
@@ -1350,31 +1338,31 @@ $$</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recap-from-last-class">23.1. Recap From Last Class</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-for-today">23.2. Goals For Today</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">23.3. 2. Instrumental Variables (Continued)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#revisit-the-effect-of-watching-sesame-street-on-later-academic-achievement">23.3.1. Revisit - The effect of watching sesame street on later academic achievement.</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data">23.3.2. Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reduced-form">23.3.3. “Reduced Form”</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#remember-non-compliance-and-itt">23.3.3.1. <strong>Remember non-compliance and ITT?</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recap-from-last-class">18.1. Recap From Last Class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-for-today">18.2. Goals For Today</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">18.3. 2. Instrumental Variables (Continued)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#revisit-the-effect-of-watching-sesame-street-on-later-academic-achievement">18.3.1. Revisit - The effect of watching sesame street on later academic achievement.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data">18.3.2. Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reduced-form">18.3.3. “Reduced Form”</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#remember-non-compliance-and-itt">18.3.3.1. <strong>Remember non-compliance and ITT?</strong></a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#weak-instrument">23.3.4. Weak Instrument</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimation">23.3.5. Estimation</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#via-the-explicit-two-stage-least-squares-2sls-estimation">23.3.5.1. Via the (explicit) Two-Stage Least Squares (2SLS) Estimation</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#via-the-iv2sls-function-from-linearmodels">23.3.5.2. Via the IV2SLS Function from linearmodels</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#weak-instrument">18.3.4. Weak Instrument</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimation">18.3.5. Estimation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#via-the-explicit-two-stage-least-squares-2sls-estimation">18.3.5.1. Via the (explicit) Two-Stage Least Squares (2SLS) Estimation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#via-the-iv2sls-function-from-linearmodels">18.3.5.2. Via the IV2SLS Function from linearmodels</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instrument-with-control">23.3.6. Instrument with Control</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instrument-with-control">18.3.6. Instrument with Control</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#colider-bias">23.4. 3. Colider Bias</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-regression-discontinuity">23.5. 4. Introduction to Regression Discontinuity</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#major-assumption">23.5.1. Major Assumption</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">23.5.2. Estimation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#colider-bias">18.4. 3. Colider Bias</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-regression-discontinuity">18.5. 4. Introduction to Regression Discontinuity</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#major-assumption">18.5.1. Major Assumption</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">18.5.2. Estimation</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#path-forward">23.6. 5. Path Forward</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#path-forward">18.6. 5. Path Forward</a></li>
 </ul>
   </nav></div>
 

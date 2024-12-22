@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>13. $$ \begin{array}{c} \textbf{INTRODUCTION TO CAUSAL INFERENCE}\\ \textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \ \textit{Center for Data Science, New York University} \\ \textit{October 18, 2024} \end{array} $$ &#8212; Causal Inference for Data Science</title>
+    <title>13. Natural Experiments &#8212; Causal Inference for Data Science</title>
   
   
   
@@ -64,7 +64,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'sections/7_Natural_Experiments';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="19. The Interplay between Machine Learning and Causal Inference" href="8_ML_and_Causality.html" />
+    <link rel="next" title="14. The Interplay between Machine Learning and Causal Inference" href="8_ML_and_Causality.html" />
     <link rel="prev" title="7. $$ \begin{array}{c} \textbf{INTRODUCTION TO CAUSAL INFERENCE}\\ \textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \ \textit{Center for Data Science, New York University} \\ \end{array} $$" href="6_Regression_1-2.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -188,22 +188,10 @@ $$</a></li>
 
 
 
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">13. $$
-\begin{array}{c}
-\textbf{INTRODUCTION TO CAUSAL INFERENCE}\\
-\textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \
-\textit{Center for Data Science, New York University} \\
-\textit{October 18, 2024}
-\end{array}
-$$</a></li>
-
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="8_ML_and_Causality.html">19. The Interplay between Machine Learning and Causal Inference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="9_Matching.html">20. Matching</a></li>
-<li class="toctree-l1"><a class="reference internal" href="10_Instruments.html">21. $$
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">13. Natural Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8_ML_and_Causality.html">14. The Interplay between Machine Learning and Causal Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9_Matching.html">15. Matching</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_Instruments.html">16. $$
 \begin{array}{c}
 \textbf{INSTRUMENTAL VARIABLES}\
 \text(PART , I)\
@@ -213,8 +201,8 @@ $$</a></li>
 \end{array}
 $$</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="11_Instruments_RDD.html">23. Instrumental Variables(Continued)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="12_RDD.html">24. $$
+<li class="toctree-l1"><a class="reference internal" href="11_Instruments_RDD.html">18. Instrumental Variables(Continued)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_RDD.html">19. $$
 \begin{array}{c}
 \textbf{IV (Conitnued) / Intro to RDD}\
 \textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \
@@ -229,7 +217,7 @@ $$</a></li>
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="13_Difference_in_Differences.html">32. $$
+<li class="toctree-l1"><a class="reference internal" href="13_Difference_in_Differences.html">27. $$
 \begin{array}{c}
 \textbf{DIFFERENCE-IN-DIFFERENCES}\
 \\
@@ -243,7 +231,7 @@ $$</a></li>
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="14_Review.html">38. Final Course Review</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14_Review.html">33. Final Course Review</a></li>
 
 
 </ul>
@@ -428,14 +416,7 @@ $$</a></li>
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>$$
-\begin{array}{c}
-\textbf{INTRODUCTION TO CAUSAL INFERENCE}\\
-\textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \
-\textit{Center for Data Science, New York University} \\
-\textit{October 18, 2024}
-\end{array}
-$$</h1>
+    <h1>Natural Experiments</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -445,34 +426,25 @@ $$</h1>
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">13. $$
-\begin{array}{c}
-\textbf{INTRODUCTION TO CAUSAL INFERENCE}\\
-\textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \
-\textit{Center for Data Science, New York University} \\
-\textit{October 18, 2024}
-\end{array}
-$$</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#causality-from-observational-data">14. Causality from Observational Data</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#natural-experiments">15. 1. Natural Experiments</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-v-s-non-random-assignment">15.1. 1.1 Random v.s. Non-random Assignment</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study-dutch-postcode-lottery">15.2. 1.2 Case Study: Dutch Postcode Lottery</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#causality-from-observational-data">13.1. Causality from Observational Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">13.2. 1. Natural Experiments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-v-s-non-random-assignment">13.2.1. Random v.s. Non-random Assignment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study-dutch-postcode-lottery">13.2.2. Case Study: Dutch Postcode Lottery</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#control-variables-preview-and-review">16. 2. Control Variables (Preview) and Review</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#independence-recap">16.1. 2.1 Independence Recap</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-independence">16.2. 2.2 Conditional Independence</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#revisiting-revisiting-all-causes-model">16.3. 2.3 Revisiting -  Revisiting All Causes Model</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definition">16.3.1. 2.3.1 Definition</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">16.3.2. 2.3.2 Simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#control-variables-preview-and-review">13.3. Control Variables (Preview) and Review</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#independence-recap">13.3.1. 2.1 Independence Recap</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-independence">13.3.2. 2.2 Conditional Independence</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#revisiting-revisiting-all-causes-model">13.3.3. Revisiting -  Revisiting All Causes Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#definition">13.3.3.1. Definition</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">13.3.3.2. 2.3.2 Simulation</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#other-topics-for-midterm">17. 3. Other Topics for Midterm</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#good-luck-on-your-midterm-next-week">18. Good luck on your midterm next week!</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-topics-for-midterm">13.4. 3. Other Topics for Midterm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#good-luck-on-your-midterm-next-week">13.5. Good luck on your midterm next week!</a></li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -486,21 +458,13 @@ $$</a></li>
   <div align="center">
 <p><a class="reference external" href="https://colab.research.google.com/github/dapivei/causal-infere/blob/main/sections/7_Natural_Experiments.ipynb"><img alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 </div>
-<section id="begin-array-c-textbf-introduction-to-causal-inference-textbf-daniela-pinto-veizaga-xiang-pan-and-xiang-gao-textit-center-for-data-science-new-york-university-textit-october-18-2024-end-array">
-<h1><span class="section-number">13. </span>$$
-\begin{array}{c}
-\textbf{INTRODUCTION TO CAUSAL INFERENCE}\\
-\textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \
-\textit{Center for Data Science, New York University} \\
-\textit{October 18, 2024}
-\end{array}
-$$<a class="headerlink" href="#begin-array-c-textbf-introduction-to-causal-inference-textbf-daniela-pinto-veizaga-xiang-pan-and-xiang-gao-textit-center-for-data-science-new-york-university-textit-october-18-2024-end-array" title="Link to this heading">#</a></h1>
-</section>
+<section id="natural-experiments">
+<h1><span class="section-number">13. </span>Natural Experiments<a class="headerlink" href="#natural-experiments" title="Link to this heading">#</a></h1>
 <section id="causality-from-observational-data">
-<h1><span class="section-number">14. </span>Causality from Observational Data<a class="headerlink" href="#causality-from-observational-data" title="Link to this heading">#</a></h1>
+<h2><span class="section-number">13.1. </span>Causality from Observational Data<a class="headerlink" href="#causality-from-observational-data" title="Link to this heading">#</a></h2>
 <p>Experiments / Random control trials (RCT) are often referred as the gold standards for causality. We can easily establish the important independence assumption by randomizing treatments in experiments:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-19eb2bbd-1663-4542-bdc7-69858ec3f22b">
-<span class="eqno">(14.1)<a class="headerlink" href="#equation-19eb2bbd-1663-4542-bdc7-69858ec3f22b" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-ebd34985-8a5d-40f0-b5ad-eaee7d37400d">
+<span class="eqno">(13.1)<a class="headerlink" href="#equation-ebd34985-8a5d-40f0-b5ad-eaee7d37400d" title="Permalink to this equation">#</a></span>\[\begin{equation}
 S \perp U
 \end{equation}\]</div>
 <p>However, this is not always possible, and experiments are expensive.</p>
@@ -517,11 +481,11 @@ S \perp U
 <li><p>Adjust the treatment and control group characteristics so that they look similar - e.g., through controlling confounders</p></li>
 </ol>
 </section>
-<section id="natural-experiments">
-<h1><span class="section-number">15. </span>1. Natural Experiments<a class="headerlink" href="#natural-experiments" title="Link to this heading">#</a></h1>
+<section id="id1">
+<h2><span class="section-number">13.2. </span>1. Natural Experiments<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>Sometimes, natural processes give us a treatment that behaves “as-if” random. This allows us to establish the experimental assumption:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d2b9ad6d-938e-458d-9d13-e84e3b4bf3bd">
-<span class="eqno">(15.1)<a class="headerlink" href="#equation-d2b9ad6d-938e-458d-9d13-e84e3b4bf3bd" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-0ee38d49-626b-4aa6-b038-e8685bd1c7e8">
+<span class="eqno">(13.2)<a class="headerlink" href="#equation-0ee38d49-626b-4aa6-b038-e8685bd1c7e8" title="Permalink to this equation">#</a></span>\[\begin{equation}
 S \perp U
 \end{equation}\]</div>
 <p>We would still need SUTVA and perfect compliance (compliance with the natural process of assigning treatment). Then, everything else follows from the process of estimating effects from experiments.</p>
@@ -532,7 +496,7 @@ S \perp U
 <li><p>More?</p></li>
 </ul>
 <section id="random-v-s-non-random-assignment">
-<h2><span class="section-number">15.1. </span>1.1 Random v.s. Non-random Assignment<a class="headerlink" href="#random-v-s-non-random-assignment" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">13.2.1. </span>Random v.s. Non-random Assignment<a class="headerlink" href="#random-v-s-non-random-assignment" title="Link to this heading">#</a></h3>
 <p>First, we can see what random assignment v.s. non-random assignment looks like through the following example.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -596,8 +560,8 @@ Non-random assignment
 </div>
 </div>
 <p>Will the second example pass the balance test?</p>
-<div class="amsmath math notranslate nohighlight" id="equation-14a1e0f9-2963-4222-8acb-932639024e33">
-<span class="eqno">(15.2)<a class="headerlink" href="#equation-14a1e0f9-2963-4222-8acb-932639024e33" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-9e233e18-4a01-42e7-aa98-26088a2b83a7">
+<span class="eqno">(13.3)<a class="headerlink" href="#equation-9e233e18-4a01-42e7-aa98-26088a2b83a7" title="Permalink to this equation">#</a></span>\[\begin{equation}
 p(U|S=1) = p(U|S=0)
 \end{equation}\]</div>
 <div class="cell docutils container">
@@ -634,7 +598,7 @@ Name: confounder, dtype: float64
 </div>
 </section>
 <section id="case-study-dutch-postcode-lottery">
-<h2><span class="section-number">15.2. </span>1.2 Case Study: Dutch Postcode Lottery<a class="headerlink" href="#case-study-dutch-postcode-lottery" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">13.2.2. </span>Case Study: Dutch Postcode Lottery<a class="headerlink" href="#case-study-dutch-postcode-lottery" title="Link to this heading">#</a></h3>
 <p>A famous natural experiment is the Dutch Postcode Lottery. In this lottery, neighborhoods (postal codes) are chosen at random, and everyone in the chosen postal code wins some amount of money.</p>
 <p>This creates an “as-if” random treatment group (winners) and a control group (non-winners), allowing us to estimate the causal effect of winning the lottery on spending behavior.</p>
 <p>Take-home Exercise: Download the real data file <code class="docutils literal notranslate"><span class="pre">FinalAnon.dta</span></code> from https://www.aeaweb.org/articles?id=10.1257/aer.101.5.2226, and run the following code sample from class. Recreate the balance test!</p>
@@ -1269,17 +1233,17 @@ Name: confounder, dtype: float64
 </section>
 </section>
 <section id="control-variables-preview-and-review">
-<h1><span class="section-number">16. </span>2. Control Variables (Preview) and Review<a class="headerlink" href="#control-variables-preview-and-review" title="Link to this heading">#</a></h1>
+<h2><span class="section-number">13.3. </span>Control Variables (Preview) and Review<a class="headerlink" href="#control-variables-preview-and-review" title="Link to this heading">#</a></h2>
 <p>PSA: control variables will not be on the midterm, and we will cover more on it after the midterm.</p>
 <p>If the data-generating processes were not naturally randomizing treatment, we can seek to adjust the population in the treatment and control groups.</p>
 <p>One adjustment method is through controlling or conditioning on other factors $C$ such that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2a68c235-cfc3-4036-8b7c-c9451b7978a6">
-<span class="eqno">(16.1)<a class="headerlink" href="#equation-2a68c235-cfc3-4036-8b7c-c9451b7978a6" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-9684328f-9f39-401a-a4ba-05bf10ee2f76">
+<span class="eqno">(13.4)<a class="headerlink" href="#equation-9684328f-9f39-401a-a4ba-05bf10ee2f76" title="Permalink to this equation">#</a></span>\[\begin{equation}
 S \perp U \ | \ C
 \end{equation}\]</div>
 <p>In this case, we can say that $S$ and $U$ are <strong>conditionally independent</strong> given $C$.</p>
 <section id="independence-recap">
-<h2><span class="section-number">16.1. </span>2.1 Independence Recap<a class="headerlink" href="#independence-recap" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">13.3.1. </span>2.1 Independence Recap<a class="headerlink" href="#independence-recap" title="Link to this heading">#</a></h3>
 <p>Independence plays a central role in our arguments for the identification of causal parameters.</p>
 <p>$$
 P(X \in A, Y \in B) = P(X \in A)P(Y \in B)
@@ -1297,7 +1261,7 @@ $$</p>
 <p>However, the converse statement is false. Independence is not necessary for uncorrelatedness.</p>
 </section>
 <section id="conditional-independence">
-<h2><span class="section-number">16.2. </span>2.2 Conditional Independence<a class="headerlink" href="#conditional-independence" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">13.3.2. </span>2.2 Conditional Independence<a class="headerlink" href="#conditional-independence" title="Link to this heading">#</a></h3>
 <p>$$
 P(X \in A, Y \in B | Z) = P(X \in A|Z)P(Y \in B|Z)
 $$</p>
@@ -1354,19 +1318,19 @@ Covariance of dependent variables Y and Z condition on X = 9: -0.096520865877708
 <p>For more intuitive examples, feel free to check out https://www.andrew.cmu.edu/user/scheines/tutor/d-sep.html</p>
 </section>
 <section id="revisiting-revisiting-all-causes-model">
-<h2><span class="section-number">16.3. </span>2.3 Revisiting -  Revisiting All Causes Model<a class="headerlink" href="#revisiting-revisiting-all-causes-model" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">13.3.3. </span>Revisiting -  Revisiting All Causes Model<a class="headerlink" href="#revisiting-revisiting-all-causes-model" title="Link to this heading">#</a></h3>
 <p>We have actually covered control variables in Lab 3 if you remember.</p>
 <p>Let’s review some old concepts and revisit the example again with our new knowledge on regression and experiments.</p>
 <section id="definition">
-<h3><span class="section-number">16.3.1. </span>2.3.1 Definition<a class="headerlink" href="#definition" title="Link to this heading">#</a></h3>
+<h4><span class="section-number">13.3.3.1. </span>Definition<a class="headerlink" href="#definition" title="Link to this heading">#</a></h4>
 <p>All causes model:</p>
 <p>$$Y(S, U)$$</p>
 <p>where $Y$ is the outcome, $S$ is the state of the world, and $U$ is other factors we observe that influence $Y$.</p>
 <p>Also, for simplicity, consider $S$ as a binary treatment variable (0 or 1).</p>
 <p>Causal quantities of interest:</p>
 <p>$$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-24e3ac3b-1362-474c-a59b-6c4677c294b6">
-<span class="eqno">(16.2)<a class="headerlink" href="#equation-24e3ac3b-1362-474c-a59b-6c4677c294b6" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-6df16404-2a1c-41d6-9371-1473e8462e21">
+<span class="eqno">(13.5)<a class="headerlink" href="#equation-6df16404-2a1c-41d6-9371-1473e8462e21" title="Permalink to this equation">#</a></span>\[\begin{align}
 \text{ATE} &amp;= E[Y(S=1, U) - Y(S=0, U)]\\
 \text{ATT} &amp;= E[Y(S=1, U) - Y(S=0, U)|S=1]\\
 \text{ATU} &amp;= E[Y(S=1, U) - Y(S=0, U)|S=0]
@@ -1376,7 +1340,7 @@ Covariance of dependent variables Y and Z condition on X = 9: -0.096520865877708
 <p>Identification is the process where we reduce these equations involving unobserved variables to observed data.</p>
 </section>
 <section id="simulation">
-<h3><span class="section-number">16.3.2. </span>2.3.2 Simulation<a class="headerlink" href="#simulation" title="Link to this heading">#</a></h3>
+<h4><span class="section-number">13.3.3.2. </span>2.3.2 Simulation<a class="headerlink" href="#simulation" title="Link to this heading">#</a></h4>
 <p>Using the old example, we will show how computing only association based on observational data does not give us the true underlying causal effect, and how <em>control variables</em> can help us identify these parameters.</p>
 <ul class="simple">
 <li><p>$Y$ is continuous income.</p></li>
@@ -1668,7 +1632,7 @@ Association for those with family_status = 0: 30308.08
 </section>
 </section>
 <section id="other-topics-for-midterm">
-<h1><span class="section-number">17. </span>3. Other Topics for Midterm<a class="headerlink" href="#other-topics-for-midterm" title="Link to this heading">#</a></h1>
+<h2><span class="section-number">13.4. </span>3. Other Topics for Midterm<a class="headerlink" href="#other-topics-for-midterm" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>(Conditional/Joint) Distribution</p></li>
 <li><p>Expectation</p></li>
@@ -1703,7 +1667,8 @@ E[VS] &amp;= E\left[(U - E[U | S, C]) S \right] \\
 <p>Review session on Monday.</p>
 </section>
 <section id="good-luck-on-your-midterm-next-week">
-<h1><span class="section-number">18. </span>Good luck on your midterm next week!<a class="headerlink" href="#good-luck-on-your-midterm-next-week" title="Link to this heading">#</a></h1>
+<h2><span class="section-number">13.5. </span>Good luck on your midterm next week!<a class="headerlink" href="#good-luck-on-your-midterm-next-week" title="Link to this heading">#</a></h2>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1756,7 +1721,7 @@ $$</p>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">19. </span>The Interplay between Machine Learning and Causal Inference</p>
+        <p class="prev-next-title"><span class="section-number">14. </span>The Interplay between Machine Learning and Causal Inference</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1777,34 +1742,25 @@ $$</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">13. $$
-\begin{array}{c}
-\textbf{INTRODUCTION TO CAUSAL INFERENCE}\\
-\textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \
-\textit{Center for Data Science, New York University} \\
-\textit{October 18, 2024}
-\end{array}
-$$</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#causality-from-observational-data">14. Causality from Observational Data</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#natural-experiments">15. 1. Natural Experiments</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-v-s-non-random-assignment">15.1. 1.1 Random v.s. Non-random Assignment</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study-dutch-postcode-lottery">15.2. 1.2 Case Study: Dutch Postcode Lottery</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#causality-from-observational-data">13.1. Causality from Observational Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">13.2. 1. Natural Experiments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-v-s-non-random-assignment">13.2.1. Random v.s. Non-random Assignment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study-dutch-postcode-lottery">13.2.2. Case Study: Dutch Postcode Lottery</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#control-variables-preview-and-review">16. 2. Control Variables (Preview) and Review</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#independence-recap">16.1. 2.1 Independence Recap</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-independence">16.2. 2.2 Conditional Independence</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#revisiting-revisiting-all-causes-model">16.3. 2.3 Revisiting -  Revisiting All Causes Model</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definition">16.3.1. 2.3.1 Definition</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">16.3.2. 2.3.2 Simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#control-variables-preview-and-review">13.3. Control Variables (Preview) and Review</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#independence-recap">13.3.1. 2.1 Independence Recap</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-independence">13.3.2. 2.2 Conditional Independence</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#revisiting-revisiting-all-causes-model">13.3.3. Revisiting -  Revisiting All Causes Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#definition">13.3.3.1. Definition</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">13.3.3.2. 2.3.2 Simulation</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#other-topics-for-midterm">17. 3. Other Topics for Midterm</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#good-luck-on-your-midterm-next-week">18. Good luck on your midterm next week!</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-topics-for-midterm">13.4. 3. Other Topics for Midterm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#good-luck-on-your-midterm-next-week">13.5. Good luck on your midterm next week!</a></li>
 </ul>
-
   </nav></div>
 
 </div></div>
