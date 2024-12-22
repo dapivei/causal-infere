@@ -27,12 +27,67 @@ lotto
 
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
-Cell [0;32mIn[4], line 2[0m
+[0;31mFileNotFoundError[0m                         Traceback (most recent call last)
+Cell [0;32mIn[4], line 4[0m
 [1;32m      1[0m [38;5;28;01mimport[39;00m [38;5;21;01mpandas[39;00m [38;5;28;01mas[39;00m [38;5;21;01mpd[39;00m
-[0;32m----> 2[0m [38;5;28;01mimport[39;00m [38;5;21;01mstatsmodels[39;00m[38;5;21;01m.[39;00m[38;5;21;01mformula[39;00m[38;5;21;01m.[39;00m[38;5;21;01mapi[39;00m [38;5;28;01mas[39;00m [38;5;21;01msm[39;00m
-[1;32m      4[0m lotto [38;5;241m=[39m pd[38;5;241m.[39mread_stata([38;5;124m'[39m[38;5;124mFinalAnon.dta[39m[38;5;124m'[39m)
+[1;32m      2[0m [38;5;28;01mimport[39;00m [38;5;21;01mstatsmodels[39;00m[38;5;21;01m.[39;00m[38;5;21;01mformula[39;00m[38;5;21;01m.[39;00m[38;5;21;01mapi[39;00m [38;5;28;01mas[39;00m [38;5;21;01msm[39;00m
+[0;32m----> 4[0m lotto [38;5;241m=[39m [43mpd[49m[38;5;241;43m.[39;49m[43mread_stata[49m[43m([49m[38;5;124;43m'[39;49m[38;5;124;43mFinalAnon.dta[39;49m[38;5;124;43m'[39;49m[43m)[49m
 [1;32m      5[0m lotto
 
-[0;31mModuleNotFoundError[0m: No module named 'statsmodels'
+File [0;32m~/.local/lib/python3.12/site-packages/pandas/io/stata.py:2109[0m, in [0;36mread_stata[0;34m(filepath_or_buffer, convert_dates, convert_categoricals, index_col, convert_missing, preserve_dtypes, columns, order_categoricals, chunksize, iterator, compression, storage_options)[0m
+[1;32m   2106[0m     [38;5;28;01mreturn[39;00m reader
+[1;32m   2108[0m [38;5;28;01mwith[39;00m reader:
+[0;32m-> 2109[0m     [38;5;28;01mreturn[39;00m [43mreader[49m[38;5;241;43m.[39;49m[43mread[49m[43m([49m[43m)[49m
+
+File [0;32m~/.local/lib/python3.12/site-packages/pandas/io/stata.py:1683[0m, in [0;36mStataReader.read[0;34m(self, nrows, convert_dates, convert_categoricals, index_col, convert_missing, preserve_dtypes, columns, order_categoricals)[0m
+[1;32m   1671[0m [38;5;129m@Appender[39m(_read_method_doc)
+[1;32m   1672[0m [38;5;28;01mdef[39;00m [38;5;21mread[39m(
+[1;32m   1673[0m     [38;5;28mself[39m,
+[0;32m   (...)[0m
+[1;32m   1681[0m     order_categoricals: [38;5;28mbool[39m [38;5;241m|[39m [38;5;28;01mNone[39;00m [38;5;241m=[39m [38;5;28;01mNone[39;00m,
+[1;32m   1682[0m ) [38;5;241m-[39m[38;5;241m>[39m DataFrame:
+[0;32m-> 1683[0m     [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_ensure_open[49m[43m([49m[43m)[49m
+[1;32m   1685[0m     [38;5;66;03m# Handle options[39;00m
+[1;32m   1686[0m     [38;5;28;01mif[39;00m convert_dates [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
+
+File [0;32m~/.local/lib/python3.12/site-packages/pandas/io/stata.py:1175[0m, in [0;36mStataReader._ensure_open[0;34m(self)[0m
+[1;32m   1171[0m [38;5;250m[39m[38;5;124;03m"""[39;00m
+[1;32m   1172[0m [38;5;124;03mEnsure the file has been opened and its header data read.[39;00m
+[1;32m   1173[0m [38;5;124;03m"""[39;00m
+[1;32m   1174[0m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m [38;5;28mhasattr[39m([38;5;28mself[39m, [38;5;124m"[39m[38;5;124m_path_or_buf[39m[38;5;124m"[39m):
+[0;32m-> 1175[0m     [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_open_file[49m[43m([49m[43m)[49m
+
+File [0;32m~/.local/lib/python3.12/site-packages/pandas/io/stata.py:1188[0m, in [0;36mStataReader._open_file[0;34m(self)[0m
+[1;32m   1181[0m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m [38;5;28mself[39m[38;5;241m.[39m_entered:
+[1;32m   1182[0m     warnings[38;5;241m.[39mwarn(
+[1;32m   1183[0m         [38;5;124m"[39m[38;5;124mStataReader is being used without using a context manager. [39m[38;5;124m"[39m
+[1;32m   1184[0m         [38;5;124m"[39m[38;5;124mUsing StataReader as a context manager is the only supported method.[39m[38;5;124m"[39m,
+[1;32m   1185[0m         [38;5;167;01mResourceWarning[39;00m,
+[1;32m   1186[0m         stacklevel[38;5;241m=[39mfind_stack_level(),
+[1;32m   1187[0m     )
+[0;32m-> 1188[0m handles [38;5;241m=[39m [43mget_handle[49m[43m([49m
+[1;32m   1189[0m [43m    [49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_original_path_or_buf[49m[43m,[49m
+[1;32m   1190[0m [43m    [49m[38;5;124;43m"[39;49m[38;5;124;43mrb[39;49m[38;5;124;43m"[39;49m[43m,[49m
+[1;32m   1191[0m [43m    [49m[43mstorage_options[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_storage_options[49m[43m,[49m
+[1;32m   1192[0m [43m    [49m[43mis_text[49m[38;5;241;43m=[39;49m[38;5;28;43;01mFalse[39;49;00m[43m,[49m
+[1;32m   1193[0m [43m    [49m[43mcompression[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_compression[49m[43m,[49m
+[1;32m   1194[0m [43m[49m[43m)[49m
+[1;32m   1195[0m [38;5;28;01mif[39;00m [38;5;28mhasattr[39m(handles[38;5;241m.[39mhandle, [38;5;124m"[39m[38;5;124mseekable[39m[38;5;124m"[39m) [38;5;129;01mand[39;00m handles[38;5;241m.[39mhandle[38;5;241m.[39mseekable():
+[1;32m   1196[0m     [38;5;66;03m# If the handle is directly seekable, use it without an extra copy.[39;00m
+[1;32m   1197[0m     [38;5;28mself[39m[38;5;241m.[39m_path_or_buf [38;5;241m=[39m handles[38;5;241m.[39mhandle
+
+File [0;32m~/.local/lib/python3.12/site-packages/pandas/io/common.py:882[0m, in [0;36mget_handle[0;34m(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)[0m
+[1;32m    873[0m         handle [38;5;241m=[39m [38;5;28mopen[39m(
+[1;32m    874[0m             handle,
+[1;32m    875[0m             ioargs[38;5;241m.[39mmode,
+[0;32m   (...)[0m
+[1;32m    878[0m             newline[38;5;241m=[39m[38;5;124m"[39m[38;5;124m"[39m,
+[1;32m    879[0m         )
+[1;32m    880[0m     [38;5;28;01melse[39;00m:
+[1;32m    881[0m         [38;5;66;03m# Binary mode[39;00m
+[0;32m--> 882[0m         handle [38;5;241m=[39m [38;5;28;43mopen[39;49m[43m([49m[43mhandle[49m[43m,[49m[43m [49m[43mioargs[49m[38;5;241;43m.[39;49m[43mmode[49m[43m)[49m
+[1;32m    883[0m     handles[38;5;241m.[39mappend(handle)
+[1;32m    885[0m [38;5;66;03m# Convert BytesIO or file objects passed with an encoding[39;00m
+
+[0;31mFileNotFoundError[0m: [Errno 2] No such file or directory: 'FinalAnon.dta'
 

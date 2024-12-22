@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>13. Instrumental Variables (Continued) and Intro to Regression Discontinuity (RDD) &#8212; Causal Inference for Data Science</title>
+    <title>12. Instrumental Variables (Continued) and Intro to Regression Discontinuity (RDD) &#8212; Causal Inference for Data Science</title>
   
   
   
@@ -64,8 +64,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'sections/12_RDD';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="19. Difference in Differences" href="13_Difference_in_Differences.html" />
-    <link rel="prev" title="12. Instrumental Variables(Continued)" href="11_Instruments_RDD.html" />
+    <link rel="next" title="18. Difference in Differences" href="13_Difference_in_Differences.html" />
+    <link rel="prev" title="11. Instrumental Variables(Continued)" href="11_Instruments_RDD.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -174,22 +174,21 @@
 <li class="toctree-l1"><a class="reference internal" href="2_Probability_1-2.html">2. Probability</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3_Probability_Statistics.html">3. Probability, All Causes Model and Statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="4_Statistics_and_Experiments.html">4. Hypothesis testing and Introduction to Experiments</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="5_Experiments.html">6. Experiments (Cont.)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="6_Regression_1-2.html">7. Regression</a></li>
-<li class="toctree-l1"><a class="reference internal" href="7_Natural_Experiments.html">8. Natural Experiments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="8_ML_and_Causality.html">9. The Interplay between Machine Learning and Causal Inference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="9_Matching.html">10. Matching</a></li>
-<li class="toctree-l1"><a class="reference internal" href="10_Instruments.html">11. Instrumental Variables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="11_Instruments_RDD.html">12. Instrumental Variables(Continued)</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">13. Instrumental Variables (Continued) and Intro to Regression Discontinuity (RDD)</a></li>
-
+<li class="toctree-l1"><a class="reference internal" href="5_Experiments.html">5. Experiments (Cont.)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_Regression_1-2.html">6. Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7_Natural_Experiments.html">7. Natural Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8_ML_and_Causality.html">8. The Interplay between Machine Learning and Causal Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9_Matching.html">9. Matching</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_Instruments.html">10. Instrumental Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_Instruments_RDD.html">11. Instrumental Variables(Continued)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">12. Instrumental Variables (Continued) and Intro to Regression Discontinuity (RDD)</a></li>
 
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="13_Difference_in_Differences.html">19. Difference in Differences</a></li>
-<li class="toctree-l1"><a class="reference internal" href="14_Review.html">20. Final Course Review</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="13_Difference_in_Differences.html">18. Difference in Differences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14_Review.html">19. Final Review</a></li>
 
 
 </ul>
@@ -384,25 +383,25 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">13. Instrumental Variables (Continued) and Intro to Regression Discontinuity (RDD)</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#local-linear-regression-for-rdd">13.1. Local Linear Regression for RDD</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#incumbency-advantage">13.2. Incumbency Advantage</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#smoothness-test">13.3. Smoothness Test:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bunching">13.4. Bunching</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">12. Instrumental Variables (Continued) and Intro to Regression Discontinuity (RDD)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#local-linear-regression-for-rdd">12.1. Local Linear Regression for RDD</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#incumbency-advantage">12.2. Incumbency Advantage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#smoothness-test">12.3. Smoothness Test:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bunching">12.4. Bunching</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#is-drinking-killing-you">14. Is Drinking Killing You?</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bandwidth">15. Bandwidth</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kernel-weighting">16. Kernel Weighting</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references">17. References</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fuzz-rdd">18. Fuzz RDD</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fuzzy-rdd-as-iv">18.1. Fuzzy RDD as IV</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#non-weakness">18.1.1. Non-weakness</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smoothness">18.1.2. Smoothness</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#no-bunching">18.1.3. No bunching</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#is-drinking-killing-you">13. Is Drinking Killing You?</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bandwidth">14. Bandwidth</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kernel-weighting">15. Kernel Weighting</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references">16. References</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fuzz-rdd">17. Fuzz RDD</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fuzzy-rdd-as-iv">17.1. Fuzzy RDD as IV</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#non-weakness">17.1.1. Non-weakness</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smoothness">17.1.2. Smoothness</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#no-bunching">17.1.3. No bunching</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-is-learning">18.2. Learning is Learning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-is-learning">17.2. Learning is Learning</a></li>
 </ul>
 </li>
 </ul>
@@ -420,19 +419,19 @@
   <div align="center">
 <p><a class="reference external" href="https://colab.research.google.com/github/dapivei/causal-infere/blob/main/sections/12_RDD.ipynb"><img alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 </div><section id="instrumental-variables-continued-and-intro-to-regression-discontinuity-rdd">
-<h1><span class="section-number">13. </span>Instrumental Variables (Continued) and Intro to Regression Discontinuity (RDD)<a class="headerlink" href="#instrumental-variables-continued-and-intro-to-regression-discontinuity-rdd" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">12. </span>Instrumental Variables (Continued) and Intro to Regression Discontinuity (RDD)<a class="headerlink" href="#instrumental-variables-continued-and-intro-to-regression-discontinuity-rdd" title="Link to this heading">#</a></h1>
 <section id="local-linear-regression-for-rdd">
-<h2><span class="section-number">13.1. </span>Local Linear Regression for RDD<a class="headerlink" href="#local-linear-regression-for-rdd" title="Link to this heading">#</a></h2>
-<div class="amsmath math notranslate nohighlight" id="equation-02056270-8442-4ea4-9d65-1cd2703b8f43">
-<span class="eqno">(13.1)<a class="headerlink" href="#equation-02056270-8442-4ea4-9d65-1cd2703b8f43" title="Permalink to this equation">#</a></span>\[\begin{align}
+<h2><span class="section-number">12.1. </span>Local Linear Regression for RDD<a class="headerlink" href="#local-linear-regression-for-rdd" title="Link to this heading">#</a></h2>
+<div class="amsmath math notranslate nohighlight" id="equation-a0e8d65f-70af-44a2-96f7-54db3474267a">
+<span class="eqno">(12.1)<a class="headerlink" href="#equation-a0e8d65f-70af-44a2-96f7-54db3474267a" title="Permalink to this equation">#</a></span>\[\begin{align}
 Y=\alpha_0+\alpha_1 S+\alpha_2(R-c)+\alpha_3 S *(R-c)
 \end{align}\]</div>
 <p>Assumptions:</p>
 <ul class="simple">
 <li><p>The change is linear around the cutoff</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-cb892d8c-4842-4391-8209-83dac693904f">
-<span class="eqno">(13.2)<a class="headerlink" href="#equation-cb892d8c-4842-4391-8209-83dac693904f" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-f9393291-2847-43ba-a398-4d3e7dd2a84b">
+<span class="eqno">(12.2)<a class="headerlink" href="#equation-f9393291-2847-43ba-a398-4d3e7dd2a84b" title="Permalink to this equation">#</a></span>\[\begin{align}
 E[Y(S=1, U) - Y(S=0, U) \mid R=c]
 \end{align}\]</div>
 <ul class="simple">
@@ -442,7 +441,7 @@ E[Y(S=1, U) - Y(S=0, U) \mid R=c]
 <p>For a bandwidth $b$, we consider the observations within $R \in (c-b, c+b)$.</p>
 </section>
 <section id="incumbency-advantage">
-<h2><span class="section-number">13.2. </span>Incumbency Advantage<a class="headerlink" href="#incumbency-advantage" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.2. </span>Incumbency Advantage<a class="headerlink" href="#incumbency-advantage" title="Link to this heading">#</a></h2>
 <p>Election: the situation changes dramatically below 50% and above 50%.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -686,9 +685,9 @@ Name: count, dtype: int64
 </div>
 </section>
 <section id="smoothness-test">
-<h2><span class="section-number">13.3. </span>Smoothness Test:<a class="headerlink" href="#smoothness-test" title="Link to this heading">#</a></h2>
-<div class="amsmath math notranslate nohighlight" id="equation-33e17664-5374-4575-a105-09cbcd0df3de">
-<span class="eqno">(13.3)<a class="headerlink" href="#equation-33e17664-5374-4575-a105-09cbcd0df3de" title="Permalink to this equation">#</a></span>\[\begin{align}
+<h2><span class="section-number">12.3. </span>Smoothness Test:<a class="headerlink" href="#smoothness-test" title="Link to this heading">#</a></h2>
+<div class="amsmath math notranslate nohighlight" id="equation-78a594ad-72da-4530-b36e-fecbd24f4382">
+<span class="eqno">(12.3)<a class="headerlink" href="#equation-78a594ad-72da-4530-b36e-fecbd24f4382" title="Permalink to this equation">#</a></span>\[\begin{align}
 E_U[Y(S=1, U) \mid R=r] \\
 E_U[Y(S=0, U) \mid R=r]
 \end{align}\]</div>
@@ -762,7 +761,7 @@ E_U[Y(S=0, U) \mid R=r]
 </div>
 </section>
 <section id="bunching">
-<h2><span class="section-number">13.4. </span>Bunching<a class="headerlink" href="#bunching" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.4. </span>Bunching<a class="headerlink" href="#bunching" title="Link to this heading">#</a></h2>
 <p>51 is win, there is no difference between 50 and 51.</p>
 <p>Interesting Case: Alpha Go will choose 51 with higher confidence rather than 98 with lower confidence.</p>
 <p>This may break the assumption of smoothness, so lots of winners are just bunching at $50 + \epsilon$.</p>
@@ -787,7 +786,7 @@ E_U[Y(S=0, U) \mid R=r]
 </section>
 </section>
 <section id="is-drinking-killing-you">
-<h1><span class="section-number">14. </span>Is Drinking Killing You?<a class="headerlink" href="#is-drinking-killing-you" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">13. </span>Is Drinking Killing You?<a class="headerlink" href="#is-drinking-killing-you" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
@@ -967,7 +966,7 @@ E_U[Y(S=0, U) \mid R=r]
 </div>
 </section>
 <section id="bandwidth">
-<h1><span class="section-number">15. </span>Bandwidth<a class="headerlink" href="#bandwidth" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">14. </span>Bandwidth<a class="headerlink" href="#bandwidth" title="Link to this heading">#</a></h1>
 <p>We can use the bandwidth to select the range of consideration.</p>
 <p>In another sense, the bandwidth is a kernel with weights only on the points within the bandwidth.</p>
 <div class="cell docutils container">
@@ -1009,7 +1008,7 @@ E_U[Y(S=0, U) \mid R=r]
 </div>
 </section>
 <section id="kernel-weighting">
-<h1><span class="section-number">16. </span>Kernel Weighting<a class="headerlink" href="#kernel-weighting" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">15. </span>Kernel Weighting<a class="headerlink" href="#kernel-weighting" title="Link to this heading">#</a></h1>
 <p>We can use smoothing kernel to weight the points within the bandwidth.</p>
 <p>Regression Discontinuity relies heavily on the extrapolations properties of linear regression. Since we are looking at the values at the beginning and end of 2 regression lines, we better get those limits right. What can happen is that regression might focus too much on fitting the other data points at the cost of a poor fit at the threshold. If this happens, we might get the wrong measure of the treatment effect.</p>
 <p>One way to solve this is to give higher weights for the points that are closer to the threshold. There are many ways to do this, but a popular one is to reweight the samples with the <strong>triangular kernel</strong></p>
@@ -1038,7 +1037,7 @@ $</p>
 </div>
 </section>
 <section id="references">
-<h1><span class="section-number">17. </span>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">16. </span>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h1>
 <ul class="simple">
 <li><p>https://matheusfacure.github.io/python-causality-handbook/16-Regression-Discontinuity-Design.html</p></li>
 </ul>
@@ -1133,11 +1132,11 @@ $</p>
 </div>
 </section>
 <section id="fuzz-rdd">
-<h1><span class="section-number">18. </span>Fuzz RDD<a class="headerlink" href="#fuzz-rdd" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">17. </span>Fuzz RDD<a class="headerlink" href="#fuzz-rdd" title="Link to this heading">#</a></h1>
 <p>(R=) SAT score</p>
 <p>(c=) univeristy cutoff value</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e22471f1-e5f8-4da0-84d1-e6758e535d38">
-<span class="eqno">(18.1)<a class="headerlink" href="#equation-e22471f1-e5f8-4da0-84d1-e6758e535d38" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-0e7765fb-5c2b-446e-9538-5de48789a6d6">
+<span class="eqno">(17.1)<a class="headerlink" href="#equation-0e7765fb-5c2b-446e-9538-5de48789a6d6" title="Permalink to this equation">#</a></span>\[\begin{align}
 S \neq\left\{\begin{array}{l}
 1 \text { if } R \geq c \\
 0 \text { if } R&lt;c
@@ -1147,9 +1146,9 @@ S \neq\left\{\begin{array}{l}
 <p><img alt="image.png" src="sections/attachment:image.png" /></p>
 <p>It is not a sharp cutoff, but a probablistic jump.</p>
 <section id="fuzzy-rdd-as-iv">
-<h2><span class="section-number">18.1. </span>Fuzzy RDD as IV<a class="headerlink" href="#fuzzy-rdd-as-iv" title="Link to this heading">#</a></h2>
-<div class="amsmath math notranslate nohighlight" id="equation-4f2f337e-ff4f-45aa-b280-64e1c51baa77">
-<span class="eqno">(18.2)<a class="headerlink" href="#equation-4f2f337e-ff4f-45aa-b280-64e1c51baa77" title="Permalink to this equation">#</a></span>\[\begin{align}
+<h2><span class="section-number">17.1. </span>Fuzzy RDD as IV<a class="headerlink" href="#fuzzy-rdd-as-iv" title="Link to this heading">#</a></h2>
+<div class="amsmath math notranslate nohighlight" id="equation-bf8c1a2e-42c3-4dc8-9e44-c5bfedece161">
+<span class="eqno">(17.2)<a class="headerlink" href="#equation-bf8c1a2e-42c3-4dc8-9e44-c5bfedece161" title="Permalink to this equation">#</a></span>\[\begin{align}
 Z=\left\{\begin{array}{l}
 1 \text { if } R \geq c \\
 0 \text { if } R&lt;c
@@ -1187,13 +1186,13 @@ Z=\left\{\begin{array}{l}
 </div>
 </div>
 <p><strong>Conditional Exogeneity:</strong></p>
-<div class="amsmath math notranslate nohighlight" id="equation-1b374dbf-d940-43ad-9cb1-b7740ccdec71">
-<span class="eqno">(18.3)<a class="headerlink" href="#equation-1b374dbf-d940-43ad-9cb1-b7740ccdec71" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-fed1346e-ac6a-448b-ba67-f63595af4bb7">
+<span class="eqno">(17.3)<a class="headerlink" href="#equation-fed1346e-ac6a-448b-ba67-f63595af4bb7" title="Permalink to this equation">#</a></span>\[\begin{align}
 Z \perp U, V \mid(R-c), S *(R-c)
 \end{align}\]</div>
 <p><strong>Linearity within Bandwidth:</strong></p>
-<div class="amsmath math notranslate nohighlight" id="equation-3f037956-5008-4284-8f5a-eee6fc641289">
-<span class="eqno">(18.4)<a class="headerlink" href="#equation-3f037956-5008-4284-8f5a-eee6fc641289" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-cbed4169-30e0-424a-a167-3969df6fb5c9">
+<span class="eqno">(17.4)<a class="headerlink" href="#equation-cbed4169-30e0-424a-a167-3969df6fb5c9" title="Permalink to this equation">#</a></span>\[\begin{align}
 \begin{gathered}
 E[Y(S(Z=1, V), U) \mid R=r] \text { and } E[Y(S(Z=0, V), U) \mid R=r] \\
 E[S(Z=1, V) \mid R=r] \text { and } E[Y(Z=0, V) \mid R=r]
@@ -1201,15 +1200,15 @@ E[S(Z=1, V) \mid R=r] \text { and } E[Y(Z=0, V) \mid R=r]
 \end{align}\]</div>
 <p><img alt="image.png" src="sections/attachment:image.png" /></p>
 <section id="non-weakness">
-<h3><span class="section-number">18.1.1. </span>Non-weakness<a class="headerlink" href="#non-weakness" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">17.1.1. </span>Non-weakness<a class="headerlink" href="#non-weakness" title="Link to this heading">#</a></h3>
 <p><img alt="image.png" src="sections/attachment:image.png" /></p>
 </section>
 <section id="smoothness">
-<h3><span class="section-number">18.1.2. </span>Smoothness<a class="headerlink" href="#smoothness" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">17.1.2. </span>Smoothness<a class="headerlink" href="#smoothness" title="Link to this heading">#</a></h3>
 <p><img alt="image.png" src="sections/attachment:image.png" /></p>
 </section>
 <section id="no-bunching">
-<h3><span class="section-number">18.1.3. </span>No bunching<a class="headerlink" href="#no-bunching" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">17.1.3. </span>No bunching<a class="headerlink" href="#no-bunching" title="Link to this heading">#</a></h3>
 <p><img alt="image.png" src="sections/attachment:image.png" /></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1225,7 +1224,7 @@ E[S(Z=1, V) \mid R=r] \text { and } E[Y(Z=0, V) \mid R=r]
 </section>
 </section>
 <section id="learning-is-learning">
-<h2><span class="section-number">18.2. </span>Learning is Learning<a class="headerlink" href="#learning-is-learning" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">17.2. </span>Learning is Learning<a class="headerlink" href="#learning-is-learning" title="Link to this heading">#</a></h2>
 <p>Pass the test -&gt; get diploma -&gt; earning</p>
 <p>There is a cutoff for the test score, will the diploma be the critical one factor for the earning?</p>
 <p><img alt="image.png" src="sections/attachment:image.png" /></p>
@@ -1268,7 +1267,7 @@ E[S(Z=1, V) \mid R=r] \text { and } E[Y(Z=0, V) \mid R=r]
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">12. </span>Instrumental Variables(Continued)</p>
+        <p class="prev-next-title"><span class="section-number">11. </span>Instrumental Variables(Continued)</p>
       </div>
     </a>
     <a class="right-next"
@@ -1276,7 +1275,7 @@ E[S(Z=1, V) \mid R=r] \text { and } E[Y(Z=0, V) \mid R=r]
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">19. </span>Difference in Differences</p>
+        <p class="prev-next-title"><span class="section-number">18. </span>Difference in Differences</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1297,25 +1296,25 @@ E[S(Z=1, V) \mid R=r] \text { and } E[Y(Z=0, V) \mid R=r]
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">13. Instrumental Variables (Continued) and Intro to Regression Discontinuity (RDD)</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#local-linear-regression-for-rdd">13.1. Local Linear Regression for RDD</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#incumbency-advantage">13.2. Incumbency Advantage</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#smoothness-test">13.3. Smoothness Test:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bunching">13.4. Bunching</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">12. Instrumental Variables (Continued) and Intro to Regression Discontinuity (RDD)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#local-linear-regression-for-rdd">12.1. Local Linear Regression for RDD</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#incumbency-advantage">12.2. Incumbency Advantage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#smoothness-test">12.3. Smoothness Test:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bunching">12.4. Bunching</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#is-drinking-killing-you">14. Is Drinking Killing You?</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bandwidth">15. Bandwidth</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kernel-weighting">16. Kernel Weighting</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references">17. References</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fuzz-rdd">18. Fuzz RDD</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fuzzy-rdd-as-iv">18.1. Fuzzy RDD as IV</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#non-weakness">18.1.1. Non-weakness</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smoothness">18.1.2. Smoothness</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#no-bunching">18.1.3. No bunching</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#is-drinking-killing-you">13. Is Drinking Killing You?</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bandwidth">14. Bandwidth</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kernel-weighting">15. Kernel Weighting</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references">16. References</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fuzz-rdd">17. Fuzz RDD</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fuzzy-rdd-as-iv">17.1. Fuzzy RDD as IV</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#non-weakness">17.1.1. Non-weakness</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smoothness">17.1.2. Smoothness</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#no-bunching">17.1.3. No bunching</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-is-learning">18.2. Learning is Learning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-is-learning">17.2. Learning is Learning</a></li>
 </ul>
 </li>
 </ul>

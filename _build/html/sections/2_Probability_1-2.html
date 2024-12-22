@@ -173,22 +173,21 @@
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">2. Probability</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3_Probability_Statistics.html">3. Probability, All Causes Model and Statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="4_Statistics_and_Experiments.html">4. Hypothesis testing and Introduction to Experiments</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="5_Experiments.html">6. Experiments (Cont.)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="6_Regression_1-2.html">7. Regression</a></li>
-<li class="toctree-l1"><a class="reference internal" href="7_Natural_Experiments.html">8. Natural Experiments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="8_ML_and_Causality.html">9. The Interplay between Machine Learning and Causal Inference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="9_Matching.html">10. Matching</a></li>
-<li class="toctree-l1"><a class="reference internal" href="10_Instruments.html">11. Instrumental Variables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="11_Instruments_RDD.html">12. Instrumental Variables(Continued)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="12_RDD.html">13. Instrumental Variables (Continued) and Intro to Regression Discontinuity (RDD)</a></li>
-
+<li class="toctree-l1"><a class="reference internal" href="5_Experiments.html">5. Experiments (Cont.)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_Regression_1-2.html">6. Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7_Natural_Experiments.html">7. Natural Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8_ML_and_Causality.html">8. The Interplay between Machine Learning and Causal Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9_Matching.html">9. Matching</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_Instruments.html">10. Instrumental Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_Instruments_RDD.html">11. Instrumental Variables(Continued)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_RDD.html">12. Instrumental Variables (Continued) and Intro to Regression Discontinuity (RDD)</a></li>
 
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="13_Difference_in_Differences.html">19. Difference in Differences</a></li>
-<li class="toctree-l1"><a class="reference internal" href="14_Review.html">20. Final Course Review</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="13_Difference_in_Differences.html">18. Difference in Differences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14_Review.html">19. Final Review</a></li>
 
 
 </ul>
@@ -540,72 +539,7 @@ $$</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;data/male-female-height-and-weight/Training set.csv&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;data/male-female-height-and-weight/Training set.csv&quot;</span><span class="p">)</span>
-
-<span class="nn">File ~/.local/lib/python3.12/site-packages/pandas/io/parsers/readers.py:1026,</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1013</span> <span class="n">kwds_defaults</span> <span class="o">=</span> <span class="n">_refine_defaults_read</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1014</span>     <span class="n">dialect</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1015</span>     <span class="n">delimiter</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1022</span>     <span class="n">dtype_backend</span><span class="o">=</span><span class="n">dtype_backend</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1023</span> <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1024</span> <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1026</span> <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
-
-<span class="nn">File ~/.local/lib/python3.12/site-packages/pandas/io/parsers/readers.py:620,</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
-<span class="g g-Whitespace">    </span><span class="mi">617</span> <span class="n">_validate_names</span><span class="p">(</span><span class="n">kwds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;names&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
-<span class="g g-Whitespace">    </span><span class="mi">619</span> <span class="c1"># Create the parser.</span>
-<span class="ne">--&gt; </span><span class="mi">620</span> <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">622</span> <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">623</span>     <span class="k">return</span> <span class="n">parser</span>
-
-<span class="nn">File ~/.local/lib/python3.12/site-packages/pandas/io/parsers/readers.py:1620,</span> in <span class="ni">TextFileReader.__init__</span><span class="nt">(self, f, engine, **kwds)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1617</span>     <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span>
-<span class="g g-Whitespace">   </span><span class="mi">1619</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="p">:</span> <span class="n">IOHandles</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="ne">-&gt; </span><span class="mi">1620</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
-
-<span class="nn">File ~/.local/lib/python3.12/site-packages/pandas/io/parsers/readers.py:1880,</span> in <span class="ni">TextFileReader._make_engine</span><span class="nt">(self, f, engine)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1878</span>     <span class="k">if</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">mode</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1879</span>         <span class="n">mode</span> <span class="o">+=</span> <span class="s2">&quot;b&quot;</span>
-<span class="ne">-&gt; </span><span class="mi">1880</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="o">=</span> <span class="n">get_handle</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1881</span>     <span class="n">f</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1882</span>     <span class="n">mode</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1883</span>     <span class="n">encoding</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1884</span>     <span class="n">compression</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;compression&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1885</span>     <span class="n">memory_map</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;memory_map&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1886</span>     <span class="n">is_text</span><span class="o">=</span><span class="n">is_text</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1887</span>     <span class="n">errors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding_errors&quot;</span><span class="p">,</span> <span class="s2">&quot;strict&quot;</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1888</span>     <span class="n">storage_options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;storage_options&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1889</span> <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1890</span> <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-<span class="g g-Whitespace">   </span><span class="mi">1891</span> <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="o">.</span><span class="n">handle</span>
-
-<span class="nn">File ~/.local/lib/python3.12/site-packages/pandas/io/common.py:873,</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
-<span class="g g-Whitespace">    </span><span class="mi">868</span> <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">869</span>     <span class="c1"># Check whether the filename is to be opened in binary mode.</span>
-<span class="g g-Whitespace">    </span><span class="mi">870</span>     <span class="c1"># Binary mode does not support &#39;encoding&#39; and &#39;newline&#39;.</span>
-<span class="g g-Whitespace">    </span><span class="mi">871</span>     <span class="k">if</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">encoding</span> <span class="ow">and</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">872</span>         <span class="c1"># Encoding</span>
-<span class="ne">--&gt; </span><span class="mi">873</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">874</span>             <span class="n">handle</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">875</span>             <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">876</span>             <span class="n">encoding</span><span class="o">=</span><span class="n">ioargs</span><span class="o">.</span><span class="n">encoding</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">877</span>             <span class="n">errors</span><span class="o">=</span><span class="n">errors</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">878</span>             <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">879</span>         <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">880</span>     <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">881</span>         <span class="c1"># Binary mode</span>
-<span class="g g-Whitespace">    </span><span class="mi">882</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">)</span>
-
-<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;data/male-female-height-and-weight/Training set.csv&#39;
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../data/Training set.csv&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -818,8 +752,8 @@ $$</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1.01032206 2.02064411]
- [2.02064411 4.04128822]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.98841574 1.97683149]
+ [1.97683149 3.95366297]]
 </pre></div>
 </div>
 </div>
@@ -833,7 +767,7 @@ $$</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.98949109 0.        ]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.98467113 0.        ]
  [0.         0.        ]]
 </pre></div>
 </div>
@@ -905,7 +839,7 @@ $$</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9754120199549299
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0000790267747668
 </pre></div>
 </div>
 </div>
@@ -917,7 +851,7 @@ $$</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.783057405202717
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.016272708468011
 </pre></div>
 </div>
 </div>
@@ -929,7 +863,7 @@ $$</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.99180504 0.95726104]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.97430113 1.0258251 ]
 </pre></div>
 </div>
 </div>
@@ -941,7 +875,7 @@ $$</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[3.96722014 3.82904414]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[3.89720452 4.10330039]
 </pre></div>
 </div>
 </div>
@@ -974,8 +908,8 @@ $$</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.97048497 1.94096994]
- [1.94096994 3.88193988]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1.01436471 2.02872942]
+ [2.02872942 4.05745883]]
 </pre></div>
 </div>
 </div>
@@ -990,9 +924,9 @@ $$</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9695144846627951 3.8780579386511804 8.725630361965155
-1.9409699392648554
-8.729512301843686
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0133503428078032 4.053401371231213 9.120153085270227
+2.0287294150306368
+9.12421054410029
 </pre></div>
 </div>
 </div>
@@ -1082,11 +1016,11 @@ We can represent this situation with a directed acyclic graph (DAG), where:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/tx/6x0x284d1mqbxg7ldmcxb0g00000gn/T/ipykernel_28449/2404936834.py:24: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_4004501/2404936834.py:24: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
   plt.tight_layout()
 </pre></div>
 </div>
-<img alt="../_images/971e1b284096ee0f8d536b49d8a636aca18ae429bbe33feaee8a1dfbbbb60a5c.png" src="../_images/971e1b284096ee0f8d536b49d8a636aca18ae429bbe33feaee8a1dfbbbb60a5c.png" />
+<img alt="../_images/6b27e97559379fe6a4f6d2617205b00b87b65ca039074ddd85b91820fa41aef6.png" src="../_images/6b27e97559379fe6a4f6d2617205b00b87b65ca039074ddd85b91820fa41aef6.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1165,7 +1099,7 @@ Ice Cream Sales
 Name: Drowning Incidents, dtype: float64
 </pre></div>
 </div>
-<img alt="../_images/5cce9f9d41388cd211ad78a6477d2c19a0e6bbf5b0eaabb530bda6234c40e7db.png" src="../_images/5cce9f9d41388cd211ad78a6477d2c19a0e6bbf5b0eaabb530bda6234c40e7db.png" />
+<img alt="../_images/4f6a5dd9b26a7b6fa34e7f12771b693caadd850291b3c9f41b3703a0a0c82b3c.png" src="../_images/4f6a5dd9b26a7b6fa34e7f12771b693caadd850291b3c9f41b3703a0a0c82b3c.png" />
 </div>
 </div>
 </section>
@@ -1245,7 +1179,7 @@ $$</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/5dd6a76b4820e323756352e61c10de3bf49750376ed6e722c594acbdf6a5cc52.png" src="../_images/5dd6a76b4820e323756352e61c10de3bf49750376ed6e722c594acbdf6a5cc52.png" />
+<img alt="../_images/e4728a1e174b95a87abdc7688a8f5ebd46763ea84e6962881ade96e8692ef2f5.png" src="../_images/e4728a1e174b95a87abdc7688a8f5ebd46763ea84e6962881ade96e8692ef2f5.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1296,9 +1230,6 @@ $$</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matplotlib is building the font cache; this may take a moment.
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Correlation between antihistamine use and sneezing: 0.2137
 
 Average sneezing rates:
@@ -1308,7 +1239,7 @@ Antihistamines
 Name: Sneezing, dtype: float64
 </pre></div>
 </div>
-<img alt="../_images/1668f564ad8e5127837d40ce8de086ad736e68f8de91f0982e110ebd4fbfa0a5.png" src="../_images/1668f564ad8e5127837d40ce8de086ad736e68f8de91f0982e110ebd4fbfa0a5.png" />
+<img alt="../_images/276d9f38bd7d74858fca1faf42f07b5d7bfab4a86bf82958628927e1a7e776fb.png" src="../_images/276d9f38bd7d74858fca1faf42f07b5d7bfab4a86bf82958628927e1a7e776fb.png" />
 </div>
 </div>
 </section>

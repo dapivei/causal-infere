@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>19. Difference in Differences &#8212; Causal Inference for Data Science</title>
+    <title>18. Difference in Differences &#8212; Causal Inference for Data Science</title>
   
   
   
@@ -64,8 +64,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'sections/13_Difference_in_Differences';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="20. Final Course Review" href="14_Review.html" />
-    <link rel="prev" title="13. Instrumental Variables (Continued) and Intro to Regression Discontinuity (RDD)" href="12_RDD.html" />
+    <link rel="next" title="19. Final Review" href="14_Review.html" />
+    <link rel="prev" title="12. Instrumental Variables (Continued) and Intro to Regression Discontinuity (RDD)" href="12_RDD.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -174,22 +174,21 @@
 <li class="toctree-l1"><a class="reference internal" href="2_Probability_1-2.html">2. Probability</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3_Probability_Statistics.html">3. Probability, All Causes Model and Statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="4_Statistics_and_Experiments.html">4. Hypothesis testing and Introduction to Experiments</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="5_Experiments.html">6. Experiments (Cont.)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="6_Regression_1-2.html">7. Regression</a></li>
-<li class="toctree-l1"><a class="reference internal" href="7_Natural_Experiments.html">8. Natural Experiments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="8_ML_and_Causality.html">9. The Interplay between Machine Learning and Causal Inference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="9_Matching.html">10. Matching</a></li>
-<li class="toctree-l1"><a class="reference internal" href="10_Instruments.html">11. Instrumental Variables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="11_Instruments_RDD.html">12. Instrumental Variables(Continued)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="12_RDD.html">13. Instrumental Variables (Continued) and Intro to Regression Discontinuity (RDD)</a></li>
-
+<li class="toctree-l1"><a class="reference internal" href="5_Experiments.html">5. Experiments (Cont.)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_Regression_1-2.html">6. Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7_Natural_Experiments.html">7. Natural Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8_ML_and_Causality.html">8. The Interplay between Machine Learning and Causal Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9_Matching.html">9. Matching</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_Instruments.html">10. Instrumental Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_Instruments_RDD.html">11. Instrumental Variables(Continued)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_RDD.html">12. Instrumental Variables (Continued) and Intro to Regression Discontinuity (RDD)</a></li>
 
 
 
 
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">19. Difference in Differences</a></li>
-<li class="toctree-l1"><a class="reference internal" href="14_Review.html">20. Final Course Review</a></li>
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">18. Difference in Differences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14_Review.html">19. Final Review</a></li>
 
 
 </ul>
@@ -384,32 +383,32 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recap-from-last-class">19.1. Recap From Last Class</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-for-today">19.2. Goals For Today</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">19.3. Difference-in-Differences</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#consider-a-2x2-did">19.4. Consider a “2x2” DiD.</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assumptions">19.4.1. Assumptions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identifying-the-average-treatment-on-the-treated-att">19.4.2. Identifying the Average Treatment on the Treated (ATT)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#research-question-does-raising-the-minimum-wage-help-workers-by-improving-their-earnings-or-does-it-inadvertently-harm-them-by-reducing-job-opportunities">19.4.3. Research Question: Does raising the minimum wage help workers by improving their earnings, or does it inadvertently harm them by reducing job opportunities?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-setup">19.4.4. Model Setup</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-challenge">19.4.5. The challenge</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data">19.4.6. Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">19.4.7. Solution?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-estimation">19.4.8. Regression estimation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#does-the-parallel-trends-hold">19.4.9. Does the Parallel Trends Hold?</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#fallback">19.4.9.1. Fallback</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recap-from-last-class">18.1. Recap From Last Class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-for-today">18.2. Goals For Today</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">18.3. Difference-in-Differences</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#consider-a-2x2-did">18.4. Consider a “2x2” DiD.</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assumptions">18.4.1. Assumptions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identifying-the-average-treatment-on-the-treated-att">18.4.2. Identifying the Average Treatment on the Treated (ATT)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#research-question-does-raising-the-minimum-wage-help-workers-by-improving-their-earnings-or-does-it-inadvertently-harm-them-by-reducing-job-opportunities">18.4.3. Research Question: Does raising the minimum wage help workers by improving their earnings, or does it inadvertently harm them by reducing job opportunities?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-setup">18.4.4. Model Setup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-challenge">18.4.5. The challenge</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data">18.4.6. Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">18.4.7. Solution?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-estimation">18.4.8. Regression estimation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#does-the-parallel-trends-hold">18.4.9. Does the Parallel Trends Hold?</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#fallback">18.4.9.1. Fallback</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-varying-treatment-effects">19.4.10. Time Varying Treatment Effects</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recall-standard-errors-of-linear-regression">19.4.11. (Recall) Standard Errors of Linear Regression</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robust-standard-errors">19.4.11.1. Robust Standard Errors</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cluster-robust-standard-errors">19.4.11.2. Cluster-Robust Standard Errors</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#permutation-test">19.4.11.3. Permutation Test</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-varying-treatment-effects">18.4.10. Time Varying Treatment Effects</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recall-standard-errors-of-linear-regression">18.4.11. (Recall) Standard Errors of Linear Regression</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robust-standard-errors">18.4.11.1. Robust Standard Errors</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cluster-robust-standard-errors">18.4.11.2. Cluster-Robust Standard Errors</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#permutation-test">18.4.11.3. Permutation Test</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#path-forward">19.5. 3. Path Forward</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#path-forward">18.5. 3. Path Forward</a></li>
 </ul>
             </nav>
         </div>
@@ -425,15 +424,15 @@
 <p><a class="reference external" href="https://colab.research.google.com/github/dapivei/causal-infere/blob/main/sections/13_Difference_in_Differences.ipynb"><img alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 </div>
 <section id="difference-in-differences">
-<h1><span class="section-number">19. </span>Difference in Differences<a class="headerlink" href="#difference-in-differences" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">18. </span>Difference in Differences<a class="headerlink" href="#difference-in-differences" title="Link to this heading">#</a></h1>
 <section id="recap-from-last-class">
-<h2><span class="section-number">19.1. </span>Recap From Last Class<a class="headerlink" href="#recap-from-last-class" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">18.1. </span>Recap From Last Class<a class="headerlink" href="#recap-from-last-class" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Regression Discontinuity, Instrumental Variables</p></li>
 </ul>
 </section>
 <section id="goals-for-today">
-<h2><span class="section-number">19.2. </span>Goals For Today<a class="headerlink" href="#goals-for-today" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">18.2. </span>Goals For Today<a class="headerlink" href="#goals-for-today" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <ol class="arabic simple">
 <li><p>Understand the intuition behind Differences in Differences (DiD).</p></li>
@@ -442,10 +441,10 @@
 </ol>
 </section>
 <section id="id1">
-<h2><span class="section-number">19.3. </span>Difference-in-Differences<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">18.3. </span>Difference-in-Differences<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 </section>
 <section id="consider-a-2x2-did">
-<h2><span class="section-number">19.4. </span>Consider a “2x2” DiD.<a class="headerlink" href="#consider-a-2x2-did" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">18.4. </span>Consider a “2x2” DiD.<a class="headerlink" href="#consider-a-2x2-did" title="Link to this heading">#</a></h2>
 <p>Let the outcomes $ Y_{g,t}(S, U) $ represent the observed values of an outcome variable, where:</p>
 <p>$$\begin{aligned}
 g=\left{\begin{array}{l}
@@ -467,7 +466,7 @@ S =\left{\begin{array}{l}
 </div></blockquote>
 <p>This 2x2 DiD is limited to two periods and two groups. Extending $t$ to include multiple time periods would enable a more comprehensive evaluation of parallel trends.</p>
 <section id="assumptions">
-<h3><span class="section-number">19.4.1. </span>Assumptions<a class="headerlink" href="#assumptions" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">18.4.1. </span>Assumptions<a class="headerlink" href="#assumptions" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Parallel Trends</strong>
 In the absence of treatment $S=0$, both groups would have followed similar trends over time.
@@ -480,7 +479,7 @@ $$\mathbb{E}[Y_{1,1}(S =0,U)−Y_{1,0}(S =0,U)]
 </ul>
 </section>
 <section id="identifying-the-average-treatment-on-the-treated-att">
-<h3><span class="section-number">19.4.2. </span>Identifying the Average Treatment on the Treated (ATT)<a class="headerlink" href="#identifying-the-average-treatment-on-the-treated-att" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">18.4.2. </span>Identifying the Average Treatment on the Treated (ATT)<a class="headerlink" href="#identifying-the-average-treatment-on-the-treated-att" title="Link to this heading">#</a></h3>
 <p>There are two equivalent ways to estimate the ATT under the parallel trends assumption:</p>
 <ol class="arabic simple">
 <li><p><strong>Difference in Means (Naïve DiD)</strong>.
@@ -524,7 +523,7 @@ $$</p>
 <p>## 3. Motivating Case: Do increases in the minimum wage affect employment?</p>
 </section>
 <section id="research-question-does-raising-the-minimum-wage-help-workers-by-improving-their-earnings-or-does-it-inadvertently-harm-them-by-reducing-job-opportunities">
-<h3><span class="section-number">19.4.3. </span>Research Question: Does raising the minimum wage help workers by improving their earnings, or does it inadvertently harm them by reducing job opportunities?<a class="headerlink" href="#research-question-does-raising-the-minimum-wage-help-workers-by-improving-their-earnings-or-does-it-inadvertently-harm-them-by-reducing-job-opportunities" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">18.4.3. </span>Research Question: Does raising the minimum wage help workers by improving their earnings, or does it inadvertently harm them by reducing job opportunities?<a class="headerlink" href="#research-question-does-raising-the-minimum-wage-help-workers-by-improving-their-earnings-or-does-it-inadvertently-harm-them-by-reducing-job-opportunities" title="Link to this heading">#</a></h3>
 <p>There is an ambiguity about whether increasing the minimum wage is truly beneficial for workers overall:</p>
 <ul class="simple">
 <li><p>raising the minimum wage directly increases earnings for workers currently earning less than the new minimum, improving their financial stability.</p></li>
@@ -533,7 +532,7 @@ $$</p>
 <p>On 1992 New Jersey increased the minimum wage. <strong>What was the effect of this rise on employment in fast-food restaurants?</strong> <a class="reference external" href="https://davidcard.berkeley.edu/papers/njmin-aer.pdf">Card and Krueger (1994)</a> investigate this!</p>
 </section>
 <section id="model-setup">
-<h3><span class="section-number">19.4.4. </span>Model Setup<a class="headerlink" href="#model-setup" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">18.4.4. </span>Model Setup<a class="headerlink" href="#model-setup" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Unit of observation $g$: Restaurant, identified by location (NJ, 1 or PA, 0).</p></li>
 <li><p>Time $t$: Period of observation (Pre-1992, 0 or Post-1992, 1).</p></li>
@@ -542,7 +541,7 @@ $$</p>
 </ul>
 </section>
 <section id="the-challenge">
-<h3><span class="section-number">19.4.5. </span>The challenge<a class="headerlink" href="#the-challenge" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">18.4.5. </span>The challenge<a class="headerlink" href="#the-challenge" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Do we know the counterfactual? Meaning the employment rate in NJ had it not implemented the minimum wage policy?
 $$ATT = \mathbb{E}[Y_{1,1}(S =1,U)−Y_{1,1}(S =0,U)]$$
@@ -618,7 +617,7 @@ $$\mathbb{E}\big[\text{Employ.}|\text{NJ}, \text{Post-92}\big]-\mathbb{E}\big[\t
 </div>
 </section>
 <section id="data">
-<h3><span class="section-number">19.4.6. </span>Data<a class="headerlink" href="#data" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">18.4.6. </span>Data<a class="headerlink" href="#data" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -1756,7 +1755,7 @@ memory usage: 102.6 KB
 </div>
 </section>
 <section id="solution">
-<h3><span class="section-number">19.4.7. </span>Solution?<a class="headerlink" href="#solution" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">18.4.7. </span>Solution?<a class="headerlink" href="#solution" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Compare how the difference in employment before and after 1992 differs b/w NJ and PA?
 $$\text{DiD} = \big(\mathbb{E}\big[\text{Employ.}|\text{NJ}, \text{Post-92}\big]-\mathbb{E}\big[\text{Employ.}|\text{NJ}, \text{Pre-92}\big]\big) - \big(\mathbb{E}\big[\text{Employ.}|\text{PA}, \text{Post-92}\big] - \mathbb{E}\big[\text{Employ.}|\text{PA}, \text{Pre-92}\big]]\big)$$</p>
@@ -1835,7 +1834,7 @@ $$\text{DiD} = \big(\mathbb{E}\big[\text{Employ.}|\text{NJ}, \text{Post-92}\big]
 </div>
 </section>
 <section id="regression-estimation">
-<h3><span class="section-number">19.4.8. </span>Regression estimation<a class="headerlink" href="#regression-estimation" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">18.4.8. </span>Regression estimation<a class="headerlink" href="#regression-estimation" title="Link to this heading">#</a></h3>
 <p>As shown above, we could also frame our problme in terms of a regression problem, where:</p>
 <ol class="arabic">
 <li><p><strong>Group variable ($G$)</strong>:<br />
@@ -2038,7 +2037,7 @@ Notes:
 </div>
 </section>
 <section id="does-the-parallel-trends-hold">
-<h3><span class="section-number">19.4.9. </span>Does the Parallel Trends Hold?<a class="headerlink" href="#does-the-parallel-trends-hold" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">18.4.9. </span>Does the Parallel Trends Hold?<a class="headerlink" href="#does-the-parallel-trends-hold" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p>Are the treated and untreated groups fundamentally “similar”?</p></li>
 <li><p>Why did the treated group get the treatment (and why didn’t
@@ -2047,7 +2046,7 @@ the untreated group)?</p></li>
 <li><p>Were there parallel trends in the pre-period?</p></li>
 </ol>
 <section id="fallback">
-<h4><span class="section-number">19.4.9.1. </span>Fallback<a class="headerlink" href="#fallback" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">18.4.9.1. </span>Fallback<a class="headerlink" href="#fallback" title="Link to this heading">#</a></h4>
 <p>What if the Parallel Trends Assumption Does Not Hold? (We reject the parallel trends assumption)</p>
 <ol class="arabic simple">
 <li><p>matching/synthetic control method (weighted control groups to mimic the treated group)</p></li>
@@ -2057,7 +2056,7 @@ the untreated group)?</p></li>
 </section>
 </section>
 <section id="time-varying-treatment-effects">
-<h3><span class="section-number">19.4.10. </span>Time Varying Treatment Effects<a class="headerlink" href="#time-varying-treatment-effects" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">18.4.10. </span>Time Varying Treatment Effects<a class="headerlink" href="#time-varying-treatment-effects" title="Link to this heading">#</a></h3>
 <p>Are the effects varying? Meaning the minimum wage increase on employment varies over time, initially increasing employment but eventually decreasing as firms substitute workers with machines?</p>
 <p>Our model can capture this dynamic with multiple time periods $t$:</p>
 <p>$$
@@ -2071,30 +2070,30 @@ $$</p>
 </ul>
 </section>
 <section id="recall-standard-errors-of-linear-regression">
-<h3><span class="section-number">19.4.11. </span>(Recall) Standard Errors of Linear Regression<a class="headerlink" href="#recall-standard-errors-of-linear-regression" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">18.4.11. </span>(Recall) Standard Errors of Linear Regression<a class="headerlink" href="#recall-standard-errors-of-linear-regression" title="Link to this heading">#</a></h3>
 <section id="robust-standard-errors">
-<h4><span class="section-number">19.4.11.1. </span>Robust Standard Errors<a class="headerlink" href="#robust-standard-errors" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">18.4.11.1. </span>Robust Standard Errors<a class="headerlink" href="#robust-standard-errors" title="Link to this heading">#</a></h4>
 <p>$$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b7a9dbcc-3a37-44ae-9bcd-64d03333c4e2">
-<span class="eqno">(19.1)<a class="headerlink" href="#equation-b7a9dbcc-3a37-44ae-9bcd-64d03333c4e2" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-84eeee81-f2db-4573-958d-d8a3bce48137">
+<span class="eqno">(18.1)<a class="headerlink" href="#equation-84eeee81-f2db-4573-958d-d8a3bce48137" title="Permalink to this equation">#</a></span>\[\begin{align}
 V_{\text {robust }}=\left(X^{T} X\right)^{-1} X^{T} \Omega X\left(X^{T} X\right)^{-1},
 \end{align}\]</div>
 <p>$$</p>
 </section>
 <section id="cluster-robust-standard-errors">
-<h4><span class="section-number">19.4.11.2. </span>Cluster-Robust Standard Errors<a class="headerlink" href="#cluster-robust-standard-errors" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">18.4.11.2. </span>Cluster-Robust Standard Errors<a class="headerlink" href="#cluster-robust-standard-errors" title="Link to this heading">#</a></h4>
 <p>Recall: iid residuals are not realistic in most cases, but we can assume the residuals are <strong>clustered</strong> by the group, which means between-group correlation is zero, but within-group correlation is positive. Block diagonal matrix $\Omega$.</p>
 <p>$$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-365e6a55-4641-40da-87ee-2a0a048e84ab">
-<span class="eqno">(19.2)<a class="headerlink" href="#equation-365e6a55-4641-40da-87ee-2a0a048e84ab" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-442f1ead-51cf-46bb-b25c-b61a1d047da9">
+<span class="eqno">(18.2)<a class="headerlink" href="#equation-442f1ead-51cf-46bb-b25c-b61a1d047da9" title="Permalink to this equation">#</a></span>\[\begin{align}
 V_{\text {clustered }}=\left(X^{T} X\right)^{-1}\left(\sum_{c=1}^C X_c^{T} \hat{u}_c \hat{u}_c^{T} X_c\right)\left(X^{T} X\right)^{-1}
 \end{align}\]</div>
 <p>$$
 where $\Omega$ is a block diagonal matrix with each block being the covariance matrix of the residuals within each cluster.</p>
 <p>you need to provide the clusters.</p>
 <p>$$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a0b84aa0-8e43-4908-9f5b-e304b9afd65a">
-<span class="eqno">(19.3)<a class="headerlink" href="#equation-a0b84aa0-8e43-4908-9f5b-e304b9afd65a" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-a3b69434-5fd3-4b20-93cd-27a0692463bd">
+<span class="eqno">(18.3)<a class="headerlink" href="#equation-a3b69434-5fd3-4b20-93cd-27a0692463bd" title="Permalink to this equation">#</a></span>\[\begin{align}
 \operatorname{Cov}\left(Y_{i, g, t}, Y_{i, g, t+1}\right)&gt;0
 \end{align}\]</div>
 <p>$$</p>
@@ -2106,12 +2105,12 @@ where $\Omega$ is a block diagonal matrix with each block being the covariance m
 </ul>
 </section>
 <section id="permutation-test">
-<h4><span class="section-number">19.4.11.3. </span>Permutation Test<a class="headerlink" href="#permutation-test" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">18.4.11.3. </span>Permutation Test<a class="headerlink" href="#permutation-test" title="Link to this heading">#</a></h4>
 </section>
 </section>
 </section>
 <section id="path-forward">
-<h2><span class="section-number">19.5. </span>3. Path Forward<a class="headerlink" href="#path-forward" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">18.5. </span>3. Path Forward<a class="headerlink" href="#path-forward" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Recap of methods learned in this class, and wrap up!</p></li>
 </ul>
@@ -2170,7 +2169,7 @@ https://www.jstor.org/stable/2677856.</p></li>
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">13. </span>Instrumental Variables (Continued) and Intro to Regression Discontinuity (RDD)</p>
+        <p class="prev-next-title"><span class="section-number">12. </span>Instrumental Variables (Continued) and Intro to Regression Discontinuity (RDD)</p>
       </div>
     </a>
     <a class="right-next"
@@ -2178,7 +2177,7 @@ https://www.jstor.org/stable/2677856.</p></li>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">20. </span>Final Course Review</p>
+        <p class="prev-next-title"><span class="section-number">19. </span>Final Review</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -2199,32 +2198,32 @@ https://www.jstor.org/stable/2677856.</p></li>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recap-from-last-class">19.1. Recap From Last Class</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-for-today">19.2. Goals For Today</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">19.3. Difference-in-Differences</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#consider-a-2x2-did">19.4. Consider a “2x2” DiD.</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assumptions">19.4.1. Assumptions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identifying-the-average-treatment-on-the-treated-att">19.4.2. Identifying the Average Treatment on the Treated (ATT)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#research-question-does-raising-the-minimum-wage-help-workers-by-improving-their-earnings-or-does-it-inadvertently-harm-them-by-reducing-job-opportunities">19.4.3. Research Question: Does raising the minimum wage help workers by improving their earnings, or does it inadvertently harm them by reducing job opportunities?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-setup">19.4.4. Model Setup</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-challenge">19.4.5. The challenge</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data">19.4.6. Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">19.4.7. Solution?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-estimation">19.4.8. Regression estimation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#does-the-parallel-trends-hold">19.4.9. Does the Parallel Trends Hold?</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#fallback">19.4.9.1. Fallback</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recap-from-last-class">18.1. Recap From Last Class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-for-today">18.2. Goals For Today</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">18.3. Difference-in-Differences</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#consider-a-2x2-did">18.4. Consider a “2x2” DiD.</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assumptions">18.4.1. Assumptions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identifying-the-average-treatment-on-the-treated-att">18.4.2. Identifying the Average Treatment on the Treated (ATT)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#research-question-does-raising-the-minimum-wage-help-workers-by-improving-their-earnings-or-does-it-inadvertently-harm-them-by-reducing-job-opportunities">18.4.3. Research Question: Does raising the minimum wage help workers by improving their earnings, or does it inadvertently harm them by reducing job opportunities?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-setup">18.4.4. Model Setup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-challenge">18.4.5. The challenge</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data">18.4.6. Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">18.4.7. Solution?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-estimation">18.4.8. Regression estimation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#does-the-parallel-trends-hold">18.4.9. Does the Parallel Trends Hold?</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#fallback">18.4.9.1. Fallback</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-varying-treatment-effects">19.4.10. Time Varying Treatment Effects</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recall-standard-errors-of-linear-regression">19.4.11. (Recall) Standard Errors of Linear Regression</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robust-standard-errors">19.4.11.1. Robust Standard Errors</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cluster-robust-standard-errors">19.4.11.2. Cluster-Robust Standard Errors</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#permutation-test">19.4.11.3. Permutation Test</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-varying-treatment-effects">18.4.10. Time Varying Treatment Effects</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recall-standard-errors-of-linear-regression">18.4.11. (Recall) Standard Errors of Linear Regression</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robust-standard-errors">18.4.11.1. Robust Standard Errors</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cluster-robust-standard-errors">18.4.11.2. Cluster-Robust Standard Errors</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#permutation-test">18.4.11.3. Permutation Test</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#path-forward">19.5. 3. Path Forward</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#path-forward">18.5. 3. Path Forward</a></li>
 </ul>
   </nav></div>
 

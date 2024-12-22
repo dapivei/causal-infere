@@ -64,7 +64,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'sections/4_Statistics_and_Experiments';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="6. Experiments (Cont.)" href="5_Experiments.html" />
+    <link rel="next" title="5. Experiments (Cont.)" href="5_Experiments.html" />
     <link rel="prev" title="3. Probability, All Causes Model and Statistics" href="3_Probability_Statistics.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -174,22 +174,21 @@
 <li class="toctree-l1"><a class="reference internal" href="2_Probability_1-2.html">2. Probability</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3_Probability_Statistics.html">3. Probability, All Causes Model and Statistics</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">4. Hypothesis testing and Introduction to Experiments</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="5_Experiments.html">6. Experiments (Cont.)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="6_Regression_1-2.html">7. Regression</a></li>
-<li class="toctree-l1"><a class="reference internal" href="7_Natural_Experiments.html">8. Natural Experiments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="8_ML_and_Causality.html">9. The Interplay between Machine Learning and Causal Inference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="9_Matching.html">10. Matching</a></li>
-<li class="toctree-l1"><a class="reference internal" href="10_Instruments.html">11. Instrumental Variables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="11_Instruments_RDD.html">12. Instrumental Variables(Continued)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="12_RDD.html">13. Instrumental Variables (Continued) and Intro to Regression Discontinuity (RDD)</a></li>
-
+<li class="toctree-l1"><a class="reference internal" href="5_Experiments.html">5. Experiments (Cont.)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_Regression_1-2.html">6. Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7_Natural_Experiments.html">7. Natural Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8_ML_and_Causality.html">8. The Interplay between Machine Learning and Causal Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9_Matching.html">9. Matching</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_Instruments.html">10. Instrumental Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_Instruments_RDD.html">11. Instrumental Variables(Continued)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_RDD.html">12. Instrumental Variables (Continued) and Intro to Regression Discontinuity (RDD)</a></li>
 
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="13_Difference_in_Differences.html">19. Difference in Differences</a></li>
-<li class="toctree-l1"><a class="reference internal" href="14_Review.html">20. Final Course Review</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="13_Difference_in_Differences.html">18. Difference in Differences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14_Review.html">19. Final Review</a></li>
 
 
 </ul>
@@ -384,31 +383,25 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">4. Hypothesis testing and Introduction to Experiments</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recap-from-last-class">4.1. 0. Recap from last class</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-for-today">4.2. 1. Goals for today</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hypothesis-testing">4.3. 2. Hypothesis Testing</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recap-from-last-class">4.1. Recap from last class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-for-today">4.2. Goals for today</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hypothesis-testing">4.3. Hypothesis Testing</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-concepts">4.3.1. Key Concepts</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-simulate-a-dataset">4.3.1.1. a) Simulate a Dataset</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#b-define-our-hypothesis">4.3.1.2. b) Define our hypothesis</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#c-set-a-significance-level-alpha">4.3.1.3. c) Set a significance level $\alpha$</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#define-our-hypothesis">4.3.1.2. Define our hypothesis</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#set-a-significance-level-alpha">4.3.1.3. Set a significance level $\alpha$</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#d-compute-t-n">4.3.1.4. d) Compute $T_n$</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#e-define-the-critical-value-c">4.3.1.5. e) Define the critical value $c$</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#f-p-n">4.3.1.6. f) $p_n$</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#g-confidence-sets">4.3.1.7. g) Confidence Sets</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#define-the-critical-value-c">4.3.1.5. Define the critical value $c$</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#p-n">4.3.1.6. $p_n$</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#confidence-sets">4.3.1.7. Confidence Sets</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistics-final-recap">4.4. 3. Statistics (final recap)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistics-final-recap">4.4. Statistics (final recap)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments">4.5. Experiments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#path-forward">4.6. Path Forward</a></li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments">5. 3. Experiments</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#path-forward">5.1. 4. Path Forward</a></li>
-</ul>
-</li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -423,13 +416,13 @@
 <section id="hypothesis-testing-and-introduction-to-experiments">
 <h1><span class="section-number">4. </span>Hypothesis testing and Introduction to Experiments<a class="headerlink" href="#hypothesis-testing-and-introduction-to-experiments" title="Link to this heading">#</a></h1>
 <section id="recap-from-last-class">
-<h2><span class="section-number">4.1. </span>0. Recap from last class<a class="headerlink" href="#recap-from-last-class" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.1. </span>Recap from last class<a class="headerlink" href="#recap-from-last-class" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Conditional variance, weak law of large numbers, central limit theorem!</p></li>
 </ul>
 </section>
 <section id="goals-for-today">
-<h2><span class="section-number">4.2. </span>1. Goals for today<a class="headerlink" href="#goals-for-today" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.2. </span>Goals for today<a class="headerlink" href="#goals-for-today" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Review hypothesis testing.</p></li>
 <li><p>A final review of Statistics.</p></li>
@@ -437,7 +430,7 @@
 </ul>
 </section>
 <section id="hypothesis-testing">
-<h2><span class="section-number">4.3. </span>2. Hypothesis Testing<a class="headerlink" href="#hypothesis-testing" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.3. </span>Hypothesis Testing<a class="headerlink" href="#hypothesis-testing" title="Link to this heading">#</a></h2>
 <p>A key goal in causal inference is to make informed decisions based on sample data. Hypothesis testing helps us decide whether to <strong>accept</strong> or <strong>reject</strong> a claim about a population parameter based on evidence from our data.</p>
 <section id="key-concepts">
 <h3><span class="section-number">4.3.1. </span>Key Concepts<a class="headerlink" href="#key-concepts" title="Link to this heading">#</a></h3>
@@ -468,19 +461,6 @@ If the test statistic is greater than the $c$, we reject $H_0$ in favor of $H_1$
 <span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">stats</span>
 
 <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Math</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">stats</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Math</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;scipy&#39;
 </pre></div>
 </div>
 </div>
@@ -517,8 +497,8 @@ If the test statistic is greater than the $c$, we reject $H_0$ in favor of $H_1$
 </div>
 </div>
 </section>
-<section id="b-define-our-hypothesis">
-<h4><span class="section-number">4.3.1.2. </span>b) Define our hypothesis<a class="headerlink" href="#b-define-our-hypothesis" title="Link to this heading">#</a></h4>
+<section id="define-our-hypothesis">
+<h4><span class="section-number">4.3.1.2. </span>Define our hypothesis<a class="headerlink" href="#define-our-hypothesis" title="Link to this heading">#</a></h4>
 <p>Our null hypothesis ($H_0$) states that the population mean is equal to 8. The alternative hypothesis ($H_1$) suggests that the mean is different from this value.</p>
 <p>$$H_0: \mathbb{E}[X] =8, \quad H_1: \mathbb{E}[X] \neq 8.$$</p>
 <div class="cell docutils container">
@@ -529,8 +509,8 @@ If the test statistic is greater than the $c$, we reject $H_0$ in favor of $H_1$
 </div>
 </div>
 </section>
-<section id="c-set-a-significance-level-alpha">
-<h4><span class="section-number">4.3.1.3. </span>c) Set a significance level $\alpha$<a class="headerlink" href="#c-set-a-significance-level-alpha" title="Link to this heading">#</a></h4>
+<section id="set-a-significance-level-alpha">
+<h4><span class="section-number">4.3.1.3. </span>Set a significance level $\alpha$<a class="headerlink" href="#set-a-significance-level-alpha" title="Link to this heading">#</a></h4>
 <p>The significance level $\alpha$ is the threshold we set for deciding how much evidence we need to reject $H_0$. It represents the risk we are willing to accept for falsely rejecting the $H_0$ (Type I error). Common choices for 𝛼 are
 0.05 or
 0.01. This means we are willing to accept a 5% or 1% chance of making an error.</p>
@@ -581,8 +561,8 @@ $$</p>
 </div>
 </div>
 </section>
-<section id="e-define-the-critical-value-c">
-<h4><span class="section-number">4.3.1.5. </span>e) Define the critical value $c$<a class="headerlink" href="#e-define-the-critical-value-c" title="Link to this heading">#</a></h4>
+<section id="define-the-critical-value-c">
+<h4><span class="section-number">4.3.1.5. </span>Define the critical value $c$<a class="headerlink" href="#define-the-critical-value-c" title="Link to this heading">#</a></h4>
 <p>To determine the critical value $c$, we want to find the value such that:</p>
 <p>$$
 2\big(1 - \Phi(c)\big) = \alpha,
@@ -604,6 +584,16 @@ $$</p>
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:2: SyntaxWarning: invalid escape sequence &#39;\,&#39;
+&lt;&gt;:2: SyntaxWarning: invalid escape sequence &#39;\,&#39;
+&lt;&gt;:2: SyntaxWarning: invalid escape sequence &#39;\,&#39;
+&lt;&gt;:2: SyntaxWarning: invalid escape sequence &#39;\,&#39;
+/tmp/ipykernel_4005151/1471066836.py:2: SyntaxWarning: invalid escape sequence &#39;\,&#39;
+  display(Math(f&quot;\\text{{For }} \\alpha = {alpha}, \\text{{the critical value}} \, c \,\\text{{is}} \, {round(critical_value, 2)}&quot;))
+/tmp/ipykernel_4005151/1471066836.py:2: SyntaxWarning: invalid escape sequence &#39;\,&#39;
+  display(Math(f&quot;\\text{{For }} \\alpha = {alpha}, \\text{{the critical value}} \, c \,\\text{{is}} \, {round(critical_value, 2)}&quot;))
+</pre></div>
+</div>
 <div class="output text_latex math notranslate nohighlight">
 \[\displaystyle \text{For } \alpha = 0.05, \text{the critical value} \, c \,\text{is} \, 1.96\]</div>
 </div>
@@ -615,8 +605,8 @@ $$</p>
 P(T_n &gt; c) = \alpha.
 $$</p>
 </section>
-<section id="f-p-n">
-<h4><span class="section-number">4.3.1.6. </span>f) $p_n$<a class="headerlink" href="#f-p-n" title="Link to this heading">#</a></h4>
+<section id="p-n">
+<h4><span class="section-number">4.3.1.6. </span>$p_n$<a class="headerlink" href="#p-n" title="Link to this heading">#</a></h4>
 <p>To measure the strength of evidence against the null hypothesis ($H_0$), we estimate the p-value $\hat{p_n}$:</p>
 <p>$$
 \hat{p_n} = 2(1 - \Phi(T_n)).
@@ -655,7 +645,7 @@ $$</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TtestResult(statistic=-63.9636442573448, pvalue=0.0, df=999)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TtestResult(statistic=np.float64(-63.9636442573448), pvalue=np.float64(0.0), df=np.int64(999))
 </pre></div>
 </div>
 </div>
@@ -667,7 +657,7 @@ $$</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-1.962341461133449
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(-1.962341461133449)
 </pre></div>
 </div>
 </div>
@@ -679,14 +669,14 @@ $$</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.9623414611334487
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(1.9623414611334487)
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="g-confidence-sets">
-<h4><span class="section-number">4.3.1.7. </span>g) Confidence Sets<a class="headerlink" href="#g-confidence-sets" title="Link to this heading">#</a></h4>
+<section id="confidence-sets">
+<h4><span class="section-number">4.3.1.7. </span>Confidence Sets<a class="headerlink" href="#confidence-sets" title="Link to this heading">#</a></h4>
 <p>For a two-sided test, the confidence interval is given by:
 $$
 C_n = \left[\overline{X_n} \pm \frac{\hat{\sigma}_n}{\sqrt{n}} \Phi^{-1}\left(1 - \frac{\alpha}{2}\right)\right]
@@ -712,7 +702,7 @@ $$</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>95% Confidence Interval: (4.9380066375012746, 5.119989529965702)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>95% Confidence Interval: (np.float64(4.9380066375012746), np.float64(5.119989529965702))
 </pre></div>
 </div>
 </div>
@@ -740,14 +730,20 @@ $$</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/e543e99fb334fc19aa335590ee22a35ba05baad53debe9cd12a1fb8e4dea3b69.png" src="../_images/e543e99fb334fc19aa335590ee22a35ba05baad53debe9cd12a1fb8e4dea3b69.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:7: SyntaxWarning: invalid escape sequence &#39;\m&#39;
+&lt;&gt;:7: SyntaxWarning: invalid escape sequence &#39;\m&#39;
+/tmp/ipykernel_4005151/3690128830.py:7: SyntaxWarning: invalid escape sequence &#39;\m&#39;
+  plt.axvline(mu_0, color=&#39;blue&#39;, linestyle=&#39;-.&#39;, linewidth=1, label=&quot;Hypothesized Mean ($\mu = 8$)&quot;)
+</pre></div>
+</div>
+<img alt="../_images/b53fbe33c01d2b66d24c1d34599ed7b08b18563defbdde9df9fb11ff14d806b8.png" src="../_images/b53fbe33c01d2b66d24c1d34599ed7b08b18563defbdde9df9fb11ff14d806b8.png" />
 </div>
 </div>
 </section>
 </section>
 </section>
 <section id="statistics-final-recap">
-<h2><span class="section-number">4.4. </span>3. Statistics (final recap)<a class="headerlink" href="#statistics-final-recap" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.4. </span>Statistics (final recap)<a class="headerlink" href="#statistics-final-recap" title="Link to this heading">#</a></h2>
 <p>Consider the following example: estimating Instagram followers.</p>
 <ol class="arabic simple">
 <li><p><strong>Population Parameter ($\mu_x$)</strong>: The unknown true average number of Instagram followers for all NYU students.</p></li>
@@ -812,7 +808,13 @@ $$</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/b09c7666409e9d2c62d540cdbdfa1f1cdb3d74ae339f8d268651ab04af245977.png" src="../_images/b09c7666409e9d2c62d540cdbdfa1f1cdb3d74ae339f8d268651ab04af245977.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:16: SyntaxWarning: invalid escape sequence &#39;\m&#39;
+&lt;&gt;:16: SyntaxWarning: invalid escape sequence &#39;\m&#39;
+/tmp/ipykernel_4005151/3308747972.py:16: SyntaxWarning: invalid escape sequence &#39;\m&#39;
+  plt.axvline(mu_x, color=&#39;blue&#39;, linestyle=&#39;-.&#39;, linewidth=1, label=&quot;Hypothesized Population Mean ($\mu_x = 250$)&quot;)
+</pre></div>
+</div>
+<img alt="../_images/7b66297a58534dbe3eafda75466eeb8532cf561f955a618db3f11211af1d7458.png" src="../_images/7b66297a58534dbe3eafda75466eeb8532cf561f955a618db3f11211af1d7458.png" />
 </div>
 </div>
 <p><strong>Hypotheses</strong>:</p>
@@ -849,9 +851,8 @@ $$</p>
 <li><p><strong>Reject the Null Hypothesis</strong>: The data provides very strong evidence against the null hypothesis ($H_0: \mu = 150$). This means that it is highly unlikely that the true population mean is (150). There is strong evidence to suggest that the true population mean is significantly higher than (150).</p></li>
 </ul>
 </section>
-</section>
 <section id="experiments">
-<h1><span class="section-number">5. </span>3. Experiments<a class="headerlink" href="#experiments" title="Link to this heading">#</a></h1>
+<h2><span class="section-number">4.5. </span>Experiments<a class="headerlink" href="#experiments" title="Link to this heading">#</a></h2>
 <p>Let’s say we want to understand the effect of a job training program (S) on wages (Y) (example seen last lecture). To estimate this causal effect, the government launches a survey asking households if they’ve participated in job training programs through public libraries or other resources.</p>
 <blockquote>
 <div><p>Can we truly estimate causal effects from this data? How could unmeasured factors ($U$), influence our estimates? Consider how these factors can complicate our understanding of the true impact of job training on wages.</p>
@@ -911,7 +912,7 @@ $$</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/2a20c82032be3c954382ea6fb3c8712fbefaeaa9d6b2662c9187d840a159fb87.png" src="../_images/2a20c82032be3c954382ea6fb3c8712fbefaeaa9d6b2662c9187d840a159fb87.png" />
+<img alt="../_images/8fd9c6e9d75011085a3d835f2f03fd6be7153376f693fc7b9a0cc048c70ad3e8.png" src="../_images/8fd9c6e9d75011085a3d835f2f03fd6be7153376f693fc7b9a0cc048c70ad3e8.png" />
 </div>
 </div>
 <p>Here:</p>
@@ -976,7 +977,7 @@ $$</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ce90ede767ad96e2d22c6edf061ec990544893566396f183626ea9f776abc9da.png" src="../_images/ce90ede767ad96e2d22c6edf061ec990544893566396f183626ea9f776abc9da.png" />
+<img alt="../_images/7c961f401105950cafaf3b197125d2e2065ceaef2bf083c50ba6a64295f5a636.png" src="../_images/7c961f401105950cafaf3b197125d2e2065ceaef2bf083c50ba6a64295f5a636.png" />
 </div>
 </div>
 <p>After randomization, assuming perfect compliance and SUTVA:</p>
@@ -996,8 +997,9 @@ $$</p>
 <p>$$
 ATE = E[Y(S = 1, U) | S = 1] - E[Y(S = 0, U) | S = 0].
 $$</p>
+</section>
 <section id="path-forward">
-<h2><span class="section-number">5.1. </span>4. Path Forward<a class="headerlink" href="#path-forward" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.6. </span>Path Forward<a class="headerlink" href="#path-forward" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Next time, we will:</p>
 <ul>
@@ -1060,7 +1062,7 @@ $$</p>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">6. </span>Experiments (Cont.)</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Experiments (Cont.)</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1081,31 +1083,25 @@ $$</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">4. Hypothesis testing and Introduction to Experiments</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recap-from-last-class">4.1. 0. Recap from last class</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-for-today">4.2. 1. Goals for today</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hypothesis-testing">4.3. 2. Hypothesis Testing</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recap-from-last-class">4.1. Recap from last class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-for-today">4.2. Goals for today</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hypothesis-testing">4.3. Hypothesis Testing</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-concepts">4.3.1. Key Concepts</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-simulate-a-dataset">4.3.1.1. a) Simulate a Dataset</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#b-define-our-hypothesis">4.3.1.2. b) Define our hypothesis</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#c-set-a-significance-level-alpha">4.3.1.3. c) Set a significance level $\alpha$</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#define-our-hypothesis">4.3.1.2. Define our hypothesis</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#set-a-significance-level-alpha">4.3.1.3. Set a significance level $\alpha$</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#d-compute-t-n">4.3.1.4. d) Compute $T_n$</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#e-define-the-critical-value-c">4.3.1.5. e) Define the critical value $c$</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#f-p-n">4.3.1.6. f) $p_n$</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#g-confidence-sets">4.3.1.7. g) Confidence Sets</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#define-the-critical-value-c">4.3.1.5. Define the critical value $c$</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#p-n">4.3.1.6. $p_n$</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#confidence-sets">4.3.1.7. Confidence Sets</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistics-final-recap">4.4. 3. Statistics (final recap)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistics-final-recap">4.4. Statistics (final recap)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments">4.5. Experiments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#path-forward">4.6. Path Forward</a></li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments">5. 3. Experiments</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#path-forward">5.1. 4. Path Forward</a></li>
-</ul>
-</li>
-</ul>
-
   </nav></div>
 
 </div></div>

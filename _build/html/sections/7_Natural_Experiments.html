@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>8. Natural Experiments &#8212; Causal Inference for Data Science</title>
+    <title>7. Natural Experiments &#8212; Causal Inference for Data Science</title>
   
   
   
@@ -64,8 +64,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'sections/7_Natural_Experiments';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="9. The Interplay between Machine Learning and Causal Inference" href="8_ML_and_Causality.html" />
-    <link rel="prev" title="7. Regression" href="6_Regression_1-2.html" />
+    <link rel="next" title="8. The Interplay between Machine Learning and Causal Inference" href="8_ML_and_Causality.html" />
+    <link rel="prev" title="6. Regression" href="6_Regression_1-2.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -174,22 +174,21 @@
 <li class="toctree-l1"><a class="reference internal" href="2_Probability_1-2.html">2. Probability</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3_Probability_Statistics.html">3. Probability, All Causes Model and Statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="4_Statistics_and_Experiments.html">4. Hypothesis testing and Introduction to Experiments</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="5_Experiments.html">6. Experiments (Cont.)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="6_Regression_1-2.html">7. Regression</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">8. Natural Experiments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="8_ML_and_Causality.html">9. The Interplay between Machine Learning and Causal Inference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="9_Matching.html">10. Matching</a></li>
-<li class="toctree-l1"><a class="reference internal" href="10_Instruments.html">11. Instrumental Variables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="11_Instruments_RDD.html">12. Instrumental Variables(Continued)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="12_RDD.html">13. Instrumental Variables (Continued) and Intro to Regression Discontinuity (RDD)</a></li>
-
+<li class="toctree-l1"><a class="reference internal" href="5_Experiments.html">5. Experiments (Cont.)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_Regression_1-2.html">6. Regression</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">7. Natural Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8_ML_and_Causality.html">8. The Interplay between Machine Learning and Causal Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9_Matching.html">9. Matching</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_Instruments.html">10. Instrumental Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_Instruments_RDD.html">11. Instrumental Variables(Continued)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_RDD.html">12. Instrumental Variables (Continued) and Intro to Regression Discontinuity (RDD)</a></li>
 
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="13_Difference_in_Differences.html">19. Difference in Differences</a></li>
-<li class="toctree-l1"><a class="reference internal" href="14_Review.html">20. Final Course Review</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="13_Difference_in_Differences.html">18. Difference in Differences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14_Review.html">19. Final Review</a></li>
 
 
 </ul>
@@ -384,24 +383,24 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#causality-from-observational-data">8.1. Causality from Observational Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">8.2. 1. Natural Experiments</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-v-s-non-random-assignment">8.2.1. Random v.s. Non-random Assignment</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study-dutch-postcode-lottery">8.2.2. Case Study: Dutch Postcode Lottery</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#causality-from-observational-data">7.1. Causality from Observational Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">7.2. 1. Natural Experiments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-v-s-non-random-assignment">7.2.1. Random v.s. Non-random Assignment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study-dutch-postcode-lottery">7.2.2. Case Study: Dutch Postcode Lottery</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#control-variables-preview-and-review">8.3. Control Variables (Preview) and Review</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#independence-recap">8.3.1. 2.1 Independence Recap</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-independence">8.3.2. 2.2 Conditional Independence</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#revisiting-revisiting-all-causes-model">8.3.3. Revisiting -  Revisiting All Causes Model</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#definition">8.3.3.1. Definition</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">8.3.3.2. 2.3.2 Simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#control-variables-preview-and-review">7.3. Control Variables (Preview) and Review</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#independence-recap">7.3.1. 2.1 Independence Recap</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-independence">7.3.2. 2.2 Conditional Independence</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#revisiting-revisiting-all-causes-model">7.3.3. Revisiting -  Revisiting All Causes Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#definition">7.3.3.1. Definition</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">7.3.3.2. 2.3.2 Simulation</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-topics-for-midterm">8.4. 3. Other Topics for Midterm</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#good-luck-on-your-midterm-next-week">8.5. Good luck on your midterm next week!</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-topics-for-midterm">7.4. 3. Other Topics for Midterm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#good-luck-on-your-midterm-next-week">7.5. Good luck on your midterm next week!</a></li>
 </ul>
             </nav>
         </div>
@@ -417,12 +416,12 @@
 <p><a class="reference external" href="https://colab.research.google.com/github/dapivei/causal-infere/blob/main/sections/7_Natural_Experiments.ipynb"><img alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 </div>
 <section id="natural-experiments">
-<h1><span class="section-number">8. </span>Natural Experiments<a class="headerlink" href="#natural-experiments" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">7. </span>Natural Experiments<a class="headerlink" href="#natural-experiments" title="Link to this heading">#</a></h1>
 <section id="causality-from-observational-data">
-<h2><span class="section-number">8.1. </span>Causality from Observational Data<a class="headerlink" href="#causality-from-observational-data" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.1. </span>Causality from Observational Data<a class="headerlink" href="#causality-from-observational-data" title="Link to this heading">#</a></h2>
 <p>Experiments / Random control trials (RCT) are often referred as the gold standards for causality. We can easily establish the important independence assumption by randomizing treatments in experiments:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1dcfdbba-6754-420b-b137-b37aed8ce545">
-<span class="eqno">(8.1)<a class="headerlink" href="#equation-1dcfdbba-6754-420b-b137-b37aed8ce545" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-3ee9d52a-6eac-4318-8b39-67ee059b37a1">
+<span class="eqno">(7.1)<a class="headerlink" href="#equation-3ee9d52a-6eac-4318-8b39-67ee059b37a1" title="Permalink to this equation">#</a></span>\[\begin{equation}
 S \perp U
 \end{equation}\]</div>
 <p>However, this is not always possible, and experiments are expensive.</p>
@@ -440,10 +439,10 @@ S \perp U
 </ol>
 </section>
 <section id="id1">
-<h2><span class="section-number">8.2. </span>1. Natural Experiments<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.2. </span>1. Natural Experiments<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>Sometimes, natural processes give us a treatment that behaves “as-if” random. This allows us to establish the experimental assumption:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a8658c21-2c86-4c64-848f-d45ebb35f47f">
-<span class="eqno">(8.2)<a class="headerlink" href="#equation-a8658c21-2c86-4c64-848f-d45ebb35f47f" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-7775e9a4-ec23-4300-8c77-171d13fa2b85">
+<span class="eqno">(7.2)<a class="headerlink" href="#equation-7775e9a4-ec23-4300-8c77-171d13fa2b85" title="Permalink to this equation">#</a></span>\[\begin{equation}
 S \perp U
 \end{equation}\]</div>
 <p>We would still need SUTVA and perfect compliance (compliance with the natural process of assigning treatment). Then, everything else follows from the process of estimating effects from experiments.</p>
@@ -454,7 +453,7 @@ S \perp U
 <li><p>More?</p></li>
 </ul>
 <section id="random-v-s-non-random-assignment">
-<h3><span class="section-number">8.2.1. </span>Random v.s. Non-random Assignment<a class="headerlink" href="#random-v-s-non-random-assignment" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">7.2.1. </span>Random v.s. Non-random Assignment<a class="headerlink" href="#random-v-s-non-random-assignment" title="Link to this heading">#</a></h3>
 <p>First, we can see what random assignment v.s. non-random assignment looks like through the following example.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -518,8 +517,8 @@ Non-random assignment
 </div>
 </div>
 <p>Will the second example pass the balance test?</p>
-<div class="amsmath math notranslate nohighlight" id="equation-bad88647-8aa6-4a9f-b0b3-8dbdab11b0ff">
-<span class="eqno">(8.3)<a class="headerlink" href="#equation-bad88647-8aa6-4a9f-b0b3-8dbdab11b0ff" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-4d25e015-f9a0-417d-b231-c5783f5bb73d">
+<span class="eqno">(7.3)<a class="headerlink" href="#equation-4d25e015-f9a0-417d-b231-c5783f5bb73d" title="Permalink to this equation">#</a></span>\[\begin{equation}
 p(U|S=1) = p(U|S=0)
 \end{equation}\]</div>
 <div class="cell docutils container">
@@ -556,7 +555,7 @@ Name: confounder, dtype: float64
 </div>
 </section>
 <section id="case-study-dutch-postcode-lottery">
-<h3><span class="section-number">8.2.2. </span>Case Study: Dutch Postcode Lottery<a class="headerlink" href="#case-study-dutch-postcode-lottery" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">7.2.2. </span>Case Study: Dutch Postcode Lottery<a class="headerlink" href="#case-study-dutch-postcode-lottery" title="Link to this heading">#</a></h3>
 <p>A famous natural experiment is the Dutch Postcode Lottery. In this lottery, neighborhoods (postal codes) are chosen at random, and everyone in the chosen postal code wins some amount of money.</p>
 <p>This creates an “as-if” random treatment group (winners) and a control group (non-winners), allowing us to estimate the causal effect of winning the lottery on spending behavior.</p>
 <p>Take-home Exercise: Download the real data file <code class="docutils literal notranslate"><span class="pre">FinalAnon.dta</span></code> from https://www.aeaweb.org/articles?id=10.1257/aer.101.5.2226, and run the following code sample from class. Recreate the balance test!</p>
@@ -572,14 +571,69 @@ Name: confounder, dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">statsmodels.formula.api</span> <span class="k">as</span> <span class="nn">sm</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">lotto</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_stata</span><span class="p">(</span><span class="s1">&#39;FinalAnon.dta&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">statsmodels.formula.api</span> <span class="k">as</span> <span class="nn">sm</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">lotto</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_stata</span><span class="p">(</span><span class="s1">&#39;FinalAnon.dta&#39;</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">lotto</span>
 
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;statsmodels&#39;
+<span class="nn">File ~/.local/lib/python3.12/site-packages/pandas/io/stata.py:2109,</span> in <span class="ni">read_stata</span><span class="nt">(filepath_or_buffer, convert_dates, convert_categoricals, index_col, convert_missing, preserve_dtypes, columns, order_categoricals, chunksize, iterator, compression, storage_options)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2106</span>     <span class="k">return</span> <span class="n">reader</span>
+<span class="g g-Whitespace">   </span><span class="mi">2108</span> <span class="k">with</span> <span class="n">reader</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">2109</span>     <span class="k">return</span> <span class="n">reader</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="nn">File ~/.local/lib/python3.12/site-packages/pandas/io/stata.py:1683,</span> in <span class="ni">StataReader.read</span><span class="nt">(self, nrows, convert_dates, convert_categoricals, index_col, convert_missing, preserve_dtypes, columns, order_categoricals)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1671</span> <span class="nd">@Appender</span><span class="p">(</span><span class="n">_read_method_doc</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1672</span> <span class="k">def</span> <span class="nf">read</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1673</span>     <span class="bp">self</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1681</span>     <span class="n">order_categoricals</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1682</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DataFrame</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1683</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_ensure_open</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1685</span>     <span class="c1"># Handle options</span>
+<span class="g g-Whitespace">   </span><span class="mi">1686</span>     <span class="k">if</span> <span class="n">convert_dates</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+
+<span class="nn">File ~/.local/lib/python3.12/site-packages/pandas/io/stata.py:1175,</span> in <span class="ni">StataReader._ensure_open</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1171</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1172</span><span class="sd"> Ensure the file has been opened and its header data read.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1173</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1174</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;_path_or_buf&quot;</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">1175</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_open_file</span><span class="p">()</span>
+
+<span class="nn">File ~/.local/lib/python3.12/site-packages/pandas/io/stata.py:1188,</span> in <span class="ni">StataReader._open_file</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1181</span> <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_entered</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1182</span>     <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1183</span>         <span class="s2">&quot;StataReader is being used without using a context manager. &quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1184</span>         <span class="s2">&quot;Using StataReader as a context manager is the only supported method.&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1185</span>         <span class="ne">ResourceWarning</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1186</span>         <span class="n">stacklevel</span><span class="o">=</span><span class="n">find_stack_level</span><span class="p">(),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1187</span>     <span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1188</span> <span class="n">handles</span> <span class="o">=</span> <span class="n">get_handle</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1189</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_original_path_or_buf</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1190</span>     <span class="s2">&quot;rb&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1191</span>     <span class="n">storage_options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_storage_options</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1192</span>     <span class="n">is_text</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1193</span>     <span class="n">compression</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_compression</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1194</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1195</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">handles</span><span class="o">.</span><span class="n">handle</span><span class="p">,</span> <span class="s2">&quot;seekable&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">handles</span><span class="o">.</span><span class="n">handle</span><span class="o">.</span><span class="n">seekable</span><span class="p">():</span>
+<span class="g g-Whitespace">   </span><span class="mi">1196</span>     <span class="c1"># If the handle is directly seekable, use it without an extra copy.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1197</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_path_or_buf</span> <span class="o">=</span> <span class="n">handles</span><span class="o">.</span><span class="n">handle</span>
+
+<span class="nn">File ~/.local/lib/python3.12/site-packages/pandas/io/common.py:882,</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">873</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">874</span>             <span class="n">handle</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">875</span>             <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">878</span>             <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">879</span>         <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">880</span>     <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">881</span>         <span class="c1"># Binary mode</span>
+<span class="ne">--&gt; </span><span class="mi">882</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">883</span>     <span class="n">handles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">885</span> <span class="c1"># Convert BytesIO or file objects passed with an encoding</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;FinalAnon.dta&#39;
 </pre></div>
 </div>
 </div>
@@ -1191,17 +1245,17 @@ Name: confounder, dtype: float64
 </section>
 </section>
 <section id="control-variables-preview-and-review">
-<h2><span class="section-number">8.3. </span>Control Variables (Preview) and Review<a class="headerlink" href="#control-variables-preview-and-review" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.3. </span>Control Variables (Preview) and Review<a class="headerlink" href="#control-variables-preview-and-review" title="Link to this heading">#</a></h2>
 <p>PSA: control variables will not be on the midterm, and we will cover more on it after the midterm.</p>
 <p>If the data-generating processes were not naturally randomizing treatment, we can seek to adjust the population in the treatment and control groups.</p>
 <p>One adjustment method is through controlling or conditioning on other factors $C$ such that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-53ffbb94-0ad4-4eab-baa6-1ad2e6a29d4c">
-<span class="eqno">(8.4)<a class="headerlink" href="#equation-53ffbb94-0ad4-4eab-baa6-1ad2e6a29d4c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d9d13fcb-9d47-4d59-bdd2-d68c765da520">
+<span class="eqno">(7.4)<a class="headerlink" href="#equation-d9d13fcb-9d47-4d59-bdd2-d68c765da520" title="Permalink to this equation">#</a></span>\[\begin{equation}
 S \perp U \ | \ C
 \end{equation}\]</div>
 <p>In this case, we can say that $S$ and $U$ are <strong>conditionally independent</strong> given $C$.</p>
 <section id="independence-recap">
-<h3><span class="section-number">8.3.1. </span>2.1 Independence Recap<a class="headerlink" href="#independence-recap" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">7.3.1. </span>2.1 Independence Recap<a class="headerlink" href="#independence-recap" title="Link to this heading">#</a></h3>
 <p>Independence plays a central role in our arguments for the identification of causal parameters.</p>
 <p>$$
 P(X \in A, Y \in B) = P(X \in A)P(Y \in B)
@@ -1219,7 +1273,7 @@ $$</p>
 <p>However, the converse statement is false. Independence is not necessary for uncorrelatedness.</p>
 </section>
 <section id="conditional-independence">
-<h3><span class="section-number">8.3.2. </span>2.2 Conditional Independence<a class="headerlink" href="#conditional-independence" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">7.3.2. </span>2.2 Conditional Independence<a class="headerlink" href="#conditional-independence" title="Link to this heading">#</a></h3>
 <p>$$
 P(X \in A, Y \in B | Z) = P(X \in A|Z)P(Y \in B|Z)
 $$</p>
@@ -1276,19 +1330,19 @@ Covariance of dependent variables Y and Z condition on X = 9: -0.096520865877708
 <p>For more intuitive examples, feel free to check out https://www.andrew.cmu.edu/user/scheines/tutor/d-sep.html</p>
 </section>
 <section id="revisiting-revisiting-all-causes-model">
-<h3><span class="section-number">8.3.3. </span>Revisiting -  Revisiting All Causes Model<a class="headerlink" href="#revisiting-revisiting-all-causes-model" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">7.3.3. </span>Revisiting -  Revisiting All Causes Model<a class="headerlink" href="#revisiting-revisiting-all-causes-model" title="Link to this heading">#</a></h3>
 <p>We have actually covered control variables in Lab 3 if you remember.</p>
 <p>Let’s review some old concepts and revisit the example again with our new knowledge on regression and experiments.</p>
 <section id="definition">
-<h4><span class="section-number">8.3.3.1. </span>Definition<a class="headerlink" href="#definition" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">7.3.3.1. </span>Definition<a class="headerlink" href="#definition" title="Link to this heading">#</a></h4>
 <p>All causes model:</p>
 <p>$$Y(S, U)$$</p>
 <p>where $Y$ is the outcome, $S$ is the state of the world, and $U$ is other factors we observe that influence $Y$.</p>
 <p>Also, for simplicity, consider $S$ as a binary treatment variable (0 or 1).</p>
 <p>Causal quantities of interest:</p>
 <p>$$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b5697549-f0f0-43e7-a39c-bf44f045d589">
-<span class="eqno">(8.5)<a class="headerlink" href="#equation-b5697549-f0f0-43e7-a39c-bf44f045d589" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-34be13a8-ec1d-4eb4-b1c7-196002f99e3a">
+<span class="eqno">(7.5)<a class="headerlink" href="#equation-34be13a8-ec1d-4eb4-b1c7-196002f99e3a" title="Permalink to this equation">#</a></span>\[\begin{align}
 \text{ATE} &amp;= E[Y(S=1, U) - Y(S=0, U)]\\
 \text{ATT} &amp;= E[Y(S=1, U) - Y(S=0, U)|S=1]\\
 \text{ATU} &amp;= E[Y(S=1, U) - Y(S=0, U)|S=0]
@@ -1298,7 +1352,7 @@ Covariance of dependent variables Y and Z condition on X = 9: -0.096520865877708
 <p>Identification is the process where we reduce these equations involving unobserved variables to observed data.</p>
 </section>
 <section id="simulation">
-<h4><span class="section-number">8.3.3.2. </span>2.3.2 Simulation<a class="headerlink" href="#simulation" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">7.3.3.2. </span>2.3.2 Simulation<a class="headerlink" href="#simulation" title="Link to this heading">#</a></h4>
 <p>Using the old example, we will show how computing only association based on observational data does not give us the true underlying causal effect, and how <em>control variables</em> can help us identify these parameters.</p>
 <ul class="simple">
 <li><p>$Y$ is continuous income.</p></li>
@@ -1590,7 +1644,7 @@ Association for those with family_status = 0: 30308.08
 </section>
 </section>
 <section id="other-topics-for-midterm">
-<h2><span class="section-number">8.4. </span>3. Other Topics for Midterm<a class="headerlink" href="#other-topics-for-midterm" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.4. </span>3. Other Topics for Midterm<a class="headerlink" href="#other-topics-for-midterm" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>(Conditional/Joint) Distribution</p></li>
 <li><p>Expectation</p></li>
@@ -1625,7 +1679,7 @@ E[VS] &amp;= E\left[(U - E[U | S, C]) S \right] \\
 <p>Review session on Monday.</p>
 </section>
 <section id="good-luck-on-your-midterm-next-week">
-<h2><span class="section-number">8.5. </span>Good luck on your midterm next week!<a class="headerlink" href="#good-luck-on-your-midterm-next-week" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.5. </span>Good luck on your midterm next week!<a class="headerlink" href="#good-luck-on-your-midterm-next-week" title="Link to this heading">#</a></h2>
 </section>
 </section>
 
@@ -1665,7 +1719,7 @@ E[VS] &amp;= E\left[(U - E[U | S, C]) S \right] \\
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">7. </span>Regression</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>Regression</p>
       </div>
     </a>
     <a class="right-next"
@@ -1673,7 +1727,7 @@ E[VS] &amp;= E\left[(U - E[U | S, C]) S \right] \\
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">9. </span>The Interplay between Machine Learning and Causal Inference</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>The Interplay between Machine Learning and Causal Inference</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1694,24 +1748,24 @@ E[VS] &amp;= E\left[(U - E[U | S, C]) S \right] \\
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#causality-from-observational-data">8.1. Causality from Observational Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">8.2. 1. Natural Experiments</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-v-s-non-random-assignment">8.2.1. Random v.s. Non-random Assignment</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study-dutch-postcode-lottery">8.2.2. Case Study: Dutch Postcode Lottery</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#causality-from-observational-data">7.1. Causality from Observational Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">7.2. 1. Natural Experiments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-v-s-non-random-assignment">7.2.1. Random v.s. Non-random Assignment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study-dutch-postcode-lottery">7.2.2. Case Study: Dutch Postcode Lottery</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#control-variables-preview-and-review">8.3. Control Variables (Preview) and Review</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#independence-recap">8.3.1. 2.1 Independence Recap</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-independence">8.3.2. 2.2 Conditional Independence</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#revisiting-revisiting-all-causes-model">8.3.3. Revisiting -  Revisiting All Causes Model</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#definition">8.3.3.1. Definition</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">8.3.3.2. 2.3.2 Simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#control-variables-preview-and-review">7.3. Control Variables (Preview) and Review</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#independence-recap">7.3.1. 2.1 Independence Recap</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-independence">7.3.2. 2.2 Conditional Independence</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#revisiting-revisiting-all-causes-model">7.3.3. Revisiting -  Revisiting All Causes Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#definition">7.3.3.1. Definition</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">7.3.3.2. 2.3.2 Simulation</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-topics-for-midterm">8.4. 3. Other Topics for Midterm</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#good-luck-on-your-midterm-next-week">8.5. Good luck on your midterm next week!</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-topics-for-midterm">7.4. 3. Other Topics for Midterm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#good-luck-on-your-midterm-next-week">7.5. Good luck on your midterm next week!</a></li>
 </ul>
   </nav></div>
 
