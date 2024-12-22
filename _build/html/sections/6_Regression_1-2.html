@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>7. $$ \begin{array}{c} \textbf{INTRODUCTION TO CAUSAL INFERENCE}\\ \textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \ \textit{Center for Data Science, New York University} \\ \end{array} $$ &#8212; Causal Inference for Data Science</title>
+    <title>7. Regression &#8212; Causal Inference for Data Science</title>
   
   
   
@@ -64,7 +64,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'sections/6_Regression_1-2';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="13. Natural Experiments" href="7_Natural_Experiments.html" />
+    <link rel="next" title="8. Natural Experiments" href="7_Natural_Experiments.html" />
     <link rel="prev" title="6. Experiments (Cont.)" href="5_Experiments.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -176,62 +176,20 @@
 <li class="toctree-l1"><a class="reference internal" href="4_Statistics_and_Experiments.html">4. Hypothesis testing and Introduction to Experiments</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="5_Experiments.html">6. Experiments (Cont.)</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">7. $$
-\begin{array}{c}
-\textbf{INTRODUCTION TO CAUSAL INFERENCE}\\
-\textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \
-\textit{Center for Data Science, New York University} \\
-\end{array}
-$$</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">7. Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7_Natural_Experiments.html">8. Natural Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8_ML_and_Causality.html">9. The Interplay between Machine Learning and Causal Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9_Matching.html">10. Matching</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_Instruments.html">11. Instrumental Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_Instruments_RDD.html">12. Instrumental Variables(Continued)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_RDD.html">13. Instrumental Variables (Continued) and Intro to Regression Discontinuity (RDD)</a></li>
 
 
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="7_Natural_Experiments.html">13. Natural Experiments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="8_ML_and_Causality.html">14. The Interplay between Machine Learning and Causal Inference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="9_Matching.html">15. Matching</a></li>
-<li class="toctree-l1"><a class="reference internal" href="10_Instruments.html">16. $$
-\begin{array}{c}
-\textbf{INSTRUMENTAL VARIABLES}\
-\text(PART , I)\
-\textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \
-\textit{Center for Data Science, New York University} \\
-\textit{November 8, 2024}
-\end{array}
-$$</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="11_Instruments_RDD.html">18. Instrumental Variables(Continued)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="12_RDD.html">19. $$
-\begin{array}{c}
-\textbf{IV (Conitnued) / Intro to RDD}\
-\textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \
-\textit{Center for Data Science, New York University} \\
-\textit{November 15, 2024}
-\end{array}
-$$</a></li>
-
-
-
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="13_Difference_in_Differences.html">27. $$
-\begin{array}{c}
-\textbf{DIFFERENCE-IN-DIFFERENCES}\
-\\
-\textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \
-\textit{Center for Data Science, New York University} \\
-\textit{December 6, 2024}
-\end{array}
-$$</a></li>
-
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="14_Review.html">33. Final Course Review</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13_Difference_in_Differences.html">19. Difference in Differences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14_Review.html">20. Final Course Review</a></li>
 
 
 </ul>
@@ -416,13 +374,7 @@ $$</a></li>
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>$$
-\begin{array}{c}
-\textbf{INTRODUCTION TO CAUSAL INFERENCE}\\
-\textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \
-\textit{Center for Data Science, New York University} \\
-\end{array}
-$$</h1>
+    <h1>Regression</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -432,32 +384,20 @@ $$</h1>
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">7. $$
-\begin{array}{c}
-\textbf{INTRODUCTION TO CAUSAL INFERENCE}\\
-\textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \
-\textit{Center for Data Science, New York University} \\
-\end{array}
-$$</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#descriptive-regression">8. <a id="toc1_"></a><span class="xref myst">Descriptive Regression</span></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#vectorized-implementation-for-linear-regression">9. <a id="toc2_"></a><span class="xref myst">Vectorized implementation for linear regression</span></a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-a-lr-with-bias-to-a-lr-without-bias">9.1. Convert a LR with bias to a LR without bias</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#descriptive-regression">7.1. Descriptive Regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vectorized-implementation-for-linear-regression">7.2. Vectorized implementation for linear regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-a-lr-with-bias-to-a-lr-without-bias">7.3. Convert a LR with bias to a LR without bias</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kernel-regression">7.4. Kernel Regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#causal-regression">7.5. Causal Regression</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identification">7.5.1. Identification</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kernel-regression">10. <a id="toc3_"></a><span class="xref myst">Kernel Regression</span></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#causal-regression">11. <a id="toc4_"></a><span class="xref myst">Causal Regression</span></a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#identification">11.1. <a id="toc4_1_"></a><span class="xref myst">Identification</span></a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments">12. <a id="toc5_"></a><span class="xref myst">Experiments</span></a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-standard-errors">12.1. <a id="toc5_1_"></a><span class="xref myst">Regression Standard Errors</span></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clustered-standard-errors-liang-zeger-standard-errors">12.1.1. Clustered Standard Errors (Liang-Zeger standard errors)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments">7.6. Experiments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-standard-errors">7.7. Regression Standard Errors</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clustered-standard-errors-liang-zeger-standard-errors">7.7.1. Clustered Standard Errors (Liang-Zeger standard errors)</a></li>
 </ul>
 </li>
 </ul>
-</li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -471,60 +411,26 @@ $$</a></li>
   <div align="center">
 <p><a class="reference external" href="https://colab.research.google.com/github/dapivei/causal-infere/blob/main/sections/6_Regression_1-2.ipynb"><img alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 </div>
-<section id="begin-array-c-textbf-introduction-to-causal-inference-textbf-daniela-pinto-veizaga-xiang-pan-and-xiang-gao-textit-center-for-data-science-new-york-university-end-array">
-<h1><span class="section-number">7. </span>$$
-\begin{array}{c}
-\textbf{INTRODUCTION TO CAUSAL INFERENCE}\\
-\textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \
-\textit{Center for Data Science, New York University} \\
-\end{array}
-$$<a class="headerlink" href="#begin-array-c-textbf-introduction-to-causal-inference-textbf-daniela-pinto-veizaga-xiang-pan-and-xiang-gao-textit-center-for-data-science-new-york-university-end-array" title="Link to this heading">#</a></h1>
-<p>$$
-\begin{array}{c}
-\textbf{Week 6: Regression}
-\end{array}
-$$</p>
-<p><strong>Table of contents</strong><a id='toc0_'></a></p>
-<ul class="simple">
-<li><p><a class="reference internal" href="#toc1_"><span class="xref myst">Descriptive Regression</span></a></p></li>
-<li><p><a class="reference internal" href="#toc2_"><span class="xref myst">Vectorized implementation for linear regression</span></a></p></li>
-<li><p><a class="reference internal" href="#toc3_"><span class="xref myst">Kernel Regression</span></a></p></li>
-<li><p><a class="reference internal" href="#toc4_"><span class="xref myst">Causal Regression</span></a></p>
-<ul>
-<li><p><a class="reference internal" href="#toc4_1_"><span class="xref myst">Identification</span></a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#toc5_"><span class="xref myst">Experiments</span></a></p>
-<ul>
-<li><p><a class="reference internal" href="#toc5_1_"><span class="xref myst">Regression Standard Errors</span></a></p></li>
-</ul>
-</li>
-</ul>
-<!-- vscode-jupyter-toc-config
-	numbering=false
-	anchor=true
-	flat=false
-	minLevel=1
-	maxLevel=6
-	/vscode-jupyter-toc-config -->
-<!-- THIS CELL WILL BE REPLACED ON TOC UPDATE. DO NOT WRITE YOUR TEXT IN THIS CELL --></section>
+<section id="regression">
+<h1><span class="section-number">7. </span>Regression<a class="headerlink" href="#regression" title="Link to this heading">#</a></h1>
+<p>Descriptive regression versus causal regression</p>
 <section id="descriptive-regression">
-<h1><span class="section-number">8. </span><a id='toc1_'></a><a class="reference internal" href="#toc0_"><span class="xref myst">Descriptive Regression</span></a><a class="headerlink" href="#descriptive-regression" title="Link to this heading">#</a></h1>
-<div class="amsmath math notranslate nohighlight" id="equation-bb7673a2-e2a3-4498-a7e9-f002d731f093">
-<span class="eqno">(8.1)<a class="headerlink" href="#equation-bb7673a2-e2a3-4498-a7e9-f002d731f093" title="Permalink to this equation">#</a></span>\[\begin{align}
+<h2><span class="section-number">7.1. </span>Descriptive Regression<a class="headerlink" href="#descriptive-regression" title="Link to this heading">#</a></h2>
+<div class="amsmath math notranslate nohighlight" id="equation-c91e92a3-872b-4ff3-a250-3780234d269a">
+<span class="eqno">(7.1)<a class="headerlink" href="#equation-c91e92a3-872b-4ff3-a250-3780234d269a" title="Permalink to this equation">#</a></span>\[\begin{align}
 Y=\beta_0+\beta_1 X+\varepsilon
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-d7e30c0b-884d-4606-89b0-93a641780b67">
-<span class="eqno">(8.2)<a class="headerlink" href="#equation-d7e30c0b-884d-4606-89b0-93a641780b67" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d33adca7-d830-4681-a0b4-38c73043eae2">
+<span class="eqno">(7.2)<a class="headerlink" href="#equation-d33adca7-d830-4681-a0b4-38c73043eae2" title="Permalink to this equation">#</a></span>\[\begin{align}
 \min _{b_0, b_1} E\left[\left(Y-\left(b_0+b_1 X\right)\right)^2\right]
 \end{align}\]</div>
 <p>Residual:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-be9ced88-cf26-4191-9cb4-103cb591cf37">
-<span class="eqno">(8.3)<a class="headerlink" href="#equation-be9ced88-cf26-4191-9cb4-103cb591cf37" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-9c7abe66-4cb2-4bd1-ae8f-d195b934c9bd">
+<span class="eqno">(7.3)<a class="headerlink" href="#equation-9c7abe66-4cb2-4bd1-ae8f-d195b934c9bd" title="Permalink to this equation">#</a></span>\[\begin{align}
 \varepsilon \equiv Y-\left(\beta_0+\beta_1 X\right)
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-3c123f5d-06c9-4918-8d96-8c01affdb481">
-<span class="eqno">(8.4)<a class="headerlink" href="#equation-3c123f5d-06c9-4918-8d96-8c01affdb481" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-0702311f-e0f4-4512-b35a-87ce9e9fc030">
+<span class="eqno">(7.4)<a class="headerlink" href="#equation-0702311f-e0f4-4512-b35a-87ce9e9fc030" title="Permalink to this equation">#</a></span>\[\begin{align}
 \begin{aligned}
 &amp; Y=X^2 \\
 &amp; \beta_0+\beta_1 X=1
@@ -608,15 +514,16 @@ Y=\beta_0+\beta_1 X+\varepsilon
 </div>
 </section>
 <section id="vectorized-implementation-for-linear-regression">
-<h1><span class="section-number">9. </span><a id='toc2_'></a><a class="reference internal" href="#toc0_"><span class="xref myst">Vectorized implementation for linear regression</span></a><a class="headerlink" href="#vectorized-implementation-for-linear-regression" title="Link to this heading">#</a></h1>
+<h2><span class="section-number">7.2. </span>Vectorized implementation for linear regression<a class="headerlink" href="#vectorized-implementation-for-linear-regression" title="Link to this heading">#</a></h2>
+</section>
 <section id="convert-a-lr-with-bias-to-a-lr-without-bias">
-<h2><span class="section-number">9.1. </span>Convert a LR with bias to a LR without bias<a class="headerlink" href="#convert-a-lr-with-bias-to-a-lr-without-bias" title="Link to this heading">#</a></h2>
-<div class="amsmath math notranslate nohighlight" id="equation-a4ab18f1-75be-4502-ae92-ad073a8849f1">
-<span class="eqno">(9.1)<a class="headerlink" href="#equation-a4ab18f1-75be-4502-ae92-ad073a8849f1" title="Permalink to this equation">#</a></span>\[\begin{align}
+<h2><span class="section-number">7.3. </span>Convert a LR with bias to a LR without bias<a class="headerlink" href="#convert-a-lr-with-bias-to-a-lr-without-bias" title="Link to this heading">#</a></h2>
+<div class="amsmath math notranslate nohighlight" id="equation-3093cbf4-0bd9-441f-aea7-54d232fc8bdb">
+<span class="eqno">(7.5)<a class="headerlink" href="#equation-3093cbf4-0bd9-441f-aea7-54d232fc8bdb" title="Permalink to this equation">#</a></span>\[\begin{align}
 Y = \beta_0 + \beta_1 X + \varepsilon
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-b39f15b9-f9f3-4661-8904-7c2965f2f538">
-<span class="eqno">(9.2)<a class="headerlink" href="#equation-b39f15b9-f9f3-4661-8904-7c2965f2f538" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-48313adb-0b58-4820-bd9a-b5170ea034cb">
+<span class="eqno">(7.6)<a class="headerlink" href="#equation-48313adb-0b58-4820-bd9a-b5170ea034cb" title="Permalink to this equation">#</a></span>\[\begin{align}
 \boldsymbol{\beta}=\left[\begin{array}{c}
 \beta_0 \\
 \beta_1 \\
@@ -626,8 +533,8 @@ Y = \beta_0 + \beta_1 X + \varepsilon
 1 &amp; x_1 &amp; \ldots &amp; x_d
 \end{array}\right]
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-a253ad1d-5d74-4226-bbec-7a11472d01a5">
-<span class="eqno">(9.3)<a class="headerlink" href="#equation-a253ad1d-5d74-4226-bbec-7a11472d01a5" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-4dec1b27-d490-44c1-8665-758c842a74fa">
+<span class="eqno">(7.7)<a class="headerlink" href="#equation-4dec1b27-d490-44c1-8665-758c842a74fa" title="Permalink to this equation">#</a></span>\[\begin{align}
 Y = \mathbb{x}^{\top} \mathbb{\beta} + \varepsilon
 \end{align}\]</div>
 <div class="cell docutils container">
@@ -666,9 +573,8 @@ Y = \mathbb{x}^{\top} \mathbb{\beta} + \varepsilon
 </div>
 </div>
 </section>
-</section>
 <section id="kernel-regression">
-<h1><span class="section-number">10. </span><a id='toc3_'></a><a class="reference internal" href="#toc0_"><span class="xref myst">Kernel Regression</span></a><a class="headerlink" href="#kernel-regression" title="Link to this heading">#</a></h1>
+<h2><span class="section-number">7.4. </span>Kernel Regression<a class="headerlink" href="#kernel-regression" title="Link to this heading">#</a></h2>
 <p>If we know there is a non-linear relationship between X and Y, can we first map X to higher dimension ‘components’ and then apply linear regression?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -726,21 +632,21 @@ Y = \mathbb{x}^{\top} \mathbb{\beta} + \varepsilon
 <p>What neural network did? Map the input $X$ to a higher dimension representation $\phi(X)$, and then apply linear classifier/regressor.</p>
 </section>
 <section id="causal-regression">
-<h1><span class="section-number">11. </span><a id='toc4_'></a><a class="reference internal" href="#toc0_"><span class="xref myst">Causal Regression</span></a><a class="headerlink" href="#causal-regression" title="Link to this heading">#</a></h1>
+<h2><span class="section-number">7.5. </span>Causal Regression<a class="headerlink" href="#causal-regression" title="Link to this heading">#</a></h2>
 <p>If we assume the linear all-cause model,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-082f0162-7e22-41cc-a7ce-3c2a270c67e4">
-<span class="eqno">(11.1)<a class="headerlink" href="#equation-082f0162-7e22-41cc-a7ce-3c2a270c67e4" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-b52b300f-4485-4d12-b722-5a7213914c45">
+<span class="eqno">(7.8)<a class="headerlink" href="#equation-b52b300f-4485-4d12-b722-5a7213914c45" title="Permalink to this equation">#</a></span>\[\begin{align}
     Y (S, U) = \alpha_0 + \alpha_1 S +U
 \end{align}\]</div>
 <p>The causal residual is U. For causal interpretation, $\mathbb{E}[U] = 0$.</p>
 <p>If,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-bafdf4f8-b787-46c1-bd85-7213201764b1">
-<span class="eqno">(11.2)<a class="headerlink" href="#equation-bafdf4f8-b787-46c1-bd85-7213201764b1" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-7d61e437-9236-49d3-bee1-8b57c335a9c4">
+<span class="eqno">(7.9)<a class="headerlink" href="#equation-7d61e437-9236-49d3-bee1-8b57c335a9c4" title="Permalink to this equation">#</a></span>\[\begin{align}
     E (U) \neq 0
 \end{align}\]</div>
 <p>we redefine the</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a7ab6e2e-133e-4151-92fd-bb5f2b5e896c">
-<span class="eqno">(11.3)<a class="headerlink" href="#equation-a7ab6e2e-133e-4151-92fd-bb5f2b5e896c" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d05f6cd9-deaa-4619-b008-604381083dd1">
+<span class="eqno">(7.10)<a class="headerlink" href="#equation-d05f6cd9-deaa-4619-b008-604381083dd1" title="Permalink to this equation">#</a></span>\[\begin{align}
     &amp; Y (S, U) \\
     &amp;= \alpha_0 + \alpha_1 S +U \\
     &amp;= (\tilde{\alpha}_0 - \mathbb{E}[U]) + \alpha_1 S + \tilde{U} + \mathbb{E}[U] \\
@@ -749,25 +655,25 @@ Y = \mathbb{x}^{\top} \mathbb{\beta} + \varepsilon
 <p>Then we have the $\mathbb{E}[\tilde{U}] = 0$.</p>
 <p>Note:</p>
 <p>If we assume</p>
-<div class="amsmath math notranslate nohighlight" id="equation-611aa6b9-6567-4e02-85b6-01cb55130db3">
-<span class="eqno">(11.4)<a class="headerlink" href="#equation-611aa6b9-6567-4e02-85b6-01cb55130db3" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-f5e5b014-dc6c-48c4-a412-4783197b450b">
+<span class="eqno">(7.11)<a class="headerlink" href="#equation-f5e5b014-dc6c-48c4-a412-4783197b450b" title="Permalink to this equation">#</a></span>\[\begin{align}
 S \perp U
 \end{align}\]</div>
 <p>we can say $\mathbb{E}[SU] = 0$.</p>
 <section id="identification">
-<h2><span class="section-number">11.1. </span><a id='toc4_1_'></a><a class="reference internal" href="#toc0_"><span class="xref myst">Identification</span></a><a class="headerlink" href="#identification" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">7.5.1. </span>Identification<a class="headerlink" href="#identification" title="Link to this heading">#</a></h3>
 <p>For descriptive regression, we can always identify.</p>
 <p>For causal regression, we need to make assumptions ($S \perp U$).</p>
 <p>By transformation, we can have</p>
-<div class="amsmath math notranslate nohighlight" id="equation-192357b2-4dab-4a08-aa0c-6702e2c6b5c7">
-<span class="eqno">(11.5)<a class="headerlink" href="#equation-192357b2-4dab-4a08-aa0c-6702e2c6b5c7" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-ff86ce36-c757-45f0-9f26-b384a2ae0b32">
+<span class="eqno">(7.12)<a class="headerlink" href="#equation-ff86ce36-c757-45f0-9f26-b384a2ae0b32" title="Permalink to this equation">#</a></span>\[\begin{align}
     \mathbb{E}[U] = 0 \\
     \implies \mathbb{E}[Y - \beta_0 - \beta_1 X] = 0 \\
     \implies \mathbb{E}[Y] = \beta_0 + \beta_1 X \\
     \implies \beta_0 = \mathbb{E}[Y] - \beta_1 X
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-1a419d9c-c71d-4009-9c02-e966119d1e3b">
-<span class="eqno">(11.6)<a class="headerlink" href="#equation-1a419d9c-c71d-4009-9c02-e966119d1e3b" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-b09317e7-6511-44ea-b219-4786f914b872">
+<span class="eqno">(7.13)<a class="headerlink" href="#equation-b09317e7-6511-44ea-b219-4786f914b872" title="Permalink to this equation">#</a></span>\[\begin{align}
 E[X U] &amp;=0 \\
 \Rightarrow E\left[X\left(Y-\beta_0+\beta_1 X\right)\right] &amp;=0 \\
 E\left[X\left(Y-\left(E[Y]-\beta_1 E[X]\right)+\beta_1 X\right)\right] &amp;=0 &amp; (\beta_0 = E[Y] - \beta_1 E[X]) \\
@@ -775,51 +681,51 @@ E\left[X\left(Y-E[Y]+\beta_1(X-E[X])\right)\right] &amp; =0 \\
 E\left[X(Y-E[Y])+\beta_1 X(X-E[X])\right] &amp; =0 \\
 E[X(Y-E[Y])]+\beta_1 E[X(X-E[X])] &amp; =0
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-2a41c214-c74e-409a-85c3-519cbe3f738e">
-<span class="eqno">(11.7)<a class="headerlink" href="#equation-2a41c214-c74e-409a-85c3-519cbe3f738e" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-a9a14f98-bd51-4001-81e5-f9b0a479616b">
+<span class="eqno">(7.14)<a class="headerlink" href="#equation-a9a14f98-bd51-4001-81e5-f9b0a479616b" title="Permalink to this equation">#</a></span>\[\begin{align}
 \operatorname{Cov}(X, Y)+\beta_1 \operatorname{Var}(X)=0
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-a89fe9f5-4e10-431d-8310-be8bbb3a6884">
-<span class="eqno">(11.8)<a class="headerlink" href="#equation-a89fe9f5-4e10-431d-8310-be8bbb3a6884" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-a174e1dc-d89a-4ea7-b826-3804416e384a">
+<span class="eqno">(7.15)<a class="headerlink" href="#equation-a174e1dc-d89a-4ea7-b826-3804416e384a" title="Permalink to this equation">#</a></span>\[\begin{align}
 \beta_1 = \frac{\operatorname{Cov}(X, Y)}{\operatorname{Var}(X)}
 \end{align}\]</div>
 </section>
 </section>
 <section id="experiments">
-<h1><span class="section-number">12. </span><a id='toc5_'></a><a class="reference internal" href="#toc0_"><span class="xref myst">Experiments</span></a><a class="headerlink" href="#experiments" title="Link to this heading">#</a></h1>
+<h2><span class="section-number">7.6. </span>Experiments<a class="headerlink" href="#experiments" title="Link to this heading">#</a></h2>
 <p>S: the state.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ab6513ad-ae5e-47d0-8f9a-267b84eb3cb2">
-<span class="eqno">(12.1)<a class="headerlink" href="#equation-ab6513ad-ae5e-47d0-8f9a-267b84eb3cb2" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-da7a738d-c6d6-4fe5-8413-3c4fc1df21e6">
+<span class="eqno">(7.16)<a class="headerlink" href="#equation-da7a738d-c6d6-4fe5-8413-3c4fc1df21e6" title="Permalink to this equation">#</a></span>\[\begin{align}
 Y(S, U)=\beta_0+\beta_1 S+U
 \end{align}\]</div>
 <p>Causal Interpretation, If $S \perp U$, then</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9f88f5cf-2cb9-4798-890e-75f917b31eb9">
-<span class="eqno">(12.2)<a class="headerlink" href="#equation-9f88f5cf-2cb9-4798-890e-75f917b31eb9" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-990973b4-fafb-481e-aea3-e7dec4477395">
+<span class="eqno">(7.17)<a class="headerlink" href="#equation-990973b4-fafb-481e-aea3-e7dec4477395" title="Permalink to this equation">#</a></span>\[\begin{align}
 \beta_1=\frac{\operatorname{Cov}(S, Y)}{\operatorname{Var}(S)}
 \end{align}\]</div>
 <p>Mapping those things to the experiments context, we have</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c888c538-e79d-49be-8026-1099952328a2">
-<span class="eqno">(12.3)<a class="headerlink" href="#equation-c888c538-e79d-49be-8026-1099952328a2" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-322bb02b-55e5-4c0b-8919-addd52fea313">
+<span class="eqno">(7.18)<a class="headerlink" href="#equation-322bb02b-55e5-4c0b-8919-addd52fea313" title="Permalink to this equation">#</a></span>\[\begin{align}
 \operatorname{Cov}(S, Y)
 &amp;=E[S Y]-E[S] E[Y]
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-bb11a6c4-c26d-48a9-8126-ed6a529bca22">
-<span class="eqno">(12.4)<a class="headerlink" href="#equation-bb11a6c4-c26d-48a9-8126-ed6a529bca22" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-f084ec28-ac32-4638-a639-db996acaba3f">
+<span class="eqno">(7.19)<a class="headerlink" href="#equation-f084ec28-ac32-4638-a639-db996acaba3f" title="Permalink to this equation">#</a></span>\[\begin{align}
 E[S Y] &amp; =E[E[S Y \mid S]] \\
 &amp; =E[S Y \mid S=1] P(S=1)+E[S Y \mid S=0] P(S=0) \\
 &amp; =E[Y \mid S=1] P(S=1) \\
 &amp; =E[Y \mid S=1] p
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-7baa8f1b-1779-405f-9887-9be9cfdb64b0">
-<span class="eqno">(12.5)<a class="headerlink" href="#equation-7baa8f1b-1779-405f-9887-9be9cfdb64b0" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-e19d097a-e912-41fb-b9cb-2ef0d52fd5fc">
+<span class="eqno">(7.20)<a class="headerlink" href="#equation-e19d097a-e912-41fb-b9cb-2ef0d52fd5fc" title="Permalink to this equation">#</a></span>\[\begin{align}
 \begin{aligned}
 E[S] E[Y] &amp; =P(S=1)(E[E[Y \mid S]]) \\
 &amp; =p([E[Y \mid S=1] p+E[Y \mid S=0](1-p)) \\
 &amp; =E[Y \mid S=1] p^2+E[Y \mid S=0] p(1-p)
 \end{aligned}
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-b2582972-b95e-432d-90a7-be08971c2326">
-<span class="eqno">(12.6)<a class="headerlink" href="#equation-b2582972-b95e-432d-90a7-be08971c2326" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-3304e325-9fe8-4c45-bdce-85cefcb9cad1">
+<span class="eqno">(7.21)<a class="headerlink" href="#equation-3304e325-9fe8-4c45-bdce-85cefcb9cad1" title="Permalink to this equation">#</a></span>\[\begin{align}
 \begin{aligned}
 \operatorname{Var}(X) &amp; =E\left[S^2\right]-E[S]^2 \\
 E\left[S^2\right] &amp; =E\left[S^2 \mid S=1\right] p+E\left[S^2 \mid S=1\right](1-p) \\
@@ -829,47 +735,48 @@ E[S]^2 &amp; =p^2 \\
 &amp; =p(1-p)
 \end{aligned}
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-061f86c8-6c97-49b4-8460-a94f4887e744">
-<span class="eqno">(12.7)<a class="headerlink" href="#equation-061f86c8-6c97-49b4-8460-a94f4887e744" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-449430ae-50fc-42ef-b58b-b5cff19e1539">
+<span class="eqno">(7.22)<a class="headerlink" href="#equation-449430ae-50fc-42ef-b58b-b5cff19e1539" title="Permalink to this equation">#</a></span>\[\begin{align}
 \begin{aligned}
 \beta_1 &amp; =\frac{\operatorname{Cov}(S, Y)}{\operatorname{Var}(S)} \\
 &amp; =\frac{p(1-p)(E[Y \mid S=1]-E[Y \mid S=0])}{p(1-p)} \\
 &amp; =E[Y \mid S=1]-E[Y \mid S=0]
 \end{aligned}
 \end{align}\]</div>
+</section>
 <section id="regression-standard-errors">
-<h2><span class="section-number">12.1. </span><a id='toc5_1_'></a><a class="reference internal" href="#toc0_"><span class="xref myst">Regression Standard Errors</span></a><a class="headerlink" href="#regression-standard-errors" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.7. </span>Regression Standard Errors<a class="headerlink" href="#regression-standard-errors" title="Link to this heading">#</a></h2>
 <p>Reference: <a class="reference external" href="https://en.wikipedia.org/wiki/Heteroskedasticity-consistent_standard_errors">Heteroskedasticity-consistent standard errors</a></p>
 <p>For a given estimator,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7c1a583f-45c1-4186-9221-b272b06fe7f3">
-<span class="eqno">(12.8)<a class="headerlink" href="#equation-7c1a583f-45c1-4186-9221-b272b06fe7f3" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-e29f441e-dbe8-4a83-9220-c7bf3f05533e">
+<span class="eqno">(7.23)<a class="headerlink" href="#equation-e29f441e-dbe8-4a83-9220-c7bf3f05533e" title="Permalink to this equation">#</a></span>\[\begin{align}
 \hat{\beta} = \frac{\operatorname{Cov}(S, Y)}{\operatorname{Var}(S)}
 \end{align}\]</div>
 <p>Using the matrix form,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-05c2c8f7-7728-4afc-8bb2-cb004f558165">
-<span class="eqno">(12.9)<a class="headerlink" href="#equation-05c2c8f7-7728-4afc-8bb2-cb004f558165" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-59b873bd-dd95-4a0a-83ee-2148ceef6727">
+<span class="eqno">(7.24)<a class="headerlink" href="#equation-59b873bd-dd95-4a0a-83ee-2148ceef6727" title="Permalink to this equation">#</a></span>\[\begin{align}
 \widehat{\boldsymbol{\beta}}_{\mathrm{OLS}}=\left(\mathbf{X}^{\top} \mathbf{X}\right)^{-1} \mathbf{X}^{\top} \mathbf{y}
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-138c515d-cd32-40a8-b38e-5a5ff82a1f17">
-<span class="eqno">(12.10)<a class="headerlink" href="#equation-138c515d-cd32-40a8-b38e-5a5ff82a1f17" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-b0f281b9-91e7-450d-97dd-21c2ffa16931">
+<span class="eqno">(7.25)<a class="headerlink" href="#equation-b0f281b9-91e7-450d-97dd-21c2ffa16931" title="Permalink to this equation">#</a></span>\[\begin{align}
 \mathbb{V}\left[\widehat{\boldsymbol{\beta}}_{\text {OLS }}\right]=\mathbb{V}\left[\left(\mathbf{X}^{\top} \mathbf{X}\right)^{-1} \mathbf{X}^{\top} \mathbf{y}\right]=\left(\mathbf{X}^{\top} \mathbf{X}\right)^{-1} \mathbf{X}^{\top} \boldsymbol{\Sigma} \mathbf{X}\left(\mathbf{X}^{\top} \mathbf{X}\right)^{-1}
 \end{align}\]</div>
 <p>If we have the constant variance for all the residuals, we have</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b38a2605-0422-49fa-b8cb-ff83c0c790d2">
-<span class="eqno">(12.11)<a class="headerlink" href="#equation-b38a2605-0422-49fa-b8cb-ff83c0c790d2" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-0490e08b-b261-4eb4-87d2-1430247349ae">
+<span class="eqno">(7.26)<a class="headerlink" href="#equation-0490e08b-b261-4eb4-87d2-1430247349ae" title="Permalink to this equation">#</a></span>\[\begin{align}
 \mathbb{E}\left[\mathbf{u} \mathbf{u}^{\top}\right]=\sigma^2 \mathbf{I}_n
 \end{align}\]</div>
 <p>we can simplify the variance to be</p>
-<div class="amsmath math notranslate nohighlight" id="equation-284a111b-0b13-4741-b9c1-c4375ad02e5c">
-<span class="eqno">(12.12)<a class="headerlink" href="#equation-284a111b-0b13-4741-b9c1-c4375ad02e5c" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-b1c9ff98-f114-4039-80ef-fc79dd7cf0a1">
+<span class="eqno">(7.27)<a class="headerlink" href="#equation-b1c9ff98-f114-4039-80ef-fc79dd7cf0a1" title="Permalink to this equation">#</a></span>\[\begin{align}
 \mathbb{V}\left[\widehat{\boldsymbol{\beta}}_{\text {OLS }}\right]=\sigma^2\left(\mathbf{X}^{\top} \mathbf{X}\right)^{-1}
 \end{align}\]</div>
 <section id="clustered-standard-errors-liang-zeger-standard-errors">
-<h3><span class="section-number">12.1.1. </span>Clustered Standard Errors (Liang-Zeger standard errors)<a class="headerlink" href="#clustered-standard-errors-liang-zeger-standard-errors" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">7.7.1. </span>Clustered Standard Errors (Liang-Zeger standard errors)<a class="headerlink" href="#clustered-standard-errors-liang-zeger-standard-errors" title="Link to this heading">#</a></h3>
 <p>If the assumption broken and it is hard for us to calculate the Covariance Matrix over all the residuals, we can cluster the data by the cluster variable $C$.</p>
 <p>Change the $\Sigma$ to be block diagonal.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2ba6c68e-cf91-4968-9a4c-97e5d81a6e86">
-<span class="eqno">(12.13)<a class="headerlink" href="#equation-2ba6c68e-cf91-4968-9a4c-97e5d81a6e86" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-7b76d0e2-5563-4e43-a259-7bcae16d4260">
+<span class="eqno">(7.28)<a class="headerlink" href="#equation-7b76d0e2-5563-4e43-a259-7bcae16d4260" title="Permalink to this equation">#</a></span>\[\begin{align}
 \mathbf{X}^{\top} \mathbf{\Sigma} \mathbf{X} = \sum_{c \in C} \mathbf{X}_{c}^{\top} \Omega_{c}  \mathbf{X}_{c}
 \end{align}\]</div>
 <p>(with an example)</p>
@@ -1037,7 +944,7 @@ Notes:
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">13. </span>Natural Experiments</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>Natural Experiments</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1058,32 +965,20 @@ Notes:
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">7. $$
-\begin{array}{c}
-\textbf{INTRODUCTION TO CAUSAL INFERENCE}\\
-\textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \
-\textit{Center for Data Science, New York University} \\
-\end{array}
-$$</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#descriptive-regression">8. <a id="toc1_"></a><span class="xref myst">Descriptive Regression</span></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#vectorized-implementation-for-linear-regression">9. <a id="toc2_"></a><span class="xref myst">Vectorized implementation for linear regression</span></a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-a-lr-with-bias-to-a-lr-without-bias">9.1. Convert a LR with bias to a LR without bias</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#descriptive-regression">7.1. Descriptive Regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vectorized-implementation-for-linear-regression">7.2. Vectorized implementation for linear regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-a-lr-with-bias-to-a-lr-without-bias">7.3. Convert a LR with bias to a LR without bias</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kernel-regression">7.4. Kernel Regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#causal-regression">7.5. Causal Regression</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identification">7.5.1. Identification</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kernel-regression">10. <a id="toc3_"></a><span class="xref myst">Kernel Regression</span></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#causal-regression">11. <a id="toc4_"></a><span class="xref myst">Causal Regression</span></a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#identification">11.1. <a id="toc4_1_"></a><span class="xref myst">Identification</span></a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments">12. <a id="toc5_"></a><span class="xref myst">Experiments</span></a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-standard-errors">12.1. <a id="toc5_1_"></a><span class="xref myst">Regression Standard Errors</span></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clustered-standard-errors-liang-zeger-standard-errors">12.1.1. Clustered Standard Errors (Liang-Zeger standard errors)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments">7.6. Experiments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-standard-errors">7.7. Regression Standard Errors</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clustered-standard-errors-liang-zeger-standard-errors">7.7.1. Clustered Standard Errors (Liang-Zeger standard errors)</a></li>
 </ul>
 </li>
 </ul>
-</li>
-</ul>
-
   </nav></div>
 
 </div></div>

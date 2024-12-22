@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>16. $$ \begin{array}{c} \textbf{INSTRUMENTAL VARIABLES}\ \text(PART , I)\ \textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \ \textit{Center for Data Science, New York University} \\ \textit{November 8, 2024} \end{array} $$ &#8212; Causal Inference for Data Science</title>
+    <title>11. Instrumental Variables &#8212; Causal Inference for Data Science</title>
   
   
   
@@ -63,8 +63,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'sections/10_Instruments';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="18. Instrumental Variables(Continued)" href="11_Instruments_RDD.html" />
-    <link rel="prev" title="15. Matching" href="9_Matching.html" />
+    <link rel="next" title="12. Instrumental Variables(Continued)" href="11_Instruments_RDD.html" />
+    <link rel="prev" title="10. Matching" href="9_Matching.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -175,62 +175,20 @@
 <li class="toctree-l1"><a class="reference internal" href="4_Statistics_and_Experiments.html">4. Hypothesis testing and Introduction to Experiments</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="5_Experiments.html">6. Experiments (Cont.)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="6_Regression_1-2.html">7. $$
-\begin{array}{c}
-\textbf{INTRODUCTION TO CAUSAL INFERENCE}\\
-\textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \
-\textit{Center for Data Science, New York University} \\
-\end{array}
-$$</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_Regression_1-2.html">7. Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7_Natural_Experiments.html">8. Natural Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8_ML_and_Causality.html">9. The Interplay between Machine Learning and Causal Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9_Matching.html">10. Matching</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">11. Instrumental Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_Instruments_RDD.html">12. Instrumental Variables(Continued)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_RDD.html">13. Instrumental Variables (Continued) and Intro to Regression Discontinuity (RDD)</a></li>
 
 
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="7_Natural_Experiments.html">13. Natural Experiments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="8_ML_and_Causality.html">14. The Interplay between Machine Learning and Causal Inference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="9_Matching.html">15. Matching</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">16. $$
-\begin{array}{c}
-\textbf{INSTRUMENTAL VARIABLES}\
-\text(PART , I)\
-\textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \
-\textit{Center for Data Science, New York University} \\
-\textit{November 8, 2024}
-\end{array}
-$$</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="11_Instruments_RDD.html">18. Instrumental Variables(Continued)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="12_RDD.html">19. $$
-\begin{array}{c}
-\textbf{IV (Conitnued) / Intro to RDD}\
-\textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \
-\textit{Center for Data Science, New York University} \\
-\textit{November 15, 2024}
-\end{array}
-$$</a></li>
-
-
-
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="13_Difference_in_Differences.html">27. $$
-\begin{array}{c}
-\textbf{DIFFERENCE-IN-DIFFERENCES}\
-\\
-\textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \
-\textit{Center for Data Science, New York University} \\
-\textit{December 6, 2024}
-\end{array}
-$$</a></li>
-
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="14_Review.html">33. Final Course Review</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13_Difference_in_Differences.html">19. Difference in Differences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14_Review.html">20. Final Course Review</a></li>
 
 
 </ul>
@@ -415,15 +373,7 @@ $$</a></li>
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>$$
-\begin{array}{c}
-\textbf{INSTRUMENTAL VARIABLES}\
-\text(PART , I)\
-\textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \
-\textit{Center for Data Science, New York University} \\
-\textit{November 8, 2024}
-\end{array}
-$$</h1>
+    <h1>Instrumental Variables</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -433,49 +383,36 @@ $$</h1>
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">16. $$
-\begin{array}{c}
-\textbf{INSTRUMENTAL VARIABLES}\
-\text(PART , I)\
-\textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \
-\textit{Center for Data Science, New York University} \\
-\textit{November 8, 2024}
-\end{array}
-$$</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#instrumental-variables">17. Instrumental Variables</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recap-from-last-class">17.1. Recap From Last Class</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-for-today">17.2. Goals For Today</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">17.3. 2. Instrumental Variables</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-an-instrumental-variable">17.3.1. What is an Instrumental Variable?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#when-should-we-use-ivs">17.3.2. When Should We Use IVs?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-assumptions-for-a-valid-instrument">17.3.3. Key Assumptions for a Valid Instrument</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#local-average-treatment-effect-late">17.3.4. Local Average Treatment Effect (LATE)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-individuals-in-iv-analysis">17.3.5. Types of Individuals in IV Analysis</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identifying-the-local-average-treatment-effect-late">17.3.6. Identifying the Local Average Treatment Effect (LATE)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recap-from-last-class">11.1. Recap From Last Class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-for-today">11.2. Goals For Today</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">11.3. 2. Instrumental Variables</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-an-instrumental-variable">11.3.1. What is an Instrumental Variable?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#when-should-we-use-ivs">11.3.2. When Should We Use IVs?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-assumptions-for-a-valid-instrument">11.3.3. Key Assumptions for a Valid Instrument</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#local-average-treatment-effect-late">11.3.4. Local Average Treatment Effect (LATE)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-individuals-in-iv-analysis">11.3.5. Types of Individuals in IV Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identifying-the-local-average-treatment-effect-late">11.3.6. Identifying the Local Average Treatment Effect (LATE)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivating-case-the-effect-of-watching-sesame-street-on-later-academic-achievement">17.4. 3. Motivating Case: The effect of watching sesame street on later academic achievement.</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#research-question">17.4.1. Research Question</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-setup">17.4.2. Model Setup</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-challenge">17.4.3. The challenge</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">17.4.4. Solution?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data">17.4.5. Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-plausible-is-tt-encouragement-as-an-instrument">17.4.6. How plausible is ${\tt encouragement}$ as an instrument?</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#compliance-types">17.4.6.1. Compliance Types</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivating-case-the-effect-of-watching-sesame-street-on-later-academic-achievement">11.4. 3. Motivating Case: The effect of watching sesame street on later academic achievement.</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#research-question">11.4.1. Research Question</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-setup">11.4.2. Model Setup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-challenge">11.4.3. The challenge</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">11.4.4. Solution?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data">11.4.5. Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-plausible-is-tt-encouragement-as-an-instrument">11.4.6. How plausible is ${\tt encouragement}$ as an instrument?</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#compliance-types">11.4.6.1. Compliance Types</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-the-late">17.4.7. Estimating the LATE</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#via-the-wald-estimator">17.4.7.1. Via the Wald Estimator</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#via-the-two-stage-least-squares-2sls-estimation">17.4.7.2. Via the Two-Stage Least Squares (2SLS) Estimation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-the-late">11.4.7. Estimating the LATE</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#via-the-wald-estimator">11.4.7.1. Via the Wald Estimator</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#via-the-two-stage-least-squares-2sls-estimation">11.4.7.2. Via the Two-Stage Least Squares (2SLS) Estimation</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#path-forward">17.5. 3. Path Forward</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#path-forward">11.5. 3. Path Forward</a></li>
 </ul>
-</li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -488,27 +425,16 @@ $$</a></li>
                   
   <div align="center">
 <p><a class="reference external" href="https://colab.research.google.com/github/dapivei/causal-infere/blob/main/sections/10_Instruments.ipynb"><img alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
-</div><section id="begin-array-c-textbf-instrumental-variables-text-part-i-textbf-daniela-pinto-veizaga-xiang-pan-and-xiang-gao-textit-center-for-data-science-new-york-university-textit-november-8-2024-end-array">
-<h1><span class="section-number">16. </span>$$
-\begin{array}{c}
-\textbf{INSTRUMENTAL VARIABLES}\
-\text(PART , I)\
-\textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \
-\textit{Center for Data Science, New York University} \\
-\textit{November 8, 2024}
-\end{array}
-$$<a class="headerlink" href="#begin-array-c-textbf-instrumental-variables-text-part-i-textbf-daniela-pinto-veizaga-xiang-pan-and-xiang-gao-textit-center-for-data-science-new-york-university-textit-november-8-2024-end-array" title="Link to this heading">#</a></h1>
-</section>
-<section id="instrumental-variables">
-<h1><span class="section-number">17. </span>Instrumental Variables<a class="headerlink" href="#instrumental-variables" title="Link to this heading">#</a></h1>
+</div><section id="instrumental-variables">
+<h1><span class="section-number">11. </span>Instrumental Variables<a class="headerlink" href="#instrumental-variables" title="Link to this heading">#</a></h1>
 <section id="recap-from-last-class">
-<h2><span class="section-number">17.1. </span>Recap From Last Class<a class="headerlink" href="#recap-from-last-class" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.1. </span>Recap From Last Class<a class="headerlink" href="#recap-from-last-class" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Control variables, matching.</p></li>
 </ul>
 </section>
 <section id="goals-for-today">
-<h2><span class="section-number">17.2. </span>Goals For Today<a class="headerlink" href="#goals-for-today" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.2. </span>Goals For Today<a class="headerlink" href="#goals-for-today" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Understand what instrumental variables (IVs) are and when they are used.</p></li>
 <li><p>Explore the assumptions needed for an IV to yield valid causal estimates.</p></li>
@@ -516,7 +442,7 @@ $$<a class="headerlink" href="#begin-array-c-textbf-instrumental-variables-text-
 </ol>
 </section>
 <section id="id1">
-<h2><span class="section-number">17.3. </span>2. Instrumental Variables<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.3. </span>2. Instrumental Variables<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>Imagine we want to estimate the <strong>causal effect</strong> of a treatment variable, $S$, on some outcome, $Y$. But there’s a problem: we suspect that $S$ is <strong>correlated with unobserved factors</strong> that also affect $Y$. These unobserved factors are captured by the variable $U$. This means:</p>
 <p>$$S \not!\perp!!!\perp U,$$</p>
 <p>In other words, $S$ and $U$ are related, which can lead to <strong>biased and inconsistent estimates</strong> when we try to estimate the causal effect of $S$ on $Y$.</p>
@@ -525,7 +451,7 @@ $$<a class="headerlink" href="#begin-array-c-textbf-instrumental-variables-text-
 <strong>Yes!</strong> We can use an <strong>instrumental variable (IV)</strong> to help us out.</p>
 </div></blockquote>
 <section id="what-is-an-instrumental-variable">
-<h3><span class="section-number">17.3.1. </span>What is an Instrumental Variable?<a class="headerlink" href="#what-is-an-instrumental-variable" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.3.1. </span>What is an Instrumental Variable?<a class="headerlink" href="#what-is-an-instrumental-variable" title="Link to this heading">#</a></h3>
 <p>An <strong>instrumental variable (IV)</strong>, denoted by $Z$, is a variable that:</p>
 <ul class="simple">
 <li><p><strong>Affects</strong> the treatment variable $S$.</p></li>
@@ -536,7 +462,7 @@ $$<a class="headerlink" href="#begin-array-c-textbf-instrumental-variables-text-
 <img src="https://raw.githubusercontent.com/dapivei/causal-infere/main/images/instrument.png" width="500"/>
 </section>
 <section id="when-should-we-use-ivs">
-<h3><span class="section-number">17.3.2. </span>When Should We Use IVs?<a class="headerlink" href="#when-should-we-use-ivs" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.3.2. </span>When Should We Use IVs?<a class="headerlink" href="#when-should-we-use-ivs" title="Link to this heading">#</a></h3>
 <p>Instrumental Variables are especially useful when:</p>
 <blockquote>
 <div><ul class="simple">
@@ -545,7 +471,7 @@ $$<a class="headerlink" href="#begin-array-c-textbf-instrumental-variables-text-
 </div></blockquote>
 </section>
 <section id="key-assumptions-for-a-valid-instrument">
-<h3><span class="section-number">17.3.3. </span>Key Assumptions for a Valid Instrument<a class="headerlink" href="#key-assumptions-for-a-valid-instrument" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.3.3. </span>Key Assumptions for a Valid Instrument<a class="headerlink" href="#key-assumptions-for-a-valid-instrument" title="Link to this heading">#</a></h3>
 <p>For $Z$ to be a valid instrument, it must satisfy three important assumptions:</p>
 <ol class="arabic simple">
 <li><p><strong>Exogeneity</strong>:<br />
@@ -560,14 +486,14 @@ $$ S(Z=1, V) &gt; S(Z=0, V) $$</p></li>
 </ol>
 </section>
 <section id="local-average-treatment-effect-late">
-<h3><span class="section-number">17.3.4. </span>Local Average Treatment Effect (LATE)<a class="headerlink" href="#local-average-treatment-effect-late" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.3.4. </span>Local Average Treatment Effect (LATE)<a class="headerlink" href="#local-average-treatment-effect-late" title="Link to this heading">#</a></h3>
 <p>If these assumptions hold, we can estimate the <strong>Local Average Treatment Effect (LATE)</strong>. This is the causal effect of $S$ on $Y$ for a specific group of people called the <strong>compliers</strong>—those whose treatment status is affected by the instrument $Z$.</p>
 <blockquote>
 <div><p><strong>Compliers</strong> are individuals whose treatment $S$ is influenced by the instrument $Z$. They are the population we can estimate the causal effect for using IVs.</p>
 </div></blockquote>
 </section>
 <section id="types-of-individuals-in-iv-analysis">
-<h3><span class="section-number">17.3.5. </span>Types of Individuals in IV Analysis<a class="headerlink" href="#types-of-individuals-in-iv-analysis" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.3.5. </span>Types of Individuals in IV Analysis<a class="headerlink" href="#types-of-individuals-in-iv-analysis" title="Link to this heading">#</a></h3>
 <p>The population can be divided into four groups based on how they respond to the instrument $Z$:</p>
 <ol class="arabic simple">
 <li><p><strong>Always-takers</strong>: These individuals always take the treatment, regardless of the instrument $Z$.<br />
@@ -581,7 +507,7 @@ $$ S(Z=1, V) = 0 \quad \text{and} \quad S(Z=0, V) = 1 $$</p></li>
 </ol>
 </section>
 <section id="identifying-the-local-average-treatment-effect-late">
-<h3><span class="section-number">17.3.6. </span>Identifying the Local Average Treatment Effect (LATE)<a class="headerlink" href="#identifying-the-local-average-treatment-effect-late" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.3.6. </span>Identifying the Local Average Treatment Effect (LATE)<a class="headerlink" href="#identifying-the-local-average-treatment-effect-late" title="Link to this heading">#</a></h3>
 <p>Now, let’s define the causal model for $Y$ in terms of $S$ and $U$:</p>
 <p>$$ Y = \alpha_0 + \alpha_1 S + U, $$</p>
 <p>where $\alpha_1$ represents the <strong>causal effect</strong> of $S$ on $Y$, and $U$ is the error term (which captures unobserved factors that affect $Y$).</p>
@@ -599,16 +525,16 @@ $$ S(Z=1, V) = 0 \quad \text{and} \quad S(Z=0, V) = 1 $$</p></li>
 </section>
 </section>
 <section id="motivating-case-the-effect-of-watching-sesame-street-on-later-academic-achievement">
-<h2><span class="section-number">17.4. </span>3. Motivating Case: The effect of watching sesame street on later academic achievement.<a class="headerlink" href="#motivating-case-the-effect-of-watching-sesame-street-on-later-academic-achievement" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.4. </span>3. Motivating Case: The effect of watching sesame street on later academic achievement.<a class="headerlink" href="#motivating-case-the-effect-of-watching-sesame-street-on-later-academic-achievement" title="Link to this heading">#</a></h2>
 <img src="https://www.aeaweb.org/content/file?id=8888.png?raw=true" width="500" height="auto" />
 <section id="research-question">
-<h3><span class="section-number">17.4.1. </span>Research Question<a class="headerlink" href="#research-question" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.4.1. </span>Research Question<a class="headerlink" href="#research-question" title="Link to this heading">#</a></h3>
 <blockquote>
 <div><p>Does watching Sesame Street ($S$) have a positive impact on later academic achievement ($Y$)?</p>
 </div></blockquote>
 </section>
 <section id="model-setup">
-<h3><span class="section-number">17.4.2. </span>Model Setup<a class="headerlink" href="#model-setup" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.4.2. </span>Model Setup<a class="headerlink" href="#model-setup" title="Link to this heading">#</a></h3>
 <p>\begin{aligned}
 S &amp; =\left{\begin{array}{l}
 1 \text { if watched Sesame }  \
@@ -620,7 +546,7 @@ U &amp; =\text { other determinants of } Y,
 <p>where $U$ represents other determinants of $Y$ (e.g., socio-economic status).</p>
 </section>
 <section id="the-challenge">
-<h3><span class="section-number">17.4.3. </span>The challenge<a class="headerlink" href="#the-challenge" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.4.3. </span>The challenge<a class="headerlink" href="#the-challenge" title="Link to this heading">#</a></h3>
 <p>$$S \not!\perp!!!\perp U,$$</p>
 <p>as various family and individual factors likely influence whether a child watches the program $S$ and the child’s later academic outcomes ($Y$).</p>
 <blockquote>
@@ -633,7 +559,7 @@ U &amp; =\text { other determinants of } Y,
 <p>leading to biased estimates.</p>
 </section>
 <section id="solution">
-<h3><span class="section-number">17.4.4. </span>Solution?<a class="headerlink" href="#solution" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.4.4. </span>Solution?<a class="headerlink" href="#solution" title="Link to this heading">#</a></h3>
 <p>Introduce an instrumental variable —<strong>encouragement</strong> $Z$ —which we can control and randomize. In this context, encouragement refers to providing children with additional information or motivational support to watch Sesame Street. This approach aligns with the original proposal by <a class="reference external" href="https://files.eric.ed.gov/fulltext/ED068155.pdf">Ball &amp; Bogatz (1970)</a>, who explored the impact of such encouragement on children’s engagement with educational media.</p>
 <p>\begin{aligned}
 Z &amp; =\left{\begin{array}{l}
@@ -647,7 +573,7 @@ Z &amp; =\left{\begin{array}{l}
 </div></blockquote>
 </section>
 <section id="data">
-<h3><span class="section-number">17.4.5. </span>Data<a class="headerlink" href="#data" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.4.5. </span>Data<a class="headerlink" href="#data" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">encour</span></code></strong>: Indicator variable for whether the child was encouraged to watch Sesame Stree. Instrument $Z$.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">watched</span></code></strong>: Indicator variable for whether the child actually watched Sesame Street. Treatment $S$.</p></li>
@@ -1009,7 +935,7 @@ Z &amp; =\left{\begin{array}{l}
 <p>Observe that children who were encouraged to watch the show had a notably higher proportion of viewers compared to those who were not encouraged. This difference suggests that ${\tt encouragement}$ effectively increases the likelihood of viewing Sesame Street.</p>
 </section>
 <section id="how-plausible-is-tt-encouragement-as-an-instrument">
-<h3><span class="section-number">17.4.6. </span>How plausible is ${\tt encouragement}$ as an instrument?<a class="headerlink" href="#how-plausible-is-tt-encouragement-as-an-instrument" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.4.6. </span>How plausible is ${\tt encouragement}$ as an instrument?<a class="headerlink" href="#how-plausible-is-tt-encouragement-as-an-instrument" title="Link to this heading">#</a></h3>
 <p><strong>Exogeneity</strong></p>
 <p>We test whether encouragement is randomly assigned across relevant variables, ensuring balance between the encouraged and non-encouraged groups.</p>
 <div class="cell docutils container">
@@ -1156,7 +1082,7 @@ site          -0.7509      0.155     -4.833      0.000      -1.056      -0.446
 </ul>
 <p>Overall, our instrument seems pretty plausible!</p>
 <section id="compliance-types">
-<h4><span class="section-number">17.4.6.1. </span>Compliance Types<a class="headerlink" href="#compliance-types" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">11.4.6.1. </span>Compliance Types<a class="headerlink" href="#compliance-types" title="Link to this heading">#</a></h4>
 <p>Let’s further categorized our population of interest!</p>
 <ul class="simple">
 <li><p><strong>Compliers</strong>: Watch Sesame Street only if encouraged.</p></li>
@@ -1247,9 +1173,9 @@ site          -0.7509      0.155     -4.833      0.000      -1.056      -0.446
 </section>
 </section>
 <section id="estimating-the-late">
-<h3><span class="section-number">17.4.7. </span>Estimating the LATE<a class="headerlink" href="#estimating-the-late" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.4.7. </span>Estimating the LATE<a class="headerlink" href="#estimating-the-late" title="Link to this heading">#</a></h3>
 <section id="via-the-wald-estimator">
-<h4><span class="section-number">17.4.7.1. </span>Via the Wald Estimator<a class="headerlink" href="#via-the-wald-estimator" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">11.4.7.1. </span>Via the Wald Estimator<a class="headerlink" href="#via-the-wald-estimator" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate covariance between Z (encouragement) and Y (outcome)</span>
@@ -1308,7 +1234,7 @@ site          -0.7509      0.155     -4.833      0.000      -1.056      -0.446
 <p>For those children who are encouraged to watch Sesame Street and actually end up watching it, their academic achievement (e.g., literacy scores) increases by 7.94 units on average.</p>
 </section>
 <section id="via-the-two-stage-least-squares-2sls-estimation">
-<h4><span class="section-number">17.4.7.2. </span>Via the Two-Stage Least Squares (2SLS) Estimation<a class="headerlink" href="#via-the-two-stage-least-squares-2sls-estimation" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">11.4.7.2. </span>Via the Two-Stage Least Squares (2SLS) Estimation<a class="headerlink" href="#via-the-two-stage-least-squares-2sls-estimation" title="Link to this heading">#</a></h4>
 <ol class="arabic simple">
 <li><p><strong>First stage</strong>: Regress whether children watched Sesame Street $S$ on the instrument $Z$ (whether they were encouraged to watch).</p></li>
 <li><p><strong>Second stage</strong>: Regress the outcome (e.g., academic performance $Y$) on the predicted values of $S$ from the first stage.</p></li>
@@ -1334,7 +1260,7 @@ site          -0.7509      0.155     -4.833      0.000      -1.056      -0.446
 </section>
 </section>
 <section id="path-forward">
-<h2><span class="section-number">17.5. </span>3. Path Forward<a class="headerlink" href="#path-forward" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.5. </span>3. Path Forward<a class="headerlink" href="#path-forward" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>More on Instrumental Variables</p></li>
 <li><p>Introduction to Regression Discontinuity</p></li>
@@ -1378,7 +1304,7 @@ site          -0.7509      0.155     -4.833      0.000      -1.056      -0.446
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">15. </span>Matching</p>
+        <p class="prev-next-title"><span class="section-number">10. </span>Matching</p>
       </div>
     </a>
     <a class="right-next"
@@ -1386,7 +1312,7 @@ site          -0.7509      0.155     -4.833      0.000      -1.056      -0.446
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">18. </span>Instrumental Variables(Continued)</p>
+        <p class="prev-next-title"><span class="section-number">12. </span>Instrumental Variables(Continued)</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1407,49 +1333,36 @@ site          -0.7509      0.155     -4.833      0.000      -1.056      -0.446
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">16. $$
-\begin{array}{c}
-\textbf{INSTRUMENTAL VARIABLES}\
-\text(PART , I)\
-\textbf{Daniela Pinto Veizaga, Xiang Pan, and Xiang Gao} \
-\textit{Center for Data Science, New York University} \\
-\textit{November 8, 2024}
-\end{array}
-$$</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#instrumental-variables">17. Instrumental Variables</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recap-from-last-class">17.1. Recap From Last Class</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-for-today">17.2. Goals For Today</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">17.3. 2. Instrumental Variables</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-an-instrumental-variable">17.3.1. What is an Instrumental Variable?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#when-should-we-use-ivs">17.3.2. When Should We Use IVs?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-assumptions-for-a-valid-instrument">17.3.3. Key Assumptions for a Valid Instrument</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#local-average-treatment-effect-late">17.3.4. Local Average Treatment Effect (LATE)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-individuals-in-iv-analysis">17.3.5. Types of Individuals in IV Analysis</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identifying-the-local-average-treatment-effect-late">17.3.6. Identifying the Local Average Treatment Effect (LATE)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recap-from-last-class">11.1. Recap From Last Class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-for-today">11.2. Goals For Today</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">11.3. 2. Instrumental Variables</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-an-instrumental-variable">11.3.1. What is an Instrumental Variable?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#when-should-we-use-ivs">11.3.2. When Should We Use IVs?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-assumptions-for-a-valid-instrument">11.3.3. Key Assumptions for a Valid Instrument</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#local-average-treatment-effect-late">11.3.4. Local Average Treatment Effect (LATE)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-individuals-in-iv-analysis">11.3.5. Types of Individuals in IV Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identifying-the-local-average-treatment-effect-late">11.3.6. Identifying the Local Average Treatment Effect (LATE)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivating-case-the-effect-of-watching-sesame-street-on-later-academic-achievement">17.4. 3. Motivating Case: The effect of watching sesame street on later academic achievement.</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#research-question">17.4.1. Research Question</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-setup">17.4.2. Model Setup</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-challenge">17.4.3. The challenge</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">17.4.4. Solution?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data">17.4.5. Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-plausible-is-tt-encouragement-as-an-instrument">17.4.6. How plausible is ${\tt encouragement}$ as an instrument?</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#compliance-types">17.4.6.1. Compliance Types</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivating-case-the-effect-of-watching-sesame-street-on-later-academic-achievement">11.4. 3. Motivating Case: The effect of watching sesame street on later academic achievement.</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#research-question">11.4.1. Research Question</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-setup">11.4.2. Model Setup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-challenge">11.4.3. The challenge</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">11.4.4. Solution?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data">11.4.5. Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-plausible-is-tt-encouragement-as-an-instrument">11.4.6. How plausible is ${\tt encouragement}$ as an instrument?</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#compliance-types">11.4.6.1. Compliance Types</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-the-late">17.4.7. Estimating the LATE</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#via-the-wald-estimator">17.4.7.1. Via the Wald Estimator</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#via-the-two-stage-least-squares-2sls-estimation">17.4.7.2. Via the Two-Stage Least Squares (2SLS) Estimation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-the-late">11.4.7. Estimating the LATE</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#via-the-wald-estimator">11.4.7.1. Via the Wald Estimator</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#via-the-two-stage-least-squares-2sls-estimation">11.4.7.2. Via the Two-Stage Least Squares (2SLS) Estimation</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#path-forward">17.5. 3. Path Forward</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#path-forward">11.5. 3. Path Forward</a></li>
 </ul>
-</li>
-</ul>
-
   </nav></div>
 
 </div></div>
