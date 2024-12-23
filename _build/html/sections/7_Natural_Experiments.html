@@ -60,7 +60,7 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"TeX": {"extensions": ["AMSmath.js", "AMSsymbols.js"], "equationNumbers": {"autoNumber": "none"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"TeX": {"extensions": ["AMSmath.js", "AMSsymbols.js"], "equationNumbers": {"autoNumber": "none"}}}</script>
     <script defer="defer" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'sections/7_Natural_Experiments';</script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -408,13 +408,13 @@
   <div align="center">
 <p><a class="reference external" href="https://colab.research.google.com/github/dapivei/causal-infere/blob/main/sections/7_Natural_Experiments.ipynb"><img alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 </div>
-<section class="tex2jax_ignore mathjax_ignore" id="natural-experiments">
+<section id="natural-experiments">
 <h1><span class="section-number">7. </span>Natural Experiments<a class="headerlink" href="#natural-experiments" title="Link to this heading">#</a></h1>
 <section id="causality-from-observational-data">
 <h2><span class="section-number">7.1. </span>Causality from Observational Data<a class="headerlink" href="#causality-from-observational-data" title="Link to this heading">#</a></h2>
 <p>Experiments / Random control trials (RCT) are often referred as the gold standards for causality. We can easily establish the important independence assumption by randomizing treatments in experiments:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-447ffc46-c7c4-4387-95e5-99a76577bf88">
-<span class="eqno">(7.1)<a class="headerlink" href="#equation-447ffc46-c7c4-4387-95e5-99a76577bf88" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-4300183d-5c70-4d5c-ac3b-f80551d83fda">
+<span class="eqno">(7.1)<a class="headerlink" href="#equation-4300183d-5c70-4d5c-ac3b-f80551d83fda" title="Permalink to this equation">#</a></span>\[\begin{equation}
 S \perp U
 \end{equation}\]</div>
 <p>However, this is not always possible, and experiments are expensive.</p>
@@ -434,8 +434,8 @@ S \perp U
 <section id="id1">
 <h2><span class="section-number">7.2. </span>Natural Experiments<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>Sometimes, natural processes give us a treatment that behaves “as-if” random. This allows us to establish the experimental assumption:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0ad455bf-975b-4d7c-b203-60e84de087cf">
-<span class="eqno">(7.2)<a class="headerlink" href="#equation-0ad455bf-975b-4d7c-b203-60e84de087cf" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-37bfba01-74d3-4f4f-8ecf-bad0f9cc9a5c">
+<span class="eqno">(7.2)<a class="headerlink" href="#equation-37bfba01-74d3-4f4f-8ecf-bad0f9cc9a5c" title="Permalink to this equation">#</a></span>\[\begin{equation}
 S \perp U
 \end{equation}\]</div>
 <p>We would still need SUTVA and perfect compliance (compliance with the natural process of assigning treatment). Then, everything else follows from the process of estimating effects from experiments.</p>
@@ -510,8 +510,8 @@ Non-random assignment
 </div>
 </div>
 <p>Will the second example pass the balance test?</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1e32364d-b3dc-4ebb-b588-546171c9c38a">
-<span class="eqno">(7.3)<a class="headerlink" href="#equation-1e32364d-b3dc-4ebb-b588-546171c9c38a" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-b3ce6b4e-10aa-4820-9c57-2ef1f4c1c97d">
+<span class="eqno">(7.3)<a class="headerlink" href="#equation-b3ce6b4e-10aa-4820-9c57-2ef1f4c1c97d" title="Permalink to this equation">#</a></span>\[\begin{equation}
 p(U|S=1) = p(U|S=0)
 \end{equation}\]</div>
 <div class="cell docutils container">
@@ -899,7 +899,7 @@ Name: confounder, dtype: float64
   <th>Date:</th>             <td>Sun, 22 Dec 2024</td> <th>  Prob (F-statistic):</th>  <td> 0.510</td>  
 </tr>
 <tr>
-  <th>Time:</th>                 <td>20:06:57</td>     <th>  Log-Likelihood:    </th> <td> -18342.</td> 
+  <th>Time:</th>                 <td>20:19:12</td>     <th>  Log-Likelihood:    </th> <td> -18342.</td> 
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>  1879</td>      <th>  AIC:               </th> <td>3.669e+04</td>
@@ -1102,7 +1102,7 @@ Name: confounder, dtype: float64
   <th>Date:</th>             <td>Sun, 22 Dec 2024</td> <th>  Prob (F-statistic):</th> <td>6.45e-55</td> 
 </tr>
 <tr>
-  <th>Time:</th>                 <td>20:06:57</td>     <th>  Log-Likelihood:    </th> <td> -7591.4</td> 
+  <th>Time:</th>                 <td>20:19:12</td>     <th>  Log-Likelihood:    </th> <td> -7591.4</td> 
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>  1000</td>      <th>  AIC:               </th> <td>1.519e+04</td>
@@ -1168,7 +1168,7 @@ Name: confounder, dtype: float64
   <th>Date:</th>             <td>Sun, 22 Dec 2024</td> <th>  Prob (F-statistic):</th> <td>1.12e-25</td> 
 </tr>
 <tr>
-  <th>Time:</th>                 <td>20:06:57</td>     <th>  Log-Likelihood:    </th> <td> -7591.4</td> 
+  <th>Time:</th>                 <td>20:19:12</td>     <th>  Log-Likelihood:    </th> <td> -7591.4</td> 
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>  1000</td>      <th>  AIC:               </th> <td>1.519e+04</td>
@@ -1217,44 +1217,40 @@ Name: confounder, dtype: float64
 <h2><span class="section-number">7.3. </span>Control Variables (Preview) and Review<a class="headerlink" href="#control-variables-preview-and-review" title="Link to this heading">#</a></h2>
 <p>PSA: control variables will not be on the midterm, and we will cover more on it after the midterm.</p>
 <p>If the data-generating processes were not naturally randomizing treatment, we can seek to adjust the population in the treatment and control groups.</p>
-<p>One adjustment method is through controlling or conditioning on other factors <span class="math notranslate nohighlight">\(C\)</span> such that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1fef1790-c934-4ea1-9101-67d64d24a732">
-<span class="eqno">(7.4)<a class="headerlink" href="#equation-1fef1790-c934-4ea1-9101-67d64d24a732" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<p>One adjustment method is through controlling or conditioning on other factors $C$ such that</p>
+<div class="amsmath math notranslate nohighlight" id="equation-21ceca1d-ef2d-4996-9d76-028723e68be5">
+<span class="eqno">(7.4)<a class="headerlink" href="#equation-21ceca1d-ef2d-4996-9d76-028723e68be5" title="Permalink to this equation">#</a></span>\[\begin{equation}
 S \perp U \ | \ C
 \end{equation}\]</div>
-<p>In this case, we can say that <span class="math notranslate nohighlight">\(S\)</span> and <span class="math notranslate nohighlight">\(U\)</span> are <strong>conditionally independent</strong> given <span class="math notranslate nohighlight">\(C\)</span>.</p>
+<p>In this case, we can say that $S$ and $U$ are <strong>conditionally independent</strong> given $C$.</p>
 <section id="independence-recap">
 <h3><span class="section-number">7.3.1. </span>Independence Recap<a class="headerlink" href="#independence-recap" title="Link to this heading">#</a></h3>
 <p>Independence plays a central role in our arguments for the identification of causal parameters.</p>
-<div class="math notranslate nohighlight">
-\[
+<p>$$
 P(X \in A, Y \in B) = P(X \in A)P(Y \in B)
-\]</div>
+$$</p>
 <p>Also,</p>
-<div class="math notranslate nohighlight">
-\[
+<p>$$
 P(Y|X) = P(Y) \ \ \text{and} \ \ P(X|Y) = P(X)
-\]</div>
+$$</p>
 <p>If two variables are independent, then knowing the value of one variable does not provide additional information about the other.</p>
 <p>Also, independent variables have a covariance of 0 and are, therefore, uncorrelated.</p>
 <ul class="simple">
-<li><p>Proof in lecture slides by showing <span class="math notranslate nohighlight">\(E[XY]=E[X]E[Y]\)</span></p></li>
+<li><p>Proof in lecture slides by showing $E[XY]=E[X]E[Y]$</p></li>
 </ul>
 <p>We’ve seen that independence implies 0 covariance and uncorrelatedness.</p>
 <p>However, the converse statement is false. Independence is not necessary for uncorrelatedness.</p>
 </section>
 <section id="conditional-independence">
 <h3><span class="section-number">7.3.2. </span>2.2 Conditional Independence<a class="headerlink" href="#conditional-independence" title="Link to this heading">#</a></h3>
-<div class="math notranslate nohighlight">
-\[
+<p>$$
 P(X \in A, Y \in B | Z) = P(X \in A|Z)P(Y \in B|Z)
-\]</div>
+$$</p>
 <p>Also,</p>
-<div class="math notranslate nohighlight">
-\[
+<p>$$
 P(Y|X, Z) = P(Y|Z) \ \ \text{and} \ \ P(X|Y, Z) = P(X | Z)
-\]</div>
-<p><span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> have no relationship if we account for the value taken by some other variable <span class="math notranslate nohighlight">\(Z\)</span>. For example, knowing <span class="math notranslate nohighlight">\(X\)</span>, if we already know <span class="math notranslate nohighlight">\(Z\)</span>, this does not influence our estimate of <span class="math notranslate nohighlight">\(Y\)</span>.</p>
+$$</p>
+<p>$X$ and $Y$ have no relationship if we account for the value taken by some other variable $Z$. For example, knowing $X$, if we already know $Z$, this does not influence our estimate of $Y$.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># simulate independent random variables</span>
@@ -1309,29 +1305,28 @@ Covariance of dependent variables Y and Z condition on X = 9: -0.096520865877708
 <section id="definition">
 <h4><span class="section-number">7.3.3.1. </span>Definition<a class="headerlink" href="#definition" title="Link to this heading">#</a></h4>
 <p>All causes model:</p>
-<div class="math notranslate nohighlight">
-\[Y(S, U)\]</div>
-<p>where <span class="math notranslate nohighlight">\(Y\)</span> is the outcome, <span class="math notranslate nohighlight">\(S\)</span> is the state of the world, and <span class="math notranslate nohighlight">\(U\)</span> is other factors we observe that influence <span class="math notranslate nohighlight">\(Y\)</span>.</p>
-<p>Also, for simplicity, consider <span class="math notranslate nohighlight">\(S\)</span> as a binary treatment variable (0 or 1).</p>
+<p>$$Y(S, U)$$</p>
+<p>where $Y$ is the outcome, $S$ is the state of the world, and $U$ is other factors we observe that influence $Y$.</p>
+<p>Also, for simplicity, consider $S$ as a binary treatment variable (0 or 1).</p>
 <p>Causal quantities of interest:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align}
+<p>$$</p>
+<div class="amsmath math notranslate nohighlight" id="equation-ef9bb78d-4959-41fe-be6a-37764931f35a">
+<span class="eqno">(7.5)<a class="headerlink" href="#equation-ef9bb78d-4959-41fe-be6a-37764931f35a" title="Permalink to this equation">#</a></span>\[\begin{align}
 \text{ATE} &amp;= E[Y(S=1, U) - Y(S=0, U)]\\
 \text{ATT} &amp;= E[Y(S=1, U) - Y(S=0, U)|S=1]\\
 \text{ATU} &amp;= E[Y(S=1, U) - Y(S=0, U)|S=0]
-\end{align}
-\end{split}\]</div>
-<p><strong>Fundamental problem of causal inference</strong>: we only get to see one of <span class="math notranslate nohighlight">\(Y(S=1, U)\)</span> and <span class="math notranslate nohighlight">\(Y(S=0, U)\)</span>.</p>
+\end{align}\]</div>
+<p>$$</p>
+<p><strong>Fundamental problem of causal inference</strong>: we only get to see one of $Y(S=1, U)$ and $Y(S=0, U)$.</p>
 <p>Identification is the process where we reduce these equations involving unobserved variables to observed data.</p>
 </section>
 <section id="simulation">
 <h4><span class="section-number">7.3.3.2. </span>Simulation<a class="headerlink" href="#simulation" title="Link to this heading">#</a></h4>
 <p>Using the old example, we will show how computing only association based on observational data does not give us the true underlying causal effect, and how <em>control variables</em> can help us identify these parameters.</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(Y\)</span> is continuous income.</p></li>
-<li><p><span class="math notranslate nohighlight">\(S\)</span> is binary college status. (1 = went to college)</p></li>
-<li><p><span class="math notranslate nohighlight">\(U\)</span> is binary family status. (1 = wealthy family)</p></li>
+<li><p>$Y$ is continuous income.</p></li>
+<li><p>$S$ is binary college status. (1 = went to college)</p></li>
+<li><p>$U$ is binary family status. (1 = wealthy family)</p></li>
 </ul>
 <p>We can see that the true causal effect from college status to income of people will be confounded by the third variable on family status as it is a common cause of both the treatment and outcome, i.e., a wealthy family leads to higher income and more likely to go to college.</p>
 <div class="cell docutils container">
@@ -1505,7 +1500,7 @@ Association for those with family_status = 0: 30308.08
   <th>Date:</th>             <td>Sun, 22 Dec 2024</td> <th>  Prob (F-statistic):</th> <td>1.55e-321</td>
 </tr>
 <tr>
-  <th>Time:</th>                 <td>20:06:58</td>     <th>  Log-Likelihood:    </th> <td> -10649.</td> 
+  <th>Time:</th>                 <td>20:19:13</td>     <th>  Log-Likelihood:    </th> <td> -10649.</td> 
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>  1000</td>      <th>  AIC:               </th> <td>2.130e+04</td>
@@ -1570,7 +1565,7 @@ Association for those with family_status = 0: 30308.08
   <th>Date:</th>             <td>Sun, 22 Dec 2024</td> <th>  Prob (F-statistic):</th>  <td>  0.00</td>  
 </tr>
 <tr>
-  <th>Time:</th>                 <td>20:06:58</td>     <th>  Log-Likelihood:    </th> <td> -9912.8</td> 
+  <th>Time:</th>                 <td>20:19:13</td>     <th>  Log-Likelihood:    </th> <td> -9912.8</td> 
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>  1000</td>      <th>  AIC:               </th> <td>1.983e+04</td>

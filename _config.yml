@@ -37,7 +37,7 @@ parse:
     # don't forget to list any other extensions you want enabled,
     # including those that are enabled by default!
     - amsmath
-    - dollarmath
+    #- dollarmath
 
 
 
@@ -49,5 +49,5 @@ sphinx:
         equationNumbers: { autoNumber: "none" }
     mathjax_path: https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML
 
-execution:
-  timeout: -1  # No timeout, or set a longer duration in seconds
+#execution:
+#  timeout: -1  # No timeout, or set a longer duration in seconds
