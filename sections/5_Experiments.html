@@ -60,8 +60,6 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"TeX": {"extensions": ["AMSmath.js", "AMSsymbols.js"], "equationNumbers": {"autoNumber": "none"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'sections/5_Experiments';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -387,7 +385,7 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-our-assumptions">5.3.2. 2.4) Testing our Assumptions</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#s-perp-perp-u">5.4. <span class="math notranslate nohighlight">\(S \perp\!\!\!\perp U\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#s-perp-perp-u">5.4. $S \perp!!!\perp U$</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relaxing-assumptions-imperfect-compliance-and-sutva-violations">5.5. 3. Relaxing Assumptions: Imperfect Compliance and SUTVA Violations</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imperfect-compliance">5.5.1. 3.1. Imperfect Compliance</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sutva-violation">5.5.2. SUTVA violation</a></li>
@@ -408,7 +406,7 @@
                 <article class="bd-article">
                   
   <p><a class="reference external" href="https://colab.research.google.com/github/dapivei/causal-infere/blob/main/sections/5_Experiments.ipynb"><img alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
-<section class="tex2jax_ignore mathjax_ignore" id="experiments-cont">
+<section id="experiments-cont">
 <h1><span class="section-number">5. </span>Experiments (Cont.)<a class="headerlink" href="#experiments-cont" title="Link to this heading">#</a></h1>
 <section id="recap-from-last-class">
 <h2><span class="section-number">5.1. </span>Recap From Last Class<a class="headerlink" href="#recap-from-last-class" title="Link to this heading">#</a></h2>
@@ -438,14 +436,13 @@
 <div><p>When units are randomly assigned to a treatment, the only distinction between those receiving the treatment and those who do not is the treatment itself. Consequently, any observed differences between the two groups can be attributed solely to the treatment.</p>
 </div></blockquote>
 <p>Our objective is to estimate the <strong>Average Treatment Effect (ATE)</strong>, which measures the difference in outcomes between individuals who received a treatment and those who did not.</p>
-<p>To do this, we rely on two key assumptions: <strong>perfect compliance</strong> and <strong>SUTVA</strong>, which allows us to assert that the treatment, <span class="math notranslate nohighlight">\(S\)</span>, is <strong>independent</strong> of other factors, <span class="math notranslate nohighlight">\(U\)</span>, that could influence the outcome <span class="math notranslate nohighlight">\(Y\)</span>, leading to:</p>
-<div class="math notranslate nohighlight">
-\[
+<p>To do this, we rely on two key assumptions: <strong>perfect compliance</strong> and <strong>SUTVA</strong>, which allows us to assert that the treatment, $S$, is <strong>independent</strong> of other factors, $U$, that could influence the outcome $Y$, leading to:</p>
+<p>$$
 ATE = \mathbb{E}[Y(S=1, U) \mid S=1] - \mathbb{E}[Y(S=0, U) \mid S=0].
-\]</div>
+$$</p>
 <p>Let’s apply these concepts to estimate the ATE from the case study we introduced last section:</p>
 <blockquote>
-<div><p>the impact of a job training program (<span class="math notranslate nohighlight">\(S\)</span>), National Supported Work (NSW) Demonstration, on wages (<span class="math notranslate nohighlight">\(Y\)</span>).</p>
+<div><p>the impact of a job training program ($S$), National Supported Work (NSW) Demonstration, on wages ($Y$).</p>
 </div></blockquote>
 <p>Participants were <em>randomly assigned</em> to receive job training or not, which helped ensured independence from confounding factors.</p>
 <p>Our goal is to replicate the estimation conducted by LaLonde, who utilized data from the randomized evaluation to assess the program’s effectiveness. For more detailed information about the study anda data, refer to the following resource: <a class="reference external" href="https://search.r-project.org/CRAN/refmans/designmatch/html/lalonde.html">LaLonde’s Study</a>.</p>
@@ -476,9 +473,9 @@ ATE = \mathbb{E}[Y(S=1, U) \mid S=1] - \mathbb{E}[Y(S=0, U) \mid S=0].
 <h3><span class="section-number">5.3.1. </span>Causal Model for the Impact of the Job Training Program on Wages<a class="headerlink" href="#causal-model-for-the-impact-of-the-job-training-program-on-wages" title="Link to this heading">#</a></h3>
 <p>Some key components of this causal model are:</p>
 <ul class="simple">
-<li><p><strong>Treatment Indicator (<span class="math notranslate nohighlight">\(S\)</span>)</strong>: A binary variable, denoted as <span class="math notranslate nohighlight">\(\text{treat}\)</span>, which indicates whether an individual received job training (1) or not (0).</p></li>
-<li><p><strong>Outcome (<span class="math notranslate nohighlight">\(Y\)</span>)</strong>: The primary outcome of interest, represented as <span class="math notranslate nohighlight">\(\text{re78}\)</span>, to indicate the annual wages of participants measured in the year 1978.</p></li>
-<li><p><strong>Confounding Variables (<span class="math notranslate nohighlight">\(U\)</span>)</strong>: Other factors that may affect wages include age, education, race, marital status, and degree.</p></li>
+<li><p><strong>Treatment Indicator ($S$)</strong>: A binary variable, denoted as $\text{treat}$, which indicates whether an individual received job training (1) or not (0).</p></li>
+<li><p><strong>Outcome ($Y$)</strong>: The primary outcome of interest, represented as $\text{re78}$, to indicate the annual wages of participants measured in the year 1978.</p></li>
+<li><p><strong>Confounding Variables ($U$)</strong>: Other factors that may affect wages include age, education, race, marital status, and degree.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -633,14 +630,13 @@ Name: count, dtype: int64
 </div>
 </div>
 </div>
-<p>### 2.2) <span class="math notranslate nohighlight">\(\hat{ATE}\)</span>?</p>
+<p>### 2.2) $\hat{ATE}$?</p>
 <p>To estimate the ATE from data, we calculate the <strong>conditional sample means</strong>:</p>
-<div class="math notranslate nohighlight">
-\[
+<p>$$
 \hat{ATE} = \mathbb{\hat{E}}[Y(1, \hat{U}) \mid S = 1] - \mathbb{\hat{E}}[Y(0, \hat{U}) \mid S = 0].
-\]</div>
+$$</p>
 <p>Since these sample means are <strong>consistent</strong> and <strong>unbiased</strong>, our estimate of the ATE is robust and reliable.</p>
-<p>Therefore, to estimate the ATE of the job training program (<span class="math notranslate nohighlight">\(S\)</span>) on wages (<span class="math notranslate nohighlight">\(Y\)</span>), we would simply:</p>
+<p>Therefore, to estimate the ATE of the job training program ($S$) on wages ($Y$), we would simply:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Conditional samples means for treated and control groups</span>
@@ -658,16 +654,16 @@ Name: count, dtype: int64
 </div>
 </div>
 </div>
-<p>This implies, that, on average, individuals who received the job training program earned <span class="math notranslate nohighlight">\(886.30\)</span> than those who did not receive the training. <strong>How confident are we on these results?</strong></p>
-<p>### 2.3) How confidente are we on our <span class="math notranslate nohighlight">\(\hat{ATE}\)</span>?</p>
+<p>This implies, that, on average, individuals who received the job training program earned $886.30$ than those who did not receive the training. <strong>How confident are we on these results?</strong></p>
+<p>### 2.3) How confidente are we on our $\hat{ATE}$?</p>
 <p>This is only an estimate of the ATE, and we cannot be certain it reflects the true value. Fortunately, the Central Limit Theorem (CLT) allows us to approximate the distribution of errors in the estimated conditional sample means.</p>
 <section id="hypothesis-testing-for-the-ate">
 <h4><span class="section-number">5.3.1.1. </span>Hypothesis Testing for the ATE<a class="headerlink" href="#hypothesis-testing-for-the-ate" title="Link to this heading">#</a></h4>
 <p>To determine whether the work program has a positive impact on wages, our hypothesis is as follows:</p>
 <ul class="simple">
-<li><p><strong>Null Hypothesis (<span class="math notranslate nohighlight">\(H_0\)</span>)</strong>:
-$<span class="math notranslate nohighlight">\(\mathbb{E}[Y(S = 1, U)] = \mathbb{E}[Y(S = 0, U)] \implies \text{ATE}=0.\)</span>$</p></li>
-<li><p><strong>Alternative Hypothesis (<span class="math notranslate nohighlight">\(H_1\)</span>)</strong>: $<span class="math notranslate nohighlight">\(  \mathbb{E}[Y(S = 1, U)] &gt;  \mathbb{E}[Y(S = 0, U)] \implies \text{ATE}&gt;0.\)</span>$</p></li>
+<li><p><strong>Null Hypothesis ($H_0$)</strong>:
+$$\mathbb{E}[Y(S = 1, U)] = \mathbb{E}[Y(S = 0, U)] \implies \text{ATE}=0.$$</p></li>
+<li><p><strong>Alternative Hypothesis ($H_1$)</strong>: $$  \mathbb{E}[Y(S = 1, U)] &gt;  \mathbb{E}[Y(S = 0, U)] \implies \text{ATE}&gt;0.$$</p></li>
 </ul>
 <p>Notice that we’re doing a one-sided test!</p>
 <div class="cell docutils container">
@@ -695,7 +691,7 @@ $<span class="math notranslate nohighlight">\(\mathbb{E}[Y(S = 1, U)] = \mathbb{
 </section>
 <section id="testing-our-assumptions">
 <h3><span class="section-number">5.3.2. </span>2.4) Testing our Assumptions<a class="headerlink" href="#testing-our-assumptions" title="Link to this heading">#</a></h3>
-<p>So far we have relied on a crucial assumption: $<span class="math notranslate nohighlight">\(S \perp\!\!\!\perp U.\)</span>$</p>
+<p>So far we have relied on a crucial assumption: $$S \perp!!!\perp U.$$</p>
 <p>This assumption is supported by:</p>
 <p><strong>a) perfect compliance</strong>, our assumption that all participants adhere to their assigned treatments, and</p>
 <div class="cell docutils container">
@@ -720,18 +716,16 @@ $<span class="math notranslate nohighlight">\(\mathbb{E}[Y(S = 1, U)] = \mathbb{
 </section>
 </section>
 <section id="s-perp-perp-u">
-<h2><span class="section-number">5.4. </span><span class="math notranslate nohighlight">\(S \perp\!\!\!\perp U\)</span><a class="headerlink" href="#s-perp-perp-u" title="Link to this heading">#</a></h2>
-<p>Independence between <span class="math notranslate nohighlight">\(S\)</span> and <span class="math notranslate nohighlight">\(U\)</span> implies that the distribution of potential outcomes <span class="math notranslate nohighlight">\(Y\)</span> given treatment status is the same across groups:</p>
-<div class="math notranslate nohighlight">
-\[
+<h2><span class="section-number">5.4. </span>$S \perp!!!\perp U$<a class="headerlink" href="#s-perp-perp-u" title="Link to this heading">#</a></h2>
+<p>Independence between $S$ and $U$ implies that the distribution of potential outcomes $Y$ given treatment status is the same across groups:</p>
+<p>$$
 P(Y \mid S=1, U) = P(Y \mid S=0, U).
-\]</div>
+$$</p>
 <p>A crucial implication of this independence is that the treatment and control groups should exhibit similarity in their characteristics:</p>
-<div class="math notranslate nohighlight">
-\[
+<p>$$
 P(U \mid S=1) = P(U \mid S=0).
-\]</div>
-<p>Thus, any observed differences in outcomes can be attributed to the treatment <span class="math notranslate nohighlight">\(S\)</span>, rather than confounding factors <span class="math notranslate nohighlight">\(U \)</span>.</p>
+$$</p>
+<p>Thus, any observed differences in outcomes can be attributed to the treatment $S$, rather than confounding factors $U $.</p>
 <p>To assess this, we can compare the observable characteristics of the treatment and control groups. A first step is to visually examine the observable characteristics of both groups in the experiment.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -780,15 +774,15 @@ P(U \mid S=1) = P(U \mid S=0).
 </div>
 </div>
 <p>Inspecting the distributions of key variables (e.g., age, marital status, education level, etc.) reveals that the distributions for both the treatment and control groups have similar shapes, signaling that the groups are well-balanced in terms of observable characteristics.</p>
-<p>Next, we can formally test that our groups are indeed “well balanced” by conducting a <strong>balance test</strong>! This test compares the distributions of an observable covariate <span class="math notranslate nohighlight">\(X\)</span> between the treatment group <span class="math notranslate nohighlight">\(S = 1\)</span> and the control group <span class="math notranslate nohighlight">\(S = 0\)</span>.</p>
+<p>Next, we can formally test that our groups are indeed “well balanced” by conducting a <strong>balance test</strong>! This test compares the distributions of an observable covariate $X$ between the treatment group $S = 1$ and the control group $S = 0$.</p>
 <p>Our balance test is a two-sample t-test to determine whether the difference in means is statistically significant:
-$<span class="math notranslate nohighlight">\( H_0: \mathbb{E}(X | S = 1) = \mathbb{E}(X | S = 0), \quad H_a: \mathbb{E}(X | S = 1) \neq \mathbb{E}(X | S = 0)
-\)</span>$</p>
+$$ H_0: \mathbb{E}(X | S = 1) = \mathbb{E}(X | S = 0), \quad H_a: \mathbb{E}(X | S = 1) \neq \mathbb{E}(X | S = 0)
+$$</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(H_0\)</span> states that there is no difference in the means of the observable covariate between the treatment and control groups.</p></li>
-<li><p><span class="math notranslate nohighlight">\(H_a\)</span> states that there is a difference in means.</p></li>
+<li><p>$H_0$ states that there is no difference in the means of the observable covariate between the treatment and control groups.</p></li>
+<li><p>$H_a$ states that there is a difference in means.</p></li>
 </ul>
-<p>We conclude that <span class="math notranslate nohighlight">\(S \perp U\)</span> if the means of the observables are not statistically significantly different.</p>
+<p>We conclude that $S \perp U$ if the means of the observables are not statistically significantly different.</p>
 <p>Let’s see how this test can be conducted using the Lalonde experiment:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -813,7 +807,7 @@ $<span class="math notranslate nohighlight">\( H_0: \mathbb{E}(X | S = 1) = \mat
 </div>
 </div>
 </div>
-<p>Notice we compare the mean values of each covariate between the control and treatment groups using a t-test to evaluate the null hypothesis. If the p-value exceeds the significance level (e.g., <span class="math notranslate nohighlight">\(\alpha = 0.05\)</span>), we fail to reject the null hypothesis, suggesting that the means are not significantly different.</p>
+<p>Notice we compare the mean values of each covariate between the control and treatment groups using a t-test to evaluate the null hypothesis. If the p-value exceeds the significance level (e.g., $\alpha = 0.05$), we fail to reject the null hypothesis, suggesting that the means are not significantly different.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">balance_table</span>
@@ -901,7 +895,7 @@ $<span class="math notranslate nohighlight">\( H_0: \mathbb{E}(X | S = 1) = \mat
 </div>
 <blockquote>
 <div><p><strong>How do we interpret this balance table?</strong>
-Consider the first t-test, where <span class="math notranslate nohighlight">\(X=age\)</span>:</p>
+Consider the first t-test, where $X=age$:</p>
 </div></blockquote>
 <ul class="simple">
 <li><p>The average age of individuals in the control group is <strong>24.45 years</strong> with a standard deviation of <strong>6.59 years</strong>.The average age of individuals in the treatment group is <strong>24.63 years</strong> with a standard deviation of <strong>6.69 years</strong>.</p></li>
@@ -941,7 +935,7 @@ Consider the first t-test, where <span class="math notranslate nohighlight">\(X=
 <p>Such violations complicate causal effect estimation, potentially shifting our target parameters or requiring alternative techniques to adjust for these issues.</p>
 <section id="imperfect-compliance">
 <h3><span class="section-number">5.5.1. </span>3.1. Imperfect Compliance<a class="headerlink" href="#imperfect-compliance" title="Link to this heading">#</a></h3>
-<p>Perfect compliance is rarely observed in real-world scenarios, making it reasonable to assume imperfect compliance. This means that not all individuals adhere to their assigned treatment (<span class="math notranslate nohighlight">\(S\)</span>), which can introduce bias when estimating the causal effect.</p>
+<p>Perfect compliance is rarely observed in real-world scenarios, making it reasonable to assume imperfect compliance. This means that not all individuals adhere to their assigned treatment ($S$), which can introduce bias when estimating the causal effect.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gr_imp</span> <span class="o">=</span> <span class="n">Digraph</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s2">&quot;png&quot;</span><span class="p">,</span> <span class="n">graph_attr</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;rankdir&quot;</span><span class="p">:</span> <span class="s2">&quot;LR&quot;</span><span class="p">,</span> <span class="s2">&quot;size&quot;</span><span class="p">:</span> <span class="s2">&quot;8&quot;</span><span class="p">})</span>
@@ -968,7 +962,7 @@ Consider the first t-test, where <span class="math notranslate nohighlight">\(X=
 <img alt="../_images/c99bdc5f3c1bc5aa70f42162e3dc0bc09de08cb8e6bda19a96bf3bf3c942323d.svg" src="../_images/c99bdc5f3c1bc5aa70f42162e3dc0bc09de08cb8e6bda19a96bf3bf3c942323d.svg" />
 </div>
 </div>
-<p>Under perfect compliance, we expect <span class="math notranslate nohighlight">\(P(Z) = P(S)\)</span>. When compliance is imperfect, however, <span class="math notranslate nohighlight">\(P(Z) \neq P(S)\)</span>, as some individuals may not adhere to their assigned treatment. This discrepancy complicates causal inference, especially when unobserved variables (<span class="math notranslate nohighlight">\(U\)</span>) influence both the treatment received (<span class="math notranslate nohighlight">\(S\)</span>) and the outcome (<span class="math notranslate nohighlight">\(Y\)</span>), creating confounding.</p>
+<p>Under perfect compliance, we expect $P(Z) = P(S)$. When compliance is imperfect, however, $P(Z) \neq P(S)$, as some individuals may not adhere to their assigned treatment. This discrepancy complicates causal inference, especially when unobserved variables ($U$) influence both the treatment received ($S$) and the outcome ($Y$), creating confounding.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Imperfect compliance</span>
@@ -987,7 +981,7 @@ Consider the first t-test, where <span class="math notranslate nohighlight">\(X=
 <li><p><strong>Redefining the Target Parameter</strong>: Adjusts the focus of the analysis to reflect the realities of non-compliance.</p></li>
 </ul>
 <p>For now, we will focus on redefining our parameter of interest from ATE to <strong>Intention to Treat (ITT)</strong>, which measures the causal effect of <strong>being assigned</strong> to treatment, regardless of whether the treatment was actually received.</p>
-<p>Let’s revisit the example we previously discussed regarding a job training program (<span class="math notranslate nohighlight">\(S\)</span>) and its impact on participants’ wages (<span class="math notranslate nohighlight">\(Y\)</span>). Initially, we observed that <strong>~59% of the individuals</strong> received the job training program, while <strong>~41% of the individuals did not</strong>.</p>
+<p>Let’s revisit the example we previously discussed regarding a job training program ($S$) and its impact on participants’ wages ($Y$). Initially, we observed that <strong>~59% of the individuals</strong> received the job training program, while <strong>~41% of the individuals did not</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">treat</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
@@ -1034,16 +1028,15 @@ Name: count, dtype: int64
 <p><strong>Why would non-compliance occur?</strong>  More importantly, should we reconsider our target parameter? <strong>Why?</strong></p>
 <p>Perhaps, it might be more appropiate to calculate the ITT for the job training program, where:</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(S_A = 1\)</span> if an individual is assigned to receive the job training program (told to participate).</p></li>
-<li><p><span class="math notranslate nohighlight">\(S_A = 0\)</span> if an individual is not assigned to receive the training.</p></li>
-<li><p><span class="math notranslate nohighlight">\(Y(S_A, U)\)</span> represents the outcome variable, which in this case is the wage of participants one month after the assignment.</p></li>
-<li><p><span class="math notranslate nohighlight">\(U\)</span> captures all other factors that influence wages.</p></li>
+<li><p>$S_A = 1$ if an individual is assigned to receive the job training program (told to participate).</p></li>
+<li><p>$S_A = 0$ if an individual is not assigned to receive the training.</p></li>
+<li><p>$Y(S_A, U)$ represents the outcome variable, which in this case is the wage of participants one month after the assignment.</p></li>
+<li><p>$U$ captures all other factors that influence wages.</p></li>
 </ul>
 <p>The ITT is defined as:</p>
-<div class="math notranslate nohighlight">
-\[
+<p>$$
 ITT = \mathbb{E}[Y(S_A = 1, U)] - \mathbb{E}[Y(S_A = 0, U)].
-\]</div>
+$$</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean_itt_treated</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;assign&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">][</span><span class="s1">&#39;re78&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
@@ -1059,7 +1052,7 @@ ITT = \mathbb{E}[Y(S_A = 1, U)] - \mathbb{E}[Y(S_A = 0, U)].
 </div>
 </div>
 </div>
-<p>This is the average effect <strong>of being assigned</strong> to the job training program on wages, while holding constant all other determinants captured by <span class="math notranslate nohighlight">\(U\)</span>. Would this approach be useful for policymakers assessing the program’s potential benefits in a real-world setting?</p>
+<p>This is the average effect <strong>of being assigned</strong> to the job training program on wages, while holding constant all other determinants captured by $U$. Would this approach be useful for policymakers assessing the program’s potential benefits in a real-world setting?</p>
 </section>
 <section id="sutva-violation">
 <h3><span class="section-number">5.5.2. </span>SUTVA violation<a class="headerlink" href="#sutva-violation" title="Link to this heading">#</a></h3>
@@ -1078,18 +1071,17 @@ ITT = \mathbb{E}[Y(S_A = 1, U)] - \mathbb{E}[Y(S_A = 0, U)].
  Y_1 &lt;-----  Y_2 &lt;----- Y_3 ------ Y_4
 </pre></div>
 </div>
-<p>Consider the graph above, where we have different treatment groups represented by <span class="math notranslate nohighlight">\(T_1, T_2, T_3, T_4\)</span> and their corresponding outcomes represented by <span class="math notranslate nohighlight">\(Y_1, Y_2, Y_3, Y_4\)</span>.</p>
+<p>Consider the graph above, where we have different treatment groups represented by $T_1, T_2, T_3, T_4$ and their corresponding outcomes represented by $Y_1, Y_2, Y_3, Y_4$.</p>
 <ul class="simple">
 <li><p>Notice the arrows in the graph indicate that the outcomes are interconnected in a way that violates the SUTVA assumption. This means we cannot cleanly separate treated and untreated outcomes, which complicates our estimates. <strong>How do we handle spillovers?</strong></p></li>
 </ul>
 <p>Suppose we are interested in understanding the impact of tutoring programs. Say we randomly assign some students to receive tutoring (the treatment). <strong>Would we be able to identify  ATE?</strong></p>
 <p>This experiment would presumably fail! Why? Spillover effects are highly likely as knowledge gained by treated students could positively influence untreated peers due to peer interactions.</p>
-<p><strong>How could we manage spillover effects?</strong> We can randomize entire classrooms or schools to either receive the tutoring intervention or not. Meaning, given that <span class="math notranslate nohighlight">\(S_G \perp\!\!\!\perp U \)</span>, where <span class="math notranslate nohighlight">\(S_G\)</span> denotes the group-level treatment and <span class="math notranslate nohighlight">\( U\)</span> represents unobserved confounders, we have:</p>
-<div class="math notranslate nohighlight">
-\[
-   \text{ATE}_G = \mathbb{E}[Y_G(S_G = 1, U_G) | S_G = 1] - \mathbb{E}[Y_G(S_G = 0, U_G) | S_G = 0],
-   \]</div>
-<p>where <span class="math notranslate nohighlight">\(Y_G\)</span> is the school-level outcome.</p>
+<p><strong>How could we manage spillover effects?</strong> We can randomize entire classrooms or schools to either receive the tutoring intervention or not. Meaning, given that $S_G \perp!!!\perp U $, where $S_G$ denotes the group-level treatment and $ U$ represents unobserved confounders, we have:</p>
+<p>$$
+\text{ATE}_G = \mathbb{E}[Y_G(S_G = 1, U_G) | S_G = 1] - \mathbb{E}[Y_G(S_G = 0, U_G) | S_G = 0],
+$$</p>
+<p>where $Y_G$ is the school-level outcome.</p>
 <p>This approach enables us to estimate the average treatment effect (ATE) at the group level by comparing outcomes between treated and untreated groups, capturing both the treatment and spillover effects.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1335,8 +1327,8 @@ ITT = \mathbb{E}[Y(S_A = 1, U)] - \mathbb{E}[Y(S_A = 0, U)].
 <li><p><code class="docutils literal notranslate"><span class="pre">high</span></code>: The upper bound of the interval (exclusive).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">size</span></code>: This parameter specifies the shape of the output array.</p></li>
 </ul>
-<p>Note that samples are drawn from the half-open interval: $<span class="math notranslate nohighlight">\([\text{low}, \text{high}).\)</span>$</p>
-<p>Say we want to generate samples uniformly distributed over <span class="math notranslate nohighlight">\([-1, 1]\)</span>. To include 1 in the upper bound, we can add a small value, called <strong>epsilon</strong>, which is the smallest representable positive number such that (1 + \text{epsilon}) is greater than <span class="math notranslate nohighlight">\(1\)</span>.</p>
+<p>Note that samples are drawn from the half-open interval: $$[\text{low}, \text{high}).$$</p>
+<p>Say we want to generate samples uniformly distributed over $[-1, 1]$. To include 1 in the upper bound, we can add a small value, called <strong>epsilon</strong>, which is the smallest representable positive number such that (1 + \text{epsilon}) is greater than $1$.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">finfo</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">eps</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1517,7 +1509,7 @@ ITT = \mathbb{E}[Y(S_A = 1, U)] - \mathbb{E}[Y(S_A = 0, U)].
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-our-assumptions">5.3.2. 2.4) Testing our Assumptions</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#s-perp-perp-u">5.4. <span class="math notranslate nohighlight">\(S \perp\!\!\!\perp U\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#s-perp-perp-u">5.4. $S \perp!!!\perp U$</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relaxing-assumptions-imperfect-compliance-and-sutva-violations">5.5. 3. Relaxing Assumptions: Imperfect Compliance and SUTVA Violations</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imperfect-compliance">5.5.1. 3.1. Imperfect Compliance</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sutva-violation">5.5.2. SUTVA violation</a></li>
