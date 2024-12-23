@@ -60,7 +60,7 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"TeX": {"extensions": ["AMSmath.js", "AMSsymbols.js"], "equationNumbers": {"autoNumber": "none"}}}</script>
+    <script>window.MathJax = {"TeX": {"extensions": ["AMSmath.js", "AMSsymbols.js"], "equationNumbers": {"autoNumber": "none"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'sections/8_ML_and_Causality';</script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -404,7 +404,7 @@
   <div align="center">
 <p><a class="reference external" href="https://colab.research.google.com/github/dapivei/causal-infere/blob/main/sections/8_ML_and_Causality.ipynb"><img alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 </div>
-<section id="the-interplay-between-machine-learning-and-causal-inference">
+<section class="tex2jax_ignore mathjax_ignore" id="the-interplay-between-machine-learning-and-causal-inference">
 <h1><span class="section-number">8. </span>The Interplay between Machine Learning and Causal Inference<a class="headerlink" href="#the-interplay-between-machine-learning-and-causal-inference" title="Link to this heading">#</a></h1>
 <p>There is an increasing interest in</p>
 <ol class="arabic simple">
@@ -415,71 +415,71 @@
 <section id="machine-learning-for-causality">
 <h2><span class="section-number">8.1. </span>1. Machine Learning for Causality<a class="headerlink" href="#machine-learning-for-causality" title="Link to this heading">#</a></h2>
 <p>The first step in performing causal inference is knowing the causal parameter we are trying to identify and estimate. In this class, we have been mostly focused on the average treatment effect (ATE):</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a5a54f53-6c0c-416b-ac32-68992cb84db1">
-<span class="eqno">(8.1)<a class="headerlink" href="#equation-a5a54f53-6c0c-416b-ac32-68992cb84db1" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-4ee60618-0f8f-457b-bd5c-03633a6625ac">
+<span class="eqno">(8.1)<a class="headerlink" href="#equation-4ee60618-0f8f-457b-bd5c-03633a6625ac" title="Permalink to this equation">#</a></span>\[\begin{equation}
 ATE = \mathbb{E}[Y(1, U) - Y(0, U)]
 \end{equation}\]</div>
-<p>We can identify the above equation to form a statistical estimand by conditioning if $S \perp U$:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-533fcc74-6cb9-4c32-b0c4-1aa5274a100c">
-<span class="eqno">(8.2)<a class="headerlink" href="#equation-533fcc74-6cb9-4c32-b0c4-1aa5274a100c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<p>We can identify the above equation to form a statistical estimand by conditioning if <span class="math notranslate nohighlight">\(S \perp U\)</span>:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-a72ff020-0a13-4e1a-a817-440006ff2224">
+<span class="eqno">(8.2)<a class="headerlink" href="#equation-a72ff020-0a13-4e1a-a817-440006ff2224" title="Permalink to this equation">#</a></span>\[\begin{equation}
 ATE = \mathbb{E}[Y(1, U)|S=1] - \mathbb{E}[Y(0, U)|S=0]
 \end{equation}\]</div>
 <p>Last week, we also learned that the identification of ATE can be facilitated through conditional independence.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c63ebfb2-440b-4be4-a57e-598e3ca33a1e">
-<span class="eqno">(8.3)<a class="headerlink" href="#equation-c63ebfb2-440b-4be4-a57e-598e3ca33a1e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-3891bf30-d3cc-4830-aae6-739a768829b3">
+<span class="eqno">(8.3)<a class="headerlink" href="#equation-3891bf30-d3cc-4830-aae6-739a768829b3" title="Permalink to this equation">#</a></span>\[\begin{equation}
 S \perp U \ | \ C
 \end{equation}\]</div>
-<p>Remember, we cannot just make any (machine-learning) models as being “causal” models, but we know the conditions and assumptions under which causality is feasible: descriptive regression $→$ causal regression.</p>
+<p>Remember, we cannot just make any (machine-learning) models as being “causal” models, but we know the conditions and assumptions under which causality is feasible: descriptive regression <span class="math notranslate nohighlight">\(→\)</span> causal regression.</p>
 <section id="other-causal-parameters">
 <h3><span class="section-number">8.1.1. </span>1.1 Other Causal Parameters?<a class="headerlink" href="#other-causal-parameters" title="Link to this heading">#</a></h3>
 <p>Actually, you have seen another causal parameter: individualized treatment effect (ITE). It is the most straightforward to write down, but it is also the most difficult one (almost impossible) to identify. Instead of estimating causal effects on a population level, the inidividual level effect is much more helpful as it underpins the promises of things like personalized medicine (one medication could be helpful on average but harmful for a particular individual).</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0d09e3ae-9d32-4841-82a7-8ee7820a1d79">
-<span class="eqno">(8.4)<a class="headerlink" href="#equation-0d09e3ae-9d32-4841-82a7-8ee7820a1d79" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-39bef937-a05d-4d6f-bf1c-79f5f4a64d3c">
+<span class="eqno">(8.4)<a class="headerlink" href="#equation-39bef937-a05d-4d6f-bf1c-79f5f4a64d3c" title="Permalink to this equation">#</a></span>\[\begin{equation}
 ITE = Y_i(1, u) - Y_i(0, u)
 \end{equation}\]</div>
-<p>Instead, an easier quantity to learn is called conditional average treatment effect (CATE). For the rest of the lab, we will use a more standard machine learning notation involving $(Y, X, T)$ and not writing $U$ for simplicity.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-cf8a383f-8fbd-4e9d-9f96-0dae69f20f56">
-<span class="eqno">(8.5)<a class="headerlink" href="#equation-cf8a383f-8fbd-4e9d-9f96-0dae69f20f56" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<p>Instead, an easier quantity to learn is called conditional average treatment effect (CATE). For the rest of the lab, we will use a more standard machine learning notation involving <span class="math notranslate nohighlight">\((Y, X, T)\)</span> and not writing <span class="math notranslate nohighlight">\(U\)</span> for simplicity.</p>
+<div class="amsmath math notranslate nohighlight" id="equation-0e38726b-140e-4ada-805d-1d67b66c321d">
+<span class="eqno">(8.5)<a class="headerlink" href="#equation-0e38726b-140e-4ada-805d-1d67b66c321d" title="Permalink to this equation">#</a></span>\[\begin{equation}
 CATE = \mathbb{E}[Y(1) - Y(0) | X]
 \end{equation}\]</div>
 <p>If we are simply leveraging the conditional independence assumption for identifying ATE, this can be written as the following:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-83326129-59bb-4bca-8942-f5e44505cda2">
-<span class="eqno">(8.6)<a class="headerlink" href="#equation-83326129-59bb-4bca-8942-f5e44505cda2" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-40cb5250-44e5-467a-98a9-95c729e47c12">
+<span class="eqno">(8.6)<a class="headerlink" href="#equation-40cb5250-44e5-467a-98a9-95c729e47c12" title="Permalink to this equation">#</a></span>\[\begin{equation}
 ATE = \mathbb{E}_{X}\left[\mathbb{E}[Y(1) - Y(0) | X]\right]
 \end{equation}\]</div>
 </section>
 <section id="statistical-estimands">
 <h3><span class="section-number">8.1.2. </span>1.2 Statistical Estimands<a class="headerlink" href="#statistical-estimands" title="Link to this heading">#</a></h3>
-<p>Given a dataset of $D = {Y, X, T}$, we can identify the above ATE and CATE with two major assumptions:</p>
+<p>Given a dataset of <span class="math notranslate nohighlight">\(D = \{Y, X, T\}\)</span>, we can identify the above ATE and CATE with two major assumptions:</p>
 <ol class="arabic simple">
-<li><p>Ignorability: $Y(1), Y(0) \perp T | X$</p></li>
-<li><p>Positivity: $p(T=t | X = \mathbf{x}) &gt;0, ∀t, \mathbf{x}$</p></li>
+<li><p>Ignorability: <span class="math notranslate nohighlight">\(Y(1), Y(0) \perp T | X\)</span></p></li>
+<li><p>Positivity: <span class="math notranslate nohighlight">\(p(T=t | X = \mathbf{x}) &gt;0, ∀t, \mathbf{x}\)</span></p></li>
 </ol>
-<p>We have seen the first one! It reads as the treatment assignment does not influence the potential outcomes condition on the features $X$, i.e., the treatment group and the control group should have similar characteristics ($S \perp U | C$).</p>
+<p>We have seen the first one! It reads as the treatment assignment does not influence the potential outcomes condition on the features <span class="math notranslate nohighlight">\(X\)</span>, i.e., the treatment group and the control group should have similar characteristics (<span class="math notranslate nohighlight">\(S \perp U | C\)</span>).</p>
 <p>We haven’t talked much about positivity yet as we are just beginning to touch on control variables, but this is intuitive: there always should be people taking all the treatment options among the subpopulation on which they are conditioned. For example, if all college graduates do not attend the job training program, this assumption will be violated.</p>
 <p>We can derive the statistical estimand for CATE and ATE just as in lectures.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-287f7966-b821-4ca6-b8ea-8fcaba97ce55">
-<span class="eqno">(8.7)<a class="headerlink" href="#equation-287f7966-b821-4ca6-b8ea-8fcaba97ce55" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-68450ef6-524a-4d94-8dc8-860f1a549821">
+<span class="eqno">(8.7)<a class="headerlink" href="#equation-68450ef6-524a-4d94-8dc8-860f1a549821" title="Permalink to this equation">#</a></span>\[\begin{align}
 CATE &amp;= \mathbb{E}[Y(1) - Y(0) | X] \\
 &amp;= \mathbb{E}[Y(1)|X] - \mathbb{E}[Y(0) | X] \\
 &amp;= \mathbb{E}[Y(1)|T=1, X] - \mathbb{E}[Y(0) |T=0, X] \\
 &amp;= \mathbb{E}[Y|T=1, X] - \mathbb{E}[Y|T=0, X] \\
 \end{align}\]</div>
 <p>and,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a491cd91-29e0-4989-ae7e-8cf442f3282e">
-<span class="eqno">(8.8)<a class="headerlink" href="#equation-a491cd91-29e0-4989-ae7e-8cf442f3282e" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-e8e18b21-785d-40b9-a327-5f40850dcaad">
+<span class="eqno">(8.8)<a class="headerlink" href="#equation-e8e18b21-785d-40b9-a327-5f40850dcaad" title="Permalink to this equation">#</a></span>\[\begin{align}
 ATE &amp;= \mathbb{E}_{X}\left[\mathbb{E}[Y(1) - Y(0) | X]\right] \\
 &amp;= \mathbb{E}_{X}\left[\mathbb{E}[Y|T=1, X] - \mathbb{E}[Y|T=0, X]\right] \\
 \end{align}\]</div>
 </section>
 <section id="advanced-estimation">
 <h3><span class="section-number">8.1.3. </span>1.3 Advanced Estimation<a class="headerlink" href="#advanced-estimation" title="Link to this heading">#</a></h3>
-<p>When the assumptions hold, we can simply regress the outcome on the treatment and features, and we have shown in class that the coefficient for the treatment variable is the corresponding ATE. For CATE, we can add an interaction term between treatment and the conditioned feature like $\beta XT$.</p>
+<p>When the assumptions hold, we can simply regress the outcome on the treatment and features, and we have shown in class that the coefficient for the treatment variable is the corresponding ATE. For CATE, we can add an interaction term between treatment and the conditioned feature like <span class="math notranslate nohighlight">\(\beta XT\)</span>.</p>
 <p>However, what if the underlying true model is <strong>not</strong> a linear model?</p>
-<p>In general, we can use any model class for estimating $\mathbb{E}[Y|T=1, X]$ and $\mathbb{E}[Y|T=0, X]$.</p>
+<p>In general, we can use any model class for estimating <span class="math notranslate nohighlight">\(\mathbb{E}[Y|T=1, X]\)</span> and <span class="math notranslate nohighlight">\(\mathbb{E}[Y|T=0, X]\)</span>.</p>
 <section id="s-learner">
 <h4><span class="section-number">8.1.3.1. </span>1.3.1 S-learner<a class="headerlink" href="#s-learner" title="Link to this heading">#</a></h4>
-<p>We can use a single model $f(\mathbf{x}_i, t_i)$ to predict $Y$ based on $X$ and $T$.</p>
+<p>We can use a single model <span class="math notranslate nohighlight">\(f(\mathbf{x}_i, t_i)\)</span> to predict <span class="math notranslate nohighlight">\(Y\)</span> based on <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(T\)</span>.</p>
 <p><img alt="S-learner" src="https://github.com/dapivei/causal-infere/blob/main/images/S-learner.png?raw=true" /></p>
 <p>image credit: <a class="reference external" href="https://csc2541-2022.github.io/lectures/CSC2541_lecture4_estimation.pdf">link</a></p>
 <p>Let’s simulate some data!</p>
@@ -655,11 +655,11 @@ ATE &amp;= \mathbb{E}_{X}\left[\mathbb{E}[Y(1) - Y(0) | X]\right] \\
 </div>
 </div>
 </div>
-<p>What are some potential problems if we have high-dimensional $X$, i.e., $D$ is very large?</p>
+<p>What are some potential problems if we have high-dimensional <span class="math notranslate nohighlight">\(X\)</span>, i.e., <span class="math notranslate nohighlight">\(D\)</span> is very large?</p>
 </section>
 <section id="t-learner">
 <h4><span class="section-number">8.1.3.2. </span>1.3.2 T-learner<a class="headerlink" href="#t-learner" title="Link to this heading">#</a></h4>
-<p>Alternatively, we can build separate models $f_1(\mathbf{x}_i, T=1)$ and $f_0(\mathbf{x}_i, T=0)$ for the treatment and control group.</p>
+<p>Alternatively, we can build separate models <span class="math notranslate nohighlight">\(f_1(\mathbf{x}_i, T=1)\)</span> and <span class="math notranslate nohighlight">\(f_0(\mathbf{x}_i, T=0)\)</span> for the treatment and control group.</p>
 <p><img alt="T-learner" src="https://github.com/dapivei/causal-infere/blob/main/images/T-learner.png?raw=true" /></p>
 <p>image credit: <a class="reference external" href="https://csc2541-2022.github.io/lectures/CSC2541_lecture4_estimation.pdf">link</a></p>
 <div class="cell docutils container">
@@ -796,45 +796,96 @@ ATE &amp;= \mathbb{E}_{X}\left[\mathbb{E}[Y(1) - Y(0) | X]\right] \\
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">7</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="k">for</span> <span class="n">X_batch</span><span class="p">,</span> <span class="n">T_batch</span><span class="p">,</span> <span class="n">Y_batch</span> <span class="ow">in</span> <span class="n">train_loader</span><span class="p">:</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span>     <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
-<span class="ne">----&gt; </span><span class="mi">7</span>     <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X_batch</span><span class="p">,</span> <span class="n">T_batch</span><span class="p">)</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">10</span>
 <span class="g g-Whitespace">      </span><span class="mi">8</span>     <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">Y_batch</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">9</span>     <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+<span class="ne">---&gt; </span><span class="mi">10</span>     <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span>     <span class="n">total_loss</span> <span class="o">+=</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="k">if</span> <span class="p">(</span><span class="n">epoch</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
 
-<span class="nn">File /ext3/miniforge3/lib/python3.12/site-packages/torch/nn/modules/module.py:1736,</span> in <span class="ni">Module._wrapped_call_impl</span><span class="nt">(self, *args, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1734</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compiled_call_impl</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>  <span class="c1"># type: ignore[misc]</span>
-<span class="g g-Whitespace">   </span><span class="mi">1735</span> <span class="k">else</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1736</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call_impl</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="nn">File /ext3/miniforge3/lib/python3.12/site-packages/torch/optim/optimizer.py:487,</span> in <span class="ni">Optimizer.profile_hook_step.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">482</span>         <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">483</span>             <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">484</span>                 <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">func</span><span class="si">}</span><span class="s2"> must return None or a tuple of (new_args, new_kwargs), but got </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">.&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">485</span>             <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">487</span> <span class="n">out</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">488</span> <span class="bp">self</span><span class="o">.</span><span class="n">_optimizer_step_code</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">490</span> <span class="c1"># call optimizer step post hooks</span>
 
-<span class="nn">File /ext3/miniforge3/lib/python3.12/site-packages/torch/nn/modules/module.py:1747,</span> in <span class="ni">Module._call_impl</span><span class="nt">(self, *args, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1742</span> <span class="c1"># If we don&#39;t have any hooks, we want to skip the rest of the logic in</span>
-<span class="g g-Whitespace">   </span><span class="mi">1743</span> <span class="c1"># this function, and just call forward.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1744</span> <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_backward_hooks</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backward_pre_hooks</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_forward_hooks</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_forward_pre_hooks</span>
-<span class="g g-Whitespace">   </span><span class="mi">1745</span>         <span class="ow">or</span> <span class="n">_global_backward_pre_hooks</span> <span class="ow">or</span> <span class="n">_global_backward_hooks</span>
-<span class="g g-Whitespace">   </span><span class="mi">1746</span>         <span class="ow">or</span> <span class="n">_global_forward_hooks</span> <span class="ow">or</span> <span class="n">_global_forward_pre_hooks</span><span class="p">):</span>
-<span class="ne">-&gt; </span><span class="mi">1747</span>     <span class="k">return</span> <span class="n">forward_call</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1749</span> <span class="n">result</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="g g-Whitespace">   </span><span class="mi">1750</span> <span class="n">called_always_called_hooks</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+<span class="nn">File /ext3/miniforge3/lib/python3.12/site-packages/torch/optim/optimizer.py:91,</span> in <span class="ni">_use_grad_for_differentiable.&lt;locals&gt;._use_grad</span><span class="nt">(self, *args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">89</span>     <span class="n">torch</span><span class="o">.</span><span class="n">set_grad_enabled</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">defaults</span><span class="p">[</span><span class="s2">&quot;differentiable&quot;</span><span class="p">])</span>
+<span class="g g-Whitespace">     </span><span class="mi">90</span>     <span class="n">torch</span><span class="o">.</span><span class="n">_dynamo</span><span class="o">.</span><span class="n">graph_break</span><span class="p">()</span>
+<span class="ne">---&gt; </span><span class="mi">91</span>     <span class="n">ret</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">92</span> <span class="k">finally</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">93</span>     <span class="n">torch</span><span class="o">.</span><span class="n">_dynamo</span><span class="o">.</span><span class="n">graph_break</span><span class="p">()</span>
 
-<span class="nn">Cell In[5], line 42,</span> in <span class="ni">TARNet.forward</span><span class="nt">(self, x, t)</span>
-<span class="g g-Whitespace">     </span><span class="mi">40</span> <span class="n">y0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">outcome_0</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">41</span> <span class="n">y1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">outcome_1</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">42</span> <span class="n">y_pred</span> <span class="o">=</span> <span class="n">t</span> <span class="o">*</span> <span class="n">y1</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">t</span><span class="p">)</span> <span class="o">*</span> <span class="n">y0</span>
-<span class="g g-Whitespace">     </span><span class="mi">43</span> <span class="k">return</span> <span class="n">y_pred</span>
+<span class="nn">File /ext3/miniforge3/lib/python3.12/site-packages/torch/optim/adam.py:223,</span> in <span class="ni">Adam.step</span><span class="nt">(self, closure)</span>
+<span class="g g-Whitespace">    </span><span class="mi">211</span>     <span class="n">beta1</span><span class="p">,</span> <span class="n">beta2</span> <span class="o">=</span> <span class="n">group</span><span class="p">[</span><span class="s2">&quot;betas&quot;</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">213</span>     <span class="n">has_complex</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_init_group</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">214</span>         <span class="n">group</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">215</span>         <span class="n">params_with_grad</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">220</span>         <span class="n">state_steps</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">221</span>     <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">223</span>     <span class="n">adam</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">224</span>         <span class="n">params_with_grad</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">225</span>         <span class="n">grads</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">226</span>         <span class="n">exp_avgs</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">227</span>         <span class="n">exp_avg_sqs</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">228</span>         <span class="n">max_exp_avg_sqs</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">229</span>         <span class="n">state_steps</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">230</span>         <span class="n">amsgrad</span><span class="o">=</span><span class="n">group</span><span class="p">[</span><span class="s2">&quot;amsgrad&quot;</span><span class="p">],</span>
+<span class="g g-Whitespace">    </span><span class="mi">231</span>         <span class="n">has_complex</span><span class="o">=</span><span class="n">has_complex</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">232</span>         <span class="n">beta1</span><span class="o">=</span><span class="n">beta1</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">233</span>         <span class="n">beta2</span><span class="o">=</span><span class="n">beta2</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">234</span>         <span class="n">lr</span><span class="o">=</span><span class="n">group</span><span class="p">[</span><span class="s2">&quot;lr&quot;</span><span class="p">],</span>
+<span class="g g-Whitespace">    </span><span class="mi">235</span>         <span class="n">weight_decay</span><span class="o">=</span><span class="n">group</span><span class="p">[</span><span class="s2">&quot;weight_decay&quot;</span><span class="p">],</span>
+<span class="g g-Whitespace">    </span><span class="mi">236</span>         <span class="n">eps</span><span class="o">=</span><span class="n">group</span><span class="p">[</span><span class="s2">&quot;eps&quot;</span><span class="p">],</span>
+<span class="g g-Whitespace">    </span><span class="mi">237</span>         <span class="n">maximize</span><span class="o">=</span><span class="n">group</span><span class="p">[</span><span class="s2">&quot;maximize&quot;</span><span class="p">],</span>
+<span class="g g-Whitespace">    </span><span class="mi">238</span>         <span class="n">foreach</span><span class="o">=</span><span class="n">group</span><span class="p">[</span><span class="s2">&quot;foreach&quot;</span><span class="p">],</span>
+<span class="g g-Whitespace">    </span><span class="mi">239</span>         <span class="n">capturable</span><span class="o">=</span><span class="n">group</span><span class="p">[</span><span class="s2">&quot;capturable&quot;</span><span class="p">],</span>
+<span class="g g-Whitespace">    </span><span class="mi">240</span>         <span class="n">differentiable</span><span class="o">=</span><span class="n">group</span><span class="p">[</span><span class="s2">&quot;differentiable&quot;</span><span class="p">],</span>
+<span class="g g-Whitespace">    </span><span class="mi">241</span>         <span class="n">fused</span><span class="o">=</span><span class="n">group</span><span class="p">[</span><span class="s2">&quot;fused&quot;</span><span class="p">],</span>
+<span class="g g-Whitespace">    </span><span class="mi">242</span>         <span class="n">grad_scale</span><span class="o">=</span><span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;grad_scale&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">    </span><span class="mi">243</span>         <span class="n">found_inf</span><span class="o">=</span><span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;found_inf&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">    </span><span class="mi">244</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">246</span> <span class="k">return</span> <span class="n">loss</span>
 
-<span class="nn">File /ext3/miniforge3/lib/python3.12/site-packages/torch/_tensor.py:39,</span> in <span class="ni">_handle_torch_function_and_wrap_type_error_to_not_implemented.&lt;locals&gt;.wrapped</span><span class="nt">(*args, **kwargs)</span>
-<span class="g g-Whitespace">     </span><span class="mi">37</span>     <span class="k">if</span> <span class="n">has_torch_function</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">38</span>         <span class="k">return</span> <span class="n">handle_torch_function</span><span class="p">(</span><span class="n">wrapped</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">39</span>     <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">40</span> <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">41</span>     <span class="k">return</span> <span class="bp">NotImplemented</span>
+<span class="nn">File /ext3/miniforge3/lib/python3.12/site-packages/torch/optim/optimizer.py:154,</span> in <span class="ni">_disable_dynamo_if_unsupported.&lt;locals&gt;.wrapper.&lt;locals&gt;.maybe_fallback</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">152</span>     <span class="k">return</span> <span class="n">disabled_func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">153</span> <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">154</span>     <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-<span class="nn">File /ext3/miniforge3/lib/python3.12/site-packages/torch/_tensor.py:1028,</span> in <span class="ni">Tensor.__rsub__</span><span class="nt">(self, other)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1026</span> <span class="nd">@_handle_torch_function_and_wrap_type_error_to_not_implemented</span>
-<span class="g g-Whitespace">   </span><span class="mi">1027</span> <span class="k">def</span> <span class="fm">__rsub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-<span class="ne">-&gt; </span><span class="mi">1028</span>     <span class="k">return</span> <span class="n">_C</span><span class="o">.</span><span class="n">_VariableFunctions</span><span class="o">.</span><span class="n">rsub</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
+<span class="nn">File /ext3/miniforge3/lib/python3.12/site-packages/torch/optim/adam.py:784,</span> in <span class="ni">adam</span><span class="nt">(params, grads, exp_avgs, exp_avg_sqs, max_exp_avg_sqs, state_steps, foreach, capturable, differentiable, fused, grad_scale, found_inf, has_complex, amsgrad, beta1, beta2, lr, weight_decay, eps, maximize)</span>
+<span class="g g-Whitespace">    </span><span class="mi">781</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">782</span>     <span class="n">func</span> <span class="o">=</span> <span class="n">_single_tensor_adam</span>
+<span class="ne">--&gt; </span><span class="mi">784</span> <span class="n">func</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">785</span>     <span class="n">params</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">786</span>     <span class="n">grads</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">787</span>     <span class="n">exp_avgs</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">788</span>     <span class="n">exp_avg_sqs</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">789</span>     <span class="n">max_exp_avg_sqs</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">790</span>     <span class="n">state_steps</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">791</span>     <span class="n">amsgrad</span><span class="o">=</span><span class="n">amsgrad</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">792</span>     <span class="n">has_complex</span><span class="o">=</span><span class="n">has_complex</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">793</span>     <span class="n">beta1</span><span class="o">=</span><span class="n">beta1</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">794</span>     <span class="n">beta2</span><span class="o">=</span><span class="n">beta2</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">795</span>     <span class="n">lr</span><span class="o">=</span><span class="n">lr</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">796</span>     <span class="n">weight_decay</span><span class="o">=</span><span class="n">weight_decay</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">797</span>     <span class="n">eps</span><span class="o">=</span><span class="n">eps</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">798</span>     <span class="n">maximize</span><span class="o">=</span><span class="n">maximize</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">799</span>     <span class="n">capturable</span><span class="o">=</span><span class="n">capturable</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">800</span>     <span class="n">differentiable</span><span class="o">=</span><span class="n">differentiable</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">801</span>     <span class="n">grad_scale</span><span class="o">=</span><span class="n">grad_scale</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">802</span>     <span class="n">found_inf</span><span class="o">=</span><span class="n">found_inf</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">803</span> <span class="p">)</span>
+
+<span class="nn">File /ext3/miniforge3/lib/python3.12/site-packages/torch/optim/adam.py:430,</span> in <span class="ni">_single_tensor_adam</span><span class="nt">(params, grads, exp_avgs, exp_avg_sqs, max_exp_avg_sqs, state_steps, grad_scale, found_inf, amsgrad, has_complex, beta1, beta2, lr, weight_decay, eps, maximize, capturable, differentiable)</span>
+<span class="g g-Whitespace">    </span><span class="mi">428</span>         <span class="n">denom</span> <span class="o">=</span> <span class="p">(</span><span class="n">max_exp_avg_sqs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">sqrt</span><span class="p">()</span> <span class="o">/</span> <span class="n">bias_correction2_sqrt</span><span class="p">)</span><span class="o">.</span><span class="n">add_</span><span class="p">(</span><span class="n">eps</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">429</span>     <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">430</span>         <span class="n">denom</span> <span class="o">=</span> <span class="p">(</span><span class="n">exp_avg_sq</span><span class="o">.</span><span class="n">sqrt</span><span class="p">()</span> <span class="o">/</span> <span class="n">bias_correction2_sqrt</span><span class="p">)</span><span class="o">.</span><span class="n">add_</span><span class="p">(</span><span class="n">eps</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">432</span>     <span class="n">param</span><span class="o">.</span><span class="n">addcdiv_</span><span class="p">(</span><span class="n">exp_avg</span><span class="p">,</span> <span class="n">denom</span><span class="p">,</span> <span class="n">value</span><span class="o">=-</span><span class="n">step_size</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">434</span> <span class="c1"># Lastly, switch back to complex view</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>

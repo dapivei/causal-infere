@@ -34,10 +34,11 @@ html:
 
 parse:
   myst_enable_extensions:
-    # don't forget to list any other extensions you want enabled,
-    # including those that are enabled by default!
     - amsmath
-    #- dollarmath
+    - dollarmath
+  myst_dmath_double_inline: true  # Allows $$...$$ for block-level math
+  myst_dmath_allow_labels: true   # Allows equation numbering and referencing
+
 
 
 

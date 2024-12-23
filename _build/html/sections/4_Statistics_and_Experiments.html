@@ -60,7 +60,7 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"TeX": {"extensions": ["AMSmath.js", "AMSsymbols.js"], "equationNumbers": {"autoNumber": "none"}}}</script>
+    <script>window.MathJax = {"TeX": {"extensions": ["AMSmath.js", "AMSsymbols.js"], "equationNumbers": {"autoNumber": "none"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'sections/4_Statistics_and_Experiments';</script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -383,10 +383,10 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-concepts">4.3.1. Key Concepts</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-simulate-a-dataset">4.3.1.1. a) Simulate a Dataset</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#define-our-hypothesis">4.3.1.2. Define our hypothesis</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#set-a-significance-level-alpha">4.3.1.3. Set a significance level $\alpha$</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#d-compute-t-n">4.3.1.4. d) Compute $T_n$</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#define-the-critical-value-c">4.3.1.5. Define the critical value $c$</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#p-n">4.3.1.6. $p_n$</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#set-a-significance-level-alpha">4.3.1.3. Set a significance level <span class="math notranslate nohighlight">\(\alpha\)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#d-compute-t-n">4.3.1.4. d) Compute <span class="math notranslate nohighlight">\(T_n\)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#define-the-critical-value-c">4.3.1.5. Define the critical value <span class="math notranslate nohighlight">\(c\)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#p-n">4.3.1.6. <span class="math notranslate nohighlight">\(p_n\)</span></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#confidence-sets">4.3.1.7. Confidence Sets</a></li>
 </ul>
 </li>
@@ -407,7 +407,7 @@
                 <article class="bd-article">
                   
   <p><a class="reference external" href="https://colab.research.google.com/github/dapivei/causal-infere/blob/main/sections/4_Statistics_and_Experiments.ipynb"><img alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
-<section id="hypothesis-testing-and-introduction-to-experiments">
+<section class="tex2jax_ignore mathjax_ignore" id="hypothesis-testing-and-introduction-to-experiments">
 <h1><span class="section-number">4. </span>Hypothesis testing and Introduction to Experiments<a class="headerlink" href="#hypothesis-testing-and-introduction-to-experiments" title="Link to this heading">#</a></h1>
 <section id="recap-from-last-class">
 <h2><span class="section-number">4.1. </span>Recap from last class<a class="headerlink" href="#recap-from-last-class" title="Link to this heading">#</a></h2>
@@ -429,24 +429,24 @@
 <section id="key-concepts">
 <h3><span class="section-number">4.3.1. </span>Key Concepts<a class="headerlink" href="#key-concepts" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
-<li><p><strong>Null Hypothesis ($H_0$)</strong>:<br />
+<li><p><strong>Null Hypothesis (<span class="math notranslate nohighlight">\(H_0\)</span>)</strong>:<br />
 Represents the default assumption we aim to <strong>disprove</strong>. For example, in a medical trial, it might state that a new treatment has no effect.</p></li>
-<li><p><strong>Alternative Hypothesis ($H_1$)</strong>:<br />
-What we want to <strong>prove</strong> through analysis, proposing an outcome different from $H_0$. For instance, it may claim that the new treatment <strong>does</strong> have an effect.</p></li>
-<li><p><strong>Test Statistic ($T_n$)</strong>:<br />
-A measure of how far our sample data deviates from expectations under $H_0$, quantifying the strength of evidence against it.</p></li>
-<li><p><strong>Critical Value ($c$)</strong>:<br />
-A threshold defining what is “significant” evidence. If our test statistic exceeds this value, we reject $H_0$.</p></li>
+<li><p><strong>Alternative Hypothesis (<span class="math notranslate nohighlight">\(H_1\)</span>)</strong>:<br />
+What we want to <strong>prove</strong> through analysis, proposing an outcome different from <span class="math notranslate nohighlight">\(H_0\)</span>. For instance, it may claim that the new treatment <strong>does</strong> have an effect.</p></li>
+<li><p><strong>Test Statistic (<span class="math notranslate nohighlight">\(T_n\)</span>)</strong>:<br />
+A measure of how far our sample data deviates from expectations under <span class="math notranslate nohighlight">\(H_0\)</span>, quantifying the strength of evidence against it.</p></li>
+<li><p><strong>Critical Value (<span class="math notranslate nohighlight">\(c\)</span>)</strong>:<br />
+A threshold defining what is “significant” evidence. If our test statistic exceeds this value, we reject <span class="math notranslate nohighlight">\(H_0\)</span>.</p></li>
 <li><p><strong>Decision Rule</strong>:<br />
-If the test statistic is greater than the $c$, we reject $H_0$ in favor of $H_1$. If it’s less than or equal to the critical value, we <strong>fail to reject</strong> $H_0$. Note that failing to reject $H_0$ does not prove it true; it just indicates insufficient evidence against it.</p></li>
+If the test statistic is greater than the <span class="math notranslate nohighlight">\(c\)</span>, we reject <span class="math notranslate nohighlight">\(H_0\)</span> in favor of <span class="math notranslate nohighlight">\(H_1\)</span>. If it’s less than or equal to the critical value, we <strong>fail to reject</strong> <span class="math notranslate nohighlight">\(H_0\)</span>. Note that failing to reject <span class="math notranslate nohighlight">\(H_0\)</span> does not prove it true; it just indicates insufficient evidence against it.</p></li>
 </ol>
 <blockquote>
-<div><p><strong>Significance</strong> ($\alpha$) and <strong>P-Value</strong>: A result is considered <strong>significant</strong> if the evidence against $H_0$ is strong. The <strong>p-value</strong> measures this evidence. It indicates the probability of observing data as extreme as ours if $H_0$ were true. A low p-value (typically &lt; 0.05) suggests strong evidence against $H_0$.</p>
+<div><p><strong>Significance</strong> (<span class="math notranslate nohighlight">\(\alpha\)</span>) and <strong>P-Value</strong>: A result is considered <strong>significant</strong> if the evidence against <span class="math notranslate nohighlight">\(H_0\)</span> is strong. The <strong>p-value</strong> measures this evidence. It indicates the probability of observing data as extreme as ours if <span class="math notranslate nohighlight">\(H_0\)</span> were true. A low p-value (typically &lt; 0.05) suggests strong evidence against <span class="math notranslate nohighlight">\(H_0\)</span>.</p>
 </div></blockquote>
 <p>Now, let’s apply our hypothesis testing framework by simulating a dataset and examining the results.</p>
 <section id="a-simulate-a-dataset">
 <h4><span class="section-number">4.3.1.1. </span>a) Simulate a Dataset<a class="headerlink" href="#a-simulate-a-dataset" title="Link to this heading">#</a></h4>
-<p>We’ll start by generating a dataset from a normal distribution, specifically $X \sim N(5, 1.5)$.</p>
+<p>We’ll start by generating a dataset from a normal distribution, specifically <span class="math notranslate nohighlight">\(X \sim N(5, 1.5)\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -493,8 +493,9 @@ If the test statistic is greater than the $c$, we reject $H_0$ in favor of $H_1$
 </section>
 <section id="define-our-hypothesis">
 <h4><span class="section-number">4.3.1.2. </span>Define our hypothesis<a class="headerlink" href="#define-our-hypothesis" title="Link to this heading">#</a></h4>
-<p>Our null hypothesis ($H_0$) states that the population mean is equal to 8. The alternative hypothesis ($H_1$) suggests that the mean is different from this value.</p>
-<p>$$H_0: \mathbb{E}[X] =8, \quad H_1: \mathbb{E}[X] \neq 8.$$</p>
+<p>Our null hypothesis (<span class="math notranslate nohighlight">\(H_0\)</span>) states that the population mean is equal to 8. The alternative hypothesis (<span class="math notranslate nohighlight">\(H_1\)</span>) suggests that the mean is different from this value.</p>
+<div class="math notranslate nohighlight">
+\[H_0: \mathbb{E}[X] =8, \quad H_1: \mathbb{E}[X] \neq 8.\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mu_0</span><span class="o">=</span><span class="mi">8</span>
@@ -504,8 +505,8 @@ If the test statistic is greater than the $c$, we reject $H_0$ in favor of $H_1$
 </div>
 </section>
 <section id="set-a-significance-level-alpha">
-<h4><span class="section-number">4.3.1.3. </span>Set a significance level $\alpha$<a class="headerlink" href="#set-a-significance-level-alpha" title="Link to this heading">#</a></h4>
-<p>The significance level $\alpha$ is the threshold we set for deciding how much evidence we need to reject $H_0$. It represents the risk we are willing to accept for falsely rejecting the $H_0$ (Type I error). Common choices for 𝛼 are
+<h4><span class="section-number">4.3.1.3. </span>Set a significance level <span class="math notranslate nohighlight">\(\alpha\)</span><a class="headerlink" href="#set-a-significance-level-alpha" title="Link to this heading">#</a></h4>
+<p>The significance level <span class="math notranslate nohighlight">\(\alpha\)</span> is the threshold we set for deciding how much evidence we need to reject <span class="math notranslate nohighlight">\(H_0\)</span>. It represents the risk we are willing to accept for falsely rejecting the <span class="math notranslate nohighlight">\(H_0\)</span> (Type I error). Common choices for 𝛼 are
 0.05 or
 0.01. This means we are willing to accept a 5% or 1% chance of making an error.</p>
 <div class="cell docutils container">
@@ -518,20 +519,23 @@ If the test statistic is greater than the $c$, we reject $H_0$ in favor of $H_1$
 </div>
 </section>
 <section id="d-compute-t-n">
-<h4><span class="section-number">4.3.1.4. </span>d) Compute $T_n$<a class="headerlink" href="#d-compute-t-n" title="Link to this heading">#</a></h4>
-<p>To quantitatively assess whether our sample provides enough evidence to reject $H_0$, we use the t-test statistic:</p>
-<p>$$T_n = \frac{\sqrt{n}}{\hat{\sigma}_n} \left( |\overline{X_n} - \mu_0| \right).$$</p>
-<p>$T_n$ measures how far our sample mean ($\overline{X_n}$) is from the hypothesized mean ($\mu_0$). The larger the value of $T_n$, the more evidence we have against the null hypothesis ($H_0$).</p>
+<h4><span class="section-number">4.3.1.4. </span>d) Compute <span class="math notranslate nohighlight">\(T_n\)</span><a class="headerlink" href="#d-compute-t-n" title="Link to this heading">#</a></h4>
+<p>To quantitatively assess whether our sample provides enough evidence to reject <span class="math notranslate nohighlight">\(H_0\)</span>, we use the t-test statistic:</p>
+<div class="math notranslate nohighlight">
+\[T_n = \frac{\sqrt{n}}{\hat{\sigma}_n} \left( |\overline{X_n} - \mu_0| \right).\]</div>
+<p><span class="math notranslate nohighlight">\(T_n\)</span> measures how far our sample mean (<span class="math notranslate nohighlight">\(\overline{X_n}\)</span>) is from the hypothesized mean (<span class="math notranslate nohighlight">\(\mu_0\)</span>). The larger the value of <span class="math notranslate nohighlight">\(T_n\)</span>, the more evidence we have against the null hypothesis (<span class="math notranslate nohighlight">\(H_0\)</span>).</p>
 <blockquote>
-<div><p>Recall that, as the sample size  $n$ increases, the distribution of the sample mean $\bar{X_n}$ approaches normality due to the Central Limit Theorem (CLT):</p>
+<div><p>Recall that, as the sample size  <span class="math notranslate nohighlight">\(n\)</span> increases, the distribution of the sample mean <span class="math notranslate nohighlight">\(\bar{X_n}\)</span> approaches normality due to the Central Limit Theorem (CLT):</p>
 </div></blockquote>
-<p>$$
+<div class="math notranslate nohighlight">
+\[
 \bar{X_n} \sim N(\mu, \frac{\sigma}{\sqrt{n}})
-$$</p>
+\]</div>
 <p>This implies,</p>
-<p>$$
+<div class="math notranslate nohighlight">
+\[
 T_n \sim N(0, 1).
-$$</p>
+\]</div>
 <p>This property enables the use of normal distribution properties to derive critical values, calculate p-values, and make informed decisions based on statistical evidence.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -556,20 +560,22 @@ $$</p>
 </div>
 </section>
 <section id="define-the-critical-value-c">
-<h4><span class="section-number">4.3.1.5. </span>Define the critical value $c$<a class="headerlink" href="#define-the-critical-value-c" title="Link to this heading">#</a></h4>
-<p>To determine the critical value $c$, we want to find the value such that:</p>
-<p>$$
+<h4><span class="section-number">4.3.1.5. </span>Define the critical value <span class="math notranslate nohighlight">\(c\)</span><a class="headerlink" href="#define-the-critical-value-c" title="Link to this heading">#</a></h4>
+<p>To determine the critical value <span class="math notranslate nohighlight">\(c\)</span>, we want to find the value such that:</p>
+<div class="math notranslate nohighlight">
+\[
 2\big(1 - \Phi(c)\big) = \alpha,
-$$</p>
-<p>where $\Phi$ is the CDF of the standard normal distribution. The factor of 2 accounts for the two-sided nature of our test. For more details on how this was derived, please refer to lecture notes.</p>
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\Phi\)</span> is the CDF of the standard normal distribution. The factor of 2 accounts for the two-sided nature of our test. For more details on how this was derived, please refer to lecture notes.</p>
 <ul>
-<li><p>Rearranging this equation helps us find $\Phi(c) $:</p>
-<p>$$
-\Phi(c) = 1 - \frac{\alpha}{2}
-$$</p>
+<li><p>Rearranging this equation helps us find <span class="math notranslate nohighlight">\(\Phi(c) \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+   \Phi(c) = 1 - \frac{\alpha}{2}
+   \]</div>
 </li>
 </ul>
-<p>This gives us the critical value that corresponds to our chosen $\alpha$.</p>
+<p>This gives us the critical value that corresponds to our chosen <span class="math notranslate nohighlight">\(\alpha\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">critical_value</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">alpha</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
@@ -582,9 +588,9 @@ $$</p>
 &lt;&gt;:2: SyntaxWarning: invalid escape sequence &#39;\,&#39;
 &lt;&gt;:2: SyntaxWarning: invalid escape sequence &#39;\,&#39;
 &lt;&gt;:2: SyntaxWarning: invalid escape sequence &#39;\,&#39;
-/tmp/ipykernel_1822621/1471066836.py:2: SyntaxWarning: invalid escape sequence &#39;\,&#39;
+/tmp/ipykernel_1857395/1471066836.py:2: SyntaxWarning: invalid escape sequence &#39;\,&#39;
   display(Math(f&quot;\\text{{For }} \\alpha = {alpha}, \\text{{the critical value}} \, c \,\\text{{is}} \, {round(critical_value, 2)}&quot;))
-/tmp/ipykernel_1822621/1471066836.py:2: SyntaxWarning: invalid escape sequence &#39;\,&#39;
+/tmp/ipykernel_1857395/1471066836.py:2: SyntaxWarning: invalid escape sequence &#39;\,&#39;
   display(Math(f&quot;\\text{{For }} \\alpha = {alpha}, \\text{{the critical value}} \, c \,\\text{{is}} \, {round(critical_value, 2)}&quot;))
 </pre></div>
 </div>
@@ -593,19 +599,21 @@ $$</p>
 </div>
 </div>
 <blockquote>
-<div><p>Understanding the Type I Error Rate: By setting a critical value $c$, we control the Type I error rate. I.e., if $H_0$ is true, the probability that our test statistic falls beyond $c$ (rejection region) is equal to $\alpha$:</p>
+<div><p>Understanding the Type I Error Rate: By setting a critical value <span class="math notranslate nohighlight">\(c\)</span>, we control the Type I error rate. I.e., if <span class="math notranslate nohighlight">\(H_0\)</span> is true, the probability that our test statistic falls beyond <span class="math notranslate nohighlight">\(c\)</span> (rejection region) is equal to <span class="math notranslate nohighlight">\(\alpha\)</span>:</p>
 </div></blockquote>
-<p>$$
+<div class="math notranslate nohighlight">
+\[
 P(T_n &gt; c) = \alpha.
-$$</p>
+\]</div>
 </section>
 <section id="p-n">
-<h4><span class="section-number">4.3.1.6. </span>$p_n$<a class="headerlink" href="#p-n" title="Link to this heading">#</a></h4>
-<p>To measure the strength of evidence against the null hypothesis ($H_0$), we estimate the p-value $\hat{p_n}$:</p>
-<p>$$
+<h4><span class="section-number">4.3.1.6. </span><span class="math notranslate nohighlight">\(p_n\)</span><a class="headerlink" href="#p-n" title="Link to this heading">#</a></h4>
+<p>To measure the strength of evidence against the null hypothesis (<span class="math notranslate nohighlight">\(H_0\)</span>), we estimate the p-value <span class="math notranslate nohighlight">\(\hat{p_n}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
 \hat{p_n} = 2(1 - \Phi(T_n)).
-$$</p>
-<p>This p-value tells us the smallest significance level $\alpha$ at which we would reject $H_0$. If $T_n$ is large, $\hat{p_n}$ will be small, indicating strong evidence against $H_0$. A smaller p-value means the observed data is very unlikely under the null hypothesis.</p>
+\]</div>
+<p>This p-value tells us the smallest significance level <span class="math notranslate nohighlight">\(\alpha\)</span> at which we would reject <span class="math notranslate nohighlight">\(H_0\)</span>. If <span class="math notranslate nohighlight">\(T_n\)</span> is large, <span class="math notranslate nohighlight">\(\hat{p_n}\)</span> will be small, indicating strong evidence against <span class="math notranslate nohighlight">\(H_0\)</span>. A smaller p-value means the observed data is very unlikely under the null hypothesis.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compute_p_value</span><span class="p">(</span><span class="n">T_n</span><span class="p">):</span>
@@ -672,10 +680,10 @@ $$</p>
 <section id="confidence-sets">
 <h4><span class="section-number">4.3.1.7. </span>Confidence Sets<a class="headerlink" href="#confidence-sets" title="Link to this heading">#</a></h4>
 <p>For a two-sided test, the confidence interval is given by:
-$$
+$<span class="math notranslate nohighlight">\(
 C_n = \left[\overline{X_n} \pm \frac{\hat{\sigma}_n}{\sqrt{n}} \Phi^{-1}\left(1 - \frac{\alpha}{2}\right)\right]
-$$</p>
-<p>where $\frac{\hat{\sigma}_n}{\sqrt{n}} \Phi^{-1}\left(1 - \frac{\alpha}{2}\right)$ represents the margin of error around the sample mean.</p>
+\)</span>$</p>
+<p>where <span class="math notranslate nohighlight">\(\frac{\hat{\sigma}_n}{\sqrt{n}} \Phi^{-1}\left(1 - \frac{\alpha}{2}\right)\)</span> represents the margin of error around the sample mean.</p>
 <p>This interval will give us a range of values that, with a certain level of confidence (typically 95%), is likely to contain the true population mean.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -726,7 +734,7 @@ $$</p>
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:7: SyntaxWarning: invalid escape sequence &#39;\m&#39;
 &lt;&gt;:7: SyntaxWarning: invalid escape sequence &#39;\m&#39;
-/tmp/ipykernel_1822621/3690128830.py:7: SyntaxWarning: invalid escape sequence &#39;\m&#39;
+/tmp/ipykernel_1857395/3690128830.py:7: SyntaxWarning: invalid escape sequence &#39;\m&#39;
   plt.axvline(mu_0, color=&#39;blue&#39;, linestyle=&#39;-.&#39;, linewidth=1, label=&quot;Hypothesized Mean ($\mu = 8$)&quot;)
 </pre></div>
 </div>
@@ -740,12 +748,12 @@ $$</p>
 <h2><span class="section-number">4.4. </span>Statistics (final recap)<a class="headerlink" href="#statistics-final-recap" title="Link to this heading">#</a></h2>
 <p>Consider the following example: estimating Instagram followers.</p>
 <ol class="arabic simple">
-<li><p><strong>Population Parameter ($\mu_x$)</strong>: The unknown true average number of Instagram followers for all NYU students.</p></li>
+<li><p><strong>Population Parameter (<span class="math notranslate nohighlight">\(\mu_x\)</span>)</strong>: The unknown true average number of Instagram followers for all NYU students.</p></li>
 <li><p><strong>Population</strong>: The entire group of NYU students, which is too large to fully survey in most cases.</p></li>
 <li><p><strong>Sample</strong>: A smaller group of students selected from the population to gather data on their Instagram followers.</p></li>
-<li><p><strong>Estimator</strong>: The sample average, denoted by $ \overline{X_n} $, which serves as an estimate of the population parameter $ \mu_x $.</p></li>
-<li><p><strong>Estimate</strong>: The specific value of the sample average, such as $ \overline{x_A} $ for Student A’s sample or $ \overline{x_B} $ for Student B’s sample.</p></li>
-<li><p><strong>Random Variable</strong>: The estimator $ \overline{X_n} $ is a random variable because its value depends on the sample chosen, and different samples will yield different estimates.</p></li>
+<li><p><strong>Estimator</strong>: The sample average, denoted by <span class="math notranslate nohighlight">\( \overline{X_n} \)</span>, which serves as an estimate of the population parameter <span class="math notranslate nohighlight">\( \mu_x \)</span>.</p></li>
+<li><p><strong>Estimate</strong>: The specific value of the sample average, such as <span class="math notranslate nohighlight">\( \overline{x_A} \)</span> for Student A’s sample or <span class="math notranslate nohighlight">\( \overline{x_B} \)</span> for Student B’s sample.</p></li>
+<li><p><strong>Random Variable</strong>: The estimator <span class="math notranslate nohighlight">\( \overline{X_n} \)</span> is a random variable because its value depends on the sample chosen, and different samples will yield different estimates.</p></li>
 </ol>
 <blockquote>
 <div><p>Things to Consider:</p>
@@ -755,22 +763,24 @@ $$</p>
 <li><p><strong>What would happen if we only interviewed our NYU Instagram followers as our sample?</strong></p></li>
 <li><p><strong>How many students do we need to survey for a reliable sample?</strong></p></li>
 </ul>
-<p>Now, imagine each of us takes a sample and calculates the average number of Instagram followers. For example, Student A selects a sample and computes an average, denoted $ \overline{x_A} $, which we refer to as an <strong>estimate</strong>. However, if Student B had taken a different sample, their estimate $ \overline{x_B} $ would likely be different, because the estimator $ \overline{X_n} $ is a <strong>random variable</strong>, as its value depends on the specific sample chosen.</p>
+<p>Now, imagine each of us takes a sample and calculates the average number of Instagram followers. For example, Student A selects a sample and computes an average, denoted <span class="math notranslate nohighlight">\( \overline{x_A} \)</span>, which we refer to as an <strong>estimate</strong>. However, if Student B had taken a different sample, their estimate <span class="math notranslate nohighlight">\( \overline{x_B} \)</span> would likely be different, because the estimator <span class="math notranslate nohighlight">\( \overline{X_n} \)</span> is a <strong>random variable</strong>, as its value depends on the specific sample chosen.</p>
 <blockquote>
 <div><p>What if we don’t require everyone to use the average as an estimator?</p>
 </div></blockquote>
 <p>Each of us could choose a different strategy (estimator), and we would need to compare these estimators using concepts like <strong>unbiasedness</strong> and <strong>efficiency</strong>. Let’s suppose that our best estimator from all the available options in the classroom is given by</p>
-<p>$$
-\bar{x}<em>n = \frac{1}{n} \sum</em>{i=1}^{n} x_i = 250
-$$</p>
-<p>$$
+<div class="math notranslate nohighlight">
+\[
+\bar{x}_n = \frac{1}{n} \sum_{i=1}^{n} x_i = 250
+\]</div>
+<div class="math notranslate nohighlight">
+\[
 \sigma^2_{\bar{x}} = \frac{\sigma^2_x}{n} = 2500
-$$</p>
-<p>Now, imagine a student claims to be quite popular with 100 Instagram followers. However, our sample estimate indicates that the average number of followers is 250. The student might chuckle and argue that the true population average $\mu_x$ is actually 150.</p>
+\]</div>
+<p>Now, imagine a student claims to be quite popular with 100 Instagram followers. However, our sample estimate indicates that the average number of followers is 250. The student might chuckle and argue that the true population average <span class="math notranslate nohighlight">\(\mu_x\)</span> is actually 150.</p>
 <blockquote>
 <div><p>Can we definitively prove this student wrong?</p>
 </div></blockquote>
-<p>No, but using statistics, we can estimate how <strong>likely</strong> it is to get an average of 250 if $\mu_x$ is 150. This is where <strong>hypothesis testing</strong> comes into play.</p>
+<p>No, but using statistics, we can estimate how <strong>likely</strong> it is to get an average of 250 if <span class="math notranslate nohighlight">\(\mu_x\)</span> is 150. This is where <strong>hypothesis testing</strong> comes into play.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Parameters</span>
@@ -804,7 +814,7 @@ $$</p>
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:16: SyntaxWarning: invalid escape sequence &#39;\m&#39;
 &lt;&gt;:16: SyntaxWarning: invalid escape sequence &#39;\m&#39;
-/tmp/ipykernel_1822621/3308747972.py:16: SyntaxWarning: invalid escape sequence &#39;\m&#39;
+/tmp/ipykernel_1857395/3308747972.py:16: SyntaxWarning: invalid escape sequence &#39;\m&#39;
   plt.axvline(mu_x, color=&#39;blue&#39;, linestyle=&#39;-.&#39;, linewidth=1, label=&quot;Hypothesized Population Mean ($\mu_x = 250$)&quot;)
 </pre></div>
 </div>
@@ -813,8 +823,8 @@ $$</p>
 </div>
 <p><strong>Hypotheses</strong>:</p>
 <ul class="simple">
-<li><p>$H_0$: The true mean number of followers is 150.</p></li>
-<li><p>$H_1$: The true mean number of followers is not 150.</p></li>
+<li><p><span class="math notranslate nohighlight">\(H_0\)</span>: The true mean number of followers is 150.</p></li>
+<li><p><span class="math notranslate nohighlight">\(H_1\)</span>: The true mean number of followers is not 150.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -842,14 +852,14 @@ $$</p>
 </div>
 <p>Given these results, we can:</p>
 <ul class="simple">
-<li><p><strong>Reject the Null Hypothesis</strong>: The data provides very strong evidence against the null hypothesis ($H_0: \mu = 150$). This means that it is highly unlikely that the true population mean is (150). There is strong evidence to suggest that the true population mean is significantly higher than (150).</p></li>
+<li><p><strong>Reject the Null Hypothesis</strong>: The data provides very strong evidence against the null hypothesis (<span class="math notranslate nohighlight">\(H_0: \mu = 150\)</span>). This means that it is highly unlikely that the true population mean is (150). There is strong evidence to suggest that the true population mean is significantly higher than (150).</p></li>
 </ul>
 </section>
 <section id="experiments">
 <h2><span class="section-number">4.5. </span>Experiments<a class="headerlink" href="#experiments" title="Link to this heading">#</a></h2>
 <p>Let’s say we want to understand the effect of a job training program (S) on wages (Y) (example seen last lecture). To estimate this causal effect, the government launches a survey asking households if they’ve participated in job training programs through public libraries or other resources.</p>
 <blockquote>
-<div><p>Can we truly estimate causal effects from this data? How could unmeasured factors ($U$), influence our estimates? Consider how these factors can complicate our understanding of the true impact of job training on wages.</p>
+<div><p>Can we truly estimate causal effects from this data? How could unmeasured factors (<span class="math notranslate nohighlight">\(U\)</span>), influence our estimates? Consider how these factors can complicate our understanding of the true impact of job training on wages.</p>
 </div></blockquote>
 <p>Let’s visualize this in an observational setting using a Directed Acyclic Graph (DAG), where our outcome of interest is wage ((Y)).</p>
 <div class="cell docutils container">
@@ -911,22 +921,23 @@ $$</p>
 </div>
 <p>Here:</p>
 <ul class="simple">
-<li><p>$ U $ represents confounding factors such as education, experience, and socioeconomic status. These factors influence both the likelihood of participating in the job training program ($ S $) and the wages or income ($ Y $).</p></li>
-<li><p>The arrow from $ U $ to $ S $ indicates that individuals with higher education or more experience are more likely to enroll in job training programs.</p></li>
-<li><p>$ U $ affects $ Y $ because education and experience are key determinants of wages.</p></li>
-<li><p>Participation in the job training program ($ S $) directly influences wages ($ Y $), as the training may enhance skills and lead to higher income.</p></li>
+<li><p><span class="math notranslate nohighlight">\( U \)</span> represents confounding factors such as education, experience, and socioeconomic status. These factors influence both the likelihood of participating in the job training program (<span class="math notranslate nohighlight">\( S \)</span>) and the wages or income (<span class="math notranslate nohighlight">\( Y \)</span>).</p></li>
+<li><p>The arrow from <span class="math notranslate nohighlight">\( U \)</span> to <span class="math notranslate nohighlight">\( S \)</span> indicates that individuals with higher education or more experience are more likely to enroll in job training programs.</p></li>
+<li><p><span class="math notranslate nohighlight">\( U \)</span> affects <span class="math notranslate nohighlight">\( Y \)</span> because education and experience are key determinants of wages.</p></li>
+<li><p>Participation in the job training program (<span class="math notranslate nohighlight">\( S \)</span>) directly influences wages (<span class="math notranslate nohighlight">\( Y \)</span>), as the training may enhance skills and lead to higher income.</p></li>
 </ul>
-<p><em>Confounding bias</em> occurs because the relationship from $ S $ to $ Y $ is affected by $ U $. This makes it difficult to separate the true impact of the training ($ S $) from the influence of the confounding factors ($ U $).</p>
+<p><em>Confounding bias</em> occurs because the relationship from <span class="math notranslate nohighlight">\( S \)</span> to <span class="math notranslate nohighlight">\( Y \)</span> is affected by <span class="math notranslate nohighlight">\( U \)</span>. This makes it difficult to separate the true impact of the training (<span class="math notranslate nohighlight">\( S \)</span>) from the influence of the confounding factors (<span class="math notranslate nohighlight">\( U \)</span>).</p>
 <p>As a result, we might observe that the average wage for participants in the training is lower than the average wage for the broader population that could benefit from such training:</p>
-<p>$$ \mathbb{E}[Y(S = 1, U)|S = 1] &lt; \mathbb{E}[Y(S = 1, U)], $$</p>
+<div class="math notranslate nohighlight">
+\[ \mathbb{E}[Y(S = 1, U)|S = 1] &lt; \mathbb{E}[Y(S = 1, U)], \]</div>
 <p>causing the job training program to appear less effective than it truly is.</p>
 <p>To address this issue, we use randomized controlled trials (RCTs) to isolate the effect of the training. By randomizing treatment assignment, and assuming:</p>
 <ul class="simple">
 <li><p>Perfect compliance, and</p></li>
 <li><p>SUTVA</p></li>
 </ul>
-<p>we ensure $ S \perp U $.</p>
-<p><strong>Note, while $ S $ still directly affects $ Y $, and $ U $ continues to influence $ Y $ (since factors like education and experience impact wages), $ U $ no longer has any effect on $ S $.</strong></p>
+<p>we ensure <span class="math notranslate nohighlight">\( S \perp U \)</span>.</p>
+<p><strong>Note, while <span class="math notranslate nohighlight">\( S \)</span> still directly affects <span class="math notranslate nohighlight">\( Y \)</span>, and <span class="math notranslate nohighlight">\( U \)</span> continues to influence <span class="math notranslate nohighlight">\( Y \)</span> (since factors like education and experience impact wages), <span class="math notranslate nohighlight">\( U \)</span> no longer has any effect on <span class="math notranslate nohighlight">\( S \)</span>.</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
@@ -977,20 +988,23 @@ $$</p>
 <p>After randomization, assuming perfect compliance and SUTVA:</p>
 <ul>
 <li><p>The average outcome in the treatment group is equal to that of the overall population receiving treatment:</p>
-<p>$$
-E[Y(S = 1, U) | S = 1] = E[Y(S = 1, U)].
-$$</p>
+<div class="math notranslate nohighlight">
+\[
+  E[Y(S = 1, U) | S = 1] = E[Y(S = 1, U)].
+  \]</div>
 </li>
 <li><p>The average outcome in the control group matches that of the overall population without treatment:</p>
-<p>$$
-E[Y(S = 0, U) | S = 0] = E[Y(S = 0, U)].
-$$</p>
+<div class="math notranslate nohighlight">
+\[
+  E[Y(S = 0, U) | S = 0] = E[Y(S = 0, U)].
+  \]</div>
 </li>
 </ul>
 <p>This implies that, despite the fundamental problem of causal inference, we can estimate the Average Treatment Effect (ATE) since there are no systematic differences between groups. Thus, we can express the ATE as:</p>
-<p>$$
+<div class="math notranslate nohighlight">
+\[
 ATE = E[Y(S = 1, U) | S = 1] - E[Y(S = 0, U) | S = 0].
-$$</p>
+\]</div>
 </section>
 <section id="path-forward">
 <h2><span class="section-number">4.6. </span>Path Forward<a class="headerlink" href="#path-forward" title="Link to this heading">#</a></h2>
@@ -1083,10 +1097,10 @@ $$</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-concepts">4.3.1. Key Concepts</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-simulate-a-dataset">4.3.1.1. a) Simulate a Dataset</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#define-our-hypothesis">4.3.1.2. Define our hypothesis</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#set-a-significance-level-alpha">4.3.1.3. Set a significance level $\alpha$</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#d-compute-t-n">4.3.1.4. d) Compute $T_n$</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#define-the-critical-value-c">4.3.1.5. Define the critical value $c$</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#p-n">4.3.1.6. $p_n$</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#set-a-significance-level-alpha">4.3.1.3. Set a significance level <span class="math notranslate nohighlight">\(\alpha\)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#d-compute-t-n">4.3.1.4. d) Compute <span class="math notranslate nohighlight">\(T_n\)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#define-the-critical-value-c">4.3.1.5. Define the critical value <span class="math notranslate nohighlight">\(c\)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#p-n">4.3.1.6. <span class="math notranslate nohighlight">\(p_n\)</span></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#confidence-sets">4.3.1.7. Confidence Sets</a></li>
 </ul>
 </li>
