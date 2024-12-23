@@ -415,36 +415,36 @@
 <section id="machine-learning-for-causality">
 <h2><span class="section-number">8.1. </span>1. Machine Learning for Causality<a class="headerlink" href="#machine-learning-for-causality" title="Link to this heading">#</a></h2>
 <p>The first step in performing causal inference is knowing the causal parameter we are trying to identify and estimate. In this class, we have been mostly focused on the average treatment effect (ATE):</p>
-<div class="amsmath math notranslate nohighlight" id="equation-35c5fe4e-7b99-458b-9db9-d3ebbf636cb9">
-<span class="eqno">(8.1)<a class="headerlink" href="#equation-35c5fe4e-7b99-458b-9db9-d3ebbf636cb9" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-300fa04a-2dbd-4351-bd50-b00dc9abd564">
+<span class="eqno">(8.1)<a class="headerlink" href="#equation-300fa04a-2dbd-4351-bd50-b00dc9abd564" title="Permalink to this equation">#</a></span>\[\begin{equation}
 ATE = \mathbb{E}[Y(1, U) - Y(0, U)]
 \end{equation}\]</div>
 <p>We can identify the above equation to form a statistical estimand by conditioning if <span class="math notranslate nohighlight">\(S \perp U\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8e299d17-eb5f-4b83-a85b-91329fdd9902">
-<span class="eqno">(8.2)<a class="headerlink" href="#equation-8e299d17-eb5f-4b83-a85b-91329fdd9902" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-dd6dcadf-9f80-4194-9068-54ba5e678e46">
+<span class="eqno">(8.2)<a class="headerlink" href="#equation-dd6dcadf-9f80-4194-9068-54ba5e678e46" title="Permalink to this equation">#</a></span>\[\begin{equation}
 ATE = \mathbb{E}[Y(1, U)|S=1] - \mathbb{E}[Y(0, U)|S=0]
 \end{equation}\]</div>
 <p>Last week, we also learned that the identification of ATE can be facilitated through conditional independence.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-da932b0e-fcf2-4688-b4ad-5077a8107b4f">
-<span class="eqno">(8.3)<a class="headerlink" href="#equation-da932b0e-fcf2-4688-b4ad-5077a8107b4f" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-558ad6b7-6bbf-46a1-87a2-b1b0f67e6a88">
+<span class="eqno">(8.3)<a class="headerlink" href="#equation-558ad6b7-6bbf-46a1-87a2-b1b0f67e6a88" title="Permalink to this equation">#</a></span>\[\begin{equation}
 S \perp U \ | \ C
 \end{equation}\]</div>
 <p>Remember, we cannot just make any (machine-learning) models as being “causal” models, but we know the conditions and assumptions under which causality is feasible: descriptive regression <span class="math notranslate nohighlight">\(→\)</span> causal regression.</p>
 <section id="other-causal-parameters">
 <h3><span class="section-number">8.1.1. </span>1.1 Other Causal Parameters?<a class="headerlink" href="#other-causal-parameters" title="Link to this heading">#</a></h3>
 <p>Actually, you have seen another causal parameter: individualized treatment effect (ITE). It is the most straightforward to write down, but it is also the most difficult one (almost impossible) to identify. Instead of estimating causal effects on a population level, the inidividual level effect is much more helpful as it underpins the promises of things like personalized medicine (one medication could be helpful on average but harmful for a particular individual).</p>
-<div class="amsmath math notranslate nohighlight" id="equation-fd7d56cc-76ce-4226-81d0-fcae74475c58">
-<span class="eqno">(8.4)<a class="headerlink" href="#equation-fd7d56cc-76ce-4226-81d0-fcae74475c58" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d4b0307a-a879-4b69-aa86-564f966b63d1">
+<span class="eqno">(8.4)<a class="headerlink" href="#equation-d4b0307a-a879-4b69-aa86-564f966b63d1" title="Permalink to this equation">#</a></span>\[\begin{equation}
 ITE = Y_i(1, u) - Y_i(0, u)
 \end{equation}\]</div>
 <p>Instead, an easier quantity to learn is called conditional average treatment effect (CATE). For the rest of the lab, we will use a more standard machine learning notation involving <span class="math notranslate nohighlight">\((Y, X, T)\)</span> and not writing <span class="math notranslate nohighlight">\(U\)</span> for simplicity.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d3cab985-6353-4deb-b841-0a54f6b2936c">
-<span class="eqno">(8.5)<a class="headerlink" href="#equation-d3cab985-6353-4deb-b841-0a54f6b2936c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-0a324ce6-9ed3-4bff-bed7-d0aca3c5ec88">
+<span class="eqno">(8.5)<a class="headerlink" href="#equation-0a324ce6-9ed3-4bff-bed7-d0aca3c5ec88" title="Permalink to this equation">#</a></span>\[\begin{equation}
 CATE = \mathbb{E}[Y(1) - Y(0) | X]
 \end{equation}\]</div>
 <p>If we are simply leveraging the conditional independence assumption for identifying ATE, this can be written as the following:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2667df3c-b1b6-48f8-a72e-571c614d0aa9">
-<span class="eqno">(8.6)<a class="headerlink" href="#equation-2667df3c-b1b6-48f8-a72e-571c614d0aa9" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-b0f86a05-6015-4041-a441-6e447ed09581">
+<span class="eqno">(8.6)<a class="headerlink" href="#equation-b0f86a05-6015-4041-a441-6e447ed09581" title="Permalink to this equation">#</a></span>\[\begin{equation}
 ATE = \mathbb{E}_{X}\left[\mathbb{E}[Y(1) - Y(0) | X]\right]
 \end{equation}\]</div>
 </section>
@@ -458,16 +458,16 @@ ATE = \mathbb{E}_{X}\left[\mathbb{E}[Y(1) - Y(0) | X]\right]
 <p>We have seen the first one! It reads as the treatment assignment does not influence the potential outcomes condition on the features <span class="math notranslate nohighlight">\(X\)</span>, i.e., the treatment group and the control group should have similar characteristics (<span class="math notranslate nohighlight">\(S \perp U | C\)</span>).</p>
 <p>We haven’t talked much about positivity yet as we are just beginning to touch on control variables, but this is intuitive: there always should be people taking all the treatment options among the subpopulation on which they are conditioned. For example, if all college graduates do not attend the job training program, this assumption will be violated.</p>
 <p>We can derive the statistical estimand for CATE and ATE just as in lectures.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5fc097f5-730f-4094-821c-1ab3a59c9a96">
-<span class="eqno">(8.7)<a class="headerlink" href="#equation-5fc097f5-730f-4094-821c-1ab3a59c9a96" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-c73c3c9f-4fb2-41f6-8fa8-3c713d06bed2">
+<span class="eqno">(8.7)<a class="headerlink" href="#equation-c73c3c9f-4fb2-41f6-8fa8-3c713d06bed2" title="Permalink to this equation">#</a></span>\[\begin{align}
 CATE &amp;= \mathbb{E}[Y(1) - Y(0) | X] \\
 &amp;= \mathbb{E}[Y(1)|X] - \mathbb{E}[Y(0) | X] \\
 &amp;= \mathbb{E}[Y(1)|T=1, X] - \mathbb{E}[Y(0) |T=0, X] \\
 &amp;= \mathbb{E}[Y|T=1, X] - \mathbb{E}[Y|T=0, X] \\
 \end{align}\]</div>
 <p>and,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a14667a1-c063-4e35-91ac-4f71855b9929">
-<span class="eqno">(8.8)<a class="headerlink" href="#equation-a14667a1-c063-4e35-91ac-4f71855b9929" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-48e2179f-76d8-4e5f-aff1-604527e69acd">
+<span class="eqno">(8.8)<a class="headerlink" href="#equation-48e2179f-76d8-4e5f-aff1-604527e69acd" title="Permalink to this equation">#</a></span>\[\begin{align}
 ATE &amp;= \mathbb{E}_{X}\left[\mathbb{E}[Y(1) - Y(0) | X]\right] \\
 &amp;= \mathbb{E}_{X}\left[\mathbb{E}[Y|T=1, X] - \mathbb{E}[Y|T=0, X]\right] \\
 \end{align}\]</div>
@@ -796,48 +796,44 @@ ATE &amp;= \mathbb{E}_{X}\left[\mathbb{E}[Y(1) - Y(0) | X]\right] \\
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">9</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">8</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
 <span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X_batch</span><span class="p">,</span> <span class="n">T_batch</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">Y_batch</span><span class="p">)</span>
-<span class="ne">----&gt; </span><span class="mi">9</span> <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+<span class="ne">----&gt; </span><span class="mi">8</span> <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">Y_batch</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
 <span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="n">total_loss</span> <span class="o">+=</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
 
-<span class="nn">File /ext3/miniforge3/lib/python3.12/site-packages/torch/_tensor.py:581,</span> in <span class="ni">Tensor.backward</span><span class="nt">(self, gradient, retain_graph, create_graph, inputs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">571</span> <span class="k">if</span> <span class="n">has_torch_function_unary</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">572</span>     <span class="k">return</span> <span class="n">handle_torch_function</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">573</span>         <span class="n">Tensor</span><span class="o">.</span><span class="n">backward</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">574</span>         <span class="p">(</span><span class="bp">self</span><span class="p">,),</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">579</span>         <span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">580</span>     <span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">581</span> <span class="n">torch</span><span class="o">.</span><span class="n">autograd</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">582</span>     <span class="bp">self</span><span class="p">,</span> <span class="n">gradient</span><span class="p">,</span> <span class="n">retain_graph</span><span class="p">,</span> <span class="n">create_graph</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span>
-<span class="g g-Whitespace">    </span><span class="mi">583</span> <span class="p">)</span>
+<span class="nn">File /ext3/miniforge3/lib/python3.12/site-packages/torch/nn/modules/module.py:1736,</span> in <span class="ni">Module._wrapped_call_impl</span><span class="nt">(self, *args, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1734</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compiled_call_impl</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>  <span class="c1"># type: ignore[misc]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1735</span> <span class="k">else</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1736</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call_impl</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-<span class="nn">File /ext3/miniforge3/lib/python3.12/site-packages/torch/autograd/__init__.py:347,</span> in <span class="ni">backward</span><span class="nt">(tensors, grad_tensors, retain_graph, create_graph, grad_variables, inputs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">342</span>     <span class="n">retain_graph</span> <span class="o">=</span> <span class="n">create_graph</span>
-<span class="g g-Whitespace">    </span><span class="mi">344</span> <span class="c1"># The reason we repeat the same comment below is that</span>
-<span class="g g-Whitespace">    </span><span class="mi">345</span> <span class="c1"># some Python versions print out the first line of a multi-line function</span>
-<span class="g g-Whitespace">    </span><span class="mi">346</span> <span class="c1"># calls in the traceback and some print out the last line</span>
-<span class="ne">--&gt; </span><span class="mi">347</span> <span class="n">_engine_run_backward</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">348</span>     <span class="n">tensors</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">349</span>     <span class="n">grad_tensors_</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">350</span>     <span class="n">retain_graph</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">351</span>     <span class="n">create_graph</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">352</span>     <span class="n">inputs</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">353</span>     <span class="n">allow_unreachable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">354</span>     <span class="n">accumulate_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">355</span> <span class="p">)</span>
+<span class="nn">File /ext3/miniforge3/lib/python3.12/site-packages/torch/nn/modules/module.py:1747,</span> in <span class="ni">Module._call_impl</span><span class="nt">(self, *args, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1742</span> <span class="c1"># If we don&#39;t have any hooks, we want to skip the rest of the logic in</span>
+<span class="g g-Whitespace">   </span><span class="mi">1743</span> <span class="c1"># this function, and just call forward.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1744</span> <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_backward_hooks</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backward_pre_hooks</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_forward_hooks</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_forward_pre_hooks</span>
+<span class="g g-Whitespace">   </span><span class="mi">1745</span>         <span class="ow">or</span> <span class="n">_global_backward_pre_hooks</span> <span class="ow">or</span> <span class="n">_global_backward_hooks</span>
+<span class="g g-Whitespace">   </span><span class="mi">1746</span>         <span class="ow">or</span> <span class="n">_global_forward_hooks</span> <span class="ow">or</span> <span class="n">_global_forward_pre_hooks</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">1747</span>     <span class="k">return</span> <span class="n">forward_call</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1749</span> <span class="n">result</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="g g-Whitespace">   </span><span class="mi">1750</span> <span class="n">called_always_called_hooks</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
 
-<span class="nn">File /ext3/miniforge3/lib/python3.12/site-packages/torch/autograd/graph.py:825,</span> in <span class="ni">_engine_run_backward</span><span class="nt">(t_outputs, *args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">823</span>     <span class="n">unregister_hooks</span> <span class="o">=</span> <span class="n">_register_logging_hooks_on_whole_graph</span><span class="p">(</span><span class="n">t_outputs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">824</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">825</span>     <span class="k">return</span> <span class="n">Variable</span><span class="o">.</span><span class="n">_execution_engine</span><span class="o">.</span><span class="n">run_backward</span><span class="p">(</span>  <span class="c1"># Calls into the C++ engine to run the backward pass</span>
-<span class="g g-Whitespace">    </span><span class="mi">826</span>         <span class="n">t_outputs</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
-<span class="g g-Whitespace">    </span><span class="mi">827</span>     <span class="p">)</span>  <span class="c1"># Calls into the C++ engine to run the backward pass</span>
-<span class="g g-Whitespace">    </span><span class="mi">828</span> <span class="k">finally</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">829</span>     <span class="k">if</span> <span class="n">attach_logging_hooks</span><span class="p">:</span>
+<span class="nn">File /ext3/miniforge3/lib/python3.12/site-packages/torch/nn/modules/loss.py:608,</span> in <span class="ni">MSELoss.forward</span><span class="nt">(self, input, target)</span>
+<span class="g g-Whitespace">    </span><span class="mi">607</span> <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">608</span>     <span class="k">return</span> <span class="n">F</span><span class="o">.</span><span class="n">mse_loss</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">reduction</span><span class="p">)</span>
+
+<span class="nn">File /ext3/miniforge3/lib/python3.12/site-packages/torch/nn/functional.py:3791,</span> in <span class="ni">mse_loss</span><span class="nt">(input, target, size_average, reduce, reduction)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3788</span> <span class="k">if</span> <span class="n">size_average</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">reduce</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">3789</span>     <span class="n">reduction</span> <span class="o">=</span> <span class="n">_Reduction</span><span class="o">.</span><span class="n">legacy_get_string</span><span class="p">(</span><span class="n">size_average</span><span class="p">,</span> <span class="n">reduce</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">3791</span> <span class="n">expanded_input</span><span class="p">,</span> <span class="n">expanded_target</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">broadcast_tensors</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3792</span> <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">_C</span><span class="o">.</span><span class="n">_nn</span><span class="o">.</span><span class="n">mse_loss</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">3793</span>     <span class="n">expanded_input</span><span class="p">,</span> <span class="n">expanded_target</span><span class="p">,</span> <span class="n">_Reduction</span><span class="o">.</span><span class="n">get_enum</span><span class="p">(</span><span class="n">reduction</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3794</span> <span class="p">)</span>
+
+<span class="nn">File /ext3/miniforge3/lib/python3.12/site-packages/torch/functional.py:76,</span> in <span class="ni">broadcast_tensors</span><span class="nt">(*tensors)</span>
+<span class="g g-Whitespace">     </span><span class="mi">74</span> <span class="k">if</span> <span class="n">has_torch_function</span><span class="p">(</span><span class="n">tensors</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">75</span>     <span class="k">return</span> <span class="n">handle_torch_function</span><span class="p">(</span><span class="n">broadcast_tensors</span><span class="p">,</span> <span class="n">tensors</span><span class="p">,</span> <span class="o">*</span><span class="n">tensors</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">76</span> <span class="k">return</span> <span class="n">_VF</span><span class="o">.</span><span class="n">broadcast_tensors</span><span class="p">(</span><span class="n">tensors</span><span class="p">)</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>

@@ -502,15 +502,15 @@
 </section>
 <section id="function-of-random-variables">
 <h2><span class="section-number">2.2. </span>Function of random variables<a class="headerlink" href="#function-of-random-variables" title="Link to this heading">#</a></h2>
-<div class="amsmath math notranslate nohighlight" id="equation-f1f696c2-2f33-4d40-b82a-498f068ef28a">
-<span class="eqno">(2.1)<a class="headerlink" href="#equation-f1f696c2-2f33-4d40-b82a-498f068ef28a" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-0787f7f0-53cf-4ad9-9bdb-a70b1a35bed1">
+<span class="eqno">(2.1)<a class="headerlink" href="#equation-0787f7f0-53cf-4ad9-9bdb-a70b1a35bed1" title="Permalink to this equation">#</a></span>\[\begin{align}
 E[g(X)]=\int_{-\infty}^{\infty} g(x) f(x) d x
 \end{align}\]</div>
 </section>
 <section id="variance">
 <h2><span class="section-number">2.3. </span>Variance<a class="headerlink" href="#variance" title="Link to this heading">#</a></h2>
-<div class="amsmath math notranslate nohighlight" id="equation-72fb067d-c500-4809-992d-1cde1ff69486">
-<span class="eqno">(2.2)<a class="headerlink" href="#equation-72fb067d-c500-4809-992d-1cde1ff69486" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d8e54d01-18f8-4d2a-b4b8-c7f69198455f">
+<span class="eqno">(2.2)<a class="headerlink" href="#equation-d8e54d01-18f8-4d2a-b4b8-c7f69198455f" title="Permalink to this equation">#</a></span>\[\begin{align}
 E\left[(X-E[X])^2\right] &amp; =E\left[X^2-2 X E[X]+E[X]^2\right] \\
 &amp; =E\left[X^2\right]-E[2 X E[X]]+E[X]^2 \\
 &amp; =E\left[X^2\right]-2 E[X] E[X]+E[X]^2 \\
@@ -639,13 +639,13 @@ E\left[(X-E[X])^2\right] &amp; =E\left[X^2-2 X E[X]+E[X]^2\right] \\
 <section id="joint-distribution">
 <h2><span class="section-number">2.5. </span>Joint Distribution<a class="headerlink" href="#joint-distribution" title="Link to this heading">#</a></h2>
 <p>The data is continuous, but we can bin it to make it discrete.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-690b008e-24bf-49ff-ad8d-3919111f8de5">
-<span class="eqno">(2.3)<a class="headerlink" href="#equation-690b008e-24bf-49ff-ad8d-3919111f8de5" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-7a1a4d25-b14c-48a0-8b0e-933105132664">
+<span class="eqno">(2.3)<a class="headerlink" href="#equation-7a1a4d25-b14c-48a0-8b0e-933105132664" title="Permalink to this equation">#</a></span>\[\begin{align}
 P(X = x, Y = y) = \frac{N_{x,y}}{N}
 \end{align}\]</div>
 <p>We want to know what’s the probability of height larger than <span class="math notranslate nohighlight">\(h\)</span> and gender is male.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-64013aa2-97b8-4f2b-b24b-e81db4991cb9">
-<span class="eqno">(2.4)<a class="headerlink" href="#equation-64013aa2-97b8-4f2b-b24b-e81db4991cb9" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-4b845ea9-0c15-445b-8acc-b59b02c9f7c6">
+<span class="eqno">(2.4)<a class="headerlink" href="#equation-4b845ea9-0c15-445b-8acc-b59b02c9f7c6" title="Permalink to this equation">#</a></span>\[\begin{align}
 P(H &gt; h, G = M) = \frac{N_{h, M}}{N}
 \end{align}\]</div>
 <div class="cell docutils container">
@@ -669,8 +669,8 @@ P(H &gt; h, G = M) = \frac{N_{h, M}}{N}
 <h2><span class="section-number">2.6. </span>Convert the Joint Distribution to Marginal Distribution<a class="headerlink" href="#convert-the-joint-distribution-to-marginal-distribution" title="Link to this heading">#</a></h2>
 <p>What is the probability of height larger than <span class="math notranslate nohighlight">\(h\)</span>?</p>
 <p>We can sum over all the weights.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ede73e35-ae6b-46e1-901d-9adf5a0f136c">
-<span class="eqno">(2.5)<a class="headerlink" href="#equation-ede73e35-ae6b-46e1-901d-9adf5a0f136c" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-48a3429d-57a2-47b2-9948-c73c664aaecb">
+<span class="eqno">(2.5)<a class="headerlink" href="#equation-48a3429d-57a2-47b2-9948-c73c664aaecb" title="Permalink to this equation">#</a></span>\[\begin{align}
 P(H &gt; h) = \sum_{g} P(H &gt; h, G = g) = \sum_{g} \frac{N_{h, g}}{N}
 \end{align}\]</div>
 <div class="cell docutils container">
@@ -711,14 +711,14 @@ The probability of a person being taller than 180 cm is 0.08633333333333333
 </section>
 <section id="covariance">
 <h2><span class="section-number">2.7. </span>Covariance<a class="headerlink" href="#covariance" title="Link to this heading">#</a></h2>
-<div class="amsmath math notranslate nohighlight" id="equation-53e4e73b-9c72-486d-b39f-1c12e2e88525">
-<span class="eqno">(2.6)<a class="headerlink" href="#equation-53e4e73b-9c72-486d-b39f-1c12e2e88525" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-24a8c971-990e-4ad0-a40f-72e2f42f6429">
+<span class="eqno">(2.6)<a class="headerlink" href="#equation-24a8c971-990e-4ad0-a40f-72e2f42f6429" title="Permalink to this equation">#</a></span>\[\begin{align}
 Cov(X, Y) 
 = E[(X - E[X])(Y - E[Y])]
 = E[XY] - E[X]E[Y]
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-49fa39ca-cfa7-41cb-bc5a-4f4319221515">
-<span class="eqno">(2.7)<a class="headerlink" href="#equation-49fa39ca-cfa7-41cb-bc5a-4f4319221515" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-0497bf83-e196-497b-b405-cccf62df6d2d">
+<span class="eqno">(2.7)<a class="headerlink" href="#equation-0497bf83-e196-497b-b405-cccf62df6d2d" title="Permalink to this equation">#</a></span>\[\begin{align}
 Cov(X, Y) = \frac{1}{N} \sum_{i=1}^{N} (x_i - \mu_x)(y_i - \mu_y)
 \end{align}\]</div>
 </section>
@@ -750,8 +750,8 @@ Cov(a+bX, Y) = bCov(X, Y)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1.01659228 2.03318455]
- [2.03318455 4.06636911]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.93916176 1.87832351]
+ [1.87832351 3.75664702]]
 </pre></div>
 </div>
 </div>
@@ -765,7 +765,7 @@ Cov(a+bX, Y) = bCov(X, Y)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1.02873645 0.        ]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1.05188076 0.        ]
  [0.         0.        ]]
 </pre></div>
 </div>
@@ -834,7 +834,7 @@ Y \sim N(a\mu_X + b, a^2\Sigma_X)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9757789851309092
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9629249599605223
 </pre></div>
 </div>
 </div>
@@ -846,7 +846,7 @@ Y \sim N(a\mu_X + b, a^2\Sigma_X)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.8338590793152
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.915282145209684
 </pre></div>
 </div>
 </div>
@@ -858,7 +858,7 @@ Y \sim N(a\mu_X + b, a^2\Sigma_X)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.98429844 0.96665996]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.93011971 0.99522487]
 </pre></div>
 </div>
 </div>
@@ -870,7 +870,7 @@ Y \sim N(a\mu_X + b, a^2\Sigma_X)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[3.93719377 3.86663985]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[3.72047886 3.98089947]
 </pre></div>
 </div>
 </div>
@@ -907,8 +907,8 @@ Y \sim N(a\mu_X + b, a^2\Sigma_X)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.9936124  1.9872248 ]
- [1.9872248  3.97444961]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1.02683899 2.05367798]
+ [2.05367798 4.10735595]]
 </pre></div>
 </div>
 </div>
@@ -923,9 +923,9 @@ Y \sim N(a\mu_X + b, a^2\Sigma_X)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.992618789869722 3.970475159478888 8.933569108827498
-1.987224804543989
-8.937543558436587
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0258121494541472 4.103248597816589 9.232309345087323
+2.0536779768851794
+9.236416701041094
 </pre></div>
 </div>
 </div>
@@ -1018,7 +1018,7 @@ We can represent this situation with a directed acyclic graph (DAG), where:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1595187/3898922254.py:23: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1709593/3898922254.py:23: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
   plt.tight_layout()
 </pre></div>
 </div>
@@ -1263,8 +1263,8 @@ Name: Sneezing, dtype: float64
 <div class="math notranslate nohighlight">
 \[\mathbb{E}[X]=\mathbb{E}[\mathbb{E}[X \mid Y]]\]</div>
 <p>Trivial Proof:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ebd32fe3-f0ac-416f-a812-48592f8f6b59">
-<span class="eqno">(2.8)<a class="headerlink" href="#equation-ebd32fe3-f0ac-416f-a812-48592f8f6b59" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-329ae437-d738-445f-9634-c7144d8c5f2d">
+<span class="eqno">(2.8)<a class="headerlink" href="#equation-329ae437-d738-445f-9634-c7144d8c5f2d" title="Permalink to this equation">#</a></span>\[\begin{align}
 \mathbb{E}[\mathbb{E}(X \mid Y)] &amp; =\mathbb{E}\left[\sum_{x \in \mathcal{X}} x \cdot \operatorname{Pr}(X=x \mid Y)\right] \\
 &amp; =\sum_{y \in \mathcal{Y}}\left[\sum_{x \in \mathcal{X}} x \cdot \operatorname{Pr}(X=x \mid Y=y)\right] \cdot \operatorname{Pr}(Y=y) \\
 &amp; =\sum_{x \in \mathcal{X}} \sum_{y \in \mathcal{Y}} x \cdot \operatorname{Pr}(X=x \mid Y=y) \cdot \operatorname{Pr}(Y=y) \\

@@ -413,8 +413,8 @@
 <section id="causality-from-observational-data">
 <h2><span class="section-number">7.1. </span>Causality from Observational Data<a class="headerlink" href="#causality-from-observational-data" title="Link to this heading">#</a></h2>
 <p>Experiments / Random control trials (RCT) are often referred as the gold standards for causality. We can easily establish the important independence assumption by randomizing treatments in experiments:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f49fa3d0-d844-4fd5-b003-655b131d9ac6">
-<span class="eqno">(7.1)<a class="headerlink" href="#equation-f49fa3d0-d844-4fd5-b003-655b131d9ac6" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-e07b994c-d3d3-4341-b02a-3d11cd44c80d">
+<span class="eqno">(7.1)<a class="headerlink" href="#equation-e07b994c-d3d3-4341-b02a-3d11cd44c80d" title="Permalink to this equation">#</a></span>\[\begin{equation}
 S \perp U
 \end{equation}\]</div>
 <p>However, this is not always possible, and experiments are expensive.</p>
@@ -434,8 +434,8 @@ S \perp U
 <section id="id1">
 <h2><span class="section-number">7.2. </span>Natural Experiments<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>Sometimes, natural processes give us a treatment that behaves “as-if” random. This allows us to establish the experimental assumption:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-81ffe7da-d050-49ad-99b0-cd90c00b49c6">
-<span class="eqno">(7.2)<a class="headerlink" href="#equation-81ffe7da-d050-49ad-99b0-cd90c00b49c6" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d3963642-bdb8-49d2-b525-c315780a5947">
+<span class="eqno">(7.2)<a class="headerlink" href="#equation-d3963642-bdb8-49d2-b525-c315780a5947" title="Permalink to this equation">#</a></span>\[\begin{equation}
 S \perp U
 \end{equation}\]</div>
 <p>We would still need SUTVA and perfect compliance (compliance with the natural process of assigning treatment). Then, everything else follows from the process of estimating effects from experiments.</p>
@@ -510,8 +510,8 @@ Non-random assignment
 </div>
 </div>
 <p>Will the second example pass the balance test?</p>
-<div class="amsmath math notranslate nohighlight" id="equation-43bc557d-123d-456b-a5e2-6d7cb2a6b1dd">
-<span class="eqno">(7.3)<a class="headerlink" href="#equation-43bc557d-123d-456b-a5e2-6d7cb2a6b1dd" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-c7e6715d-ca19-4c89-80fb-fee19623b7d6">
+<span class="eqno">(7.3)<a class="headerlink" href="#equation-c7e6715d-ca19-4c89-80fb-fee19623b7d6" title="Permalink to this equation">#</a></span>\[\begin{equation}
 p(U|S=1) = p(U|S=0)
 \end{equation}\]</div>
 <div class="cell docutils container">
@@ -899,7 +899,7 @@ Name: confounder, dtype: float64
   <th>Date:</th>             <td>Sun, 22 Dec 2024</td> <th>  Prob (F-statistic):</th>  <td> 0.510</td>  
 </tr>
 <tr>
-  <th>Time:</th>                 <td>19:49:50</td>     <th>  Log-Likelihood:    </th> <td> -18342.</td> 
+  <th>Time:</th>                 <td>20:02:47</td>     <th>  Log-Likelihood:    </th> <td> -18342.</td> 
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>  1879</td>      <th>  AIC:               </th> <td>3.669e+04</td>
@@ -1102,7 +1102,7 @@ Name: confounder, dtype: float64
   <th>Date:</th>             <td>Sun, 22 Dec 2024</td> <th>  Prob (F-statistic):</th> <td>6.45e-55</td> 
 </tr>
 <tr>
-  <th>Time:</th>                 <td>19:49:50</td>     <th>  Log-Likelihood:    </th> <td> -7591.4</td> 
+  <th>Time:</th>                 <td>20:02:47</td>     <th>  Log-Likelihood:    </th> <td> -7591.4</td> 
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>  1000</td>      <th>  AIC:               </th> <td>1.519e+04</td>
@@ -1168,7 +1168,7 @@ Name: confounder, dtype: float64
   <th>Date:</th>             <td>Sun, 22 Dec 2024</td> <th>  Prob (F-statistic):</th> <td>1.12e-25</td> 
 </tr>
 <tr>
-  <th>Time:</th>                 <td>19:49:50</td>     <th>  Log-Likelihood:    </th> <td> -7591.4</td> 
+  <th>Time:</th>                 <td>20:02:47</td>     <th>  Log-Likelihood:    </th> <td> -7591.4</td> 
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>  1000</td>      <th>  AIC:               </th> <td>1.519e+04</td>
@@ -1218,8 +1218,8 @@ Name: confounder, dtype: float64
 <p>PSA: control variables will not be on the midterm, and we will cover more on it after the midterm.</p>
 <p>If the data-generating processes were not naturally randomizing treatment, we can seek to adjust the population in the treatment and control groups.</p>
 <p>One adjustment method is through controlling or conditioning on other factors <span class="math notranslate nohighlight">\(C\)</span> such that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-68988c45-2e7e-4973-8e6b-4446c3b8523f">
-<span class="eqno">(7.4)<a class="headerlink" href="#equation-68988c45-2e7e-4973-8e6b-4446c3b8523f" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-63737bbd-6416-407b-ae68-e42566d7ce3c">
+<span class="eqno">(7.4)<a class="headerlink" href="#equation-63737bbd-6416-407b-ae68-e42566d7ce3c" title="Permalink to this equation">#</a></span>\[\begin{equation}
 S \perp U \ | \ C
 \end{equation}\]</div>
 <p>In this case, we can say that <span class="math notranslate nohighlight">\(S\)</span> and <span class="math notranslate nohighlight">\(U\)</span> are <strong>conditionally independent</strong> given <span class="math notranslate nohighlight">\(C\)</span>.</p>
@@ -1505,7 +1505,7 @@ Association for those with family_status = 0: 30308.08
   <th>Date:</th>             <td>Sun, 22 Dec 2024</td> <th>  Prob (F-statistic):</th> <td>1.55e-321</td>
 </tr>
 <tr>
-  <th>Time:</th>                 <td>19:49:50</td>     <th>  Log-Likelihood:    </th> <td> -10649.</td> 
+  <th>Time:</th>                 <td>20:02:47</td>     <th>  Log-Likelihood:    </th> <td> -10649.</td> 
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>  1000</td>      <th>  AIC:               </th> <td>2.130e+04</td>
@@ -1570,7 +1570,7 @@ Association for those with family_status = 0: 30308.08
   <th>Date:</th>             <td>Sun, 22 Dec 2024</td> <th>  Prob (F-statistic):</th>  <td>  0.00</td>  
 </tr>
 <tr>
-  <th>Time:</th>                 <td>19:49:50</td>     <th>  Log-Likelihood:    </th> <td> -9912.8</td> 
+  <th>Time:</th>                 <td>20:02:48</td>     <th>  Log-Likelihood:    </th> <td> -9912.8</td> 
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>  1000</td>      <th>  AIC:               </th> <td>1.983e+04</td>

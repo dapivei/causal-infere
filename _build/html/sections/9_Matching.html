@@ -488,8 +488,8 @@ r_{X Y \mid Z}=\frac{r_{X Y}-r_{X Z} \cdot r_{Y Z}}{\sqrt{\left(1-r_{X Z}^2\righ
 \]</div>
 <section id="regression-weight-is-not-the-probability">
 <h3><span class="section-number">9.4.1. </span>Regression (weight is not the probability)<a class="headerlink" href="#regression-weight-is-not-the-probability" title="Link to this heading">#</a></h3>
-<div class="amsmath math notranslate nohighlight" id="equation-d95b51fa-874a-4f54-a3d4-01cc49cc786c">
-<span class="eqno">(9.1)<a class="headerlink" href="#equation-d95b51fa-874a-4f54-a3d4-01cc49cc786c" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-df7c7720-b70a-4196-a9e4-9fcb11d72613">
+<span class="eqno">(9.1)<a class="headerlink" href="#equation-df7c7720-b70a-4196-a9e4-9fcb11d72613" title="Permalink to this equation">#</a></span>\[\begin{align}
 \alpha_1=\sum_{k=1}^K E\left[Y(S=1, U)-Y(S=0, U) \mid \mathbf{C}=\mathbf{c}_k\right] W\left(\mathbf{C}=\mathbf{c}_k\right)
 \end{align}\]</div>
 <p><span class="math notranslate nohighlight">\(W\)</span> is the weight of the subgroup, which might not be the same as the probability of the subgroup.</p>
@@ -505,8 +505,8 @@ What we are doing is to estimate <span class="math notranslate nohighlight">\(\b
 \[
 Y = X \beta + \epsilon
 \]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-afa3ed3a-e142-44ec-949f-804171504ff8">
-<span class="eqno">(9.2)<a class="headerlink" href="#equation-afa3ed3a-e142-44ec-949f-804171504ff8" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-0a00a834-bc51-4d72-8271-0cad4ed76ee2">
+<span class="eqno">(9.2)<a class="headerlink" href="#equation-0a00a834-bc51-4d72-8271-0cad4ed76ee2" title="Permalink to this equation">#</a></span>\[\begin{align}
 X=\left[\begin{array}{l}
 X_1 \\
 X_2
@@ -515,32 +515,32 @@ Y_1 \\
 Y_2
 \end{array}\right]
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-ada45ec6-bffb-47f7-b368-f025fa322e12">
-<span class="eqno">(9.3)<a class="headerlink" href="#equation-ada45ec6-bffb-47f7-b368-f025fa322e12" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d3035695-5fdd-4adf-bb84-586a475ce0ce">
+<span class="eqno">(9.3)<a class="headerlink" href="#equation-d3035695-5fdd-4adf-bb84-586a475ce0ce" title="Permalink to this equation">#</a></span>\[\begin{align}
 X^T X=X_1^T X_1+X_2^T X_2 \quad \text { and } \quad X^T Y=X_1^T Y_1+X_2^T Y_2
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-e1ed458f-a85a-42ec-bed6-893b84105469">
-<span class="eqno">(9.4)<a class="headerlink" href="#equation-e1ed458f-a85a-42ec-bed6-893b84105469" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-045dfcec-6d05-4fd9-9db4-c40477dc5084">
+<span class="eqno">(9.4)<a class="headerlink" href="#equation-045dfcec-6d05-4fd9-9db4-c40477dc5084" title="Permalink to this equation">#</a></span>\[\begin{align}
 \hat{\beta}_{\text {pooled }}=\left(X_1^T X_1+X_2^T X_2\right)^{-1}\left(X_1^T Y_1+X_2^T Y_2\right)
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-4dcda441-e267-4ff0-a169-2536558d288f">
-<span class="eqno">(9.5)<a class="headerlink" href="#equation-4dcda441-e267-4ff0-a169-2536558d288f" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-6caa144e-9efc-46b2-8315-1a1a3b5a51b6">
+<span class="eqno">(9.5)<a class="headerlink" href="#equation-6caa144e-9efc-46b2-8315-1a1a3b5a51b6" title="Permalink to this equation">#</a></span>\[\begin{align}
 \hat{\beta}_{\text {pooled }}=W_1 \hat{\beta}_1+W_2 \hat{\beta}_2
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-568b4093-a176-42b0-8090-31e1d2958d29">
-<span class="eqno">(9.6)<a class="headerlink" href="#equation-568b4093-a176-42b0-8090-31e1d2958d29" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-871ec828-bd93-4188-83d4-9b4ac4325768">
+<span class="eqno">(9.6)<a class="headerlink" href="#equation-871ec828-bd93-4188-83d4-9b4ac4325768" title="Permalink to this equation">#</a></span>\[\begin{align}
 \hat{\beta}_1=\left(X_1^T X_1\right)^{-1} X_1^T Y_1 \quad \text { and } \quad \hat{\beta}_2=\left(X_2^T X_2\right)^{-1} X_2^T Y_2
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-cc5a8cfa-41a0-4843-b957-8296a43f9557">
-<span class="eqno">(9.7)<a class="headerlink" href="#equation-cc5a8cfa-41a0-4843-b957-8296a43f9557" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-e3f33f3f-96c2-4aa0-863d-7a093be8fe07">
+<span class="eqno">(9.7)<a class="headerlink" href="#equation-e3f33f3f-96c2-4aa0-863d-7a093be8fe07" title="Permalink to this equation">#</a></span>\[\begin{align}
 \hat{\beta}_{\text {pooled }}=\left(X_1^T X_1+X_2^T X_2\right)^{-1}\left(X_1^T X_1 \hat{\beta}_1+X_2^T X_2 \hat{\beta}_2\right)
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-241ad102-7473-4d1f-86e5-db6f2e3d5631">
-<span class="eqno">(9.8)<a class="headerlink" href="#equation-241ad102-7473-4d1f-86e5-db6f2e3d5631" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-95c1987d-ccc8-41be-be46-f9530258e1af">
+<span class="eqno">(9.8)<a class="headerlink" href="#equation-95c1987d-ccc8-41be-be46-f9530258e1af" title="Permalink to this equation">#</a></span>\[\begin{align}
 W_1=\left(X_1^T X_1+X_2^T X_2\right)^{-1} X_1^T X_1
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-bf54fd58-9bcc-4aef-ad48-468bd7194940">
-<span class="eqno">(9.9)<a class="headerlink" href="#equation-bf54fd58-9bcc-4aef-ad48-468bd7194940" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-9fd52f39-5b53-4d98-b67e-c76ce054e016">
+<span class="eqno">(9.9)<a class="headerlink" href="#equation-9fd52f39-5b53-4d98-b67e-c76ce054e016" title="Permalink to this equation">#</a></span>\[\begin{align}
 W_2=\left(X_1^T X_1+X_2^T X_2\right)^{-1} X_2^T X_2
 \end{align}\]</div>
 <p>Map back to our problem, the <span class="math notranslate nohighlight">\(X\)</span> is the treatment variable, and the <span class="math notranslate nohighlight">\(Y\)</span> is the outcome variable.</p>
