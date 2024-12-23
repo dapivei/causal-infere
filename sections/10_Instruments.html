@@ -60,6 +60,8 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"TeX": {"extensions": ["AMSmath.js", "AMSsymbols.js"], "equationNumbers": {"autoNumber": "none"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'sections/10_Instruments';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -392,7 +394,7 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-challenge">10.4.3. The challenge</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">10.4.4. Solution?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data">10.4.5. Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-plausible-is-tt-encouragement-as-an-instrument">10.4.6. How plausible is ${\tt encouragement}$ as an instrument?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-plausible-is-tt-encouragement-as-an-instrument">10.4.6. How plausible is <span class="math notranslate nohighlight">\({\tt encouragement}\)</span> as an instrument?</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#compliance-types">10.4.6.1. Compliance Types</a></li>
 </ul>
 </li>
@@ -417,7 +419,7 @@
                   
   <div align="center">
 <p><a class="reference external" href="https://colab.research.google.com/github/dapivei/causal-infere/blob/main/sections/10_Instruments.ipynb"><img alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
-</div><section id="instrumental-variables">
+</div><section class="tex2jax_ignore mathjax_ignore" id="instrumental-variables">
 <h1><span class="section-number">10. </span>Instrumental Variables<a class="headerlink" href="#instrumental-variables" title="Link to this heading">#</a></h1>
 <section id="recap-from-last-class">
 <h2><span class="section-number">10.1. </span>Recap From Last Class<a class="headerlink" href="#recap-from-last-class" title="Link to this heading">#</a></h2>
@@ -435,22 +437,23 @@
 </section>
 <section id="id1">
 <h2><span class="section-number">10.3. </span>Instrumental Variables<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-<p>Imagine we want to estimate the <strong>causal effect</strong> of a treatment variable, $S$, on some outcome, $Y$. But there’s a problem: we suspect that $S$ is <strong>correlated with unobserved factors</strong> that also affect $Y$. These unobserved factors are captured by the variable $U$. This means:</p>
-<p>$$S \not!\perp!!!\perp U,$$</p>
-<p>In other words, $S$ and $U$ are related, which can lead to <strong>biased and inconsistent estimates</strong> when we try to estimate the causal effect of $S$ on $Y$.</p>
+<p>Imagine we want to estimate the <strong>causal effect</strong> of a treatment variable, <span class="math notranslate nohighlight">\(S\)</span>, on some outcome, <span class="math notranslate nohighlight">\(Y\)</span>. But there’s a problem: we suspect that <span class="math notranslate nohighlight">\(S\)</span> is <strong>correlated with unobserved factors</strong> that also affect <span class="math notranslate nohighlight">\(Y\)</span>. These unobserved factors are captured by the variable <span class="math notranslate nohighlight">\(U\)</span>. This means:</p>
+<div class="math notranslate nohighlight">
+\[S \not\!\perp\!\!\!\perp U,\]</div>
+<p>In other words, <span class="math notranslate nohighlight">\(S\)</span> and <span class="math notranslate nohighlight">\(U\)</span> are related, which can lead to <strong>biased and inconsistent estimates</strong> when we try to estimate the causal effect of <span class="math notranslate nohighlight">\(S\)</span> on <span class="math notranslate nohighlight">\(Y\)</span>.</p>
 <blockquote>
 <div><p><strong>But is there a way to estimate the causal effect despite this problem?</strong><br />
 <strong>Yes!</strong> We can use an <strong>instrumental variable (IV)</strong> to help us out.</p>
 </div></blockquote>
 <section id="what-is-an-instrumental-variable">
 <h3><span class="section-number">10.3.1. </span>What is an Instrumental Variable?<a class="headerlink" href="#what-is-an-instrumental-variable" title="Link to this heading">#</a></h3>
-<p>An <strong>instrumental variable (IV)</strong>, denoted by $Z$, is a variable that:</p>
+<p>An <strong>instrumental variable (IV)</strong>, denoted by <span class="math notranslate nohighlight">\(Z\)</span>, is a variable that:</p>
 <ul class="simple">
-<li><p><strong>Affects</strong> the treatment variable $S$.</p></li>
-<li><p>Has <strong>no direct effect</strong> on the outcome variable $Y$.</p></li>
-<li><p>Is <strong>independent</strong> of the unobserved confounders $U$ that are correlated with both $S$ and $Y$.</p></li>
+<li><p><strong>Affects</strong> the treatment variable <span class="math notranslate nohighlight">\(S\)</span>.</p></li>
+<li><p>Has <strong>no direct effect</strong> on the outcome variable <span class="math notranslate nohighlight">\(Y\)</span>.</p></li>
+<li><p>Is <strong>independent</strong> of the unobserved confounders <span class="math notranslate nohighlight">\(U\)</span> that are correlated with both <span class="math notranslate nohighlight">\(S\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>.</p></li>
 </ul>
-<p>The goal is that the instrument $Z$ can help us isolate the variation in $S$ that is <strong>uncorrelated</strong> with the unobserved confounders $U$, allowing us to estimate a more accurate causal effect.</p>
+<p>The goal is that the instrument <span class="math notranslate nohighlight">\(Z\)</span> can help us isolate the variation in <span class="math notranslate nohighlight">\(S\)</span> that is <strong>uncorrelated</strong> with the unobserved confounders <span class="math notranslate nohighlight">\(U\)</span>, allowing us to estimate a more accurate causal effect.</p>
 <img src="https://raw.githubusercontent.com/dapivei/causal-infere/main/images/instrument.png" width="500"/>
 </section>
 <section id="when-should-we-use-ivs">
@@ -458,59 +461,62 @@
 <p>Instrumental Variables are especially useful when:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>The treatment variable $S$ suffers from <strong>measurement error</strong>, <strong>omitted variable bias</strong>, or <strong>reverse causality</strong> (where $Y$ affects $S$ instead of the other way around).</p></li>
+<li><p>The treatment variable <span class="math notranslate nohighlight">\(S\)</span> suffers from <strong>measurement error</strong>, <strong>omitted variable bias</strong>, or <strong>reverse causality</strong> (where <span class="math notranslate nohighlight">\(Y\)</span> affects <span class="math notranslate nohighlight">\(S\)</span> instead of the other way around).</p></li>
 </ul>
 </div></blockquote>
 </section>
 <section id="key-assumptions-for-a-valid-instrument">
 <h3><span class="section-number">10.3.3. </span>Key Assumptions for a Valid Instrument<a class="headerlink" href="#key-assumptions-for-a-valid-instrument" title="Link to this heading">#</a></h3>
-<p>For $Z$ to be a valid instrument, it must satisfy three important assumptions:</p>
+<p>For <span class="math notranslate nohighlight">\(Z\)</span> to be a valid instrument, it must satisfy three important assumptions:</p>
 <ol class="arabic simple">
 <li><p><strong>Exogeneity</strong>:<br />
-The instrument $Z$ must be <strong>uncorrelated</strong> with the error term $U$ (or other unobserved factors that affect $S$), i.e., $Z$ must not be influenced by any variables that also affect $Y$. This assumption ensures that $Z$ affects $S$ but not $Y$ directly.<br />
-$$ U \perp Z \quad \text{and} \quad V \perp Z $$</p></li>
+The instrument <span class="math notranslate nohighlight">\(Z\)</span> must be <strong>uncorrelated</strong> with the error term <span class="math notranslate nohighlight">\(U\)</span> (or other unobserved factors that affect <span class="math notranslate nohighlight">\(S\)</span>), i.e., <span class="math notranslate nohighlight">\(Z\)</span> must not be influenced by any variables that also affect <span class="math notranslate nohighlight">\(Y\)</span>. This assumption ensures that <span class="math notranslate nohighlight">\(Z\)</span> affects <span class="math notranslate nohighlight">\(S\)</span> but not <span class="math notranslate nohighlight">\(Y\)</span> directly.<br />
+$<span class="math notranslate nohighlight">\( U \perp Z \quad \text{and} \quad V \perp Z \)</span>$</p></li>
 <li><p><strong>Relevance</strong>:<br />
-The instrument $Z$ must have a <strong>significant</strong> effect on the treatment $S$. In other words, $Z$ should change the likelihood that someone receives the treatment $S$, at least for some sub-group of the population.<br />
-$$ S(Z=1, V) \neq S(Z=0, V) $$</p></li>
+The instrument <span class="math notranslate nohighlight">\(Z\)</span> must have a <strong>significant</strong> effect on the treatment <span class="math notranslate nohighlight">\(S\)</span>. In other words, <span class="math notranslate nohighlight">\(Z\)</span> should change the likelihood that someone receives the treatment <span class="math notranslate nohighlight">\(S\)</span>, at least for some sub-group of the population.<br />
+$<span class="math notranslate nohighlight">\( S(Z=1, V) \neq S(Z=0, V) \)</span>$</p></li>
 <li><p><strong>Monotonicity</strong>:<br />
-The instrument $Z$ must affect $S$ in the <strong>same direction</strong> for all individuals. That is, $Z$ should only either <strong>increase</strong> or <strong>decrease</strong> the likelihood of receiving treatment, but not both.<br />
-$$ S(Z=1, V) &gt; S(Z=0, V) $$</p></li>
+The instrument <span class="math notranslate nohighlight">\(Z\)</span> must affect <span class="math notranslate nohighlight">\(S\)</span> in the <strong>same direction</strong> for all individuals. That is, <span class="math notranslate nohighlight">\(Z\)</span> should only either <strong>increase</strong> or <strong>decrease</strong> the likelihood of receiving treatment, but not both.<br />
+$<span class="math notranslate nohighlight">\( S(Z=1, V) &gt; S(Z=0, V) \)</span>$</p></li>
 </ol>
 </section>
 <section id="local-average-treatment-effect-late">
 <h3><span class="section-number">10.3.4. </span>Local Average Treatment Effect (LATE)<a class="headerlink" href="#local-average-treatment-effect-late" title="Link to this heading">#</a></h3>
-<p>If these assumptions hold, we can estimate the <strong>Local Average Treatment Effect (LATE)</strong>. This is the causal effect of $S$ on $Y$ for a specific group of people called the <strong>compliers</strong>—those whose treatment status is affected by the instrument $Z$.</p>
+<p>If these assumptions hold, we can estimate the <strong>Local Average Treatment Effect (LATE)</strong>. This is the causal effect of <span class="math notranslate nohighlight">\(S\)</span> on <span class="math notranslate nohighlight">\(Y\)</span> for a specific group of people called the <strong>compliers</strong>—those whose treatment status is affected by the instrument <span class="math notranslate nohighlight">\(Z\)</span>.</p>
 <blockquote>
-<div><p><strong>Compliers</strong> are individuals whose treatment $S$ is influenced by the instrument $Z$. They are the population we can estimate the causal effect for using IVs.</p>
+<div><p><strong>Compliers</strong> are individuals whose treatment <span class="math notranslate nohighlight">\(S\)</span> is influenced by the instrument <span class="math notranslate nohighlight">\(Z\)</span>. They are the population we can estimate the causal effect for using IVs.</p>
 </div></blockquote>
 </section>
 <section id="types-of-individuals-in-iv-analysis">
 <h3><span class="section-number">10.3.5. </span>Types of Individuals in IV Analysis<a class="headerlink" href="#types-of-individuals-in-iv-analysis" title="Link to this heading">#</a></h3>
-<p>The population can be divided into four groups based on how they respond to the instrument $Z$:</p>
+<p>The population can be divided into four groups based on how they respond to the instrument <span class="math notranslate nohighlight">\(Z\)</span>:</p>
 <ol class="arabic simple">
-<li><p><strong>Always-takers</strong>: These individuals always take the treatment, regardless of the instrument $Z$.<br />
-$$ S(Z=1, V) = S(Z=0, V) = 1 $$</p></li>
-<li><p><strong>Never-takers</strong>: These individuals never take the treatment, regardless of the instrument $Z$.<br />
-$$ S(Z=1, V) = S(Z=0, V) = 0 $$</p></li>
-<li><p><strong>Compliers</strong>: These individuals comply with the instrument. They take the treatment when $Z = 1$, but not when $Z = 0$.<br />
-$$ S(Z=1, V) = 1 \quad \text{and} \quad S(Z=0, V) = 0 $$</p></li>
-<li><p><strong>Defiers</strong>: These individuals do the opposite of what the instrument suggests. They take the treatment when $Z = 0$, but not when $Z = 1$.<br />
-$$ S(Z=1, V) = 0 \quad \text{and} \quad S(Z=0, V) = 1 $$</p></li>
+<li><p><strong>Always-takers</strong>: These individuals always take the treatment, regardless of the instrument <span class="math notranslate nohighlight">\(Z\)</span>.<br />
+$<span class="math notranslate nohighlight">\( S(Z=1, V) = S(Z=0, V) = 1 \)</span>$</p></li>
+<li><p><strong>Never-takers</strong>: These individuals never take the treatment, regardless of the instrument <span class="math notranslate nohighlight">\(Z\)</span>.<br />
+$<span class="math notranslate nohighlight">\( S(Z=1, V) = S(Z=0, V) = 0 \)</span>$</p></li>
+<li><p><strong>Compliers</strong>: These individuals comply with the instrument. They take the treatment when <span class="math notranslate nohighlight">\(Z = 1\)</span>, but not when <span class="math notranslate nohighlight">\(Z = 0\)</span>.<br />
+$<span class="math notranslate nohighlight">\( S(Z=1, V) = 1 \quad \text{and} \quad S(Z=0, V) = 0 \)</span>$</p></li>
+<li><p><strong>Defiers</strong>: These individuals do the opposite of what the instrument suggests. They take the treatment when <span class="math notranslate nohighlight">\(Z = 0\)</span>, but not when <span class="math notranslate nohighlight">\(Z = 1\)</span>.<br />
+$<span class="math notranslate nohighlight">\( S(Z=1, V) = 0 \quad \text{and} \quad S(Z=0, V) = 1 \)</span>$</p></li>
 </ol>
 </section>
 <section id="identifying-the-local-average-treatment-effect-late">
 <h3><span class="section-number">10.3.6. </span>Identifying the Local Average Treatment Effect (LATE)<a class="headerlink" href="#identifying-the-local-average-treatment-effect-late" title="Link to this heading">#</a></h3>
-<p>Now, let’s define the causal model for $Y$ in terms of $S$ and $U$:</p>
-<p>$$ Y = \alpha_0 + \alpha_1 S + U, $$</p>
-<p>where $\alpha_1$ represents the <strong>causal effect</strong> of $S$ on $Y$, and $U$ is the error term (which captures unobserved factors that affect $Y$).</p>
+<p>Now, let’s define the causal model for <span class="math notranslate nohighlight">\(Y\)</span> in terms of <span class="math notranslate nohighlight">\(S\)</span> and <span class="math notranslate nohighlight">\(U\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[ Y = \alpha_0 + \alpha_1 S + U, \]</div>
+<p>where <span class="math notranslate nohighlight">\(\alpha_1\)</span> represents the <strong>causal effect</strong> of <span class="math notranslate nohighlight">\(S\)</span> on <span class="math notranslate nohighlight">\(Y\)</span>, and <span class="math notranslate nohighlight">\(U\)</span> is the error term (which captures unobserved factors that affect <span class="math notranslate nohighlight">\(Y\)</span>).</p>
 <p>Assuming:</p>
-<p>$$\mathbb{E}[U]=0\quad and  \quad \mathbb{E}[ZU]=0$$ and given instrument relevance $Cov(Z,S)\neq 0$, we obtain:</p>
-<p>$$ \alpha_1^{IV} = \frac{\text{Cov}(Z,Y)}{\text{Cov}(Z,S)} $$</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\mathbb{E}[U]=0\quad and  \quad \mathbb{E}[ZU]=0$$ and given instrument relevance $Cov(Z,S)\neq 0$, we obtain:\\$$ \alpha_1^{IV} = \frac{\text{Cov}(Z,Y)}{\text{Cov}(Z,S)} \end{aligned}\end{align} \]</div>
 <p>This is the <strong>Wald estimator</strong>. We can rewrite it in terms of expectations for a binary instrument:</p>
-<p>$$ \alpha_1^{IV} = \frac{\mathbb{E}[Y | Z=1] - \mathbb{E}[Y | Z=0]}{\mathbb{E}[S | Z=1] - \mathbb{E}[S | Z=0]} $$</p>
+<div class="math notranslate nohighlight">
+\[ \alpha_1^{IV} = \frac{\mathbb{E}[Y | Z=1] - \mathbb{E}[Y | Z=0]}{\mathbb{E}[S | Z=1] - \mathbb{E}[S | Z=0]} \]</div>
 <p>Under our LATE assumptions, the Wald estimator identifies the LATE:</p>
-<p>$$\alpha_{IV} = \frac{\mathbb{E}[Y|Z =1]-\mathbb{E}[Y|Z =0]}{\mathbb{E}[S|Z =1]-\mathbb{E}[S|Z =0]}
-=\mathbb{E}[Y(S =1,U)−Y(S =0,U)|Complier]= LATE$$</p>
+<div class="math notranslate nohighlight">
+\[\alpha_{IV} = \frac{\mathbb{E}[Y|Z =1]-\mathbb{E}[Y|Z =0]}{\mathbb{E}[S|Z =1]-\mathbb{E}[S|Z =0]}
+=\mathbb{E}[Y(S =1,U)−Y(S =0,U)|Complier]= LATE\]</div>
 <blockquote>
 <div><p>Thus, <strong>LATE</strong> is the <strong>difference in outcomes</strong> between those who received the treatment and those who did not, <strong>for the compliers</strong>.</p>
 </div></blockquote>
@@ -522,7 +528,7 @@ $$ S(Z=1, V) = 0 \quad \text{and} \quad S(Z=0, V) = 1 $$</p></li>
 <section id="research-question">
 <h3><span class="section-number">10.4.1. </span>Research Question<a class="headerlink" href="#research-question" title="Link to this heading">#</a></h3>
 <blockquote>
-<div><p>Does watching Sesame Street ($S$) have a positive impact on later academic achievement ($Y$)?</p>
+<div><p>Does watching Sesame Street (<span class="math notranslate nohighlight">\(S\)</span>) have a positive impact on later academic achievement (<span class="math notranslate nohighlight">\(Y\)</span>)?</p>
 </div></blockquote>
 </section>
 <section id="model-setup">
@@ -535,12 +541,13 @@ S &amp; =\left{\begin{array}{l}
 Y(S, U) &amp; =\text {Score on a literacy test} \
 U &amp; =\text { other determinants of } Y,
 \end{aligned}</p>
-<p>where $U$ represents other determinants of $Y$ (e.g., socio-economic status).</p>
+<p>where <span class="math notranslate nohighlight">\(U\)</span> represents other determinants of <span class="math notranslate nohighlight">\(Y\)</span> (e.g., socio-economic status).</p>
 </section>
 <section id="the-challenge">
 <h3><span class="section-number">10.4.3. </span>The challenge<a class="headerlink" href="#the-challenge" title="Link to this heading">#</a></h3>
-<p>$$S \not!\perp!!!\perp U,$$</p>
-<p>as various family and individual factors likely influence whether a child watches the program $S$ and the child’s later academic outcomes ($Y$).</p>
+<div class="math notranslate nohighlight">
+\[S \not\!\perp\!\!\!\perp U,\]</div>
+<p>as various family and individual factors likely influence whether a child watches the program <span class="math notranslate nohighlight">\(S\)</span> and the child’s later academic outcomes (<span class="math notranslate nohighlight">\(Y\)</span>).</p>
 <blockquote>
 <div><p>It’s difficult to isolate the effect of watching Sesame Street on academic achievement from unobserved confounders, such as socio-economic status. These unobserved factors may influence both:</p>
 </div></blockquote>
@@ -552,24 +559,24 @@ U &amp; =\text { other determinants of } Y,
 </section>
 <section id="solution">
 <h3><span class="section-number">10.4.4. </span>Solution?<a class="headerlink" href="#solution" title="Link to this heading">#</a></h3>
-<p>Introduce an instrumental variable —<strong>encouragement</strong> $Z$ —which we can control and randomize. In this context, encouragement refers to providing children with additional information or motivational support to watch Sesame Street. This approach aligns with the original proposal by <a class="reference external" href="https://files.eric.ed.gov/fulltext/ED068155.pdf">Ball &amp; Bogatz (1970)</a>, who explored the impact of such encouragement on children’s engagement with educational media.</p>
+<p>Introduce an instrumental variable —<strong>encouragement</strong> <span class="math notranslate nohighlight">\(Z\)</span> —which we can control and randomize. In this context, encouragement refers to providing children with additional information or motivational support to watch Sesame Street. This approach aligns with the original proposal by <a class="reference external" href="https://files.eric.ed.gov/fulltext/ED068155.pdf">Ball &amp; Bogatz (1970)</a>, who explored the impact of such encouragement on children’s engagement with educational media.</p>
 <p>\begin{aligned}
 Z &amp; =\left{\begin{array}{l}
 1 \text { if encouraged  }  \
 0 \text { not encouraged}
 \end{array}\right. \
 \end{aligned}</p>
-<p>Our IV allows us to estimate the causal effect of watching Sesame Street on academic achievement for a specific subgroup: the <strong>compliers</strong>, or those whose likelihood of watching the program is influenced by the encouragement $Z$.</p>
+<p>Our IV allows us to estimate the causal effect of watching Sesame Street on academic achievement for a specific subgroup: the <strong>compliers</strong>, or those whose likelihood of watching the program is influenced by the encouragement <span class="math notranslate nohighlight">\(Z\)</span>.</p>
 <blockquote>
-<div><p>How does watching Sesame Street $S$ impact academic achievement $Y$ for children whose likelihood of watching the program is influenced by the encouragement $Z$?</p>
+<div><p>How does watching Sesame Street <span class="math notranslate nohighlight">\(S\)</span> impact academic achievement <span class="math notranslate nohighlight">\(Y\)</span> for children whose likelihood of watching the program is influenced by the encouragement <span class="math notranslate nohighlight">\(Z\)</span>?</p>
 </div></blockquote>
 </section>
 <section id="data">
 <h3><span class="section-number">10.4.5. </span>Data<a class="headerlink" href="#data" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">encour</span></code></strong>: Indicator variable for whether the child was encouraged to watch Sesame Stree. Instrument $Z$.</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">watched</span></code></strong>: Indicator variable for whether the child actually watched Sesame Street. Treatment $S$.</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">letters</span></code></strong>: Score on a literacy test. Outcome $Y$.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">encour</span></code></strong>: Indicator variable for whether the child was encouraged to watch Sesame Stree. Instrument <span class="math notranslate nohighlight">\(Z\)</span>.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">watched</span></code></strong>: Indicator variable for whether the child actually watched Sesame Street. Treatment <span class="math notranslate nohighlight">\(S\)</span>.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">letters</span></code></strong>: Score on a literacy test. Outcome <span class="math notranslate nohighlight">\(Y\)</span>.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">age</span></code></strong>: Age of the child (in months), included as a control variable.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">female</span></code></strong>: Indicator variable for gender (female), included as a control variable.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">Other</span> <span class="pre">variables</span></code></strong>: Various additional factors.</p></li>
@@ -862,13 +869,13 @@ Z &amp; =\left{\begin{array}{l}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/3ea8903a7732feec8020e38a73f7eef492091aacb66d6af6b03c74191a3b4403.png" src="../_images/3ea8903a7732feec8020e38a73f7eef492091aacb66d6af6b03c74191a3b4403.png" />
+<img alt="../_images/24a9059f34f965454107982931298533ab22f3d46205bfd9dd476aa8bbd38bbc.png" src="../_images/24a9059f34f965454107982931298533ab22f3d46205bfd9dd476aa8bbd38bbc.png" />
 </div>
 </div>
-<p>Observe that children who were encouraged to watch the show had a notably higher proportion of viewers compared to those who were not encouraged. This difference suggests that ${\tt encouragement}$ effectively increases the likelihood of viewing Sesame Street.</p>
+<p>Observe that children who were encouraged to watch the show had a notably higher proportion of viewers compared to those who were not encouraged. This difference suggests that <span class="math notranslate nohighlight">\({\tt encouragement}\)</span> effectively increases the likelihood of viewing Sesame Street.</p>
 </section>
 <section id="how-plausible-is-tt-encouragement-as-an-instrument">
-<h3><span class="section-number">10.4.6. </span>How plausible is ${\tt encouragement}$ as an instrument?<a class="headerlink" href="#how-plausible-is-tt-encouragement-as-an-instrument" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">10.4.6. </span>How plausible is <span class="math notranslate nohighlight">\({\tt encouragement}\)</span> as an instrument?<a class="headerlink" href="#how-plausible-is-tt-encouragement-as-an-instrument" title="Link to this heading">#</a></h3>
 <p><strong>Exogeneity</strong></p>
 <p>We test whether encouragement is randomly assigned across relevant variables, ensuring balance between the encouraged and non-encouraged groups.</p>
 <div class="cell docutils container">
@@ -919,8 +926,9 @@ T-statistic: -1.4258, p-value: 0.1561
 </div>
 </div>
 <p><strong>Relevance</strong></p>
-<p>For the instrument to be relevant, it must be correlated with $S$ – watching Sesame Street. Meaning that encouragement to watch Sesame Street has to actually make some kids more likely to watch it.</p>
-<p>$$P(\text{Complier})&gt;0 $$</p>
+<p>For the instrument to be relevant, it must be correlated with <span class="math notranslate nohighlight">\(S\)</span> – watching Sesame Street. Meaning that encouragement to watch Sesame Street has to actually make some kids more likely to watch it.</p>
+<div class="math notranslate nohighlight">
+\[P(\text{Complier})&gt;0 \]</div>
 <p>If the encouragement has no effect—meaning kids are just as likely (or unlikely) to watch Sesame Street whether they’re encouraged or not—then encouragement isn’t a relevant instrument.</p>
 <ul class="simple">
 <li><p>We test this using a linear regression model.</p></li>
@@ -943,7 +951,7 @@ Dep. Variable:                watched   R-squared:                       0.175
 Model:                            OLS   Adj. R-squared:                  0.171
 Method:                 Least Squares   F-statistic:                     50.46
 Date:                Sun, 22 Dec 2024   Prob (F-statistic):           1.40e-11
-Time:                        20:18:30   Log-Likelihood:                -107.88
+Time:                        20:28:02   Log-Likelihood:                -107.88
 No. Observations:                 240   AIC:                             219.8
 Df Residuals:                     238   BIC:                             226.7
 Df Model:                           1                                         
@@ -975,7 +983,8 @@ Notes:
 <ul class="simple">
 <li><p>Perform logistic regression to check for monotonicity, which ensures that the instrument  does not induce defiers (children who behave contrary to encouragement):</p></li>
 </ul>
-<p>$$P(\text{Defier})=0 $$</p>
+<div class="math notranslate nohighlight">
+\[P(\text{Defier})=0 \]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">monotonicity_model</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">Logit</span><span class="p">(</span><span class="n">sesame</span><span class="p">[</span><span class="s1">&#39;watched&#39;</span><span class="p">],</span> <span class="n">sesame</span><span class="p">[[</span><span class="s1">&#39;const&#39;</span><span class="p">,</span> <span class="s1">&#39;encouraged&#39;</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;sex&#39;</span><span class="p">,</span> <span class="s1">&#39;site&#39;</span><span class="p">]])</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
@@ -993,7 +1002,7 @@ Dep. Variable:                watched   No. Observations:                  240
 Model:                          Logit   Df Residuals:                      235
 Method:                           MLE   Df Model:                            4
 Date:                Sun, 22 Dec 2024   Pseudo R-squ.:                  0.2699
-Time:                        20:18:30   Log-Likelihood:                -93.423
+Time:                        20:28:02   Log-Likelihood:                -93.423
 converged:                       True   LL-Null:                       -127.96
 Covariance Type:            nonrobust   LLR p-value:                 3.564e-14
 ==============================================================================
@@ -1010,7 +1019,7 @@ site          -0.7509      0.155     -4.833      0.000      -1.056      -0.446
 </div>
 </div>
 <ul class="simple">
-<li><p>Encouragement has a significant positive effect on the likelihood of watching Sesame Street ($p &lt; 0.05$).</p></li>
+<li><p>Encouragement has a significant positive effect on the likelihood of watching Sesame Street (<span class="math notranslate nohighlight">\(p &lt; 0.05\)</span>).</p></li>
 <li><p>Age, sex, and site have less impact, which supports monotonicity.</p></li>
 </ul>
 <p>Overall, our instrument seems pretty plausible!</p>
@@ -1169,8 +1178,8 @@ site          -0.7509      0.155     -4.833      0.000      -1.056      -0.446
 <section id="via-the-two-stage-least-squares-2sls-estimation">
 <h4><span class="section-number">10.4.7.2. </span>Via the Two-Stage Least Squares (2SLS) Estimation<a class="headerlink" href="#via-the-two-stage-least-squares-2sls-estimation" title="Link to this heading">#</a></h4>
 <ol class="arabic simple">
-<li><p><strong>First stage</strong>: Regress whether children watched Sesame Street $S$ on the instrument $Z$ (whether they were encouraged to watch).</p></li>
-<li><p><strong>Second stage</strong>: Regress the outcome (e.g., academic performance $Y$) on the predicted values of $S$ from the first stage.</p></li>
+<li><p><strong>First stage</strong>: Regress whether children watched Sesame Street <span class="math notranslate nohighlight">\(S\)</span> on the instrument <span class="math notranslate nohighlight">\(Z\)</span> (whether they were encouraged to watch).</p></li>
+<li><p><strong>Second stage</strong>: Regress the outcome (e.g., academic performance <span class="math notranslate nohighlight">\(Y\)</span>) on the predicted values of <span class="math notranslate nohighlight">\(S\)</span> from the first stage.</p></li>
 </ol>
 <p>This method isolates the causal effect of watching Sesame Street on the outcome for <strong>compliers</strong> (those who watched due to encouragement).</p>
 <div class="cell docutils container">
@@ -1283,7 +1292,7 @@ site          -0.7509      0.155     -4.833      0.000      -1.056      -0.446
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-challenge">10.4.3. The challenge</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">10.4.4. Solution?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data">10.4.5. Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-plausible-is-tt-encouragement-as-an-instrument">10.4.6. How plausible is ${\tt encouragement}$ as an instrument?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-plausible-is-tt-encouragement-as-an-instrument">10.4.6. How plausible is <span class="math notranslate nohighlight">\({\tt encouragement}\)</span> as an instrument?</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#compliance-types">10.4.6.1. Compliance Types</a></li>
 </ul>
 </li>
