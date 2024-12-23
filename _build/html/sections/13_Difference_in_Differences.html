@@ -492,20 +492,21 @@ See class notes for proof.</p>
 <ol class="arabic simple" start="2">
 <li><p><strong>Regression-Based Estimation</strong>.  Capturing differences across groups and time through an interaction term, define:</p></li>
 </ol>
-<p>\begin{align}
-G_i &amp; =\left{\begin{array}{l}
-1 \text { if unit <span class="math notranslate nohighlight">\(i\)</span> has been exposed to <span class="math notranslate nohighlight">\(S\)</span> at some point } \
+<div class="amsmath math notranslate nohighlight" id="equation-9941f7ad-1007-41aa-bf50-a779d21bea80">
+<span class="eqno">(13.1)<a class="headerlink" href="#equation-9941f7ad-1007-41aa-bf50-a779d21bea80" title="Permalink to this equation">#</a></span>\[\begin{align}
+G_i &amp; =\left\{\begin{array}{l}
+1 \text { if unit $i$ has been exposed to $S$ at some point } \\
 0 \text { if not }
-\end{array}\right. \
-T_t &amp; =\left{\begin{array}{l}
-1 \text { if after treatment event } \
+\end{array}\right. \\
+T_t &amp; =\left\{\begin{array}{l}
+1 \text { if after treatment event } \\
 0 \text { if before }
-\end{array}\right. \
-D &amp; =\left{\begin{array}{l}
-1 \text { if } T=1 \text { and } G=1 \
+\end{array}\right. \\
+D &amp; =\left\{\begin{array}{l}
+1 \text { if } T=1 \text { and } G=1 \\
 0 \text { if not }
 \end{array}\right.
-\end{align}</p>
+\end{align}\]</div>
 <p>The regression equation is:</p>
 <blockquote>
 <div><div class="math notranslate nohighlight">
@@ -1160,7 +1161,7 @@ Dep. Variable:                   Empl   R-squared:                       0.008
 Model:                            OLS   Adj. R-squared:                  0.004
 Method:                 Least Squares   F-statistic:                     2.122
 Date:                Sun, 22 Dec 2024   Prob (F-statistic):             0.0959
-Time:                        19:01:44   Log-Likelihood:                -2831.4
+Time:                        19:49:21   Log-Likelihood:                -2831.4
 No. Observations:                 802   AIC:                             5671.
 Df Residuals:                     798   BIC:                             5690.
 Df Model:                           3                                         
@@ -1224,7 +1225,7 @@ Notes:
   <th>Date:</th>             <td>Sun, 22 Dec 2024</td> <th>  Prob (F-statistic):</th> <td>2.94e-15</td>
 </tr>
 <tr>
-  <th>Time:</th>                 <td>19:01:44</td>     <th>  Log-Likelihood:    </th> <td> -2608.8</td>
+  <th>Time:</th>                 <td>19:49:21</td>     <th>  Log-Likelihood:    </th> <td> -2608.8</td>
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>   757</td>      <th>  AIC:               </th> <td>   5248.</td>
@@ -1349,16 +1350,18 @@ Y_{g, t} = \sum_{i=-\underline{t}}^{\bar{t}} \beta_i T_i + \gamma G + \sum_{j=0}
 <h3><span class="section-number">13.5.9. </span>(Recall) Standard Errors of Linear Regression<a class="headerlink" href="#recall-standard-errors-of-linear-regression" title="Link to this heading">#</a></h3>
 <section id="robust-standard-errors">
 <h4><span class="section-number">13.5.9.1. </span>Robust Standard Errors<a class="headerlink" href="#robust-standard-errors" title="Link to this heading">#</a></h4>
-<p>\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-b49f6275-ae9a-41b0-a910-068b9c58087c">
+<span class="eqno">(13.2)<a class="headerlink" href="#equation-b49f6275-ae9a-41b0-a910-068b9c58087c" title="Permalink to this equation">#</a></span>\[\begin{align}
 V_{\text {robust }}=\left(X^{T} X\right)^{-1} X^{T} \Omega X\left(X^{T} X\right)^{-1},
-\end{align}</p>
+\end{align}\]</div>
 </section>
 <section id="cluster-robust-standard-errors">
 <h4><span class="section-number">13.5.9.2. </span>Cluster-Robust Standard Errors<a class="headerlink" href="#cluster-robust-standard-errors" title="Link to this heading">#</a></h4>
 <p>Recall: iid residuals are not realistic in most cases, but we can assume the residuals are <strong>clustered</strong> by the group, which means between-group correlation is zero, but within-group correlation is positive. Block diagonal matrix <span class="math notranslate nohighlight">\(\Omega\)</span>.</p>
-<p>\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d8563c28-5f05-4845-ba24-3b80374289a1">
+<span class="eqno">(13.3)<a class="headerlink" href="#equation-d8563c28-5f05-4845-ba24-3b80374289a1" title="Permalink to this equation">#</a></span>\[\begin{align}
 V_{\text {clustered }}=\left(X^{T} X\right)^{-1}\left(\sum_{c=1}^C X_c^{T} \hat{u}_c \hat{u}_c^{T} X_c\right)\left(X^{T} X\right)^{-1}
-\end{align}</p>
+\end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\Omega\)</span> is a block diagonal matrix with each block being the covariance matrix of the residuals within each cluster.</p>
 <p>you need to provide the clusters.</p>
 <div class="math notranslate nohighlight">
@@ -1389,15 +1392,15 @@ V_{\text {clustered }}=\left(X^{T} X\right)^{-1}\left(\sum_{c=1}^C X_c^{T} \hat{
 <ul class="simple">
 <li><p>Tutorials:</p>
 <ul>
-<li><p><a class="reference external" href="https://rpubs.com/phle/r_tutorial_difference_in_differences">https://rpubs.com/phle/r_tutorial_difference_in_differences</a></p></li>
-<li><p><a class="reference external" href="https://bookdown.org/cuborican/RE_STAT/difference-in-differences.html">https://bookdown.org/cuborican/RE_STAT/difference-in-differences.html</a></p></li>
+<li><p>https://rpubs.com/phle/r_tutorial_difference_in_differences</p></li>
+<li><p>https://bookdown.org/cuborican/RE_STAT/difference-in-differences.html</p></li>
 </ul>
 </li>
 <li><p>Card, David and Alan B. Krueger. 1994. “Minimum Wages
 and Employment: A Case Study of the Fast-Food Industry in
 New Jersey and Pennsylvania.” The American Economic
 Review 84 (4): 772-793.
-<a class="reference external" href="https://www.jstor.org/stable/2677856">https://www.jstor.org/stable/2677856</a>.</p></li>
+https://www.jstor.org/stable/2677856.</p></li>
 <li><p>Sah, Sidharth. Causal Inference: Difference-in-Differences. 2024. PowerPoint presentation.</p></li>
 </ul>
 </section>
