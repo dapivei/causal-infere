@@ -60,7 +60,7 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"TeX": {"extensions": ["AMSmath.js", "AMSsymbols.js"], "equationNumbers": {"autoNumber": "AMS"}}}</script>
+    <script>window.MathJax = {"TeX": {"extensions": ["AMSmath.js", "AMSsymbols.js"], "equationNumbers": {"autoNumber": "none"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'sections/9_Matching';</script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -402,7 +402,7 @@
   <div align="center">
 <p><a class="reference external" href="https://colab.research.google.com/github/dapivei/causal-infere/blob/main/sections/9_matching.ipynb"><img alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 </div>
-<section id="matching">
+<section class="tex2jax_ignore mathjax_ignore" id="matching">
 <h1><span class="section-number">9. </span>Matching<a class="headerlink" href="#matching" title="Link to this heading">#</a></h1>
 <section id="control-variables">
 <h2><span class="section-number">9.1. </span>Control Variables<a class="headerlink" href="#control-variables" title="Link to this heading">#</a></h2>
@@ -412,135 +412,134 @@
 <ul class="simple">
 <li><p>The treatment effect is random given the control variables.</p></li>
 </ul>
-<p>$U$: other factors that affect the outcome.</p>
-<p>$Y$: outcome variable.</p>
-<p>$S$: treatment variable.</p>
-<p>If we have $U \perp S$, then we can use descriptive variables to estimate the treatment effect.</p>
+<p><span class="math notranslate nohighlight">\(U\)</span>: other factors that affect the outcome.</p>
+<p><span class="math notranslate nohighlight">\(Y\)</span>: outcome variable.</p>
+<p><span class="math notranslate nohighlight">\(S\)</span>: treatment variable.</p>
+<p>If we have <span class="math notranslate nohighlight">\(U \perp S\)</span>, then we can use descriptive variables to estimate the treatment effect.</p>
 </section>
 </section>
 <section id="formal-derivation">
 <h2><span class="section-number">9.2. </span>Formal derivation<a class="headerlink" href="#formal-derivation" title="Link to this heading">#</a></h2>
-<p>$$
+<div class="math notranslate nohighlight">
+\[
 Y(S, U) = \alpha_0 + \alpha_1 S + U
-$$</p>
+\]</div>
 <p>Equivalent to:
-$U \perp S | \emptyset$</p>
-<p>If we have a non-empty set of control variables $C$, only by conditioning on $C$ we can make $U$ and $S$ independent.</p>
-<p>$U \perp S | C$</p>
+<span class="math notranslate nohighlight">\(U \perp S | \emptyset\)</span></p>
+<p>If we have a non-empty set of control variables <span class="math notranslate nohighlight">\(C\)</span>, only by conditioning on <span class="math notranslate nohighlight">\(C\)</span> we can make <span class="math notranslate nohighlight">\(U\)</span> and <span class="math notranslate nohighlight">\(S\)</span> independent.</p>
+<p><span class="math notranslate nohighlight">\(U \perp S | C\)</span></p>
 <p>We can have
-$$
+$<span class="math notranslate nohighlight">\(
 \mathbb{E}[U \mid S, C] = \mathbb{E}[U \mid C]
-$$</p>
-<p>$$
+\)</span>$</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{aligned}
-V &amp; \equiv U-E[U \mid S, C] \
-&amp; =U-E[U \mid C] \
+V &amp; \equiv U-E[U \mid S, C] \\
+&amp; =U-E[U \mid C] \\
 &amp; =U-\left(\gamma_0+\gamma_1 C\right)
 \end{aligned}
-$$</p>
-<p>$$
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[
 U = V + \gamma_0 + \gamma_1 C
-$$</p>
-<p>$$
+\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{aligned}
-Y(S, U) &amp; = \alpha_0 + \alpha_1 S + V + \gamma_0 + \gamma_1 C \
-&amp; = (\alpha_0 + \gamma_0) + \alpha_1 S + \gamma_1 C + V \
-&amp; = \tilde{\alpha}_0 + \alpha_1 S + \tilde{\alpha}_2 C + V
+Y(S, U) &amp; = \alpha_0 + \alpha_1 S + V + \gamma_0 + \gamma_1 C \\
+        &amp; = (\alpha_0 + \gamma_0) + \alpha_1 S + \gamma_1 C + V \\
+        &amp; = \tilde{\alpha}_0 + \alpha_1 S + \tilde{\alpha}_2 C + V
 \end{aligned}
-$$</p>
-<p>We peeled off the effect of $C$ from the $U$.</p>
+\end{split}\]</div>
+<p>We peeled off the effect of <span class="math notranslate nohighlight">\(C\)</span> from the <span class="math notranslate nohighlight">\(U\)</span>.</p>
 </section>
 <section id="conditional-independence-test">
 <h2><span class="section-number">9.3. </span>Conditional Independence Test<a class="headerlink" href="#conditional-independence-test" title="Link to this heading">#</a></h2>
-<p>If we know that if we have $U \perp S | C$, and $U \mid C$ is linear, then we can use the control variables to estimate the treatment effect.</p>
+<p>If we know that if we have <span class="math notranslate nohighlight">\(U \perp S | C\)</span>, and <span class="math notranslate nohighlight">\(U \mid C\)</span> is linear, then we can use the control variables to estimate the treatment effect.</p>
 <p>How should we test the assumption?</p>
 <ol class="arabic simple">
-<li><p>Regression: Regress $U$ on $S$ given $C$.</p></li>
+<li><p>Regression: Regress <span class="math notranslate nohighlight">\(U\)</span> on <span class="math notranslate nohighlight">\(S\)</span> given <span class="math notranslate nohighlight">\(C\)</span>.</p></li>
 </ol>
-<p>Given $C$, we can test if $\gamma_1$ is statistically different from 0.
-$$
+<p>Given <span class="math notranslate nohighlight">\(C\)</span>, we can test if <span class="math notranslate nohighlight">\(\gamma_1\)</span> is statistically different from 0.
+$<span class="math notranslate nohighlight">\(
 U = \gamma_0 + \gamma_1 S+ \epsilon
-$$</p>
+\)</span>$</p>
 <ol class="arabic simple" start="2">
 <li><p>Partial Correlation (continuous)</p></li>
 </ol>
-<p>$$
+<div class="math notranslate nohighlight">
+\[
 r_{X Y \mid Z}=\frac{r_{X Y}-r_{X Z} \cdot r_{Y Z}}{\sqrt{\left(1-r_{X Z}^2\right)\left(1-r_{Y Z}^2\right)}}
-$$</p>
-<p>If we have CI, then $r_{S U \mid C} = 0$.</p>
+\]</div>
+<p>If we have CI, then <span class="math notranslate nohighlight">\(r_{S U \mid C} = 0\)</span>.</p>
 <p>high-dim continuous CI test is non-trivial.</p>
 </section>
 <section id="id1">
 <h2><span class="section-number">9.4. </span>Matching<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>To obtain treated and control groups with similar covariate distributions.</p>
 <p>We have multiple subgroups based on the control variables, we can just</p>
-<p>$$
+<div class="math notranslate nohighlight">
+\[
 \begin{aligned}
 \operatorname{Matching}
 &amp; =  \sum_{c \in C} \left( \mathbb{E}[Y \mid S=1, C = c] - \mathbb{E}[Y \mid S=0, C = c] \right) \cdot \mathbb{P}(C = c)
 \end{aligned}
-$$</p>
+\]</div>
 <section id="regression-weight-is-not-the-probability">
 <h3><span class="section-number">9.4.1. </span>Regression (weight is not the probability)<a class="headerlink" href="#regression-weight-is-not-the-probability" title="Link to this heading">#</a></h3>
-<div class="amsmath math notranslate nohighlight" id="equation-f97b5d2d-6772-4629-8c20-07da6f8ea0a7">
-<span class="eqno">(9.1)<a class="headerlink" href="#equation-f97b5d2d-6772-4629-8c20-07da6f8ea0a7" title="Permalink to this equation">#</a></span>\[\begin{align}
+<p>\begin{align}
 \alpha_1=\sum_{k=1}^K E\left[Y(S=1, U)-Y(S=0, U) \mid \mathbf{C}=\mathbf{c}_k\right] W\left(\mathbf{C}=\mathbf{c}_k\right)
-\end{align}\]</div>
-<p>$W$ is the weight of the subgroup, which might not be the same as the probability of the subgroup.</p>
-<p>$$
+\end{align}</p>
+<p><span class="math notranslate nohighlight">\(W\)</span> is the weight of the subgroup, which might not be the same as the probability of the subgroup.</p>
+<div class="math notranslate nohighlight">
+\[
 \begin{aligned}
 W(C = c_k) \neq \mathbb{P}(C = c_k)
 \end{aligned}
-$$</p>
+\]</div>
 <p>Say we have two groups, 1 and 2.
-What we are doing is to estimate $\beta$ (we are using the traditional linear regression notation here).</p>
-<p>$$
+What we are doing is to estimate <span class="math notranslate nohighlight">\(\beta\)</span> (we are using the traditional linear regression notation here).</p>
+<div class="math notranslate nohighlight">
+\[
 Y = X \beta + \epsilon
-$$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-07b640ee-8c1d-4a27-9535-4d77b313fcd5">
-<span class="eqno">(9.2)<a class="headerlink" href="#equation-07b640ee-8c1d-4a27-9535-4d77b313fcd5" title="Permalink to this equation">#</a></span>\[\begin{align}
+\]</div>
+<p>\begin{align}
 X=\left[\begin{array}{l}
-X_1 \\
+X_1 \
 X_2
 \end{array}\right] \quad \text { and } \quad Y=\left[\begin{array}{l}
-Y_1 \\
+Y_1 \
 Y_2
 \end{array}\right]
-\end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-d490e3aa-9f12-42c8-9281-46d443528f4e">
-<span class="eqno">(9.3)<a class="headerlink" href="#equation-d490e3aa-9f12-42c8-9281-46d443528f4e" title="Permalink to this equation">#</a></span>\[\begin{align}
+\end{align}</p>
+<p>\begin{align}
 X^T X=X_1^T X_1+X_2^T X_2 \quad \text { and } \quad X^T Y=X_1^T Y_1+X_2^T Y_2
-\end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-69e942ab-7034-4037-9998-3d0fa69f63f5">
-<span class="eqno">(9.4)<a class="headerlink" href="#equation-69e942ab-7034-4037-9998-3d0fa69f63f5" title="Permalink to this equation">#</a></span>\[\begin{align}
+\end{align}</p>
+<p>\begin{align}
 \hat{\beta}_{\text {pooled }}=\left(X_1^T X_1+X_2^T X_2\right)^{-1}\left(X_1^T Y_1+X_2^T Y_2\right)
-\end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-353d5051-ad5b-4ca9-a7c5-ec0dd06d26a3">
-<span class="eqno">(9.5)<a class="headerlink" href="#equation-353d5051-ad5b-4ca9-a7c5-ec0dd06d26a3" title="Permalink to this equation">#</a></span>\[\begin{align}
+\end{align}</p>
+<p>\begin{align}
 \hat{\beta}_{\text {pooled }}=W_1 \hat{\beta}_1+W_2 \hat{\beta}_2
-\end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-d4b2c142-7616-4e2a-b99c-ed50add336c9">
-<span class="eqno">(9.6)<a class="headerlink" href="#equation-d4b2c142-7616-4e2a-b99c-ed50add336c9" title="Permalink to this equation">#</a></span>\[\begin{align}
+\end{align}</p>
+<p>\begin{align}
 \hat{\beta}_1=\left(X_1^T X_1\right)^{-1} X_1^T Y_1 \quad \text { and } \quad \hat{\beta}_2=\left(X_2^T X_2\right)^{-1} X_2^T Y_2
-\end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-2e52adda-10ea-4dce-9a86-5ab949049e1a">
-<span class="eqno">(9.7)<a class="headerlink" href="#equation-2e52adda-10ea-4dce-9a86-5ab949049e1a" title="Permalink to this equation">#</a></span>\[\begin{align}
+\end{align}</p>
+<p>\begin{align}
 \hat{\beta}_{\text {pooled }}=\left(X_1^T X_1+X_2^T X_2\right)^{-1}\left(X_1^T X_1 \hat{\beta}_1+X_2^T X_2 \hat{\beta}_2\right)
-\end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-b6885bef-6ac1-45eb-bdf8-7e60c1462809">
-<span class="eqno">(9.8)<a class="headerlink" href="#equation-b6885bef-6ac1-45eb-bdf8-7e60c1462809" title="Permalink to this equation">#</a></span>\[\begin{align}
+\end{align}</p>
+<p>\begin{align}
 W_1=\left(X_1^T X_1+X_2^T X_2\right)^{-1} X_1^T X_1
-\end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-891d3cb9-2cc4-4705-828e-b62aaacf2677">
-<span class="eqno">(9.9)<a class="headerlink" href="#equation-891d3cb9-2cc4-4705-828e-b62aaacf2677" title="Permalink to this equation">#</a></span>\[\begin{align}
+\end{align}</p>
+<p>\begin{align}
 W_2=\left(X_1^T X_1+X_2^T X_2\right)^{-1} X_2^T X_2
-\end{align}\]</div>
-<p>Map back to our problem, the $X$ is the treatment variable, and the $Y$ is the outcome variable.</p>
+\end{align}</p>
+<p>Map back to our problem, the <span class="math notranslate nohighlight">\(X\)</span> is the treatment variable, and the <span class="math notranslate nohighlight">\(Y\)</span> is the outcome variable.</p>
 <p>So larger treatment variance will have larger weight.</p>
 </section>
 <section id="curse-of-dimensionality-matching">
 <h3><span class="section-number">9.4.2. </span>Curse of Dimensionality (matching)<a class="headerlink" href="#curse-of-dimensionality-matching" title="Link to this heading">#</a></h3>
-<p>If you have large number of control variables, say k, and we assume the control variables are binary, then the number of subgroups you need to match is $2^k$.</p>
+<p>If you have large number of control variables, say k, and we assume the control variables are binary, then the number of subgroups you need to match is <span class="math notranslate nohighlight">\(2^k\)</span>.</p>
 <p>If you have continuous control variables, you can discretize them into bins, and the number of subgroups you need to match is the number of bins.</p>
 <ol class="arabic simple">
 <li><p>What if there is only one in the bin?</p>
