@@ -60,7 +60,7 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"TeX": {"extensions": ["AMSmath.js", "AMSsymbols.js"], "equationNumbers": {"autoNumber": "AMS"}}}</script>
+    <script>window.MathJax = {"TeX": {"extensions": ["AMSmath.js", "AMSsymbols.js"], "equationNumbers": {"autoNumber": "none"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'sections/13_Difference_in_Differences';</script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -383,26 +383,29 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#consider-a-2x2-did">13.4. Consider a “2x2” DiD.</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assumptions">13.4.1. Assumptions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identifying-the-average-treatment-on-the-treated-att">13.4.2. Identifying the Average Treatment on the Treated (ATT)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#research-question-does-raising-the-minimum-wage-help-workers-by-improving-their-earnings-or-does-it-inadvertently-harm-them-by-reducing-job-opportunities">13.4.3. Research Question: Does raising the minimum wage help workers by improving their earnings, or does it inadvertently harm them by reducing job opportunities?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-setup">13.4.4. Model Setup</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-challenge">13.4.5. The challenge</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data">13.4.6. Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">13.4.7. Solution?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-estimation">13.4.8. Regression estimation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#does-the-parallel-trends-hold">13.4.9. Does the Parallel Trends Hold?</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#fallback">13.4.9.1. Fallback</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-varying-treatment-effects">13.4.10. Time Varying Treatment Effects</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recall-standard-errors-of-linear-regression">13.4.11. (Recall) Standard Errors of Linear Regression</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robust-standard-errors">13.4.11.1. Robust Standard Errors</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cluster-robust-standard-errors">13.4.11.2. Cluster-Robust Standard Errors</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#permutation-test">13.4.11.3. Permutation Test</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#do-increases-in-the-minimum-wage-affect-employment">13.5. Do increases in the minimum wage affect employment?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#research-question-does-raising-the-minimum-wage-help-workers-by-improving-their-earnings-or-does-it-inadvertently-harm-them-by-reducing-job-opportunities">13.5.1. Research Question: Does raising the minimum wage help workers by improving their earnings, or does it inadvertently harm them by reducing job opportunities?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-setup">13.5.2. Model Setup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-challenge">13.5.3. The challenge</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data">13.5.4. Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">13.5.5. Solution?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-estimation">13.5.6. Regression estimation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#does-the-parallel-trends-hold">13.5.7. Does the Parallel Trends Hold?</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#fallback">13.5.7.1. Fallback</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-varying-treatment-effects">13.5.8. Time Varying Treatment Effects</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recall-standard-errors-of-linear-regression">13.5.9. (Recall) Standard Errors of Linear Regression</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robust-standard-errors">13.5.9.1. Robust Standard Errors</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cluster-robust-standard-errors">13.5.9.2. Cluster-Robust Standard Errors</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#permutation-test">13.5.9.3. Permutation Test</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#path-forward">13.5. Path Forward</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#path-forward">13.6. Path Forward</a></li>
 </ul>
             </nav>
         </div>
@@ -417,7 +420,7 @@
   <div align="center">
 <p><a class="reference external" href="https://colab.research.google.com/github/dapivei/causal-infere/blob/main/sections/13_Difference_in_Differences.ipynb"><img alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 </div>
-<section id="difference-in-differences">
+<section class="tex2jax_ignore mathjax_ignore" id="difference-in-differences">
 <h1><span class="section-number">13. </span>Difference in Differences<a class="headerlink" href="#difference-in-differences" title="Link to this heading">#</a></h1>
 <section id="recap-from-last-class">
 <h2><span class="section-number">13.1. </span>Recap From Last Class<a class="headerlink" href="#recap-from-last-class" title="Link to this heading">#</a></h2>
@@ -427,7 +430,6 @@
 </section>
 <section id="goals-for-today">
 <h2><span class="section-number">13.2. </span>Goals For Today<a class="headerlink" href="#goals-for-today" title="Link to this heading">#</a></h2>
-<hr class="docutils" />
 <ol class="arabic simple">
 <li><p>Understand the intuition behind Differences in Differences (DiD).</p></li>
 <li><p>Implement DiD analysis using Python.</p></li>
@@ -439,33 +441,34 @@
 </section>
 <section id="consider-a-2x2-did">
 <h2><span class="section-number">13.4. </span>Consider a “2x2” DiD.<a class="headerlink" href="#consider-a-2x2-did" title="Link to this heading">#</a></h2>
-<p>Let the outcomes $ Y_{g,t}(S, U) $ represent the observed values of an outcome variable, where:</p>
-<p>$$\begin{aligned}
-g=\left{\begin{array}{l}
-1 \text { if exposed to treatment $S$} \
+<p>Let the outcomes <span class="math notranslate nohighlight">\( Y_{g,t}(S, U) \)</span> represent the observed values of an outcome variable, where:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+g=\left\{\begin{array}{l}
+1 \text { if exposed to treatment $S$} \\
 0 \text { if not }
-\end{array}\right., ,
-t =\left{\begin{array}{l}
-1 \text { post-treatment period} \
+\end{array}\right., \,
+t =\left\{\begin{array}{l}
+1 \text { post-treatment period} \\
 0 \text { pre-treatment period  }
-\end{array}\right., ,
-S =\left{\begin{array}{l}
-1 \text { for treatment }\
+\end{array}\right., \,
+S =\left\{\begin{array}{l}
+1 \text { for treatment }\\
 0 \text { no treatment }
 \end{array}\right.
-\end{aligned}$$</p>
-<p>Difference-in-Differences (DiD) is a quasi-experimental design used to estimate causal effects of policy changes $S$ on an outcome of interest $ Y_{g,t}(S, U)$ by</p>
+\end{aligned}\end{split}\]</div>
+<p>Difference-in-Differences (DiD) is a quasi-experimental design used to estimate causal effects of policy changes <span class="math notranslate nohighlight">\(S\)</span> on an outcome of interest <span class="math notranslate nohighlight">\( Y_{g,t}(S, U)\)</span> by</p>
 <blockquote>
-<div><p>Comparing <strong>changes over $t$</strong> between a <strong>$g=1$</strong>  and a <strong>$g=0$</strong>.</p>
+<div><p>Comparing <strong>changes over <span class="math notranslate nohighlight">\(t\)</span></strong> between a <strong><span class="math notranslate nohighlight">\(g=1\)</span></strong>  and a <strong><span class="math notranslate nohighlight">\(g=0\)</span></strong>.</p>
 </div></blockquote>
-<p>This 2x2 DiD is limited to two periods and two groups. Extending $t$ to include multiple time periods would enable a more comprehensive evaluation of parallel trends.</p>
+<p>This 2x2 DiD is limited to two periods and two groups. Extending <span class="math notranslate nohighlight">\(t\)</span> to include multiple time periods would enable a more comprehensive evaluation of parallel trends.</p>
 <section id="assumptions">
 <h3><span class="section-number">13.4.1. </span>Assumptions<a class="headerlink" href="#assumptions" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Parallel Trends</strong>
-In the absence of treatment $S=0$, both groups would have followed similar trends over time.
-$$\mathbb{E}[Y_{1,1}(S =0,U)−Y_{1,0}(S =0,U)]
-=\mathbb{E}[Y_{0,1}(S =0,U)−Y_{0,0}(S =0,U)]$$</p></li>
+In the absence of treatment <span class="math notranslate nohighlight">\(S=0\)</span>, both groups would have followed similar trends over time.
+$<span class="math notranslate nohighlight">\(\mathbb{E}[Y_{1,1}(S =0,U)−Y_{1,0}(S =0,U)]
+=\mathbb{E}[Y_{0,1}(S =0,U)−Y_{0,0}(S =0,U)]\)</span>$</p></li>
 </ul>
 <p>Ensuring that any post-treatment divergence between the groups can be causally attributed to the intervention.</p>
 <ul class="simple">
@@ -484,14 +487,14 @@ DiD&amp;=\mathbb{E}[Y_{1,1}(S =1,U)]-\mathbb{E}[Y_{1,0}(S =0,U)]-
 (\mathbb{E}[Y_{0,1}(S =0,U)]-\mathbb{E}[Y_{0,0}(S =0,U)])
 \end{aligned}</p>
 <p>where all terms are <strong>observable</strong>, making it implementable using sample means. <strong>Recall that under the parallel trends assumption</strong>,
-$$DiD=ATT.$$
+$<span class="math notranslate nohighlight">\(DiD=ATT.\)</span>$
 See class notes for proof.</p>
 <ol class="arabic simple" start="2">
 <li><p><strong>Regression-Based Estimation</strong>.  Capturing differences across groups and time through an interaction term, define:</p></li>
 </ol>
-<p>\begin{aligned}
+<p>\begin{align}
 G_i &amp; =\left{\begin{array}{l}
-1 \text { if unit $i$ has been exposed to $S$ at some point } \
+1 \text { if unit <span class="math notranslate nohighlight">\(i\)</span> has been exposed to <span class="math notranslate nohighlight">\(S\)</span> at some point } \
 0 \text { if not }
 \end{array}\right. \
 T_t &amp; =\left{\begin{array}{l}
@@ -502,24 +505,27 @@ D &amp; =\left{\begin{array}{l}
 1 \text { if } T=1 \text { and } G=1 \
 0 \text { if not }
 \end{array}\right.
-\end{aligned}</p>
+\end{align}</p>
 <p>The regression equation is:</p>
 <blockquote>
-<div><p>$$
-Y_{it} = \beta_0 + \beta_1 \text{T}_t + \beta_2 \text{G}_i + \beta_3 (\text{T}_t \times \text{G}<em>i) + \epsilon</em>{it}
-$$</p>
+<div><div class="math notranslate nohighlight">
+\[
+Y_{it} = \beta_0 + \beta_1 \text{T}_t + \beta_2 \text{G}_i + \beta_3 (\text{T}_t \times \text{G}_i) + \epsilon_{it}
+\]</div>
 </div></blockquote>
 <p>where:</p>
 <ul class="simple">
-<li><p>$Y_{it}$: Outcome variable</p></li>
-<li><p>$\text{T}_t$: Binary variable for time (0 = pre-treatment, 1 = post-treatment)</p></li>
-<li><p>$\text{G}_i$: Binary variable for group (0 if not exposed, 1 if exposed to treatment)</p></li>
-<li><p>$\text{T}_t \times \text{G}_i$: Interaction term, capturing the DiD effect.</p></li>
+<li><p><span class="math notranslate nohighlight">\(Y_{it}\)</span>: Outcome variable</p></li>
+<li><p><span class="math notranslate nohighlight">\(\text{T}_t\)</span>: Binary variable for time (0 = pre-treatment, 1 = post-treatment)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\text{G}_i\)</span>: Binary variable for group (0 if not exposed, 1 if exposed to treatment)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\text{T}_t \times \text{G}_i\)</span>: Interaction term, capturing the DiD effect.</p></li>
 </ul>
-<p>## 3. Motivating Case: Do increases in the minimum wage affect employment?</p>
 </section>
+</section>
+<section id="do-increases-in-the-minimum-wage-affect-employment">
+<h2><span class="section-number">13.5. </span>Do increases in the minimum wage affect employment?<a class="headerlink" href="#do-increases-in-the-minimum-wage-affect-employment" title="Link to this heading">#</a></h2>
 <section id="research-question-does-raising-the-minimum-wage-help-workers-by-improving-their-earnings-or-does-it-inadvertently-harm-them-by-reducing-job-opportunities">
-<h3><span class="section-number">13.4.3. </span>Research Question: Does raising the minimum wage help workers by improving their earnings, or does it inadvertently harm them by reducing job opportunities?<a class="headerlink" href="#research-question-does-raising-the-minimum-wage-help-workers-by-improving-their-earnings-or-does-it-inadvertently-harm-them-by-reducing-job-opportunities" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">13.5.1. </span>Research Question: Does raising the minimum wage help workers by improving their earnings, or does it inadvertently harm them by reducing job opportunities?<a class="headerlink" href="#research-question-does-raising-the-minimum-wage-help-workers-by-improving-their-earnings-or-does-it-inadvertently-harm-them-by-reducing-job-opportunities" title="Link to this heading">#</a></h3>
 <p>There is an ambiguity about whether increasing the minimum wage is truly beneficial for workers overall:</p>
 <ul class="simple">
 <li><p>raising the minimum wage directly increases earnings for workers currently earning less than the new minimum, improving their financial stability.</p></li>
@@ -528,26 +534,26 @@ $$</p>
 <p>On 1992 New Jersey increased the minimum wage. <strong>What was the effect of this rise on employment in fast-food restaurants?</strong> <a class="reference external" href="https://davidcard.berkeley.edu/papers/njmin-aer.pdf">Card and Krueger (1994)</a> investigate this!</p>
 </section>
 <section id="model-setup">
-<h3><span class="section-number">13.4.4. </span>Model Setup<a class="headerlink" href="#model-setup" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">13.5.2. </span>Model Setup<a class="headerlink" href="#model-setup" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Unit of observation $g$: Restaurant, identified by location (NJ, 1 or PA, 0).</p></li>
-<li><p>Time $t$: Period of observation (Pre-1992, 0 or Post-1992, 1).</p></li>
-<li><p>Policy Intervention $S$: Minimum wage increase in NJ.</p></li>
-<li><p>Outcome Variable $Y_{g,t}(S, U)$: Employment rate (e.g., number of employees) at restaurant $g$ at time $t$.</p></li>
+<li><p>Unit of observation <span class="math notranslate nohighlight">\(g\)</span>: Restaurant, identified by location (NJ, 1 or PA, 0).</p></li>
+<li><p>Time <span class="math notranslate nohighlight">\(t\)</span>: Period of observation (Pre-1992, 0 or Post-1992, 1).</p></li>
+<li><p>Policy Intervention <span class="math notranslate nohighlight">\(S\)</span>: Minimum wage increase in NJ.</p></li>
+<li><p>Outcome Variable <span class="math notranslate nohighlight">\(Y_{g,t}(S, U)\)</span>: Employment rate (e.g., number of employees) at restaurant <span class="math notranslate nohighlight">\(g\)</span> at time <span class="math notranslate nohighlight">\(t\)</span>.</p></li>
 </ul>
 </section>
 <section id="the-challenge">
-<h3><span class="section-number">13.4.5. </span>The challenge<a class="headerlink" href="#the-challenge" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">13.5.3. </span>The challenge<a class="headerlink" href="#the-challenge" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Do we know the counterfactual? Meaning the employment rate in NJ had it not implemented the minimum wage policy?
-$$ATT = \mathbb{E}[Y_{1,1}(S =1,U)−Y_{1,1}(S =0,U)]$$
+$<span class="math notranslate nohighlight">\(ATT = \mathbb{E}[Y_{1,1}(S =1,U)−Y_{1,1}(S =0,U)]\)</span><span class="math notranslate nohighlight">\(
 No, the fundamental problem of causal inference means half of the ATT is never directly observed
-$\mathbb{E}[Y1,1(S = 0,U)]$.</p></li>
+\)</span>\mathbb{E}[Y1,1(S = 0,U)]$.</p></li>
 <li><p>Can we compare employment in NJ before and after the change?
-$$\mathbb{E}\big[\text{Employ.}|\text{NJ}, \text{Post-92}\big]-\mathbb{E}\big[\text{Employ.}|\text{NJ}, \text{Pre-92}\big]$$</p></li>
+$<span class="math notranslate nohighlight">\(\mathbb{E}\big[\text{Employ.}|\text{NJ}, \text{Post-92}\big]-\mathbb{E}\big[\text{Employ.}|\text{NJ}, \text{Pre-92}\big]\)</span>$</p></li>
 <li><p>No, the pre-post comparison is confounded by a <strong>time trend</strong>.</p></li>
 <li><p>Compare post-increase NJ unemployment to a bordering state who did not increase their minimum wage? Pennsylvania (PA) is a bordering state.
-$$\mathbb{E}\big[\text{Employ.}|\text{NJ}, \text{Post-92}\big]-\mathbb{E}\big[\text{Employ.}|\text{PA}, \text{Post-92}\big]$$</p>
+$<span class="math notranslate nohighlight">\(\mathbb{E}\big[\text{Employ.}|\text{NJ}, \text{Post-92}\big]-\mathbb{E}\big[\text{Employ.}|\text{PA}, \text{Post-92}\big]\)</span>$</p>
 <ul>
 <li><p>No, the PA/NJ-comparison is confounded by the pre-change differences b/w the states.</p></li>
 </ul>
@@ -613,203 +619,14 @@ $$\mathbb{E}\big[\text{Employ.}|\text{NJ}, \text{Post-92}\big]-\mathbb{E}\big[\t
 </div>
 </section>
 <section id="data">
-<h3><span class="section-number">13.4.6. </span>Data<a class="headerlink" href="#data" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">13.5.4. </span>Data<a class="headerlink" href="#data" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/DS4PS/PROG-EVAL-III/master/TEXTBOOK/DATA/DID_Example.csv&quot;</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/DID_Example.csv&quot;</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Treatment&#39;</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">SSLCertVerificationError</span><span class="g g-Whitespace">                  </span>Traceback (most recent call last)
-<span class="nn">File /ext3/miniforge3/lib/python3.12/urllib/request.py:1344,</span> in <span class="ni">AbstractHTTPHandler.do_open</span><span class="nt">(self, http_class, req, **http_conn_args)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1343</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1344</span>     <span class="n">h</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">get_method</span><span class="p">(),</span> <span class="n">req</span><span class="o">.</span><span class="n">selector</span><span class="p">,</span> <span class="n">req</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">headers</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1345</span>               <span class="n">encode_chunked</span><span class="o">=</span><span class="n">req</span><span class="o">.</span><span class="n">has_header</span><span class="p">(</span><span class="s1">&#39;Transfer-encoding&#39;</span><span class="p">))</span>
-<span class="g g-Whitespace">   </span><span class="mi">1346</span> <span class="k">except</span> <span class="ne">OSError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span> <span class="c1"># timeout error</span>
-
-<span class="nn">File /ext3/miniforge3/lib/python3.12/http/client.py:1336,</span> in <span class="ni">HTTPConnection.request</span><span class="nt">(self, method, url, body, headers, encode_chunked)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1335</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Send a complete request to the server.&quot;&quot;&quot;</span>
-<span class="ne">-&gt; </span><span class="mi">1336</span> <span class="bp">self</span><span class="o">.</span><span class="n">_send_request</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">body</span><span class="p">,</span> <span class="n">headers</span><span class="p">,</span> <span class="n">encode_chunked</span><span class="p">)</span>
-
-<span class="nn">File /ext3/miniforge3/lib/python3.12/http/client.py:1382,</span> in <span class="ni">HTTPConnection._send_request</span><span class="nt">(self, method, url, body, headers, encode_chunked)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1381</span>     <span class="n">body</span> <span class="o">=</span> <span class="n">_encode</span><span class="p">(</span><span class="n">body</span><span class="p">,</span> <span class="s1">&#39;body&#39;</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1382</span> <span class="bp">self</span><span class="o">.</span><span class="n">endheaders</span><span class="p">(</span><span class="n">body</span><span class="p">,</span> <span class="n">encode_chunked</span><span class="o">=</span><span class="n">encode_chunked</span><span class="p">)</span>
-
-<span class="nn">File /ext3/miniforge3/lib/python3.12/http/client.py:1331,</span> in <span class="ni">HTTPConnection.endheaders</span><span class="nt">(self, message_body, encode_chunked)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1330</span>     <span class="k">raise</span> <span class="n">CannotSendHeader</span><span class="p">()</span>
-<span class="ne">-&gt; </span><span class="mi">1331</span> <span class="bp">self</span><span class="o">.</span><span class="n">_send_output</span><span class="p">(</span><span class="n">message_body</span><span class="p">,</span> <span class="n">encode_chunked</span><span class="o">=</span><span class="n">encode_chunked</span><span class="p">)</span>
-
-<span class="nn">File /ext3/miniforge3/lib/python3.12/http/client.py:1091,</span> in <span class="ni">HTTPConnection._send_output</span><span class="nt">(self, message_body, encode_chunked)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1090</span> <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span><span class="p">[:]</span>
-<span class="ne">-&gt; </span><span class="mi">1091</span> <span class="bp">self</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1093</span> <span class="k">if</span> <span class="n">message_body</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1094</span> 
-<span class="g g-Whitespace">   </span><span class="mi">1095</span>     <span class="c1"># create a consistent interface to message_body</span>
-
-<span class="nn">File /ext3/miniforge3/lib/python3.12/http/client.py:1035,</span> in <span class="ni">HTTPConnection.send</span><span class="nt">(self, data)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1034</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">auto_open</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1035</span>     <span class="bp">self</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">1036</span> <span class="k">else</span><span class="p">:</span>
-
-<span class="nn">File /ext3/miniforge3/lib/python3.12/http/client.py:1477,</span> in <span class="ni">HTTPSConnection.connect</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1475</span>     <span class="n">server_hostname</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">host</span>
-<span class="ne">-&gt; </span><span class="mi">1477</span> <span class="bp">self</span><span class="o">.</span><span class="n">sock</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_context</span><span class="o">.</span><span class="n">wrap_socket</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sock</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1478</span>                                       <span class="n">server_hostname</span><span class="o">=</span><span class="n">server_hostname</span><span class="p">)</span>
-
-<span class="nn">File /ext3/miniforge3/lib/python3.12/ssl.py:455,</span> in <span class="ni">SSLContext.wrap_socket</span><span class="nt">(self, sock, server_side, do_handshake_on_connect, suppress_ragged_eofs, server_hostname, session)</span>
-<span class="g g-Whitespace">    </span><span class="mi">449</span> <span class="k">def</span> <span class="nf">wrap_socket</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sock</span><span class="p">,</span> <span class="n">server_side</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">450</span>                 <span class="n">do_handshake_on_connect</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">451</span>                 <span class="n">suppress_ragged_eofs</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">452</span>                 <span class="n">server_hostname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">453</span>     <span class="c1"># SSLSocket class handles server_hostname encoding before it calls</span>
-<span class="g g-Whitespace">    </span><span class="mi">454</span>     <span class="c1"># ctx._wrap_socket()</span>
-<span class="ne">--&gt; </span><span class="mi">455</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">sslsocket_class</span><span class="o">.</span><span class="n">_create</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">456</span>         <span class="n">sock</span><span class="o">=</span><span class="n">sock</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">457</span>         <span class="n">server_side</span><span class="o">=</span><span class="n">server_side</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">458</span>         <span class="n">do_handshake_on_connect</span><span class="o">=</span><span class="n">do_handshake_on_connect</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">459</span>         <span class="n">suppress_ragged_eofs</span><span class="o">=</span><span class="n">suppress_ragged_eofs</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">460</span>         <span class="n">server_hostname</span><span class="o">=</span><span class="n">server_hostname</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">461</span>         <span class="n">context</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">462</span>         <span class="n">session</span><span class="o">=</span><span class="n">session</span>
-<span class="g g-Whitespace">    </span><span class="mi">463</span>     <span class="p">)</span>
-
-<span class="nn">File /ext3/miniforge3/lib/python3.12/ssl.py:1041,</span> in <span class="ni">SSLSocket._create</span><span class="nt">(cls, sock, server_side, do_handshake_on_connect, suppress_ragged_eofs, server_hostname, context, session)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1040</span>                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;do_handshake_on_connect should not be specified for non-blocking sockets&quot;</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1041</span>             <span class="bp">self</span><span class="o">.</span><span class="n">do_handshake</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">1042</span> <span class="k">except</span><span class="p">:</span>
-
-<span class="nn">File /ext3/miniforge3/lib/python3.12/ssl.py:1319,</span> in <span class="ni">SSLSocket.do_handshake</span><span class="nt">(self, block)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1318</span>         <span class="bp">self</span><span class="o">.</span><span class="n">settimeout</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1319</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_sslobj</span><span class="o">.</span><span class="n">do_handshake</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">1320</span> <span class="k">finally</span><span class="p">:</span>
-
-<span class="ne">SSLCertVerificationError</span>: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)
-
-<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
-
-<span class="ne">URLError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/DS4PS/PROG-EVAL-III/master/TEXTBOOK/DATA/DID_Example.csv&quot;</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Treatment&#39;</span><span class="p">]</span>
-
-<span class="nn">File ~/.local/lib/python3.12/site-packages/pandas/io/parsers/readers.py:1026,</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1013</span> <span class="n">kwds_defaults</span> <span class="o">=</span> <span class="n">_refine_defaults_read</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1014</span>     <span class="n">dialect</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1015</span>     <span class="n">delimiter</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1022</span>     <span class="n">dtype_backend</span><span class="o">=</span><span class="n">dtype_backend</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1023</span> <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1024</span> <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1026</span> <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
-
-<span class="nn">File ~/.local/lib/python3.12/site-packages/pandas/io/parsers/readers.py:620,</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
-<span class="g g-Whitespace">    </span><span class="mi">617</span> <span class="n">_validate_names</span><span class="p">(</span><span class="n">kwds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;names&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
-<span class="g g-Whitespace">    </span><span class="mi">619</span> <span class="c1"># Create the parser.</span>
-<span class="ne">--&gt; </span><span class="mi">620</span> <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">622</span> <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">623</span>     <span class="k">return</span> <span class="n">parser</span>
-
-<span class="nn">File ~/.local/lib/python3.12/site-packages/pandas/io/parsers/readers.py:1620,</span> in <span class="ni">TextFileReader.__init__</span><span class="nt">(self, f, engine, **kwds)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1617</span>     <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span>
-<span class="g g-Whitespace">   </span><span class="mi">1619</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="p">:</span> <span class="n">IOHandles</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="ne">-&gt; </span><span class="mi">1620</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
-
-<span class="nn">File ~/.local/lib/python3.12/site-packages/pandas/io/parsers/readers.py:1880,</span> in <span class="ni">TextFileReader._make_engine</span><span class="nt">(self, f, engine)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1878</span>     <span class="k">if</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">mode</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1879</span>         <span class="n">mode</span> <span class="o">+=</span> <span class="s2">&quot;b&quot;</span>
-<span class="ne">-&gt; </span><span class="mi">1880</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="o">=</span> <span class="n">get_handle</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1881</span>     <span class="n">f</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1882</span>     <span class="n">mode</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1883</span>     <span class="n">encoding</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1884</span>     <span class="n">compression</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;compression&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1885</span>     <span class="n">memory_map</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;memory_map&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1886</span>     <span class="n">is_text</span><span class="o">=</span><span class="n">is_text</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1887</span>     <span class="n">errors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding_errors&quot;</span><span class="p">,</span> <span class="s2">&quot;strict&quot;</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1888</span>     <span class="n">storage_options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;storage_options&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1889</span> <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1890</span> <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-<span class="g g-Whitespace">   </span><span class="mi">1891</span> <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="o">.</span><span class="n">handle</span>
-
-<span class="nn">File ~/.local/lib/python3.12/site-packages/pandas/io/common.py:728,</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
-<span class="g g-Whitespace">    </span><span class="mi">725</span>     <span class="n">codecs</span><span class="o">.</span><span class="n">lookup_error</span><span class="p">(</span><span class="n">errors</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">727</span> <span class="c1"># open URLs</span>
-<span class="ne">--&gt; </span><span class="mi">728</span> <span class="n">ioargs</span> <span class="o">=</span> <span class="n">_get_filepath_or_buffer</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">729</span>     <span class="n">path_or_buf</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">730</span>     <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">731</span>     <span class="n">compression</span><span class="o">=</span><span class="n">compression</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">732</span>     <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">733</span>     <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">734</span> <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">736</span> <span class="n">handle</span> <span class="o">=</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">filepath_or_buffer</span>
-<span class="g g-Whitespace">    </span><span class="mi">737</span> <span class="n">handles</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">BaseBuffer</span><span class="p">]</span>
-
-<span class="nn">File ~/.local/lib/python3.12/site-packages/pandas/io/common.py:384,</span> in <span class="ni">_get_filepath_or_buffer</span><span class="nt">(filepath_or_buffer, encoding, compression, mode, storage_options)</span>
-<span class="g g-Whitespace">    </span><span class="mi">382</span> <span class="c1"># assuming storage_options is to be interpreted as headers</span>
-<span class="g g-Whitespace">    </span><span class="mi">383</span> <span class="n">req_info</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">storage_options</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">384</span> <span class="k">with</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">req_info</span><span class="p">)</span> <span class="k">as</span> <span class="n">req</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">385</span>     <span class="n">content_encoding</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Content-Encoding&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">386</span>     <span class="k">if</span> <span class="n">content_encoding</span> <span class="o">==</span> <span class="s2">&quot;gzip&quot;</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">387</span>         <span class="c1"># Override compression based on Content-Encoding header</span>
-
-<span class="nn">File ~/.local/lib/python3.12/site-packages/pandas/io/common.py:289,</span> in <span class="ni">urlopen</span><span class="nt">(*args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">283</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">284</span><span class="sd"> Lazy-import wrapper for stdlib urlopen, as that imports a big chunk of</span>
-<span class="g g-Whitespace">    </span><span class="mi">285</span><span class="sd"> the stdlib.</span>
-<span class="g g-Whitespace">    </span><span class="mi">286</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">287</span> <span class="kn">import</span> <span class="nn">urllib.request</span>
-<span class="ne">--&gt; </span><span class="mi">289</span> <span class="k">return</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="nn">File /ext3/miniforge3/lib/python3.12/urllib/request.py:215,</span> in <span class="ni">urlopen</span><span class="nt">(url, data, timeout, cafile, capath, cadefault, context)</span>
-<span class="g g-Whitespace">    </span><span class="mi">213</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">214</span>     <span class="n">opener</span> <span class="o">=</span> <span class="n">_opener</span>
-<span class="ne">--&gt; </span><span class="mi">215</span> <span class="k">return</span> <span class="n">opener</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span>
-
-<span class="nn">File /ext3/miniforge3/lib/python3.12/urllib/request.py:515,</span> in <span class="ni">OpenerDirector.open</span><span class="nt">(self, fullurl, data, timeout)</span>
-<span class="g g-Whitespace">    </span><span class="mi">512</span>     <span class="n">req</span> <span class="o">=</span> <span class="n">meth</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">514</span> <span class="n">sys</span><span class="o">.</span><span class="n">audit</span><span class="p">(</span><span class="s1">&#39;urllib.Request&#39;</span><span class="p">,</span> <span class="n">req</span><span class="o">.</span><span class="n">full_url</span><span class="p">,</span> <span class="n">req</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">req</span><span class="o">.</span><span class="n">headers</span><span class="p">,</span> <span class="n">req</span><span class="o">.</span><span class="n">get_method</span><span class="p">())</span>
-<span class="ne">--&gt; </span><span class="mi">515</span> <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_open</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">517</span> <span class="c1"># post-process response</span>
-<span class="g g-Whitespace">    </span><span class="mi">518</span> <span class="n">meth_name</span> <span class="o">=</span> <span class="n">protocol</span><span class="o">+</span><span class="s2">&quot;_response&quot;</span>
-
-<span class="nn">File /ext3/miniforge3/lib/python3.12/urllib/request.py:532,</span> in <span class="ni">OpenerDirector._open</span><span class="nt">(self, req, data)</span>
-<span class="g g-Whitespace">    </span><span class="mi">529</span>     <span class="k">return</span> <span class="n">result</span>
-<span class="g g-Whitespace">    </span><span class="mi">531</span> <span class="n">protocol</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">type</span>
-<span class="ne">--&gt; </span><span class="mi">532</span> <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call_chain</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">handle_open</span><span class="p">,</span> <span class="n">protocol</span><span class="p">,</span> <span class="n">protocol</span> <span class="o">+</span>
-<span class="g g-Whitespace">    </span><span class="mi">533</span>                           <span class="s1">&#39;_open&#39;</span><span class="p">,</span> <span class="n">req</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">534</span> <span class="k">if</span> <span class="n">result</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">535</span>     <span class="k">return</span> <span class="n">result</span>
-
-<span class="nn">File /ext3/miniforge3/lib/python3.12/urllib/request.py:492,</span> in <span class="ni">OpenerDirector._call_chain</span><span class="nt">(self, chain, kind, meth_name, *args)</span>
-<span class="g g-Whitespace">    </span><span class="mi">490</span> <span class="k">for</span> <span class="n">handler</span> <span class="ow">in</span> <span class="n">handlers</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">491</span>     <span class="n">func</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">handler</span><span class="p">,</span> <span class="n">meth_name</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">492</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">493</span>     <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">494</span>         <span class="k">return</span> <span class="n">result</span>
-
-<span class="nn">File /ext3/miniforge3/lib/python3.12/urllib/request.py:1392,</span> in <span class="ni">HTTPSHandler.https_open</span><span class="nt">(self, req)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1391</span> <span class="k">def</span> <span class="nf">https_open</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">req</span><span class="p">):</span>
-<span class="ne">-&gt; </span><span class="mi">1392</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">do_open</span><span class="p">(</span><span class="n">http</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">HTTPSConnection</span><span class="p">,</span> <span class="n">req</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1393</span>                         <span class="n">context</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_context</span><span class="p">)</span>
-
-<span class="nn">File /ext3/miniforge3/lib/python3.12/urllib/request.py:1347,</span> in <span class="ni">AbstractHTTPHandler.do_open</span><span class="nt">(self, http_class, req, **http_conn_args)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1344</span>         <span class="n">h</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">get_method</span><span class="p">(),</span> <span class="n">req</span><span class="o">.</span><span class="n">selector</span><span class="p">,</span> <span class="n">req</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">headers</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1345</span>                   <span class="n">encode_chunked</span><span class="o">=</span><span class="n">req</span><span class="o">.</span><span class="n">has_header</span><span class="p">(</span><span class="s1">&#39;Transfer-encoding&#39;</span><span class="p">))</span>
-<span class="g g-Whitespace">   </span><span class="mi">1346</span>     <span class="k">except</span> <span class="ne">OSError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span> <span class="c1"># timeout error</span>
-<span class="ne">-&gt; </span><span class="mi">1347</span>         <span class="k">raise</span> <span class="n">URLError</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1348</span>     <span class="n">r</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">getresponse</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">1349</span> <span class="k">except</span><span class="p">:</span>
-
-<span class="ne">URLError</span>: &lt;urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)&gt;
 </pre></div>
 </div>
 </div>
@@ -821,9 +638,7 @@ $$\mathbb{E}\big[\text{Employ.}|\text{NJ}, \text{Post-92}\big]-\mathbb{E}\big[\t
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">
-  <div id="df-98af57a6-82b0-48c9-ae18-3bf54ef915c2" class="colab-df-container">
-    <div>
+<div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -1072,272 +887,7 @@ $$\mathbb{E}\big[\text{Employ.}|\text{NJ}, \text{Post-92}\big]-\mathbb{E}\big[\t
   </tbody>
 </table>
 <p>820 rows × 16 columns</p>
-</div>
-    <div class="colab-df-buttons">
-
-  <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-98af57a6-82b0-48c9-ae18-3bf54ef915c2')"
-            title="Convert this dataframe to an interactive table."
-            style="display:none;">
-
-  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
-    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
-  </svg>
-    </button>
-
-  <style>
-    .colab-df-container {
-      display:flex;
-      gap: 12px;
-    }
-
-    .colab-df-convert {
-      background-color: #E8F0FE;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      fill: #1967D2;
-      height: 32px;
-      padding: 0 0 0 0;
-      width: 32px;
-    }
-
-    .colab-df-convert:hover {
-      background-color: #E2EBFA;
-      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-      fill: #174EA6;
-    }
-
-    .colab-df-buttons div {
-      margin-bottom: 4px;
-    }
-
-    [theme=dark] .colab-df-convert {
-      background-color: #3B4455;
-      fill: #D2E3FC;
-    }
-
-    [theme=dark] .colab-df-convert:hover {
-      background-color: #434B5C;
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-      fill: #FFFFFF;
-    }
-  </style>
-
-    <script>
-      const buttonEl =
-        document.querySelector('#df-98af57a6-82b0-48c9-ae18-3bf54ef915c2 button.colab-df-convert');
-      buttonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-      async function convertToInteractive(key) {
-        const element = document.querySelector('#df-98af57a6-82b0-48c9-ae18-3bf54ef915c2');
-        const dataTable =
-          await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                    [key], {});
-        if (!dataTable) return;
-
-        const docLinkHtml = 'Like what you see? Visit the ' +
-          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-          + ' to learn more about interactive tables.';
-        element.innerHTML = '';
-        dataTable['output_type'] = 'display_data';
-        await google.colab.output.renderOutput(dataTable, element);
-        const docLink = document.createElement('div');
-        docLink.innerHTML = docLinkHtml;
-        element.appendChild(docLink);
-      }
-    </script>
-  </div>
-
-
-<div id="df-87fc448a-93f9-4dbc-a4be-29a587c028d7">
-  <button class="colab-df-quickchart" onclick="quickchart('df-87fc448a-93f9-4dbc-a4be-29a587c028d7')"
-            title="Suggest charts"
-            style="display:none;">
-
-<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
-     width="24px">
-    <g>
-        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
-    </g>
-</svg>
-  </button>
-
-<style>
-  .colab-df-quickchart {
-      --bg-color: #E8F0FE;
-      --fill-color: #1967D2;
-      --hover-bg-color: #E2EBFA;
-      --hover-fill-color: #174EA6;
-      --disabled-fill-color: #AAA;
-      --disabled-bg-color: #DDD;
-  }
-
-  [theme=dark] .colab-df-quickchart {
-      --bg-color: #3B4455;
-      --fill-color: #D2E3FC;
-      --hover-bg-color: #434B5C;
-      --hover-fill-color: #FFFFFF;
-      --disabled-bg-color: #3B4455;
-      --disabled-fill-color: #666;
-  }
-
-  .colab-df-quickchart {
-    background-color: var(--bg-color);
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    display: none;
-    fill: var(--fill-color);
-    height: 32px;
-    padding: 0;
-    width: 32px;
-  }
-
-  .colab-df-quickchart:hover {
-    background-color: var(--hover-bg-color);
-    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
-    fill: var(--button-hover-fill-color);
-  }
-
-  .colab-df-quickchart-complete:disabled,
-  .colab-df-quickchart-complete:disabled:hover {
-    background-color: var(--disabled-bg-color);
-    fill: var(--disabled-fill-color);
-    box-shadow: none;
-  }
-
-  .colab-df-spinner {
-    border: 2px solid var(--fill-color);
-    border-color: transparent;
-    border-bottom-color: var(--fill-color);
-    animation:
-      spin 1s steps(1) infinite;
-  }
-
-  @keyframes spin {
-    0% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-      border-left-color: var(--fill-color);
-    }
-    20% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    30% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-      border-right-color: var(--fill-color);
-    }
-    40% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    60% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-    }
-    80% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-bottom-color: var(--fill-color);
-    }
-    90% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-    }
-  }
-</style>
-
-  <script>
-    async function quickchart(key) {
-      const quickchartButtonEl =
-        document.querySelector('#' + key + ' button');
-      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
-      quickchartButtonEl.classList.add('colab-df-spinner');
-      try {
-        const charts = await google.colab.kernel.invokeFunction(
-            'suggestCharts', [key], {});
-      } catch (error) {
-        console.error('Error during call to suggestCharts:', error);
-      }
-      quickchartButtonEl.classList.remove('colab-df-spinner');
-      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
-    }
-    (() => {
-      let quickchartButtonEl =
-        document.querySelector('#df-87fc448a-93f9-4dbc-a4be-29a587c028d7 button');
-      quickchartButtonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-    })();
-  </script>
-</div>
-
-  <div id="id_4a5b3fd3-7fa8-4f06-9851-e1c6f82333d7">
-    <style>
-      .colab-df-generate {
-        background-color: #E8F0FE;
-        border: none;
-        border-radius: 50%;
-        cursor: pointer;
-        display: none;
-        fill: #1967D2;
-        height: 32px;
-        padding: 0 0 0 0;
-        width: 32px;
-      }
-
-      .colab-df-generate:hover {
-        background-color: #E2EBFA;
-        box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-        fill: #174EA6;
-      }
-
-      [theme=dark] .colab-df-generate {
-        background-color: #3B4455;
-        fill: #D2E3FC;
-      }
-
-      [theme=dark] .colab-df-generate:hover {
-        background-color: #434B5C;
-        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-        fill: #FFFFFF;
-      }
-    </style>
-    <button class="colab-df-generate" onclick="generateWithVariable('df')"
-            title="Generate code using this dataframe."
-            style="display:none;">
-
-  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
-       width="24px">
-    <path d="M7,19H8.4L18.45,9,17,7.55,7,17.6ZM5,21V16.75L18.45,3.32a2,2,0,0,1,2.83,0l1.4,1.43a1.91,1.91,0,0,1,.58,1.4,1.91,1.91,0,0,1-.58,1.4L9.25,21ZM18.45,9,17,7.55Zm-12,3A5.31,5.31,0,0,0,4.9,8.1,5.31,5.31,0,0,0,1,6.5,5.31,5.31,0,0,0,4.9,4.9,5.31,5.31,0,0,0,6.5,1,5.31,5.31,0,0,0,8.1,4.9,5.31,5.31,0,0,0,12,6.5,5.46,5.46,0,0,0,6.5,12Z"/>
-  </svg>
-    </button>
-    <script>
-      (() => {
-      const buttonEl =
-        document.querySelector('#id_4a5b3fd3-7fa8-4f06-9851-e1c6f82333d7 button.colab-df-generate');
-      buttonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-      buttonEl.onclick = () => {
-        google.colab.notebook.generateWithVariable('df');
-      }
-      })();
-    </script>
-  </div>
-
-    </div>
-  </div>
-</div></div>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1395,43 +945,13 @@ memory usage: 102.6 KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>count</th>
-    </tr>
-    <tr>
-      <th>Group</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>1</th>
-      <td>662</td>
-    </tr>
-    <tr>
-      <th>0</th>
-      <td>158</td>
-    </tr>
-  </tbody>
-</table>
-</div><br><label><b>dtype:</b> int64</label></div></div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Group
+1    662
+0    158
+Name: count, dtype: int64
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1440,43 +960,13 @@ memory usage: 102.6 KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>count</th>
-    </tr>
-    <tr>
-      <th>Time</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>410</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>410</td>
-    </tr>
-  </tbody>
-</table>
-</div><br><label><b>dtype:</b> int64</label></div></div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time
+0    410
+1    410
+Name: count, dtype: int64
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1485,9 +975,7 @@ memory usage: 102.6 KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">
-  <div id="df-868d1197-be5f-4fb9-8114-d705140126e0" class="colab-df-container">
-    <div>
+<div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -1537,224 +1025,14 @@ memory usage: 102.6 KB
     </tr>
   </tbody>
 </table>
-</div>
-    <div class="colab-df-buttons">
-
-  <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-868d1197-be5f-4fb9-8114-d705140126e0')"
-            title="Convert this dataframe to an interactive table."
-            style="display:none;">
-
-  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
-    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
-  </svg>
-    </button>
-
-  <style>
-    .colab-df-container {
-      display:flex;
-      gap: 12px;
-    }
-
-    .colab-df-convert {
-      background-color: #E8F0FE;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      fill: #1967D2;
-      height: 32px;
-      padding: 0 0 0 0;
-      width: 32px;
-    }
-
-    .colab-df-convert:hover {
-      background-color: #E2EBFA;
-      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-      fill: #174EA6;
-    }
-
-    .colab-df-buttons div {
-      margin-bottom: 4px;
-    }
-
-    [theme=dark] .colab-df-convert {
-      background-color: #3B4455;
-      fill: #D2E3FC;
-    }
-
-    [theme=dark] .colab-df-convert:hover {
-      background-color: #434B5C;
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-      fill: #FFFFFF;
-    }
-  </style>
-
-    <script>
-      const buttonEl =
-        document.querySelector('#df-868d1197-be5f-4fb9-8114-d705140126e0 button.colab-df-convert');
-      buttonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-      async function convertToInteractive(key) {
-        const element = document.querySelector('#df-868d1197-be5f-4fb9-8114-d705140126e0');
-        const dataTable =
-          await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                    [key], {});
-        if (!dataTable) return;
-
-        const docLinkHtml = 'Like what you see? Visit the ' +
-          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-          + ' to learn more about interactive tables.';
-        element.innerHTML = '';
-        dataTable['output_type'] = 'display_data';
-        await google.colab.output.renderOutput(dataTable, element);
-        const docLink = document.createElement('div');
-        docLink.innerHTML = docLinkHtml;
-        element.appendChild(docLink);
-      }
-    </script>
-  </div>
-
-
-<div id="df-fdb2670c-662f-4f35-936c-0656bd6add1f">
-  <button class="colab-df-quickchart" onclick="quickchart('df-fdb2670c-662f-4f35-936c-0656bd6add1f')"
-            title="Suggest charts"
-            style="display:none;">
-
-<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
-     width="24px">
-    <g>
-        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
-    </g>
-</svg>
-  </button>
-
-<style>
-  .colab-df-quickchart {
-      --bg-color: #E8F0FE;
-      --fill-color: #1967D2;
-      --hover-bg-color: #E2EBFA;
-      --hover-fill-color: #174EA6;
-      --disabled-fill-color: #AAA;
-      --disabled-bg-color: #DDD;
-  }
-
-  [theme=dark] .colab-df-quickchart {
-      --bg-color: #3B4455;
-      --fill-color: #D2E3FC;
-      --hover-bg-color: #434B5C;
-      --hover-fill-color: #FFFFFF;
-      --disabled-bg-color: #3B4455;
-      --disabled-fill-color: #666;
-  }
-
-  .colab-df-quickchart {
-    background-color: var(--bg-color);
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    display: none;
-    fill: var(--fill-color);
-    height: 32px;
-    padding: 0;
-    width: 32px;
-  }
-
-  .colab-df-quickchart:hover {
-    background-color: var(--hover-bg-color);
-    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
-    fill: var(--button-hover-fill-color);
-  }
-
-  .colab-df-quickchart-complete:disabled,
-  .colab-df-quickchart-complete:disabled:hover {
-    background-color: var(--disabled-bg-color);
-    fill: var(--disabled-fill-color);
-    box-shadow: none;
-  }
-
-  .colab-df-spinner {
-    border: 2px solid var(--fill-color);
-    border-color: transparent;
-    border-bottom-color: var(--fill-color);
-    animation:
-      spin 1s steps(1) infinite;
-  }
-
-  @keyframes spin {
-    0% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-      border-left-color: var(--fill-color);
-    }
-    20% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    30% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-      border-right-color: var(--fill-color);
-    }
-    40% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    60% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-    }
-    80% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-bottom-color: var(--fill-color);
-    }
-    90% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-    }
-  }
-</style>
-
-  <script>
-    async function quickchart(key) {
-      const quickchartButtonEl =
-        document.querySelector('#' + key + ' button');
-      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
-      quickchartButtonEl.classList.add('colab-df-spinner');
-      try {
-        const charts = await google.colab.kernel.invokeFunction(
-            'suggestCharts', [key], {});
-      } catch (error) {
-        console.error('Error during call to suggestCharts:', error);
-      }
-      quickchartButtonEl.classList.remove('colab-df-spinner');
-      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
-    }
-    (() => {
-      let quickchartButtonEl =
-        document.querySelector('#df-fdb2670c-662f-4f35-936c-0656bd6add1f button');
-      quickchartButtonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-    })();
-  </script>
-</div>
-
-    </div>
-  </div>
-</div></div>
+</div></div></div>
 </div>
 </section>
 <section id="solution">
-<h3><span class="section-number">13.4.7. </span>Solution?<a class="headerlink" href="#solution" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">13.5.5. </span>Solution?<a class="headerlink" href="#solution" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Compare how the difference in employment before and after 1992 differs b/w NJ and PA?
-$$\text{DiD} = \big(\mathbb{E}\big[\text{Employ.}|\text{NJ}, \text{Post-92}\big]-\mathbb{E}\big[\text{Employ.}|\text{NJ}, \text{Pre-92}\big]\big) - \big(\mathbb{E}\big[\text{Employ.}|\text{PA}, \text{Post-92}\big] - \mathbb{E}\big[\text{Employ.}|\text{PA}, \text{Pre-92}\big]]\big)$$</p>
+$<span class="math notranslate nohighlight">\(\text{DiD} = \big(\mathbb{E}\big[\text{Employ.}|\text{NJ}, \text{Post-92}\big]-\mathbb{E}\big[\text{Employ.}|\text{NJ}, \text{Pre-92}\big]\big) - \big(\mathbb{E}\big[\text{Employ.}|\text{PA}, \text{Post-92}\big] - \mathbb{E}\big[\text{Employ.}|\text{PA}, \text{Pre-92}\big]]\big)\)</span>$</p>
 <ul>
 <li><p>Assuming that if NJ had not increased its minimum wage, its employment would have evolved the same way as PA’s.</p></li>
 </ul>
@@ -1825,44 +1103,45 @@ $$\text{DiD} = \big(\mathbb{E}\big[\text{Employ.}|\text{NJ}, \text{Post-92}\big]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/f459213193ed97653cdda974753d39f562b73e354a28526fb9eac73ca38f24d5.png" src="../_images/f459213193ed97653cdda974753d39f562b73e354a28526fb9eac73ca38f24d5.png" />
+<img alt="../_images/e9ca913f50c502da28f32c23fc4b6c24e63d4750a66a24207bafa44f159db975.png" src="../_images/e9ca913f50c502da28f32c23fc4b6c24e63d4750a66a24207bafa44f159db975.png" />
 </div>
 </div>
 </section>
 <section id="regression-estimation">
-<h3><span class="section-number">13.4.8. </span>Regression estimation<a class="headerlink" href="#regression-estimation" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">13.5.6. </span>Regression estimation<a class="headerlink" href="#regression-estimation" title="Link to this heading">#</a></h3>
 <p>As shown above, we could also frame our problme in terms of a regression problem, where:</p>
 <ol class="arabic">
-<li><p><strong>Group variable ($G$)</strong>:<br />
-$$
+<li><p><strong>Group variable (<span class="math notranslate nohighlight">\(G\)</span>)</strong>:<br />
+$<span class="math notranslate nohighlight">\(
 G =
 \begin{cases}
-1 &amp; \text{if restaurant is in NJ (treatment group)} \
+1 &amp; \text{if restaurant is in NJ (treatment group)} \\
 0 &amp; \text{if restaurant is in PA (control group)}
 \end{cases}
-$$</p></li>
-<li><p><strong>Time variable ($T$)</strong>:<br />
-$$
+\)</span>$</p></li>
+<li><p><strong>Time variable (<span class="math notranslate nohighlight">\(T\)</span>)</strong>:<br />
+$<span class="math notranslate nohighlight">\(
 T =
 \begin{cases}
-1 &amp; \text{if after the minimum wage increase in NJ (post-treatment)} \
+1 &amp; \text{if after the minimum wage increase in NJ (post-treatment)} \\
 0 &amp; \text{if before the minimum wage increase in NJ (pre-treatment)}
 \end{cases}
-$$</p></li>
-<li><p><strong>Interaction term ($D$)</strong>:</p>
-<p>$$
-D = G \times T =
-\begin{cases}
-1 &amp; \text{if the restaurant is in NJ after the wage increase (treated group, post-treatment)} \
-0 &amp; \text{otherwise}
-\end{cases}
-$$</p>
+\)</span>$</p></li>
+<li><p><strong>Interaction term (<span class="math notranslate nohighlight">\(D\)</span>)</strong>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+   D = G \times T =
+   \begin{cases}
+   1 &amp; \text{if the restaurant is in NJ after the wage increase (treated group, post-treatment)} \\
+   0 &amp; \text{otherwise}
+   \end{cases}
+   \end{split}\]</div>
 </li>
 </ol>
 <p>Leading to:
-$$
+$<span class="math notranslate nohighlight">\(
 Y = \beta_0 + \beta_1 T + \beta_2 G + \beta_3 (T \times G) + \epsilon
-$$</p>
+\)</span>$</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">statsmodels.formula.api</span> <span class="k">as</span> <span class="nn">smf</span>
@@ -1880,8 +1159,8 @@ $$</p>
 Dep. Variable:                   Empl   R-squared:                       0.008
 Model:                            OLS   Adj. R-squared:                  0.004
 Method:                 Least Squares   F-statistic:                     2.122
-Date:                Tue, 03 Dec 2024   Prob (F-statistic):             0.0959
-Time:                        21:27:31   Log-Likelihood:                -2831.4
+Date:                Sun, 22 Dec 2024   Prob (F-statistic):             0.0959
+Time:                        19:01:44   Log-Likelihood:                -2831.4
 No. Observations:                 802   AIC:                             5671.
 Df Residuals:                     798   BIC:                             5690.
 Df Model:                           3                                         
@@ -1942,10 +1221,10 @@ Notes:
   <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   7.670</td>
 </tr>
 <tr>
-  <th>Date:</th>             <td>Tue, 03 Dec 2024</td> <th>  Prob (F-statistic):</th> <td>2.94e-15</td>
+  <th>Date:</th>             <td>Sun, 22 Dec 2024</td> <th>  Prob (F-statistic):</th> <td>2.94e-15</td>
 </tr>
 <tr>
-  <th>Time:</th>                 <td>21:27:31</td>     <th>  Log-Likelihood:    </th> <td> -2608.8</td>
+  <th>Time:</th>                 <td>19:01:44</td>     <th>  Log-Likelihood:    </th> <td> -2608.8</td>
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>   757</td>      <th>  AIC:               </th> <td>   5248.</td>
@@ -2027,13 +1306,13 @@ Notes:
   <th>Skew:</th>          <td> 1.181</td>  <th>  Prob(JB):          </th> <td>1.81e-62</td>
 </tr>
 <tr>
-  <th>Kurtosis:</th>      <td> 4.855</td>  <th>  Cond. No.          </th> <td>1.36e+17</td>
+  <th>Kurtosis:</th>      <td> 4.855</td>  <th>  Cond. No.          </th> <td>1.03e+17</td>
 </tr>
-</table><br/><br/>Notes:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.<br/>[2] The smallest eigenvalue is 7.71e-30. This might indicate that there are<br/>strong multicollinearity problems or that the design matrix is singular.</div></div>
+</table><br/><br/>Notes:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.<br/>[2] The smallest eigenvalue is 1.35e-29. This might indicate that there are<br/>strong multicollinearity problems or that the design matrix is singular.</div></div>
 </div>
 </section>
 <section id="does-the-parallel-trends-hold">
-<h3><span class="section-number">13.4.9. </span>Does the Parallel Trends Hold?<a class="headerlink" href="#does-the-parallel-trends-hold" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">13.5.7. </span>Does the Parallel Trends Hold?<a class="headerlink" href="#does-the-parallel-trends-hold" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p>Are the treated and untreated groups fundamentally “similar”?</p></li>
 <li><p>Why did the treated group get the treatment (and why didn’t
@@ -2042,7 +1321,7 @@ the untreated group)?</p></li>
 <li><p>Were there parallel trends in the pre-period?</p></li>
 </ol>
 <section id="fallback">
-<h4><span class="section-number">13.4.9.1. </span>Fallback<a class="headerlink" href="#fallback" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">13.5.7.1. </span>Fallback<a class="headerlink" href="#fallback" title="Link to this heading">#</a></h4>
 <p>What if the Parallel Trends Assumption Does Not Hold? (We reject the parallel trends assumption)</p>
 <ol class="arabic simple">
 <li><p>matching/synthetic control method (weighted control groups to mimic the treated group)</p></li>
@@ -2052,47 +1331,42 @@ the untreated group)?</p></li>
 </section>
 </section>
 <section id="time-varying-treatment-effects">
-<h3><span class="section-number">13.4.10. </span>Time Varying Treatment Effects<a class="headerlink" href="#time-varying-treatment-effects" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">13.5.8. </span>Time Varying Treatment Effects<a class="headerlink" href="#time-varying-treatment-effects" title="Link to this heading">#</a></h3>
 <p>Are the effects varying? Meaning the minimum wage increase on employment varies over time, initially increasing employment but eventually decreasing as firms substitute workers with machines?</p>
-<p>Our model can capture this dynamic with multiple time periods $t$:</p>
-<p>$$
-Y_{g, t} = \sum_{i=-\underline{t}}^{\bar{t}} \beta_i T_i + \gamma G + \sum_{j=0}^{\bar{t}} \alpha_j D_j \
+<p>Our model can capture this dynamic with multiple time periods <span class="math notranslate nohighlight">\(t\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+Y_{g, t} = \sum_{i=-\underline{t}}^{\bar{t}} \beta_i T_i + \gamma G + \sum_{j=0}^{\bar{t}} \alpha_j D_j \\
 \alpha_j = A T T_j
-$$</p>
+\end{split}\]</div>
 <ul class="simple">
-<li><p>$\beta_i$ captures general time trends</p></li>
-<li><p>$\gamma$ represents the difference between treated and untreated groups.</p></li>
-<li><p>$\alpha_j$ estimates the time-varying Average Treatment Effects on the Treated (ATTs).</p></li>
+<li><p><span class="math notranslate nohighlight">\(\beta_i\)</span> captures general time trends</p></li>
+<li><p><span class="math notranslate nohighlight">\(\gamma\)</span> represents the difference between treated and untreated groups.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\alpha_j\)</span> estimates the time-varying Average Treatment Effects on the Treated (ATTs).</p></li>
 </ul>
 </section>
 <section id="recall-standard-errors-of-linear-regression">
-<h3><span class="section-number">13.4.11. </span>(Recall) Standard Errors of Linear Regression<a class="headerlink" href="#recall-standard-errors-of-linear-regression" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">13.5.9. </span>(Recall) Standard Errors of Linear Regression<a class="headerlink" href="#recall-standard-errors-of-linear-regression" title="Link to this heading">#</a></h3>
 <section id="robust-standard-errors">
-<h4><span class="section-number">13.4.11.1. </span>Robust Standard Errors<a class="headerlink" href="#robust-standard-errors" title="Link to this heading">#</a></h4>
-<p>$$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e3da4195-4779-49bd-81f9-97652904748c">
-<span class="eqno">(13.1)<a class="headerlink" href="#equation-e3da4195-4779-49bd-81f9-97652904748c" title="Permalink to this equation">#</a></span>\[\begin{align}
+<h4><span class="section-number">13.5.9.1. </span>Robust Standard Errors<a class="headerlink" href="#robust-standard-errors" title="Link to this heading">#</a></h4>
+<p>\begin{align}
 V_{\text {robust }}=\left(X^{T} X\right)^{-1} X^{T} \Omega X\left(X^{T} X\right)^{-1},
-\end{align}\]</div>
-<p>$$</p>
+\end{align}</p>
 </section>
 <section id="cluster-robust-standard-errors">
-<h4><span class="section-number">13.4.11.2. </span>Cluster-Robust Standard Errors<a class="headerlink" href="#cluster-robust-standard-errors" title="Link to this heading">#</a></h4>
-<p>Recall: iid residuals are not realistic in most cases, but we can assume the residuals are <strong>clustered</strong> by the group, which means between-group correlation is zero, but within-group correlation is positive. Block diagonal matrix $\Omega$.</p>
-<p>$$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-36994786-2047-4f97-a219-795a75601316">
-<span class="eqno">(13.2)<a class="headerlink" href="#equation-36994786-2047-4f97-a219-795a75601316" title="Permalink to this equation">#</a></span>\[\begin{align}
+<h4><span class="section-number">13.5.9.2. </span>Cluster-Robust Standard Errors<a class="headerlink" href="#cluster-robust-standard-errors" title="Link to this heading">#</a></h4>
+<p>Recall: iid residuals are not realistic in most cases, but we can assume the residuals are <strong>clustered</strong> by the group, which means between-group correlation is zero, but within-group correlation is positive. Block diagonal matrix <span class="math notranslate nohighlight">\(\Omega\)</span>.</p>
+<p>\begin{align}
 V_{\text {clustered }}=\left(X^{T} X\right)^{-1}\left(\sum_{c=1}^C X_c^{T} \hat{u}_c \hat{u}_c^{T} X_c\right)\left(X^{T} X\right)^{-1}
-\end{align}\]</div>
-<p>$$
-where $\Omega$ is a block diagonal matrix with each block being the covariance matrix of the residuals within each cluster.</p>
+\end{align}</p>
+<p>where <span class="math notranslate nohighlight">\(\Omega\)</span> is a block diagonal matrix with each block being the covariance matrix of the residuals within each cluster.</p>
 <p>you need to provide the clusters.</p>
-<p>$$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c9ca9f4e-35e9-4db9-adeb-49d21a872752">
-<span class="eqno">(13.3)<a class="headerlink" href="#equation-c9ca9f4e-35e9-4db9-adeb-49d21a872752" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
 \operatorname{Cov}\left(Y_{i, g, t}, Y_{i, g, t+1}\right)&gt;0
-\end{align}\]</div>
-<p>$$</p>
+\end{align}
+\]</div>
 <p>We need to use cluster-robust standard errors to account for the auto-correlation along the time dimension.</p>
 <p>For clustered standard errors to make sense, we need:</p>
 <ul class="simple">
@@ -2101,12 +1375,12 @@ where $\Omega$ is a block diagonal matrix with each block being the covariance m
 </ul>
 </section>
 <section id="permutation-test">
-<h4><span class="section-number">13.4.11.3. </span>Permutation Test<a class="headerlink" href="#permutation-test" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">13.5.9.3. </span>Permutation Test<a class="headerlink" href="#permutation-test" title="Link to this heading">#</a></h4>
 </section>
 </section>
 </section>
 <section id="path-forward">
-<h2><span class="section-number">13.5. </span>Path Forward<a class="headerlink" href="#path-forward" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">13.6. </span>Path Forward<a class="headerlink" href="#path-forward" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Recap of methods learned in this class, and wrap up!</p></li>
 </ul>
@@ -2115,15 +1389,15 @@ where $\Omega$ is a block diagonal matrix with each block being the covariance m
 <ul class="simple">
 <li><p>Tutorials:</p>
 <ul>
-<li><p>https://rpubs.com/phle/r_tutorial_difference_in_differences</p></li>
-<li><p>https://bookdown.org/cuborican/RE_STAT/difference-in-differences.html</p></li>
+<li><p><a class="reference external" href="https://rpubs.com/phle/r_tutorial_difference_in_differences">https://rpubs.com/phle/r_tutorial_difference_in_differences</a></p></li>
+<li><p><a class="reference external" href="https://bookdown.org/cuborican/RE_STAT/difference-in-differences.html">https://bookdown.org/cuborican/RE_STAT/difference-in-differences.html</a></p></li>
 </ul>
 </li>
 <li><p>Card, David and Alan B. Krueger. 1994. “Minimum Wages
 and Employment: A Case Study of the Fast-Food Industry in
 New Jersey and Pennsylvania.” The American Economic
 Review 84 (4): 772-793.
-https://www.jstor.org/stable/2677856.</p></li>
+<a class="reference external" href="https://www.jstor.org/stable/2677856">https://www.jstor.org/stable/2677856</a>.</p></li>
 <li><p>Sah, Sidharth. Causal Inference: Difference-in-Differences. 2024. PowerPoint presentation.</p></li>
 </ul>
 </section>
@@ -2200,26 +1474,29 @@ https://www.jstor.org/stable/2677856.</p></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#consider-a-2x2-did">13.4. Consider a “2x2” DiD.</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assumptions">13.4.1. Assumptions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identifying-the-average-treatment-on-the-treated-att">13.4.2. Identifying the Average Treatment on the Treated (ATT)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#research-question-does-raising-the-minimum-wage-help-workers-by-improving-their-earnings-or-does-it-inadvertently-harm-them-by-reducing-job-opportunities">13.4.3. Research Question: Does raising the minimum wage help workers by improving their earnings, or does it inadvertently harm them by reducing job opportunities?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-setup">13.4.4. Model Setup</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-challenge">13.4.5. The challenge</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data">13.4.6. Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">13.4.7. Solution?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-estimation">13.4.8. Regression estimation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#does-the-parallel-trends-hold">13.4.9. Does the Parallel Trends Hold?</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#fallback">13.4.9.1. Fallback</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-varying-treatment-effects">13.4.10. Time Varying Treatment Effects</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recall-standard-errors-of-linear-regression">13.4.11. (Recall) Standard Errors of Linear Regression</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robust-standard-errors">13.4.11.1. Robust Standard Errors</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cluster-robust-standard-errors">13.4.11.2. Cluster-Robust Standard Errors</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#permutation-test">13.4.11.3. Permutation Test</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#do-increases-in-the-minimum-wage-affect-employment">13.5. Do increases in the minimum wage affect employment?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#research-question-does-raising-the-minimum-wage-help-workers-by-improving-their-earnings-or-does-it-inadvertently-harm-them-by-reducing-job-opportunities">13.5.1. Research Question: Does raising the minimum wage help workers by improving their earnings, or does it inadvertently harm them by reducing job opportunities?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-setup">13.5.2. Model Setup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-challenge">13.5.3. The challenge</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data">13.5.4. Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">13.5.5. Solution?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-estimation">13.5.6. Regression estimation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#does-the-parallel-trends-hold">13.5.7. Does the Parallel Trends Hold?</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#fallback">13.5.7.1. Fallback</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-varying-treatment-effects">13.5.8. Time Varying Treatment Effects</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recall-standard-errors-of-linear-regression">13.5.9. (Recall) Standard Errors of Linear Regression</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robust-standard-errors">13.5.9.1. Robust Standard Errors</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cluster-robust-standard-errors">13.5.9.2. Cluster-Robust Standard Errors</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#permutation-test">13.5.9.3. Permutation Test</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#path-forward">13.5. Path Forward</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#path-forward">13.6. Path Forward</a></li>
 </ul>
   </nav></div>
 

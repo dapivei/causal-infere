@@ -60,7 +60,7 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"TeX": {"extensions": ["AMSmath.js", "AMSsymbols.js"], "equationNumbers": {"autoNumber": "AMS"}}}</script>
+    <script>window.MathJax = {"TeX": {"extensions": ["AMSmath.js", "AMSsymbols.js"], "equationNumbers": {"autoNumber": "none"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'sections/14_Review';</script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -408,7 +408,7 @@
                   
   <div align="center">
 <p><a class="reference external" href="https://colab.research.google.com/github/dapivei/causal-infere/blob/main/sections/14_Review.ipynb"><img alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
-</div><section id="final-review">
+</div><section class="tex2jax_ignore mathjax_ignore" id="final-review">
 <h1><span class="section-number">14. </span>Final Review<a class="headerlink" href="#final-review" title="Link to this heading">#</a></h1>
 <section id="goals-for-today">
 <h2><span class="section-number">14.1. </span>Goals For Today<a class="headerlink" href="#goals-for-today" title="Link to this heading">#</a></h2>
@@ -423,130 +423,125 @@
 <h3><span class="section-number">14.2.1. </span>Problem 1 (PS3 Q3)<a class="headerlink" href="#problem-1-ps3-q3" title="Link to this heading">#</a></h3>
 <p>If we have a linear causal model, and treatment is independent of other causes
 (as in the case of a perfect experiment), then linear regression will estimate
-the linear, causal effect of $S$ on $Y$.</p>
+the linear, causal effect of <span class="math notranslate nohighlight">\(S\)</span> on <span class="math notranslate nohighlight">\(Y\)</span>.</p>
 <p>However, now let us suppose that a medical researcher does an experiment
-assigning different dosage levels of a drug, $D$, to see how dosage affects pain level $P$. The drug can have many dosage levels, so we think of it as a continuous variable. The true causal model, in real life, is</p>
-<p>$$
+assigning different dosage levels of a drug, <span class="math notranslate nohighlight">\(D\)</span>, to see how dosage affects pain level <span class="math notranslate nohighlight">\(P\)</span>. The drug can have many dosage levels, so we think of it as a continuous variable. The true causal model, in real life, is</p>
+<div class="math notranslate nohighlight">
+\[
 P(D, U) = \gamma_1 D + \gamma_2 D^2 + U
-$$</p>
-<p>That is, the drug’s effect has a linear component, $\gamma_1 D$; a non-linear component, $\gamma_2 D^2$; and an idiosyncratic component $U$.</p>
+\]</div>
+<p>That is, the drug’s effect has a linear component, <span class="math notranslate nohighlight">\(\gamma_1 D\)</span>; a non-linear component, <span class="math notranslate nohighlight">\(\gamma_2 D^2\)</span>; and an idiosyncratic component <span class="math notranslate nohighlight">\(U\)</span>.</p>
 <p>The researcher naively runs a typical linear regression of the form
-$$
+$<span class="math notranslate nohighlight">\(
 P = \alpha_0 + \alpha_1 D + U
-$$
-Because it is an experiment, we can assume $U \perp D$. Thus, the researcher’s regression model will identify:
-$$
+\)</span><span class="math notranslate nohighlight">\(
+Because it is an experiment, we can assume \)</span>U \perp D<span class="math notranslate nohighlight">\(. Thus, the researcher's regression model will identify:
+\)</span><span class="math notranslate nohighlight">\(
 \alpha_1 = \frac{\text{Cov}(P, D)}{\text{Var}(D)}
-$$</p>
-<p>Show, by plugging the true causal model into the above expression and using properties of the covariance, that the researcher’s regression model will estimate $\gamma_1$ plus something else.</p>
+\)</span>$</p>
+<p>Show, by plugging the true causal model into the above expression and using properties of the covariance, that the researcher’s regression model will estimate <span class="math notranslate nohighlight">\(\gamma_1\)</span> plus something else.</p>
 <p>SOLUTION:</p>
-<p>$$</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
 \alpha_1 &amp;= \frac{\text{Cov}(P, D)}{\text{Var}(D)} \\
 &amp;= \frac{\text{Cov}(\gamma_1 D + \gamma_2 D^2 + U, D)}{\text{Var}(D)} \\
 &amp;= \frac{\text{Cov}(\gamma_1 D, D) + \text{Cov}(\gamma_2 D^2, D) + \text{Cov}(U, D)}{\text{Var}(D)} \quad \text{(Prop of cov.)} \\
 &amp;= \frac{\gamma_1 \text{Cov}(D, D) + \gamma_2 \text{Cov}(D^2, D) + 0}{\text{Var}(D)} \quad \text{(Prop of cov. + $U \perp D$)} \\
 &amp;= \frac{\gamma_1 \text{Var}(D) + \gamma_2 \text{Cov}(D^2, D)}{\text{Var}(D)} \\
 &amp;= \gamma_1 + \gamma_2 \frac{\text{Cov}(D^2, D)}{\text{Var}(D)}
-\end{align*}\]</div>
-<p>$$</p>
+\end{align*}
+\end{split}\]</div>
 <p>This tells us even if we can identify the causal parameter, we can still have estimation errors from model misspecification.</p>
 <p>See another example PS4 Q2.</p>
 </section>
 <section id="problem-2-practice-midterm-q6">
 <h3><span class="section-number">14.2.2. </span>Problem 2 (Practice Midterm Q6)<a class="headerlink" href="#problem-2-practice-midterm-q6" title="Link to this heading">#</a></h3>
 <p>Show, working from the definition of variance and using properties of expectations, that
-$$
+$<span class="math notranslate nohighlight">\(
 \text{Var}(X + Y) = \text{Var}(X) + \text{Var}(Y) + 2\text{Cov}(X, Y)
-$$
+\)</span>$
 Justify all steps (excluding simple algebra).</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-\text{Var}(X + Y) &amp;= \mathbb{E}[(X + Y - \mathbb{E}[X + Y])^2] \\
-&amp;= \mathbb{E}[(X + Y - \mathbb{E}[X] - \mathbb{E}[Y])^2] \quad \text{(prop. of expec.)} \\
-&amp;= \mathbb{E}[((X - \mathbb{E}[X]) + (Y - \mathbb{E}[Y]))^2] \\
-&amp;= \mathbb{E}[(X - \mathbb{E}[X])^2 + (Y - \mathbb{E}[Y])^2 + 2(X - \mathbb{E}[X])(Y - \mathbb{E}[Y])] \\
-&amp;= \mathbb{E}[(X - \mathbb{E}[X])^2] + \mathbb{E}[(Y - \mathbb{E}[Y])^2] + 2\mathbb{E}[(X - \mathbb{E}[X])(Y - \mathbb{E}[Y])] \quad \text{(prop. of expec.)} \\
+<p>\begin{align*}
+\text{Var}(X + Y) &amp;= \mathbb{E}[(X + Y - \mathbb{E}[X + Y])^2] \
+&amp;= \mathbb{E}[(X + Y - \mathbb{E}[X] - \mathbb{E}[Y])^2] \quad \text{(prop. of expec.)} \
+&amp;= \mathbb{E}[((X - \mathbb{E}[X]) + (Y - \mathbb{E}[Y]))^2] \
+&amp;= \mathbb{E}[(X - \mathbb{E}[X])^2 + (Y - \mathbb{E}[Y])^2 + 2(X - \mathbb{E}[X])(Y - \mathbb{E}[Y])] \
+&amp;= \mathbb{E}[(X - \mathbb{E}[X])^2] + \mathbb{E}[(Y - \mathbb{E}[Y])^2] + 2\mathbb{E}[(X - \mathbb{E}[X])(Y - \mathbb{E}[Y])] \quad \text{(prop. of expec.)} \
 &amp;= \text{Var}(X) + \text{Var}(Y) + 2\text{Cov}(X, Y)
-\end{align*}\]</div>
+\end{align*}</p>
 <section id="problem-2-1-midterm-q6">
 <h4><span class="section-number">14.2.2.1. </span>Problem 2.1 (Midterm Q6)<a class="headerlink" href="#problem-2-1-midterm-q6" title="Link to this heading">#</a></h4>
 <p>Show, working from the definition of variance and using properties of expectations, that
-$$
+$<span class="math notranslate nohighlight">\(
 \text{Var}(a + bX) = b^2 \text{Var}(X)
-$$
+\)</span>$
 Justify all steps (excluding simple algebra). (Hint: use the first given definition of variance).</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-\text{Var}(a + bX) &amp;= \mathbb{E}[(a + bX - \mathbb{E}[a + bX])^2] \\
-&amp;= \mathbb{E}[(a + bX - \mathbb{E}[a] - b\mathbb{E}[X])^2] \quad \text{(prop. of exp.)} \\
-&amp;= \mathbb{E}[(a + bX - a - b\mathbb{E}[X])^2] \quad \text{(prop. of exp.)} \\
-&amp;= \mathbb{E}[b^2 (X - \mathbb{E}[X])^2] \\
-&amp;= b^2 \mathbb{E}[(X - \mathbb{E}[X])^2] \quad \text{(prop. of exp.)} \\
+<p>\begin{align*}
+\text{Var}(a + bX) &amp;= \mathbb{E}[(a + bX - \mathbb{E}[a + bX])^2] \
+&amp;= \mathbb{E}[(a + bX - \mathbb{E}[a] - b\mathbb{E}[X])^2] \quad \text{(prop. of exp.)} \
+&amp;= \mathbb{E}[(a + bX - a - b\mathbb{E}[X])^2] \quad \text{(prop. of exp.)} \
+&amp;= \mathbb{E}[b^2 (X - \mathbb{E}[X])^2] \
+&amp;= b^2 \mathbb{E}[(X - \mathbb{E}[X])^2] \quad \text{(prop. of exp.)} \
 &amp;= b^2 \text{Var}(X)
-\end{align*}\]</div>
+\end{align*}</p>
 </section>
 </section>
 <section id="problem-3-ps4-q3">
 <h3><span class="section-number">14.2.3. </span>Problem 3 (PS4 Q3)<a class="headerlink" href="#problem-3-ps4-q3" title="Link to this heading">#</a></h3>
 <p>How do we identify the ATE using the matching estimator under the conditional independence assumption?</p>
-<p>Suppose we have a single control variable, $C$, that takes on $k$
-values, $c_1, \dots, c_k$. Show, using the LIE, that
-$$
+<p>Suppose we have a single control variable, <span class="math notranslate nohighlight">\(C\)</span>, that takes on <span class="math notranslate nohighlight">\(k\)</span>
+values, <span class="math notranslate nohighlight">\(c_1, \dots, c_k\)</span>. Show, using the LIE, that
+$<span class="math notranslate nohighlight">\(
 \text{ATE} = \mathbb{E}[Y(S = 1, U) - Y(S = 0, U)] =
 \sum_{i=1}^k \mathbb{E}[Y(S = 1, U) - Y(S = 0, U) \mid C = c_i]P(C = c_i)
-$$</p>
-<p>This result follows from the LIE and the definition of the expectation of a random variable:</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-\text{ATE} &amp;= \mathbb{E}[Y(S = 1, U) - Y(S = 0, U)] \\
-&amp;= \mathbb{E}[\mathbb{E}[Y(S = 1, U) - Y(S = 0, U) \mid C]] \quad \text{(LIE)} \\
+\)</span>$</p>
+<p>This result follows from the LIE and the definition of the expectation of a random variable:
+\begin{align*}
+\text{ATE} &amp;= \mathbb{E}[Y(S = 1, U) - Y(S = 0, U)] \
+&amp;= \mathbb{E}[\mathbb{E}[Y(S = 1, U) - Y(S = 0, U) \mid C]] \quad \text{(LIE)} \
 &amp;= \sum_{i=1}^k \mathbb{E}[Y(S = 1, U) - Y(S = 0, U) \mid C = c_i]P(C = c_i)
-\end{align*}\]</div>
-<p>Now, assuming that $S \perp U \mid C$, show that
-$$
+\end{align*}</p>
+<p>Now, assuming that <span class="math notranslate nohighlight">\(S \perp U \mid C\)</span>, show that
+$<span class="math notranslate nohighlight">\(
 \text{ATE} = \sum_{i=1}^k \mathbb{E}[Y(S = 1, U) - Y(S = 0, U) \mid C = c_i]P(C = c_i)
-$$
-$$
+\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(
 = \sum_{i=1}^k \left(\mathbb{E}[Y(S = 1, U) \mid C = c_i, S = 1] - \mathbb{E}[Y(S = 0, U) \mid C = c_i, S = 0]\right)P(C = c_i)
-$$</p>
-<p>Every term in the second line is estimable from data, implying that the ATE is identified. Indeed, this is the parameter equivalent of $\widehat{\text{ATE}}_m$ from the lecture slides.</p>
-<p>This part is actually quite similar to showing that an experiment identifies the ATE. Basically, we’re saying that $S$ is as-good-as-random within each $C = c_i$ group, so we can treat $S$ as being like an experimentally assigned variable within groups:</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-\text{ATE} &amp;= \sum_{i=1}^k \mathbb{E}[Y(S = 1, U) - Y(S = 0, U) \mid C = c_i]P(C = c_i) \\
-&amp;= \sum_{i=1}^k \left(\mathbb{E}[Y(S = 1, U) \mid C = c_i] - \mathbb{E}[Y(S = 0, U) \mid C = c_i]\right)P(C = c_i) \quad \text{(Prop. of exp.)} \\
+\)</span>$</p>
+<p>Every term in the second line is estimable from data, implying that the ATE is identified. Indeed, this is the parameter equivalent of <span class="math notranslate nohighlight">\(\widehat{\text{ATE}}_m\)</span> from the lecture slides.</p>
+<p>This part is actually quite similar to showing that an experiment identifies the ATE. Basically, we’re saying that <span class="math notranslate nohighlight">\(S\)</span> is as-good-as-random within each <span class="math notranslate nohighlight">\(C = c_i\)</span> group, so we can treat <span class="math notranslate nohighlight">\(S\)</span> as being like an experimentally assigned variable within groups:
+\begin{align*}
+\text{ATE} &amp;= \sum_{i=1}^k \mathbb{E}[Y(S = 1, U) - Y(S = 0, U) \mid C = c_i]P(C = c_i) \
+&amp;= \sum_{i=1}^k \left(\mathbb{E}[Y(S = 1, U) \mid C = c_i] - \mathbb{E}[Y(S = 0, U) \mid C = c_i]\right)P(C = c_i) \quad \text{(Prop. of exp.)} \
 &amp;= \sum_{i=1}^k \left(\mathbb{E}[Y(S = 1, U) \mid C = c_i, S = 1] - \mathbb{E}[Y(S = 0, U) \mid C = c_i, S = 0]\right)P(C = c_i) \quad (S \perp U \mid C)
-\end{align*}\]</div>
+\end{align*}</p>
 </section>
 <section id="problem-4-midterm-bonus">
 <h3><span class="section-number">14.2.4. </span>Problem 4 (Midterm Bonus)<a class="headerlink" href="#problem-4-midterm-bonus" title="Link to this heading">#</a></h3>
 <p>Show that independence implies zero covariance. (not vice versa)</p>
 <p>We have shown this in lectures before.</p>
-<p>Let $X$ and $Y$ be independent random variables. By definition, the covariance of $X$ and $Y$ is given by:
-$$
+<p>Let <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> be independent random variables. By definition, the covariance of <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> is given by:
+$<span class="math notranslate nohighlight">\(
 \text{Cov}(X, Y) = \mathbb{E}[XY] - \mathbb{E}[X]\mathbb{E}[Y].
-$$</p>
-<p>Since $X$ and $Y$ are independent, the joint expectation of $XY$ can be written as the product of their marginal expectations:</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-\mathbb{E}[XY] &amp;= \mathbb{E}[\mathbb{E}[XY \mid X]] \quad \text{(LIE)} \\
-&amp;= \mathbb{E}[X \mathbb{E}[Y \mid X]] \quad \text{(property of conditional expectation)} \\
-&amp;= \mathbb{E}\left[X \int_{-\infty}^\infty y f(y \mid x) \, dy \right] \quad \text{(definition of conditional expectation)} \\
-&amp;= \mathbb{E}\left[X \int_{-\infty}^\infty y f(y) \, dy \right] \quad \text{(independence: \( Y \perp X \))} \\
-&amp;= \mathbb{E}[X \mathbb{E}[Y]] \\
+\)</span>$</p>
+<p>Since <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> are independent, the joint expectation of <span class="math notranslate nohighlight">\(XY\)</span> can be written as the product of their marginal expectations:</p>
+<p>\begin{align*}
+\mathbb{E}[XY] &amp;= \mathbb{E}[\mathbb{E}[XY \mid X]] \quad \text{(LIE)} \
+&amp;= \mathbb{E}[X \mathbb{E}[Y \mid X]] \quad \text{(property of conditional expectation)} \
+&amp;= \mathbb{E}\left[X \int_{-\infty}^\infty y f(y \mid x) , dy \right] \quad \text{(definition of conditional expectation)} \
+&amp;= \mathbb{E}\left[X \int_{-\infty}^\infty y f(y) , dy \right] \quad \text{(independence: ( Y \perp X ))} \
+&amp;= \mathbb{E}[X \mathbb{E}[Y]] \
 &amp;= \mathbb{E}[X]\mathbb{E}[Y].
-\end{align*}\]</div>
-<p>(This also showed that $\mathbb{E}[Y|X] = \mathbb{E}[Y]$ given independence.)</p>
-<p>Substituting this into the covariance formula:</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-\text{Cov}(X, Y) &amp;= \mathbb{E}[XY] - \mathbb{E}[X]\mathbb{E}[Y] \\
-&amp;= \mathbb{E}[X]\mathbb{E}[Y] - \mathbb{E}[X]\mathbb{E}[Y] \\
+\end{align*}</p>
+<p>(This also showed that <span class="math notranslate nohighlight">\(\mathbb{E}[Y|X] = \mathbb{E}[Y]\)</span> given independence.)</p>
+<p>Substituting this into the covariance formula:
+\begin{align*}
+\text{Cov}(X, Y) &amp;= \mathbb{E}[XY] - \mathbb{E}[X]\mathbb{E}[Y] \
+&amp;= \mathbb{E}[X]\mathbb{E}[Y] - \mathbb{E}[X]\mathbb{E}[Y] \
 &amp;= 0.
-\end{align*}\]</div>
-<p>Thus, if $X$ and $Y$ are independent random variables, their covariance is zero.</p>
+\end{align*}</p>
+<p>Thus, if <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> are independent random variables, their covariance is zero.</p>
 </section>
 </section>
 <section id="selected-lecture-proofs">
@@ -555,19 +550,21 @@ $$</p>
 <h3><span class="section-number">14.3.1. </span>Proof 1<a class="headerlink" href="#proof-1" title="Link to this heading">#</a></h3>
 <p>Show DID estimator identifies the ATT under the parallel trends assumption.</p>
 <p>Recall the DID estimator as the following,</p>
-<p>$$
+<div class="math notranslate nohighlight">
+\[
 DID = \mathbb{E}[Y_{1,1}(S = 1, U)] - \mathbb{E}[Y_{1,0}(S = 0, U)] -
 \Big(\mathbb{E}[Y_{0,1}(S = 0, U)] - \mathbb{E}[Y_{0,0}(S = 0, U)]\Big)
-$$</p>
+\]</div>
 <p>and the parrlel trends assumption</p>
-<p>$$
+<div class="math notranslate nohighlight">
+\[
 \mathbb{E}[Y_{1,1}(S = 0, U) - Y_{1,0}(S = 0, U)] =
 \mathbb{E}[Y_{0,1}(S = 0, U) - Y_{0,0}(S = 0, U)]
-$$</p>
+\]</div>
 <p>We would like to show that the DID estimator identifies ATT:</p>
-<p>$$</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
 DID &amp;= \mathbb{E}[Y_{1,1}(S = 1, U)] - \mathbb{E}[Y_{1,0}(S = 0, U)] -
 (\mathbb{E}[Y_{0,1}(S = 0, U)] - \mathbb{E}[Y_{0,0}(S = 0, U)]) \\
 &amp;= \mathbb{E}[Y_{1,1}(S = 1, U)] - \mathbb{E}[Y_{1,1}(S = 0, U)] +
@@ -577,102 +574,97 @@ DID &amp;= \mathbb{E}[Y_{1,1}(S = 1, U)] - \mathbb{E}[Y_{1,0}(S = 0, U)] -
 \mathbb{E}[Y_{1,1}(S = 0, U)] - \mathbb{E}[Y_{1,0}(S = 0, U)] -
 (\mathbb{E}[Y_{0,1}(S = 0, U)] - \mathbb{E}[Y_{0,0}(S = 0, U)]) \\
 &amp;= ATT + 0 \quad \text{(Parr. trends)}
-\end{align*}\]</div>
-<p>$$</p>
+\end{align*}
+\end{split}\]</div>
 </section>
 <section id="proof-2">
 <h3><span class="section-number">14.3.2. </span>Proof 2<a class="headerlink" href="#proof-2" title="Link to this heading">#</a></h3>
-<p>Show why we can use linear regression to estimate the DID parameter with $\alpha_3$ from the following:</p>
-<p>$$
+<p>Show why we can use linear regression to estimate the DID parameter with <span class="math notranslate nohighlight">\(\alpha_3\)</span> from the following:</p>
+<div class="math notranslate nohighlight">
+\[
 Y = \alpha_0 + \alpha_1 T + \alpha_2 G + \alpha_3 D
-$$</p>
-<p>$$</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
+\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
 \mathbb{E}[Y_{g,t} \mid T, G, D] &amp;= \mathbb{E}[Y_{0,0}] + T(\mathbb{E}[Y_{0,1}] - \mathbb{E}[Y_{0,0}]) \\
 &amp;\quad + S(\mathbb{E}[Y_{1,0}] - \mathbb{E}[Y_{0,0}]) \\
 &amp;\quad + D(\mathbb{E}[Y_{1,1}] - \mathbb{E}[Y_{1,0}] - \mathbb{E}[Y_{0,1}] + \mathbb{E}[Y_{0,0}]) \\
 &amp;= \mathbb{E}[Y_{0,0}] + T(\mathbb{E}[Y_{0,1}] - \mathbb{E}[Y_{0,0}]) \\
 &amp;\quad + S(\mathbb{E}[Y_{1,0}] - \mathbb{E}[Y_{0,0}]) + D \cdot DID
-\end{align*}\]</div>
-<p>$$</p>
+\end{align*}
+\end{split}\]</div>
 </section>
 <section id="proof-3">
 <h3><span class="section-number">14.3.3. </span>Proof 3<a class="headerlink" href="#proof-3" title="Link to this heading">#</a></h3>
 <p>How did we identify the RDD estimator with the smoothness assumption?</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-\mathbb{E}[Y \mid R = c] &amp;= \mathbb{E}[Y(S = 1, U) \mid R = c] \quad \text{(r $\geq$ c $\implies$ S = 1)} \\
-\lim_{r \uparrow c} \mathbb{E}[Y \mid R = r] &amp;= \lim_{r \uparrow c} \mathbb{E}[Y(S = 0, U) \mid R = r] \quad \text{(r $&lt;$ c $\implies$ S = 0)} \\
+<p>\begin{align*}
+\mathbb{E}[Y \mid R = c] &amp;= \mathbb{E}[Y(S = 1, U) \mid R = c] \quad \text{(r <span class="math notranslate nohighlight">\(\geq\)</span> c <span class="math notranslate nohighlight">\(\implies\)</span> S = 1)} \
+\lim_{r \uparrow c} \mathbb{E}[Y \mid R = r] &amp;= \lim_{r \uparrow c} \mathbb{E}[Y(S = 0, U) \mid R = r] \quad \text{(r <span class="math notranslate nohighlight">\(&lt;\)</span> c <span class="math notranslate nohighlight">\(\implies\)</span> S = 0)} \
 &amp;= \mathbb{E}[Y(S = 0, U) \mid R = c] \quad \text{(smoothness)}.
-\end{align*}\]</div>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
+\end{align*}</p>
+<p>\begin{align*}
 \implies \mathbb{E}[Y(S = 1, U) - Y(S = 0, U) \mid R = c]
 &amp;= \mathbb{E}[Y(S = 1, U) \mid R = c] - \lim_{r \uparrow c} \mathbb{E}[Y(S = 0, U) \mid R = r].
-\end{align*}\]</div>
-<p>We can estimate this using local linear regression below. Why does $\alpha_1$ estimate the above effect, and what does each parameter do here?</p>
-<p>$$
+\end{align*}</p>
+<p>We can estimate this using local linear regression below. Why does <span class="math notranslate nohighlight">\(\alpha_1\)</span> estimate the above effect, and what does each parameter do here?</p>
+<div class="math notranslate nohighlight">
+\[
 Y = \alpha_0 + \alpha_1 S + \alpha_2 (R - c) + \alpha_3 S \cdot (R - c)
-$$</p>
+\]</div>
 </section>
 <section id="proof-4">
 <h3><span class="section-number">14.3.4. </span>Proof 4<a class="headerlink" href="#proof-4" title="Link to this heading">#</a></h3>
 <p>Show that the Wald estimator identifies LATE.</p>
 <p>The Wald estimator can be written as the following:</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
+<p>\begin{align*}
 \alpha_1^{IV} &amp;= \frac{\text{Cov}(Z, Y)}{\text{Cov}(Z, S)} = \frac{\text{Cov}(Z, Y) / \text{Var}(Z)}{\text{Cov}(Z, S) / \text{Var}(Z)} = \frac{\mathbb{E}[Y \mid Z = 1] - \mathbb{E}[Y \mid Z = 0]}{\mathbb{E}[S \mid Z = 1] - \mathbb{E}[S \mid Z = 0]}.
-\end{align*}\]</div>
+\end{align*}</p>
 <p>We expand the numerator and denominator separately.</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
+<p>\begin{align*}
 \mathbb{E}[Y \mid Z = 1] - \mathbb{E}[Y \mid Z = 0]
-&amp;= \mathbb{E}[Y(S, U) \mid Z = 1] - \mathbb{E}[Y(S, U) \mid Z = 0] \\
-&amp;= \mathbb{E}[Y(S(Z = 1, V), U) \mid Z = 1] - \mathbb{E}[Y(S(Z = 0, V), U) \mid Z = 0] \\
-&amp;= \mathbb{E}[Y(S(Z = 1, V), U)] - \mathbb{E}[Y(S(Z = 0, V), U)] \quad \text{(Instr. Exog.)} \\
-&amp;= \mathbb{E}[Y(S(Z = 1, V), U) - Y(S(Z = 0, V), U)] \\
-&amp;= \mathbb{E}[\mathbb{E}[Y(S(1, V), U) - Y(S(0, V), U) \mid S(1, V), S(0, V)]] \quad \text{(LIE)} \\
-&amp;= \mathbb{E}[Y(S = 1, U) - Y(S = 0, U) \mid \text{Complier}]P(\text{Complier}) \\
-&amp;\quad + \mathbb{E}[Y(S = 1, U) - Y(S = 0, U) \mid \text{Defier}]P(\text{Defier}) \\
+&amp;= \mathbb{E}[Y(S, U) \mid Z = 1] - \mathbb{E}[Y(S, U) \mid Z = 0] \
+&amp;= \mathbb{E}[Y(S(Z = 1, V), U) \mid Z = 1] - \mathbb{E}[Y(S(Z = 0, V), U) \mid Z = 0] \
+&amp;= \mathbb{E}[Y(S(Z = 1, V), U)] - \mathbb{E}[Y(S(Z = 0, V), U)] \quad \text{(Instr. Exog.)} \
+&amp;= \mathbb{E}[Y(S(Z = 1, V), U) - Y(S(Z = 0, V), U)] \
+&amp;= \mathbb{E}[\mathbb{E}[Y(S(1, V), U) - Y(S(0, V), U) \mid S(1, V), S(0, V)]] \quad \text{(LIE)} \
+&amp;= \mathbb{E}[Y(S = 1, U) - Y(S = 0, U) \mid \text{Complier}]P(\text{Complier}) \
+&amp;\quad + \mathbb{E}[Y(S = 1, U) - Y(S = 0, U) \mid \text{Defier}]P(\text{Defier}) \
 &amp;= \mathbb{E}[Y(S = 1, U) - Y(S = 0, U) \mid \text{Complier}]P(\text{Complier}) \quad \text{(Monot.)}.
-\end{align*}\]</div>
+\end{align*}</p>
 <p>Now for the denominator,</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
+<p>\begin{align*}
 \mathbb{E}[S \mid Z = 1] - \mathbb{E}[S \mid Z = 0]
-&amp;= \mathbb{E}[S(Z, V) \mid Z = 1] - \mathbb{E}[S(Z, V) \mid Z = 0] \\
-&amp;= \mathbb{E}[S(Z = 1, V) \mid Z = 1] - \mathbb{E}[S(Z = 0, V) \mid Z = 0] \\
-&amp;= \mathbb{E}[S(Z = 1, V)] - \mathbb{E}[S(Z = 0, V)] \quad \text{(Instr. Exog.)} \\
-&amp;= \mathbb{E}[S(Z = 1, V) - S(Z = 0, V)] \\
-&amp;= \mathbb{E}[\mathbb{E}[S(Z = 1, V) - S(Z = 0, V) \mid S(1, V), S(0, V)]] \quad \text{(LIE)} \\
-&amp;= \mathbb{E}[1 - 0 \mid \text{Complier}]P(\text{Complier}) + \mathbb{E}[0 - 1 \mid \text{Defier}]P(\text{Defier}) \\
+&amp;= \mathbb{E}[S(Z, V) \mid Z = 1] - \mathbb{E}[S(Z, V) \mid Z = 0] \
+&amp;= \mathbb{E}[S(Z = 1, V) \mid Z = 1] - \mathbb{E}[S(Z = 0, V) \mid Z = 0] \
+&amp;= \mathbb{E}[S(Z = 1, V)] - \mathbb{E}[S(Z = 0, V)] \quad \text{(Instr. Exog.)} \
+&amp;= \mathbb{E}[S(Z = 1, V) - S(Z = 0, V)] \
+&amp;= \mathbb{E}[\mathbb{E}[S(Z = 1, V) - S(Z = 0, V) \mid S(1, V), S(0, V)]] \quad \text{(LIE)} \
+&amp;= \mathbb{E}[1 - 0 \mid \text{Complier}]P(\text{Complier}) + \mathbb{E}[0 - 1 \mid \text{Defier}]P(\text{Defier}) \
 &amp;= P(\text{Complier}) \quad \text{(Monot.)}.
-\end{align*}\]</div>
+\end{align*}</p>
 <p>Putting it all together,</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
+<p>\begin{align*}
 \alpha_1^{IV}
-&amp;= \frac{\mathbb{E}[Y \mid Z = 1] - \mathbb{E}[Y \mid Z = 0]}{\mathbb{E}[S \mid Z = 1] - \mathbb{E}[S \mid Z = 0]} \\
-&amp;= \frac{\mathbb{E}[Y(S = 1, U) - Y(S = 0, U) \mid \text{Complier}]P(\text{Complier})}{P(\text{Complier})} \\
-&amp;= \mathbb{E}[Y(S = 1, U) - Y(S = 0, U) \mid \text{Complier}] \quad \text{(Instr. Rel.)} \\
+&amp;= \frac{\mathbb{E}[Y \mid Z = 1] - \mathbb{E}[Y \mid Z = 0]}{\mathbb{E}[S \mid Z = 1] - \mathbb{E}[S \mid Z = 0]} \
+&amp;= \frac{\mathbb{E}[Y(S = 1, U) - Y(S = 0, U) \mid \text{Complier}]P(\text{Complier})}{P(\text{Complier})} \
+&amp;= \mathbb{E}[Y(S = 1, U) - Y(S = 0, U) \mid \text{Complier}] \quad \text{(Instr. Rel.)} \
 &amp;= \text{LATE}.
-\end{align*}\]</div>
+\end{align*}</p>
 </section>
 <section id="proof-5">
 <h3><span class="section-number">14.3.5. </span>Proof 5<a class="headerlink" href="#proof-5" title="Link to this heading">#</a></h3>
 <p>Show the common alternative form of the covariance definition:
-$$
+$<span class="math notranslate nohighlight">\(
 \text{Cov}(X, Y) = \mathbb{E}[XY] - \mathbb{E}[X]\mathbb{E}[Y]
-$$</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-\text{Cov}(X, Y) &amp;= \mathbb{E}[(X - \mathbb{E}[X])(Y - \mathbb{E}[Y])] \\
-&amp;= \mathbb{E}[XY - X\mathbb{E}[Y] - Y\mathbb{E}[X] + \mathbb{E}[X]\mathbb{E}[Y]] \\
-&amp;= \mathbb{E}[XY] - \mathbb{E}[X]\mathbb{E}[Y] - \mathbb{E}[Y]\mathbb{E}[X] + \mathbb{E}[X]\mathbb{E}[Y] \\
-&amp;= \mathbb{E}[XY] - 2\mathbb{E}[X]\mathbb{E}[Y] + \mathbb{E}[X]\mathbb{E}[Y] \\
+\)</span>$</p>
+<p>\begin{align*}
+\text{Cov}(X, Y) &amp;= \mathbb{E}[(X - \mathbb{E}[X])(Y - \mathbb{E}[Y])] \
+&amp;= \mathbb{E}[XY - X\mathbb{E}[Y] - Y\mathbb{E}[X] + \mathbb{E}[X]\mathbb{E}[Y]] \
+&amp;= \mathbb{E}[XY] - \mathbb{E}[X]\mathbb{E}[Y] - \mathbb{E}[Y]\mathbb{E}[X] + \mathbb{E}[X]\mathbb{E}[Y] \
+&amp;= \mathbb{E}[XY] - 2\mathbb{E}[X]\mathbb{E}[Y] + \mathbb{E}[X]\mathbb{E}[Y] \
 &amp;= \mathbb{E}[XY] - \mathbb{E}[X]\mathbb{E}[Y]
-\end{align*}\]</div>
+\end{align*}</p>
 <p>Good luck with your finals!</p>
 </section>
 </section>

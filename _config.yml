@@ -32,11 +32,11 @@ html:
   use_issues_button: true
   use_repository_button: true
 
-parse:
-  myst_enable_extensions:
-    # don't forget to list any other extensions you want enabled,
-    # including those that are enabled by default!
-    - amsmath
+#parse:
+#  myst_enable_extensions:
+#    # don't forget to list any other extensions you want enabled,
+#    # including those that are enabled by default!
+#    - amsmath
 
 
 sphinx:
@@ -44,5 +44,5 @@ sphinx:
     mathjax_config:
       TeX:
         extensions: ["AMSmath.js", "AMSsymbols.js"]
-        equationNumbers: { autoNumber: "AMS" }
+        equationNumbers: { autoNumber: "none" }
     mathjax_path: https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML
