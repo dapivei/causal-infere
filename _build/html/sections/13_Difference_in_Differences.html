@@ -492,8 +492,8 @@ See class notes for proof.</p>
 <ol class="arabic simple" start="2">
 <li><p><strong>Regression-Based Estimation</strong>.  Capturing differences across groups and time through an interaction term, define:</p></li>
 </ol>
-<div class="amsmath math notranslate nohighlight" id="equation-4ca8074c-e1a7-4d30-83a0-c965ea79b5a5">
-<span class="eqno">(13.1)<a class="headerlink" href="#equation-4ca8074c-e1a7-4d30-83a0-c965ea79b5a5" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-4aeba45b-1ef1-4790-bdb9-30826ed0f686">
+<span class="eqno">(13.1)<a class="headerlink" href="#equation-4aeba45b-1ef1-4790-bdb9-30826ed0f686" title="Permalink to this equation">#</a></span>\[\begin{align}
 G_i &amp; =\left\{\begin{array}{l}
 1 \text { if unit $i$ has been exposed to $S$ at some point } \\
 0 \text { if not }
@@ -1161,7 +1161,7 @@ Dep. Variable:                   Empl   R-squared:                       0.008
 Model:                            OLS   Adj. R-squared:                  0.004
 Method:                 Least Squares   F-statistic:                     2.122
 Date:                Sun, 22 Dec 2024   Prob (F-statistic):             0.0959
-Time:                        20:34:31   Log-Likelihood:                -2831.4
+Time:                        20:55:10   Log-Likelihood:                -2831.4
 No. Observations:                 802   AIC:                             5671.
 Df Residuals:                     798   BIC:                             5690.
 Df Model:                           3                                         
@@ -1225,7 +1225,7 @@ Notes:
   <th>Date:</th>             <td>Sun, 22 Dec 2024</td> <th>  Prob (F-statistic):</th> <td>2.94e-15</td>
 </tr>
 <tr>
-  <th>Time:</th>                 <td>20:34:31</td>     <th>  Log-Likelihood:    </th> <td> -2608.8</td>
+  <th>Time:</th>                 <td>20:55:10</td>     <th>  Log-Likelihood:    </th> <td> -2608.8</td>
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>   757</td>      <th>  AIC:               </th> <td>   5248.</td>
@@ -1350,16 +1350,16 @@ Y_{g, t} = \sum_{i=-\underline{t}}^{\bar{t}} \beta_i T_i + \gamma G + \sum_{j=0}
 <h3><span class="section-number">13.5.9. </span>(Recall) Standard Errors of Linear Regression<a class="headerlink" href="#recall-standard-errors-of-linear-regression" title="Link to this heading">#</a></h3>
 <section id="robust-standard-errors">
 <h4><span class="section-number">13.5.9.1. </span>Robust Standard Errors<a class="headerlink" href="#robust-standard-errors" title="Link to this heading">#</a></h4>
-<div class="amsmath math notranslate nohighlight" id="equation-2d919e64-9af9-4759-8ed0-c931073707e9">
-<span class="eqno">(13.2)<a class="headerlink" href="#equation-2d919e64-9af9-4759-8ed0-c931073707e9" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-a7a34c31-9a2a-49c4-83ab-ce513e7bfbcf">
+<span class="eqno">(13.2)<a class="headerlink" href="#equation-a7a34c31-9a2a-49c4-83ab-ce513e7bfbcf" title="Permalink to this equation">#</a></span>\[\begin{align}
 V_{\text {robust }}=\left(X^{T} X\right)^{-1} X^{T} \Omega X\left(X^{T} X\right)^{-1},
 \end{align}\]</div>
 </section>
 <section id="cluster-robust-standard-errors">
 <h4><span class="section-number">13.5.9.2. </span>Cluster-Robust Standard Errors<a class="headerlink" href="#cluster-robust-standard-errors" title="Link to this heading">#</a></h4>
 <p>Recall: iid residuals are not realistic in most cases, but we can assume the residuals are <strong>clustered</strong> by the group, which means between-group correlation is zero, but within-group correlation is positive. Block diagonal matrix <span class="math notranslate nohighlight">\(\Omega\)</span>.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-01918c09-7fe8-4343-95e7-22363b41b81e">
-<span class="eqno">(13.3)<a class="headerlink" href="#equation-01918c09-7fe8-4343-95e7-22363b41b81e" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-c28dcfca-308d-42f4-8463-4c44f3c72b5b">
+<span class="eqno">(13.3)<a class="headerlink" href="#equation-c28dcfca-308d-42f4-8463-4c44f3c72b5b" title="Permalink to this equation">#</a></span>\[\begin{align}
 V_{\text {clustered }}=\left(X^{T} X\right)^{-1}\left(\sum_{c=1}^C X_c^{T} \hat{u}_c \hat{u}_c^{T} X_c\right)\left(X^{T} X\right)^{-1}
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\Omega\)</span> is a block diagonal matrix with each block being the covariance matrix of the residuals within each cluster.</p>

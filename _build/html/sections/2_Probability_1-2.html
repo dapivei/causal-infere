@@ -502,15 +502,15 @@
 </section>
 <section id="function-of-random-variables">
 <h2><span class="section-number">2.2. </span>Function of random variables<a class="headerlink" href="#function-of-random-variables" title="Link to this heading">#</a></h2>
-<div class="amsmath math notranslate nohighlight" id="equation-f10691e4-d9bd-44c6-b569-b9677d74b8f9">
-<span class="eqno">(2.1)<a class="headerlink" href="#equation-f10691e4-d9bd-44c6-b569-b9677d74b8f9" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-b227d115-a4e7-4c8d-a683-799f205d9f08">
+<span class="eqno">(2.1)<a class="headerlink" href="#equation-b227d115-a4e7-4c8d-a683-799f205d9f08" title="Permalink to this equation">#</a></span>\[\begin{align}
 E[g(X)]=\int_{-\infty}^{\infty} g(x) f(x) d x
 \end{align}\]</div>
 </section>
 <section id="variance">
 <h2><span class="section-number">2.3. </span>Variance<a class="headerlink" href="#variance" title="Link to this heading">#</a></h2>
-<div class="amsmath math notranslate nohighlight" id="equation-6e6ccb12-ea01-4d21-aff5-fabb2975c325">
-<span class="eqno">(2.2)<a class="headerlink" href="#equation-6e6ccb12-ea01-4d21-aff5-fabb2975c325" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-92e54f83-23e0-40d5-85c4-159c20a107d0">
+<span class="eqno">(2.2)<a class="headerlink" href="#equation-92e54f83-23e0-40d5-85c4-159c20a107d0" title="Permalink to this equation">#</a></span>\[\begin{align}
 E\left[(X-E[X])^2\right] &amp; =E\left[X^2-2 X E[X]+E[X]^2\right] \\
 &amp; =E\left[X^2\right]-E[2 X E[X]]+E[X]^2 \\
 &amp; =E\left[X^2\right]-2 E[X] E[X]+E[X]^2 \\
@@ -639,13 +639,13 @@ E\left[(X-E[X])^2\right] &amp; =E\left[X^2-2 X E[X]+E[X]^2\right] \\
 <section id="joint-distribution">
 <h2><span class="section-number">2.5. </span>Joint Distribution<a class="headerlink" href="#joint-distribution" title="Link to this heading">#</a></h2>
 <p>The data is continuous, but we can bin it to make it discrete.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-03fa1883-8277-48cf-a757-eef4cbbd820e">
-<span class="eqno">(2.3)<a class="headerlink" href="#equation-03fa1883-8277-48cf-a757-eef4cbbd820e" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-3b350f44-7020-49e2-b66c-99158ad85d37">
+<span class="eqno">(2.3)<a class="headerlink" href="#equation-3b350f44-7020-49e2-b66c-99158ad85d37" title="Permalink to this equation">#</a></span>\[\begin{align}
 P(X = x, Y = y) = \frac{N_{x,y}}{N}
 \end{align}\]</div>
 <p>We want to know what’s the probability of height larger than <span class="math notranslate nohighlight">\(h\)</span> and gender is male.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c9b14c43-fe98-43d9-8e39-9a770c611fda">
-<span class="eqno">(2.4)<a class="headerlink" href="#equation-c9b14c43-fe98-43d9-8e39-9a770c611fda" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-c1a1018f-2b35-4555-b6f6-bcc2c8529f20">
+<span class="eqno">(2.4)<a class="headerlink" href="#equation-c1a1018f-2b35-4555-b6f6-bcc2c8529f20" title="Permalink to this equation">#</a></span>\[\begin{align}
 P(H &gt; h, G = M) = \frac{N_{h, M}}{N}
 \end{align}\]</div>
 <div class="cell docutils container">
@@ -669,8 +669,8 @@ P(H &gt; h, G = M) = \frac{N_{h, M}}{N}
 <h2><span class="section-number">2.6. </span>Convert the Joint Distribution to Marginal Distribution<a class="headerlink" href="#convert-the-joint-distribution-to-marginal-distribution" title="Link to this heading">#</a></h2>
 <p>What is the probability of height larger than <span class="math notranslate nohighlight">\(h\)</span>?</p>
 <p>We can sum over all the weights.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4c331f30-fe3c-46c6-82f8-fc44a74ef1de">
-<span class="eqno">(2.5)<a class="headerlink" href="#equation-4c331f30-fe3c-46c6-82f8-fc44a74ef1de" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-66ba5e99-e48e-4b13-9134-68897438d737">
+<span class="eqno">(2.5)<a class="headerlink" href="#equation-66ba5e99-e48e-4b13-9134-68897438d737" title="Permalink to this equation">#</a></span>\[\begin{align}
 P(H &gt; h) = \sum_{g} P(H &gt; h, G = g) = \sum_{g} \frac{N_{h, g}}{N}
 \end{align}\]</div>
 <div class="cell docutils container">
@@ -711,14 +711,14 @@ The probability of a person being taller than 180 cm is 0.08633333333333333
 </section>
 <section id="covariance">
 <h2><span class="section-number">2.7. </span>Covariance<a class="headerlink" href="#covariance" title="Link to this heading">#</a></h2>
-<div class="amsmath math notranslate nohighlight" id="equation-d8328beb-c947-43cf-94bf-d364e4fabe4f">
-<span class="eqno">(2.6)<a class="headerlink" href="#equation-d8328beb-c947-43cf-94bf-d364e4fabe4f" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-82ba7a85-ce4e-4abf-b465-0453133bd41e">
+<span class="eqno">(2.6)<a class="headerlink" href="#equation-82ba7a85-ce4e-4abf-b465-0453133bd41e" title="Permalink to this equation">#</a></span>\[\begin{align}
 Cov(X, Y) 
 = E[(X - E[X])(Y - E[Y])]
 = E[XY] - E[X]E[Y]
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-f2b74f54-0a1f-4009-9437-aa52cad9a64b">
-<span class="eqno">(2.7)<a class="headerlink" href="#equation-f2b74f54-0a1f-4009-9437-aa52cad9a64b" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-fd0b2706-1023-40e3-8dd9-a0647a61c866">
+<span class="eqno">(2.7)<a class="headerlink" href="#equation-fd0b2706-1023-40e3-8dd9-a0647a61c866" title="Permalink to this equation">#</a></span>\[\begin{align}
 Cov(X, Y) = \frac{1}{N} \sum_{i=1}^{N} (x_i - \mu_x)(y_i - \mu_y)
 \end{align}\]</div>
 </section>
@@ -750,8 +750,8 @@ Cov(a+bX, Y) = bCov(X, Y)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1.00990914 2.01981828]
- [2.01981828 4.03963655]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.95998366 1.91996732]
+ [1.91996732 3.83993464]]
 </pre></div>
 </div>
 </div>
@@ -765,7 +765,7 @@ Cov(a+bX, Y) = bCov(X, Y)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1.07531911 0.        ]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1.00085592 0.        ]
  [0.         0.        ]]
 </pre></div>
 </div>
@@ -833,7 +833,7 @@ Y \sim N(a\mu_X + b, a^2\Sigma_X)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9461802693997462
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9876176489339762
 </pre></div>
 </div>
 </div>
@@ -845,7 +845,7 @@ Y \sim N(a\mu_X + b, a^2\Sigma_X)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.8403738524094475
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.860080166626988
 </pre></div>
 </div>
 </div>
@@ -857,7 +857,7 @@ Y \sim N(a\mu_X + b, a^2\Sigma_X)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.93415307 0.95782032]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.9875617 0.9866523]
 </pre></div>
 </div>
 </div>
@@ -869,7 +869,7 @@ Y \sim N(a\mu_X + b, a^2\Sigma_X)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[3.73661227 3.83128126]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[3.95024679 3.94660918]
 </pre></div>
 </div>
 </div>
@@ -906,8 +906,8 @@ Y \sim N(a\mu_X + b, a^2\Sigma_X)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1.05966825 2.11933649]
- [2.11933649 4.23867298]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.95556706 1.91113411]
+ [1.91113411 3.82226822]]
 </pre></div>
 </div>
 </div>
@@ -922,9 +922,9 @@ Y \sim N(a\mu_X + b, a^2\Sigma_X)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.058608577968835 4.23443431187534 9.527477201719517
-2.119336492430101
-9.531715874704377
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9546114880719292 3.8184459522877168 8.591503392647363
+1.9111341102541115
+8.59532566086787
 </pre></div>
 </div>
 </div>
@@ -943,10 +943,11 @@ Y \sim N(a\mu_X + b, a^2\Sigma_X)
 <section id="correlation">
 <h2><span class="section-number">2.11. </span>Correlation<a class="headerlink" href="#correlation" title="Link to this heading">#</a></h2>
 <p>Covariance has the unit of the product of the units of the two variables.</p>
-<p>X: cm, Y: kg
-$<span class="math notranslate nohighlight">\(
+<p>X: cm, Y: kg</p>
+<div class="math notranslate nohighlight">
+\[
 Cov(X, Y) = 10 (\text{cm} \cdot \text{kg})
-\)</span>$</p>
+\]</div>
 <p>Normalization by the standard deviation will give us a unitless quantity.</p>
 <div class="math notranslate nohighlight">
 \[
@@ -956,10 +957,11 @@ Cov(X, Y) = 10 (\text{cm} \cdot \text{kg})
 \[
 \rho_{X, Y} \in [-1, 1]
 \]</div>
-<p>Cauchy-Schwarz Inequality:
-$<span class="math notranslate nohighlight">\(
+<p>Cauchy-Schwarz Inequality:</p>
+<div class="math notranslate nohighlight">
+\[
 |\mathbb{E}[X Y]| \leq \sqrt{\mathbb{E}\left[X^2\right] \cdot \mathbb{E}\left[Y^2\right]}
-\)</span>$</p>
+\]</div>
 <div class="math notranslate nohighlight">
 \[
 |\operatorname{Cov}(X, Y)|=|\mathbb{E}[(X-\mathbb{E}[X])(Y-\mathbb{E}[Y])]| \leq \sqrt{\mathbb{E}\left[(X-\mathbb{E}[X])^2\right] \cdot \mathbb{E}\left[(Y-\mathbb{E}[Y])^2\right]}
@@ -976,14 +978,14 @@ $<span class="math notranslate nohighlight">\(
 <p>Causal Graph (DAG)
 We can represent this situation with a directed acyclic graph (DAG), where:</p>
 <ul class="simple">
-<li><p>(W=) Hot Weather</p></li>
-<li><p>(I=) Ice Cream Sales</p></li>
-<li><p>(D=) Drowning Incidents</p></li>
+<li><p><span class="math notranslate nohighlight">\(W=1\)</span> Hot Weather</p></li>
+<li><p><span class="math notranslate nohighlight">\(I=1\)</span> Ice Cream Sales</p></li>
+<li><p><span class="math notranslate nohighlight">\(D=1\)</span> Drowning Incidents</p></li>
 </ul>
 <p>The causal relationships are:</p>
 <ul class="simple">
-<li><p>(W <span class="math notranslate nohighlight">\(\rightarrow\)</span> I) (Hot weather increases ice cream sales)</p></li>
-<li><p>(W <span class="math notranslate nohighlight">\(\rightarrow\)</span> D) (Hot weather increases the likelihood of drowning incidents)</p></li>
+<li><p><span class="math notranslate nohighlight">\(W \rightarrow I\)</span> (Hot weather increases ice cream sales)</p></li>
+<li><p><span class="math notranslate nohighlight">\(W \rightarrow D\)</span> (Hot weather increases the likelihood of drowning incidents)</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1017,7 +1019,7 @@ We can represent this situation with a directed acyclic graph (DAG), where:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1938584/3898922254.py:23: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2035100/3898922254.py:23: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
   plt.tight_layout()
 </pre></div>
 </div>
@@ -1107,31 +1109,31 @@ Name: Drowning Incidents, dtype: float64
 <p>Negative causal effect of antihistamines on sneezing but</p>
 <p>positive correlation b/w antihistamine use and sneezing</p>
 <ul class="simple">
-<li><p>(A=1) if a person takes antihistamines, 0 otherwise.</p></li>
-<li><p>(S=1) if a person sneezes, 0 otherwise.</p></li>
-<li><p>(C=1) if a person has the underlying condition (e.g., allergies), 0 otherwise.</p></li>
+<li><p><span class="math notranslate nohighlight">\(A=1\)</span> if a person takes antihistamines, 0 otherwise.</p></li>
+<li><p><span class="math notranslate nohighlight">\(S=1\)</span> if a person sneezes, 0 otherwise.</p></li>
+<li><p><span class="math notranslate nohighlight">\(C=1\)</span> if a person has the underlying condition (e.g., allergies), 0 otherwise.</p></li>
 </ul>
 <p>Assumptions:</p>
 <ol class="arabic simple">
-<li><p>(A) and (S) are dependent on (C), meaning:</p></li>
+<li><p><span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(S\)</span> are dependent on <span class="math notranslate nohighlight">\(C\)</span>, meaning:</p></li>
 </ol>
 <ul class="simple">
-<li><p>People with allergies ((C=1)) are more likely to take antihistamines.</p></li>
-<li><p>People with allergies ((C=1)) sneeze more frequently.</p></li>
+<li><p>People with allergies <span class="math notranslate nohighlight">\((C=1)\)</span> are more likely to take antihistamines.</p></li>
+<li><p>People with allergies <span class="math notranslate nohighlight">\((C=1)\)</span> sneeze more frequently.</p></li>
 </ul>
 <ol class="arabic simple">
-<li><p>Negative causal effect of antihistamines: Antihistamines reduce sneezing, i.e., (P(S=) (1 \mid A=1, C=1)&lt;P(S=1 \mid A=0, C=1)).</p></li>
+<li><p>Negative causal effect of antihistamines: Antihistamines reduce sneezing, i.e., <span class="math notranslate nohighlight">\(P(S=1 \mid A=1, C=1)&lt;P(S=1 \mid A=0, C=1)\)</span>.</p></li>
 </ol>
 <p>Model:
-We can model the probability of sneezing (S) as a function of antihistamine use (A), the underlying condition (C), and their relationships:</p>
+We can model the probability of sneezing <span class="math notranslate nohighlight">\(S\)</span> as a function of antihistamine use <span class="math notranslate nohighlight">\(A\)</span>, the underlying condition <span class="math notranslate nohighlight">\(C\)</span>, and their relationships:</p>
 <div class="math notranslate nohighlight">
 \[
 P(S=1 \mid A=a, C=c)=\alpha_c-\beta \cdot a
 \]</div>
 <p>where:</p>
 <ul class="simple">
-<li><p>(\alpha_c) captures the baseline sneezing rate based on the condition (C).</p></li>
-<li><p>(\beta) captures the reduction in sneezing due to antihistamines.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\alpha_c\)</span> captures the baseline sneezing rate based on the condition <span class="math notranslate nohighlight">\(C\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\beta\)</span> captures the reduction in sneezing due to antihistamines.</p></li>
 </ul>
 <p>Similarly, we can model the probability of taking antihistamines as a function of the underlying condition:</p>
 <div class="math notranslate nohighlight">
@@ -1262,8 +1264,8 @@ Name: Sneezing, dtype: float64
 <div class="math notranslate nohighlight">
 \[\mathbb{E}[X]=\mathbb{E}[\mathbb{E}[X \mid Y]]\]</div>
 <p>Trivial Proof:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a381bed3-f2a2-47b1-8130-636a650ddf2b">
-<span class="eqno">(2.8)<a class="headerlink" href="#equation-a381bed3-f2a2-47b1-8130-636a650ddf2b" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-0f87cc4e-e0fc-449a-b673-434e56efe7ea">
+<span class="eqno">(2.8)<a class="headerlink" href="#equation-0f87cc4e-e0fc-449a-b673-434e56efe7ea" title="Permalink to this equation">#</a></span>\[\begin{align}
 \mathbb{E}[\mathbb{E}(X \mid Y)] &amp; =\mathbb{E}\left[\sum_{x \in \mathcal{X}} x \cdot \operatorname{Pr}(X=x \mid Y)\right] \\
 &amp; =\sum_{y \in \mathcal{Y}}\left[\sum_{x \in \mathcal{X}} x \cdot \operatorname{Pr}(X=x \mid Y=y)\right] \cdot \operatorname{Pr}(Y=y) \\
 &amp; =\sum_{x \in \mathcal{X}} \sum_{y \in \mathcal{Y}} x \cdot \operatorname{Pr}(X=x \mid Y=y) \cdot \operatorname{Pr}(Y=y) \\
