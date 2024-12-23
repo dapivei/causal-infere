@@ -40,15 +40,13 @@ parse:
   myst_dmath_allow_labels: true   # Allows equation numbering and referencing
 
 
-
-
-sphinx:
-  config:
-    mathjax_config:
-      TeX:
-        extensions: ["AMSmath.js", "AMSsymbols.js"]
-        equationNumbers: { autoNumber: "none" }
-    mathjax_path: https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+#sphinx:
+#  config:
+#    mathjax_config:
+#      TeX:
+#        extensions: ["AMSmath.js", "AMSsymbols.js"]
+#        equationNumbers: { autoNumber: "none" }
+#    mathjax_path: https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML
 
 #execution:
 #  timeout: -1  # No timeout, or set a longer duration in seconds
